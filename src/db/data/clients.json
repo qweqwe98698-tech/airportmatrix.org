@@ -1,0 +1,139 @@
+[
+  {
+    "id": "clash-verge",
+    "slug": "clash-verge",
+    "name": "Clash Verge Rev",
+    "tagline": "新一代跨平台 Clash 内核主力客户端 · 完美接棒",
+    "developer": "Clash Verge Rev Team (开源社区)",
+    "license": "GPL-3.0",
+    "version": "v2.0.4 (Mihomo 1.19+)",
+    "platforms": ["windows", "macos", "linux"],
+    "downloadUrl": "https://github.com/clash-verge-rev/clash-verge-rev/releases",
+    "githubUrl": "https://github.com/clash-verge-rev/clash-verge-rev",
+    "coreEngine": "Mihomo (Meta 内核)",
+    "features": {
+      "tunMode": true,
+      "ruleClash": true,
+      "subConverter": true,
+      "fakeIp": true
+    },
+    "difficultyScore": 2,
+    "recommendedFor": ["Windows 桌面用户", "Mac M系列芯片", "TUN 全局游戏接管"],
+    "supportedProtocols": ["vless", "hysteria2", "trojan", "shadowsocks", "tuic", "vmess"],
+    "compatibleProviders": ["guangsucloud", "xingdaomeng", "feimaocloud", "u1s1", "weitucloud"],
+    "commonErrors": ["tun_virtual_card_conflict", "node_timeout", "port_conflict_7890"],
+    "relations": [
+      { "targetId": "vless", "targetType": "protocol", "relationType": "supports" },
+      { "targetId": "hysteria2", "targetType": "protocol", "relationType": "supports" },
+      { "targetId": "guangsucloud", "targetType": "provider", "relationType": "supports" }
+    ]
+  },
+  {
+    "id": "shadowrocket",
+    "slug": "shadowrocket",
+    "name": "Shadowrocket (小火箭)",
+    "tagline": "iOS 生态事实标准的国民级网络代理工具",
+    "developer": "Shadow Launch Technology Group LLC",
+    "license": "商业授权 (App Store $2.99)",
+    "version": "v2.2.60+",
+    "platforms": ["ios", "ipados", "visionos"],
+    "downloadUrl": "https://apps.apple.com/us/app/shadowrocket/id932747118",
+    "coreEngine": "Shadowrocket 自研高性能规则内核",
+    "features": {
+      "tunMode": true,
+      "ruleClash": true,
+      "subConverter": false,
+      "fakeIp": true
+    },
+    "difficultyScore": 1,
+    "recommendedFor": ["iPhone/iPad 用户", "一键扫码导入", "智能省电分流"],
+    "supportedProtocols": ["vless", "hysteria2", "trojan", "shadowsocks", "tuic", "snell"],
+    "compatibleProviders": ["guangsucloud", "xingdaomeng", "feimaocloud", "u1s1", "weitucloud"],
+    "commonErrors": ["ios_vpn_permission", "node_timeout"],
+    "relations": [
+      { "targetId": "vless", "targetType": "protocol", "relationType": "supports" },
+      { "targetId": "guangsucloud", "targetType": "provider", "relationType": "supports" }
+    ]
+  },
+  {
+    "id": "sing-box",
+    "slug": "sing-box",
+    "name": "sing-box",
+    "tagline": "下一代通用代理通用平台 · 极客极致性能之选",
+    "developer": "SagerNet 团队",
+    "license": "GPL-3.0",
+    "version": "v1.11.0+",
+    "platforms": ["windows", "macos", "ios", "android", "linux"],
+    "downloadUrl": "https://github.com/SagerNet/sing-box/releases",
+    "githubUrl": "https://github.com/SagerNet/sing-box",
+    "coreEngine": "sing-box 纯 Go 模块化内核",
+    "features": {
+      "tunMode": true,
+      "ruleClash": false,
+      "subConverter": true,
+      "fakeIp": true
+    },
+    "difficultyScore": 4,
+    "recommendedFor": ["高级技术极客", "路由器固件", "零内存开销追求者"],
+    "supportedProtocols": ["vless", "hysteria2", "tuic", "shadowsocks", "trojan"],
+    "compatibleProviders": ["guangsucloud", "u1s1", "weitucloud"],
+    "commonErrors": ["json_config_syntax_error"],
+    "relations": [
+      { "targetId": "vless", "targetType": "protocol", "relationType": "supports" },
+      { "targetId": "tuic", "targetType": "protocol", "relationType": "supports" }
+    ]
+  },
+  {
+    "id": "v2rayn",
+    "slug": "v2rayn",
+    "name": "v2rayN",
+    "tagline": "经典 Windows 平台图形化客户端 · 多内核自由切换",
+    "developer": "2dust",
+    "license": "GPL-3.0",
+    "version": "v7.2.0+",
+    "platforms": ["windows"],
+    "downloadUrl": "https://github.com/2dust/v2rayN/releases",
+    "githubUrl": "https://github.com/2dust/v2rayN",
+    "coreEngine": "Xray-core / Sing-box / V2Ray 自由切换",
+    "features": {
+      "tunMode": true,
+      "ruleClash": false,
+      "subConverter": false,
+      "fakeIp": false
+    },
+    "difficultyScore": 2,
+    "recommendedFor": ["Windows 办公重度用户", "自定义路由分流爱好者"],
+    "supportedProtocols": ["vless", "vmess", "trojan", "shadowsocks", "hysteria2"],
+    "compatibleProviders": ["guangsucloud", "xingdaomeng", "feimaocloud"],
+    "commonErrors": ["core_not_found", "port_conflict_10808"],
+    "relations": [
+      { "targetId": "vless", "targetType": "protocol", "relationType": "supports" }
+    ]
+  },
+  {
+    "id": "surge",
+    "slug": "surge",
+    "name": "Surge",
+    "tagline": "Apple 平台顶级高级网络调试与代理利器",
+    "developer": "Y้น",
+    "license": "商业付费授权",
+    "version": "Surge 5 (macOS/iOS)",
+    "platforms": ["macos", "ios"],
+    "downloadUrl": "https://nssurge.com/",
+    "coreEngine": "Surge 高效自研 C/Swift 网络栈",
+    "features": {
+      "tunMode": true,
+      "ruleClash": false,
+      "subConverter": false,
+      "fakeIp": true
+    },
+    "difficultyScore": 5,
+    "recommendedFor": ["网络工程师", "Mac 深度开发者", "预算充裕者"],
+    "supportedProtocols": ["shadowsocks", "trojan", "snell", "hysteria2", "tuic"],
+    "compatibleProviders": ["guangsucloud", "u1s1", "xingdaomeng"],
+    "commonErrors": ["license_bind_limit"],
+    "relations": [
+      { "targetId": "iepl", "targetType": "route", "relationType": "runs_on" }
+    ]
+  }
+]

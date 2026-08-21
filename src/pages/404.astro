@@ -1,0 +1,34 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/common/Icon.astro';
+---
+
+<BaseLayout
+  title="404 - 页面未找到"
+  description="抱歉，您访问的页面不存在或已被迁移。"
+  noindex={true}
+>
+  <div class="py-20 text-center max-w-lg mx-auto">
+    <div class="inline-flex p-4 rounded-2xl bg-slate-900 border border-slate-800 text-tech-emerald mb-6 shadow-glow">
+      <Icon name="alert-triangle" class="w-12 h-12" />
+    </div>
+    <h1 class="text-4xl font-extrabold text-white tracking-tight mb-2">404 - 页面未找到</h1>
+    <p class="text-sm text-slate-400 mb-8 leading-relaxed">
+      抱歉，该页面地址可能已变更或已被移除。请通过下方入口返回首页或搜索您需要的知识与机场评测。
+    </p>
+    <div class="flex items-center justify-center gap-3">
+      <a
+        href="/"
+        class="px-5 py-2.5 rounded-xl bg-tech-emerald text-slate-950 font-bold text-xs hover:bg-emerald-400 transition-colors"
+      >
+        返回首页
+      </a>
+      <a
+        href="/search"
+        class="px-5 py-2.5 rounded-xl bg-slate-800 text-slate-200 font-semibold text-xs border border-slate-700 hover:bg-slate-700 transition-colors"
+      >
+        全站搜索
+      </a>
+    </div>
+  </div>
+</BaseLayout>

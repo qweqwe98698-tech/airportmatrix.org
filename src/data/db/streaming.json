@@ -1,0 +1,24 @@
+[
+  {
+    "id": "streaming_netflix",
+    "entity_type": "streaming_service",
+    "name": "Netflix (奈飞)",
+    "region": ["US", "JP", "HK", "TW", "SG"],
+    "requirements": {
+      "ip_type": ["native", "residential"],
+      "stability": "high"
+    },
+    "common_errors": [
+      {
+        "error": "仅能观看自制剧，第三方版权剧集被隐藏",
+        "solution": "当前节点为广播 IP 或被识别为机房代理。更换为标有 Netflix 解锁的原生住宅 IP 节点。"
+      },
+      {
+        "error": "播放提示“您似乎在使用代理或解除阻止程序”",
+        "solution": "关闭客户端内可能导致 DNS 泄漏的 IPv6 模块，重新刷新网页或重启 App。"
+      }
+    ],
+    "supported_providers": ["provider_guangsucloud"],
+    "related_articles": ["article_netflix_unlock_guide"]
+  }
+]

@@ -1,0 +1,121 @@
+---
+import Icon from '../common/Icon.astro';
+
+const intents = [
+  {
+    title: 'AI 访问专区',
+    badge: 'HOT TOPIC',
+    icon: 'bot',
+    desc: 'ChatGPT · Claude 3.5 · Gemini · 原生住宅 IP 避开 1020 报错与风控',
+    href: '/category/ai-access',
+    color: 'emerald',
+    tags: ['OpenAI原生', 'WebRTC防护', 'Cursor代码补全'],
+  },
+  {
+    title: '4K/8K 流媒体',
+    badge: 'POPULAR',
+    icon: 'tv',
+    desc: 'Netflix 非自制剧 · YouTube 8K · Disney+ · 巴哈姆特动画疯秒开',
+    href: '/category/streaming-4k',
+    color: 'cyan',
+    tags: ['4K HDR', '多区双向解锁', 'TikTok直播'],
+  },
+  {
+    title: '客户端图文教程',
+    badge: 'GUIDE',
+    icon: 'cpu',
+    desc: 'Clash Verge Rev · 小火箭 · sing-box · 4步导入与 TUN 虚拟网卡配置',
+    href: '/clients',
+    color: 'violet',
+    tags: ['Mihomo内核', '四步图文', 'Fake-IP防污染'],
+  },
+  {
+    title: '稳定专线网络',
+    badge: 'IEPL/IPLC',
+    icon: 'server',
+    desc: '全线 IEPL 企业物理专线 · 晚高峰 0 丢包 · 400MB/s+ 满速实测',
+    href: '/routes',
+    color: 'emerald',
+    tags: ['点对点专线', '年付低至7.5元', '免跑路'],
+  },
+  {
+    title: '便宜高性价比',
+    badge: 'BUDGET',
+    icon: 'zap',
+    desc: '14.9 元月付 100GB · 7 元年付专线 · 不限时流量包长效备用',
+    href: '/category/budget-under-15',
+    color: 'amber',
+    tags: ['14.9元月付', '不限时流量', '学生党首选'],
+  },
+  {
+    title: '网络故障诊断',
+    badge: 'ISSUES',
+    icon: 'alert-triangle',
+    desc: '节点全部超时 · 测速全红 · 端口冲突 · 1020 报错系统化诊断树',
+    href: '/articles/node-timeout-troubleshooting-guide',
+    color: 'rose',
+    tags: ['Timeout排查', '时间同步', 'TLS握手'],
+  },
+];
+---
+
+<section class="py-10">
+  <div class="mb-6 flex items-end justify-between gap-4">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="w-2 h-2 rounded-full bg-tech-cyan"></span>
+        <span class="text-xs font-bold text-tech-cyan tracking-wider uppercase">Scenario Hubs</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">热门需求与场景入口</h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-1">
+        按您的核心网络任务直达专属数据库、实测报告与排错方案。
+      </p>
+    </div>
+    <a href="/providers" class="hidden sm:flex text-xs font-semibold text-tech-cyan hover:underline items-center gap-1">
+      <span>查阅全景矩阵</span>
+      <span>→</span>
+    </a>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+    {intents.map((item) => (
+      <a
+        href={item.href}
+        class="glass-card-hover rounded-2xl p-6 border border-slate-800/80 flex flex-col justify-between group relative overflow-hidden"
+      >
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class={`w-10 h-10 rounded-xl flex items-center justify-center ${
+              item.color === 'emerald' ? 'bg-emerald-500/20 text-emerald-400' :
+              item.color === 'cyan' ? 'bg-cyan-500/20 text-cyan-400' :
+              item.color === 'rose' ? 'bg-rose-500/20 text-rose-400' :
+              item.color === 'amber' ? 'bg-amber-500/20 text-amber-400' :
+              'bg-violet-500/20 text-violet-400'
+            }`}>
+              <Icon name={item.icon} class="w-5 h-5" />
+            </div>
+            <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-900 text-slate-400 border border-slate-800">
+              {item.badge}
+            </span>
+          </div>
+
+          <h3 class="text-lg font-bold text-white group-hover:text-tech-cyan transition-colors mb-1.5 flex items-center justify-between">
+            <span>{item.title}</span>
+            <Icon name="arrow-right" class="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-tech-cyan" />
+          </h3>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            {item.desc}
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-1.5 pt-3 border-t border-slate-800/60">
+          {item.tags.map((tag) => (
+            <span class="text-[10px] px-2 py-0.5 rounded-md bg-slate-950 text-slate-400 border border-slate-850 font-mono">
+              #{tag}
+            </span>
+          ))}
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

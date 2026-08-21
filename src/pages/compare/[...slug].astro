@@ -1,0 +1,118 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+import { comparisonsData } from '@/data/comparisons.data';
+import { providersData } from '@/data/providers.data';
+
+export function getStaticPaths() {
+  return comparisonsData.map((comparison) => ({
+    params: { slug: comparison.slug },
+    props: { comparison },
+  }));
+}
+
+const { comparison } = Astro.props;
+
+const providerA = providersData.find((p) => p.slug === comparison.itemA);
+const providerB = providersData.find((p) => p.slug === comparison.itemB);
+
+const breadcrumbs = [
+  { name: '对比中心', url: '/providers' },
+  { name: `${comparison.name} 深度对比评测`, url: `/compare/${comparison.slug}` },
+];
+---
+
+<BaseLayout
+  title={`${comparison.name} 深度对比与测速差异分析 (2026 选购指南) - AirportMatrix`}
+  description={`${comparison.name} 全方位横向对比：涵盖运营年限、专线线路、测速吞吐、价格套餐、优惠码与 AI 解锁能力对比分析。`}
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- Header -->
+  <div class="mb-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-slate-800 text-center">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-cyan/10 border border-tech-cyan/30 text-tech-cyan text-xs font-semibold mb-3">
+      <Icon name="zap" class="w-3.5 h-3.5" />
+      <span>横向实测对比 · 独立数据分析</span>
+    </div>
+    <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">{comparison.name} 深度对比分析</h1>
+    <p class="text-xs sm:text-base text-slate-300 mt-2 max-w-2xl mx-auto">{comparison.tagline}</p>
+  </div>
+
+  <!-- Head to Head Compare Cards -->
+  {providerA && providerB && (
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+      <!-- Card A -->
+      <div class="p-6 rounded-2xl bg-slate-900/80 border border-tech-emerald/40 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono font-bold text-tech-emerald bg-emerald-950 px-2 py-0.5 rounded border border-emerald-500/30">Candidate A</span>
+          <span class="text-xl font-bold font-mono text-tech-emerald">{providerA.score.overall.toFixed(1)} / 10</span>
+        </div>
+        <h2 class="text-xl font-extrabold text-white">{providerA.name}</h2>
+        <p class="text-xs text-slate-400">{providerA.tagline}</p>
+        <div class="text-xs space-y-1 pt-2 border-t border-slate-800">
+          <div><span class="text-slate-500">价格周期：</span><span class="text-slate-200 font-mono">{providerA.pricing.billingPeriod}</span></div>
+          <div><span class="text-slate-500">专线与协议：</span><span class="text-slate-200 uppercase">{providerA.routes.join('+')} / {providerA.protocols.join('+')}</span></div>
+          <div><span class="text-slate-500">专属优惠码：</span><span class="text-tech-emerald font-mono font-bold">{providerA.couponCode || '无'}</span></div>
+        </div>
+        <a href={providerA.affiliateUrl} target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 rounded-xl text-center bg-tech-emerald text-slate-950 font-bold text-xs hover:bg-emerald-400 transition-colors">
+          前往 {providerA.name} 官网 →
+        </a>
+      </div>
+
+      <!-- Card B -->
+      <div class="p-6 rounded-2xl bg-slate-900/80 border border-tech-cyan/40 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-mono font-bold text-tech-cyan bg-cyan-950 px-2 py-0.5 rounded border border-cyan-500/30">Candidate B</span>
+          <span class="text-xl font-bold font-mono text-tech-cyan">{providerB.score.overall.toFixed(1)} / 10</span>
+        </div>
+        <h2 class="text-xl font-extrabold text-white">{providerB.name}</h2>
+        <p class="text-xs text-slate-400">{providerB.tagline}</p>
+        <div class="text-xs space-y-1 pt-2 border-t border-slate-800">
+          <div><span class="text-slate-500">价格周期：</span><span class="text-slate-200 font-mono">{providerB.pricing.billingPeriod}</span></div>
+          <div><span class="text-slate-500">专线与协议：</span><span class="text-slate-200 uppercase">{providerB.routes.join('+')} / {providerB.protocols.join('+')}</span></div>
+          <div><span class="text-slate-500">专属优惠码：</span><span class="text-tech-cyan font-mono font-bold">{providerB.couponCode || '无'}</span></div>
+        </div>
+        <a href={providerB.affiliateUrl} target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 rounded-xl text-center bg-tech-cyan text-slate-950 font-bold text-xs hover:bg-cyan-400 transition-colors">
+          前往 {providerB.name} 官网 →
+        </a>
+      </div>
+    </div>
+  )}
+
+  <!-- Detailed Point Breakdown Table -->
+  <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60 mb-10">
+    <table class="w-full text-left border-collapse text-xs sm:text-sm">
+      <thead>
+        <tr class="border-b border-slate-800 bg-slate-950/80 text-slate-300 font-semibold">
+          <th class="p-4 whitespace-nowrap">对比维度</th>
+          <th class="p-4 whitespace-nowrap text-tech-emerald">{providerA?.name || 'Item A'}</th>
+          <th class="p-4 whitespace-nowrap text-tech-cyan">{providerB?.name || 'Item B'}</th>
+          <th class="p-4">架构师深度解析</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-slate-800">
+        {comparison.comparisonPoints.map((pt) => (
+          <tr class="hover:bg-slate-800/30 transition-colors">
+            <td class="p-4 font-bold text-white whitespace-nowrap">{pt.dimension}</td>
+            <td class="p-4 text-slate-200 font-medium">{pt.itemAValue}</td>
+            <td class="p-4 text-slate-200 font-medium">{pt.itemBValue}</td>
+            <td class="p-4 text-slate-400 leading-relaxed text-xs">{pt.analysis}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Verdict Banner -->
+  <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-cyan-950/40 border border-emerald-500/30 mb-8 space-y-2">
+    <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider flex items-center gap-1.5">
+      <Icon name="check" class="w-4 h-4" />
+      <span>最终选购建议结论 (Final Verdict)</span>
+    </div>
+    <p class="text-xs sm:text-base text-slate-200 leading-relaxed font-medium">
+      {comparison.verdict}
+    </p>
+  </div>
+</BaseLayout>

@@ -1,0 +1,81 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+
+const breadcrumbs = [
+  { name: '极客实用工具箱', url: '/tools' },
+];
+
+const tools = [
+  {
+    id: 'sub-converter',
+    title: 'Web 在线订阅转换与 Mihomo (Clash.Meta) 规则生成器',
+    desc: '粘贴任意机场订阅链接，一键生成开启 TUN 模式、Fake-IP 与 OpenAI 专属分流的标准 YAML/JSON 配置文件。',
+    icon: 'cpu',
+    badge: 'Core Utility',
+    href: '/tools/sub-converter',
+  },
+  {
+    id: 'ip-check',
+    title: '节点 IP 纯净度与 WebRTC 泄漏自测工具',
+    desc: '在线探测当前代理出口 IP 类型（原生住宅 / 广播机房）、ASN 归属、欺诈度评分以及 WebRTC 真实 IP 泄漏状态。',
+    icon: 'zap',
+    badge: 'Security Tool',
+    href: '/tools/ip-check',
+  },
+];
+---
+
+<BaseLayout
+  title="极客实用工具箱 - 订阅转换器与 IP 纯净度探测 - AirportMatrix"
+  description="免费提供 Web 在线代理订阅转换、Mihomo (Clash.Meta) TUN 模式规则生成、Fake-IP 防污染配置与 WebRTC IP 泄漏在线自测工具。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="mb-8">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-cyan/10 border border-tech-cyan/30 text-tech-cyan text-xs font-semibold mb-3">
+      <Icon name="cpu" class="w-3.5 h-3.5" />
+      <span>Geek Toolbox · 纯前端安全无存储</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">极客出海实用工具箱</h1>
+    <p class="text-sm text-slate-400 mt-2 max-w-3xl">
+      所有工具均在您的浏览器本地前端执行解析与生成，绝不上传或记录您的订阅链接与私密数据，安全可信。
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {tools.map((tool) => (
+      <a
+        href={tool.href}
+        class="glass-card-hover rounded-2xl p-7 border border-slate-800/80 flex flex-col justify-between group"
+      >
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div class="p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-tech-cyan">
+              <Icon name={tool.icon} class="w-6 h-6" />
+            </div>
+            <span class="text-[10px] font-mono font-bold text-tech-emerald bg-emerald-950/60 px-2.5 py-1 rounded border border-emerald-500/30">
+              {tool.badge}
+            </span>
+          </div>
+
+          <h2 class="text-xl font-bold text-white group-hover:text-tech-cyan transition-colors mb-2.5">
+            {tool.title}
+          </h2>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
+            {tool.desc}
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/60 flex items-center justify-between text-xs text-slate-400 group-hover:text-slate-200">
+          <span>立即免费使用</span>
+          <span class="text-tech-emerald font-bold flex items-center gap-1 group-hover:underline">
+            Launch Tool →
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</BaseLayout>

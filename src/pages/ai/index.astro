@@ -1,0 +1,112 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+import NextBestPage from '@/components/article/NextBestPage.astro';
+import { providersData } from '@/data/providers.data';
+
+const breadcrumbs = [{ name: '海外 AI 场景专区', url: '/ai' }];
+
+const aiProviders = providersData.filter((p) => p.aiSupport.chatgpt);
+
+const nextPages = [
+  {
+    title: 'ChatGPT 报错 1020 与 Access Denied 排查手册',
+    href: '/articles/chatgpt-access-blocked-solution',
+    desc: '深度解析 OpenAI 风控模型与浏览器防关联净化方案。',
+    type: '故障排查',
+  },
+  {
+    title: 'Clash Verge Rev 分流规则配置指南',
+    href: '/client/clash-verge',
+    desc: '配置独立 OpenAI 策略组，使 AI 请求自动走纯净原生节点。',
+    type: '分流实战',
+  },
+];
+---
+
+<BaseLayout
+  title="海外 AI (ChatGPT / Claude / Gemini / Cursor) 稳定访问与原生 IP 解决方案"
+  description="针对 OpenAI、Anthropic Claude、Google Gemini 与 Cursor AI 的严格 IP 风控与 1020 报错，提供高纯净度原生住宅 IP 机场匹配与智能分流配置指南。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-slate-800 mb-8">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold mb-3">
+      <Icon name="bot" class="w-3.5 h-3.5" />
+      <span>AI 生产力护航 · 原生住宅 IP 认证</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">海外 AI 访问与风控破局方案</h1>
+    <p class="text-sm sm:text-base text-slate-300 mt-2 max-w-3xl leading-relaxed">
+      解决 ChatGPT “Access Denied (1020)”、“Country Not Supported”、Claude 频繁封号以及 Cursor 代码补全断连问题。提供通过 OpenAI 严格风控测试的高可用机场矩阵。
+    </p>
+  </div>
+
+  <!-- AI Solution Principles -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+    <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+      <div class="text-xs font-bold text-tech-emerald uppercase tracking-wider">原则一：原生住宅 IP</div>
+      <h2 class="text-base font-bold text-white">低欺诈度家庭宽带网段</h2>
+      <p class="text-xs text-slate-400 leading-relaxed">
+        避开数万人共用的廉价云厂商（AWS、GCP）机房 IP，选用由当地电信 ISP 分配的原生住宅 IP，从根本上杜绝 1020 拦截。
+      </p>
+    </div>
+
+    <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+      <div class="text-xs font-bold text-tech-cyan uppercase tracking-wider">原则二：独立策略分流</div>
+      <h2 class="text-base font-bold text-white">规则分流避免 IP 漂移</h2>
+      <p class="text-xs text-slate-400 leading-relaxed">
+        在客户端将 <code>openai.com</code> 与 <code>anthropic.com</code> 划入独立策略组，固定由特定优质美区或日区专线转发。
+      </p>
+    </div>
+
+    <div class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2">
+      <div class="text-xs font-bold text-tech-violet uppercase tracking-wider">原则三：DNS 防投毒</div>
+      <h2 class="text-base font-bold text-white">Fake-IP 与远程解析</h2>
+      <p class="text-xs text-slate-400 leading-relaxed">
+        启用 Fake-IP 机制，由远端落地服务器直接向权威 DNS 请求真实 A 记录，彻底避免国内 ISP 的 DNS 污染。
+      </p>
+    </div>
+  </div>
+
+  <!-- Verified AI Providers List -->
+  <div class="mb-12">
+    <h2 class="text-xl font-bold text-white mb-4 flex items-center gap-2">
+      <Icon name="check" class="w-5 h-5 text-tech-emerald" />
+      <span>通过 AI 严格风控测试的推荐机场</span>
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {aiProviders.map((provider) => (
+        <div class="glass-card-hover rounded-xl p-5 border border-slate-800/80 flex flex-col justify-between">
+          <div>
+            <div class="flex justify-between items-start mb-2">
+              <h3 class="text-base font-bold text-white">{provider.name}</h3>
+              <span class="text-xs font-mono font-bold text-tech-emerald">¥{provider.pricing.minMonthly}/月起</span>
+            </div>
+            <p class="text-xs text-slate-400 mb-3">{provider.tagline}</p>
+            <div class="p-3 rounded-lg bg-slate-950/80 border border-slate-900 text-xs text-slate-300 mb-4">
+              <span class="text-tech-emerald font-semibold">AI 实测表现：</span>
+              <span class="text-slate-400">{provider.aiSupport.notes}</span>
+            </div>
+          </div>
+          <div class="pt-3 border-t border-slate-800/80 flex items-center justify-between">
+            <a href={`/provider/${provider.slug}`} class="text-xs font-semibold text-slate-300 hover:text-white">
+              评测报告
+            </a>
+            <a
+              href={provider.affiliateUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-3 py-1.5 rounded-lg text-xs font-bold bg-tech-emerald text-slate-950 hover:bg-emerald-400"
+            >
+              获取订阅
+            </a>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <NextBestPage nextPages={nextPages} />
+</BaseLayout>

@@ -1,0 +1,68 @@
+---
+import { siteConfig } from '@/data/site.config';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  articleType?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description = siteConfig.description,
+  canonicalUrl,
+  ogImage = `${siteConfig.url}/og-image.png`,
+  articleType = 'website',
+  publishedTime,
+  modifiedTime,
+  noindex = false,
+} = Astro.props;
+
+// Standardize Canonical URL: Strip all query strings and trailing slashes for absolute consistency
+const cleanPath = Astro.url.pathname.replace(/\/$/, '') || '';
+const finalCanonical = canonicalUrl || `${siteConfig.url}${cleanPath}`;
+
+const pageTitle = title ? `${title} | ${siteConfig.name} - ${siteConfig.brandName}` : `${siteConfig.name} - ${siteConfig.tagline}`;
+---
+
+<!-- Global Metadata -->
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<!-- Primary Meta Tags -->
+<title>{pageTitle}</title>
+<meta name="title" content={pageTitle} />
+<meta name="description" content={description} />
+<meta name="author" content={siteConfig.author} />
+{noindex && <meta name="robots" content="noindex, nofollow" />}
+
+<!-- Hardened Canonical URL (Google & Bing Canonicalization Standard) -->
+<link rel="canonical" href={finalCanonical} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={articleType} />
+<meta property="og:url" content={finalCanonical} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:site_name" content={siteConfig.name} />
+
+{publishedTime && <meta property="article:published_time" content={publishedTime} />}
+{modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+
+<!-- Twitter Card -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={finalCanonical} />
+<meta property="twitter:title" content={pageTitle} />
+<meta property="twitter:description" content={description} />
+<meta property="twitter:image" content={ogImage} />
+
+<!-- Theme Color -->
+<meta name="theme-color" content="#090d16" />

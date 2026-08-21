@@ -1,0 +1,117 @@
+[
+  {
+    "id": "task_1787291043049_01",
+    "keyword": "ChatGPT 1020 Access Denied 报错怎么解决",
+    "searchIntent": "troubleshooting",
+    "searchVolumeGrowth": 180,
+    "commercialValueScore": 9.6,
+    "intentClarityScore": 9.5,
+    "contentValueScore": 9.8,
+    "difficultyScore": 3,
+    "opportunityScore": 88,
+    "suggestedTemplate": "faq",
+    "targetEntities": [
+      {
+        "id": "chatgpt_1020",
+        "type": "issue"
+      },
+      {
+        "id": "guangsucloud",
+        "type": "provider"
+      }
+    ],
+    "discoveredAt": "2026-08-21T05:44:03.048Z"
+  },
+  {
+    "id": "task_1787291043049_02",
+    "keyword": "Clash Verge Rev TUN 模式与全局分流配置全教程",
+    "searchIntent": "tutorial",
+    "searchVolumeGrowth": 240,
+    "commercialValueScore": 8.9,
+    "intentClarityScore": 9.8,
+    "contentValueScore": 9.5,
+    "difficultyScore": 2.5,
+    "opportunityScore": 90,
+    "suggestedTemplate": "tutorial",
+    "targetEntities": [
+      {
+        "id": "clash-verge",
+        "type": "client"
+      },
+      {
+        "id": "vless",
+        "type": "protocol"
+      }
+    ],
+    "discoveredAt": "2026-08-21T05:44:03.048Z"
+  },
+  {
+    "id": "task_1787291043049_03",
+    "keyword": "光速云 2026 深度评测：9Gbps实测与IEPL专线质量分析",
+    "searchIntent": "commercial",
+    "searchVolumeGrowth": 120,
+    "commercialValueScore": 9.9,
+    "intentClarityScore": 9,
+    "contentValueScore": 9.2,
+    "difficultyScore": 2,
+    "opportunityScore": 80,
+    "suggestedTemplate": "entity",
+    "targetEntities": [
+      {
+        "id": "guangsucloud",
+        "type": "provider"
+      },
+      {
+        "id": "iepl",
+        "type": "route"
+      }
+    ],
+    "discoveredAt": "2026-08-21T05:44:03.048Z"
+  },
+  {
+    "id": "task_1787291043049_04",
+    "keyword": "光速云对比星岛梦：不限时流量包与极速专线深度对决",
+    "searchIntent": "comparison",
+    "searchVolumeGrowth": 110,
+    "commercialValueScore": 9.5,
+    "intentClarityScore": 9.2,
+    "contentValueScore": 9,
+    "difficultyScore": 2.2,
+    "opportunityScore": 77,
+    "suggestedTemplate": "compare",
+    "targetEntities": [
+      {
+        "id": "guangsucloud",
+        "type": "provider"
+      },
+      {
+        "id": "xingdaomeng",
+        "type": "provider"
+      }
+    ],
+    "discoveredAt": "2026-08-21T05:44:03.048Z"
+  },
+  {
+    "id": "task_1787291043049_05",
+    "keyword": "Shadowrocket 小火箭一键订阅导入与规则分流新手指南",
+    "searchIntent": "tutorial",
+    "searchVolumeGrowth": 190,
+    "commercialValueScore": 9,
+    "intentClarityScore": 9.6,
+    "contentValueScore": 9.2,
+    "difficultyScore": 2.8,
+    "opportunityScore": 87,
+    "suggestedTemplate": "tutorial",
+    "targetEntities": [
+      {
+        "id": "shadowrocket",
+        "type": "client"
+      },
+      {
+        "id": "u1s1",
+        "type": "provider"
+      }
+    ],
+    "discoveredAt": "2026-08-21T05:44:03.048Z"
+  }
+]

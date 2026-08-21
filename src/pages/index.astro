@@ -1,0 +1,42 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import HeroMatrix from '@/components/home/HeroMatrix.astro';
+import IntentCards from '@/components/home/IntentCards.astro';
+import RecommendationWizard from '@/components/home/RecommendationWizard.astro';
+import FeaturedEntityCards from '@/components/home/FeaturedEntityCards.astro';
+import EntityCards from '@/components/home/EntityCards.astro';
+import KnowledgeHub from '@/components/home/KnowledgeHub.astro';
+import RiskDashboard from '@/components/home/RiskDashboard.astro';
+import IntelligenceFeed from '@/components/home/IntelligenceFeed.astro';
+import CTASection from '@/components/home/CTASection.astro';
+---
+
+<BaseLayout
+  title="AirportMatrix X - 机场代理趋势数据库与生态数据中心"
+  description="连接机场品牌、客户端、协议、AI工具与网络访问解决方案。涵盖 100+ 品牌监测、20+ 客户端生态、30+ 协议百科与 1000+ 网络解决方案。"
+>
+  <!-- 1. 第一屏：Hero 区域 + 平台大标题 + 热门搜索框 + 四大数据库权威指标 -->
+  <HeroMatrix />
+
+  <!-- 2. 第二屏：热门需求与场景入口 (AI访问 / 流媒体 / 客户端 / 稳定专线 / 便宜月付 / 故障诊断) -->
+  <IntentCards />
+
+  <!-- 3. 第三屏：智能代理选型向导 (3 步交互匹配 + 数据库实体结果) -->
+  <RecommendationWizard />
+
+  <!-- 4. 第四屏：数据库精选实体与多维关系图谱 (双列高密度实体卡片 + 关联知识) -->
+  <FeaturedEntityCards />
+
+  <!-- 5. 第五屏：5 大核心知识图谱数据库矩阵导航 (Provider / Client / Protocol / Route / Issues) -->
+  <EntityCards />
+  <KnowledgeHub />
+
+  <!-- 6. 第六屏：机场风险监控雷达与实时状态仪表盘 -->
+  <RiskDashboard />
+
+  <!-- 7. 第七屏：最新情报中心与 2026 深度实测报告流 -->
+  <IntelligenceFeed />
+
+  <!-- 8. 第八屏：全球网络生态行动号召 -->
+  <CTASection />
+</BaseLayout>

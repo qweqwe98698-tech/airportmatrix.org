@@ -1,0 +1,109 @@
+---
+import { siteConfig } from '@/data/site.config';
+
+interface Props {
+  type?: 'WebSite' | 'Article' | 'FAQPage' | 'Product' | 'BreadcrumbList';
+  articleData?: {
+    title: string;
+    description: string;
+    publishedTime: string;
+    modifiedTime: string;
+    author: string;
+    url: string;
+  };
+  faqData?: Array<{
+    question: string;
+    answer: string;
+  }>;
+  breadcrumbs?: Array<{
+    name: string;
+    url: string;
+  }>;
+}
+
+const { type = 'WebSite', articleData, faqData, breadcrumbs } = Astro.props;
+
+const schemas: any[] = [];
+
+// Base Organization Schema
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: siteConfig.name,
+  alternateName: siteConfig.brandName,
+  url: siteConfig.url,
+  logo: `${siteConfig.url}/logo.png`,
+  description: siteConfig.description,
+};
+schemas.push(organizationSchema);
+
+// WebSite Schema
+if (type === 'WebSite') {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: siteConfig.name,
+    url: siteConfig.url,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${siteConfig.url}/search?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
+  });
+}
+
+// Article Schema
+if (type === 'Article' && articleData) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: articleData.title,
+    description: articleData.description,
+    author: {
+      '@type': 'Organization',
+      name: articleData.author || siteConfig.author,
+    },
+    publisher: organizationSchema,
+    datePublished: articleData.publishedTime,
+    dateModified: articleData.modifiedTime,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': articleData.url,
+    },
+  });
+}
+
+// FAQ Schema
+if (faqData && faqData.length > 0) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqData.map((item) => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer,
+      },
+    })),
+  });
+}
+
+// Breadcrumbs Schema
+if (breadcrumbs && breadcrumbs.length > 0) {
+  schemas.push({
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: breadcrumbs.map((crumb, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: crumb.name,
+      item: crumb.url.startsWith('http') ? crumb.url : `${siteConfig.url}${crumb.url}`,
+    })),
+  });
+}
+---
+
+{schemas.map((schema) => (
+  <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+))}

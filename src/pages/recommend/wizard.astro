@@ -1,0 +1,50 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import RecommendationWizard from '@/components/home/RecommendationWizard.astro';
+import NextBestPage from '@/components/article/NextBestPage.astro';
+
+const breadcrumbs = [
+  { name: '智能推荐中心', url: '/recommend' },
+  { name: '智能选型向导', url: '/recommend/wizard' },
+];
+
+const nextPages = [
+  {
+    title: '16 大机场综合矩阵参数库',
+    href: '/providers',
+    desc: '在矩阵库中按线路、协议、价格与流媒体能力自由筛选。',
+    type: '综合矩阵',
+  },
+  {
+    title: 'Clash Verge Rev 客户端配置指南',
+    href: '/client/clash-verge',
+    desc: '选定机场后，手把手教您如何快速导入订阅并开启高速分流。',
+    type: '客户端教程',
+  },
+];
+---
+
+<BaseLayout
+  title="智能代理选型向导 · 30秒匹配您的专属专线方案 - AirportMatrix"
+  description="拒绝盲目跟风与劣质小机场。基于真实网络监测数据与用户反馈画像，30 秒为您生成量身定制的最佳方案。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="mb-8 text-center max-w-2xl mx-auto">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold mb-3">
+      <span>AI 驱动 · 智能需求匹配</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">智能代理选型向导</h1>
+    <p class="text-xs sm:text-sm text-slate-400 mt-2">
+      选择您的真实使用场景与核心偏好，算法将实时为您匹配最优专线与高可用服务商。
+    </p>
+  </div>
+
+  <div class="mb-12">
+    <RecommendationWizard />
+  </div>
+
+  <NextBestPage nextPages={nextPages} />
+</BaseLayout>

@@ -1,0 +1,47 @@
+[
+  {
+    "id": "route_iepl",
+    "entity_type": "route",
+    "name": "IEPL 国际专线",
+    "category": "network_route",
+    "features": {
+      "stability": 5,
+      "speed": 5,
+      "latency": 5,
+      "cost": 5
+    },
+    "advantages": [
+      "物理二层专线跨境，不过 GFW 审查",
+      "全天候 0 丢包与超低抖动",
+      "支持任意轻量化加密协议"
+    ],
+    "limitations": [
+      "线路成本高昂，套餐价格相对普通中转较高"
+    ],
+    "suitable_for": ["AI", "Streaming", "Business", "Gaming"],
+    "related_providers": ["provider_guangsucloud"],
+    "related_articles": ["article_routes_comparison"]
+  },
+  {
+    "id": "route_iplc",
+    "entity_type": "route",
+    "name": "IPLC 专线",
+    "category": "network_route",
+    "features": {
+      "stability": 5,
+      "speed": 4.8,
+      "latency": 5,
+      "cost": 5
+    },
+    "advantages": [
+      "物理点对点租用光纤，端到端超低延迟",
+      "不受公网国际出口拥堵影响"
+    ],
+    "limitations": [
+      "海缆故障时需服务商具备多路由冗余能力"
+    ],
+    "suitable_for": ["Gaming", "Business", "Development"],
+    "related_providers": ["provider_guangsucloud"],
+    "related_articles": ["article_routes_comparison"]
+  }
+]

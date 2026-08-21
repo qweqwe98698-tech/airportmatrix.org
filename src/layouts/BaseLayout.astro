@@ -1,0 +1,79 @@
+---
+import SEOHead from '@/components/common/SEOHead.astro';
+import GeoSchema from '@/components/seo/GeoSchema.astro';
+import Header from '@/components/common/Header.astro';
+import Footer from '@/components/common/Footer.astro';
+import GlobalCROWidgets from '@/components/common/GlobalCROWidgets.astro';
+import '@/styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonicalUrl?: string;
+  ogImage?: string;
+  schemaType?: 'WebSite' | 'Article' | 'FAQPage' | 'Product' | 'SoftwareApplication' | 'HowTo';
+  articleData?: any;
+  faqData?: any;
+  breadcrumbs?: any;
+  softwareData?: any;
+  productData?: any;
+  howToSteps?: any;
+  noindex?: boolean;
+}
+
+const {
+  title,
+  description,
+  canonicalUrl,
+  ogImage,
+  schemaType = 'WebSite',
+  articleData,
+  faqData,
+  breadcrumbs,
+  softwareData,
+  productData,
+  howToSteps,
+  noindex = false,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN" class="dark">
+  <head>
+    <SEOHead
+      title={title}
+      description={description}
+      canonicalUrl={canonicalUrl}
+      ogImage={ogImage}
+      articleType={schemaType === 'Article' ? 'article' : 'website'}
+      publishedTime={articleData?.publishedTime}
+      modifiedTime={articleData?.modifiedTime}
+      noindex={noindex}
+    />
+    <!-- GEO & Search Engine JSON-LD Structured Data -->
+    <GeoSchema
+      type={schemaType}
+      title={title || ''}
+      description={description || ''}
+      url={canonicalUrl}
+      publishedTime={articleData?.publishedTime}
+      modifiedTime={articleData?.modifiedTime}
+      author={articleData?.author}
+      faqs={faqData}
+      softwareData={softwareData}
+      productData={productData}
+      howToSteps={howToSteps}
+      breadcrumbs={breadcrumbs}
+    />
+  </head>
+  <body class="bg-background text-slate-300 antialiased selection:bg-tech-emerald/20 selection:text-tech-emerald min-h-screen flex flex-col justify-between">
+    <div>
+      <Header />
+      <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <slot />
+      </main>
+    </div>
+    <Footer />
+    <GlobalCROWidgets />
+  </body>
+</html>

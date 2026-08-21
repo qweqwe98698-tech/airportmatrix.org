@@ -1,0 +1,126 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import QuickAnswer from '@/components/article/QuickAnswer.astro';
+import FaqSection from '@/components/article/FaqSection.astro';
+import NextBestPage from '@/components/article/NextBestPage.astro';
+import Icon from '@/components/common/Icon.astro';
+import EntityRelationBadges from '@/components/common/EntityRelationBadges.astro';
+import { articlesData } from '@/data/articles.data';
+
+export function getStaticPaths() {
+  return articlesData.map((article) => ({
+    params: { slug: article.slug },
+    props: { article },
+  }));
+}
+
+const { article } = Astro.props;
+
+const breadcrumbs = [
+  { name: '知识库', url: '/articles' },
+  { name: article.title, url: `/articles/${article.slug}` },
+];
+
+const nextPages = [
+  {
+    title: '精选 IEPL 专线机场排行榜',
+    href: '/providers',
+    desc: '获取具备低延迟、原生 IP 与高稳定性的专线节点订阅。',
+    type: '专线推荐',
+  },
+  {
+    title: '30秒智能代理选型向导',
+    href: '/recommend',
+    desc: '根据具体用途与预算快速匹配最适用的服务商。',
+    type: '智能选型',
+  },
+];
+---
+
+<BaseLayout
+  title={article.title}
+  description={article.description}
+  schemaType="Article"
+  articleData={{
+    title: article.title,
+    description: article.description,
+    publishedTime: article.publishDate,
+    modifiedTime: article.updatedDate,
+    author: article.author,
+    url: Astro.url.href,
+  }}
+  faqData={article.faqList}
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- Article Header -->
+  <header class="mb-8 max-w-4xl">
+    <div class="flex items-center gap-2 mb-3 flex-wrap">
+      <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-tech-emerald/10 text-tech-emerald border border-tech-emerald/30">
+        {article.depthLevel} 深度指南
+      </span>
+      <span class="text-xs text-slate-400 font-mono">
+        字数: {article.wordCount}+ · 预计阅读: {article.readingTime}
+      </span>
+      <span class="text-xs text-slate-400 font-mono">· 更新于 {article.updatedDate}</span>
+    </div>
+
+    <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight sm:leading-snug mb-3">
+      {article.title}
+    </h1>
+    <p class="text-base sm:text-lg text-slate-300 font-medium leading-relaxed">
+      {article.subtitle}
+    </p>
+
+    <div class="flex items-center gap-2 mt-4 pt-4 border-t border-slate-800/80 text-xs text-slate-400">
+      <span>作者: <strong class="text-slate-200">{article.author}</strong></span>
+      <span>·</span>
+      <span>主要意图: <span class="text-tech-cyan">{article.primaryIntent}</span></span>
+    </div>
+  </header>
+
+  <!-- Quick Answer Callout (D1~D6 Quality Gate) -->
+  <div class="max-w-4xl">
+    <QuickAnswer answer={article.quickAnswer} />
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 my-8">
+    <!-- Table of Contents Sidebar (Sticky) -->
+    <aside class="lg:col-span-1 order-2 lg:order-1">
+      <div class="sticky top-24 p-5 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-3 backdrop-blur-md">
+        <div class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5 pb-2 border-b border-slate-800">
+          <Icon name="layers" class="w-4 h-4 text-tech-emerald" />
+          <span>文章目录导航</span>
+        </div>
+        <nav class="space-y-1.5 text-xs">
+          {article.tableOfContents.map((item) => (
+            <a
+              href={`#${item.id}`}
+              class="block py-1 text-slate-400 hover:text-tech-cyan transition-colors line-clamp-1"
+            >
+              {item.title}
+            </a>
+          ))}
+        </nav>
+      </div>
+    </aside>
+
+    <!-- Main Markdown/HTML Article Body -->
+    <article class="lg:col-span-3 order-1 lg:order-2 max-w-none">
+      <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed text-sm sm:text-base" set:html={article.contentHtml} />
+
+      <!-- FAQ Section Component with FAQPage Schema -->
+      {article.faqList && article.faqList.length > 0 && (
+        <>
+          <FaqSection faqs={article.faqList} />
+          <EntityRelationBadges entityId={article.relatedEntities?.[0] || 'guangsucloud'} />
+        </>
+      )}
+
+      <!-- Topic Bridge to Next Page -->
+      <NextBestPage nextPages={nextPages} />
+    </article>
+  </div>
+</BaseLayout>

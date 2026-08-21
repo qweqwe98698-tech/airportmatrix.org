@@ -1,0 +1,41 @@
+---
+import Icon from '../common/Icon.astro';
+---
+
+<section class="py-16">
+  <div class="relative rounded-3xl p-8 sm:p-12 bg-gradient-to-r from-emerald-950/40 via-slate-900 to-cyan-950/40 border border-emerald-500/30 overflow-hidden text-center shadow-2xl">
+    <!-- Background Grid -->
+    <div class="absolute inset-0 bg-[linear-gradient(to_right,#10b9810a_1px,transparent_1px),linear-gradient(to_bottom,#10b9810a_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none"></div>
+
+    <div class="relative z-10 max-w-2xl mx-auto space-y-5">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+        <Icon name="zap" class="w-3.5 h-3.5" />
+        <span>准备好开启极速纯净出海体验？</span>
+      </div>
+
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+        立即找到最适合您的跨境专线方案
+      </h2>
+
+      <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+        无论是 AI 代码补全、4K 影音秒开还是低成本日常翻墙，AirportMatrix 为您提供可信的参数对比与智能向导。
+      </p>
+
+      <div class="pt-2 flex flex-wrap items-center justify-center gap-4">
+        <a
+          href="/recommend"
+          class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-extrabold text-xs sm:text-sm transition-all shadow-glow hover:shadow-glow-cyan flex items-center gap-2"
+        >
+          <Icon name="sparkles" class="w-4 h-4" />
+          <span>开始智能推荐</span>
+        </a>
+        <a
+          href="/providers"
+          class="px-6 py-3.5 rounded-xl bg-slate-900 border border-slate-700 hover:border-slate-600 text-slate-200 font-semibold text-xs sm:text-sm transition-all"
+        >
+          查看全部机场矩阵
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

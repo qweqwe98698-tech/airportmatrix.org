@@ -1,0 +1,44 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import SmartRecommender from '@/components/matrix/SmartRecommender.astro';
+import NextBestPage from '@/components/article/NextBestPage.astro';
+
+const breadcrumbs = [{ name: '智能选型向导', url: '/recommend' }];
+
+const nextPages = [
+  {
+    title: '查看所有机场多维参数对比',
+    href: '/providers',
+    desc: '在矩阵库中按线路、协议、价格与流媒体能力自由筛选。',
+    type: '综合矩阵',
+  },
+  {
+    title: 'Clash Verge Rev 客户端新手指南',
+    href: '/client/clash-verge',
+    desc: '选定机场后，手把手教您如何快速导入订阅并开启高速分流。',
+    type: '客户端教程',
+  },
+];
+---
+
+<BaseLayout
+  title="30秒智能选型向导 · 机场代理智能推荐算法 (2026)"
+  description="根据您的主要用途（AI办公、4K追剧、外服游戏、学术科研）与月度预算，智能算法为您实时匹配延迟最低、稳定性最高的优质机场。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="mb-8 text-center max-w-2xl mx-auto">
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">智能代理选型向导</h1>
+    <p class="text-xs sm:text-sm text-slate-400 mt-2">
+      拒绝盲目跟风与劣质小机场。基于真实网络监测数据与用户反馈画像，30 秒为您生成量身定制的最佳方案。
+    </p>
+  </div>
+
+  <div class="mb-12">
+    <SmartRecommender />
+  </div>
+
+  <NextBestPage nextPages={nextPages} />
+</BaseLayout>

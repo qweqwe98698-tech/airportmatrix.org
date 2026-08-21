@@ -1,0 +1,38 @@
+[
+  {
+    "id": "client_clash_verge",
+    "entity_type": "client",
+    "name": "Clash Verge Rev",
+    "slug": "clash-verge-rev",
+    "platforms": ["Windows", "macOS", "Linux"],
+    "category": "proxy_client",
+    "download": {
+      "official_url": "https://github.com/clash-verge-rev/clash-verge-rev",
+      "github_url": "https://github.com/clash-verge-rev/clash-verge-rev/releases",
+      "versions": [
+        { "version": "v1.7.7", "date": "2026-08", "url": "https://github.com/clash-verge-rev/clash-verge-rev/releases" }
+      ]
+    },
+    "features": ["subscription", "rule_mode", "system_proxy", "tun_mode", "script_support", "clash_meta_core"],
+    "protocol_support": ["VLESS", "Trojan", "Shadowsocks", "Hysteria2", "TUIC", "WireGuard"],
+    "tutorials": {
+      "install": ["clash-verge-windows-install", "clash-verge-macos-arm-install"],
+      "config": ["clash-verge-rule-mode-setup", "clash-verge-fake-ip-dns"],
+      "subscribe": ["clash-verge-import-subscription"],
+      "error_fix": ["clash-verge-service-mode-fail", "clash-verge-timeout-fix"]
+    },
+    "common_errors": [
+      {
+        "problem": "提示 Service Mode 无法安装或启动失败",
+        "solution": "右键使用管理员身份运行 Verge，并在设置中重新点击安装服务模式驱动。"
+      },
+      {
+        "problem": "开启系统代理后浏览器无法上网但 Telegram 正常",
+        "solution": "检查浏览器是否安装了冲突的代理插件，或直接开启 TUN 模式从底层虚拟网卡接管全机流量。"
+      }
+    ],
+    "recommended_providers": ["provider_guangsucloud"],
+    "related_articles": ["article_clash_verge_rev_complete_tutorial"],
+    "updated_at": "2026-08-21T08:00:00Z"
+  }
+]

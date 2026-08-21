@@ -1,0 +1,21 @@
+[
+  {
+    "id": "risk_event_scam_2026",
+    "entity_type": "risk",
+    "provider": "某不知名超低价机场",
+    "event": {
+      "type": "exit_scam",
+      "date": "2026-08-18",
+      "description": "以 29.9 元买三年 2000GB/月为噱头在各大群聊刷屏营销，吸引大批贪便宜用户上车后立即关闭官网跑路。"
+    },
+    "level": "critical",
+    "status": "confirmed_dead",
+    "history": [
+      {
+        "date": "2026-08-18",
+        "status": "confirmed_dead",
+        "note": "官网域名无法解析，节点全红失联。"
+      }
+    ]
+  }
+]

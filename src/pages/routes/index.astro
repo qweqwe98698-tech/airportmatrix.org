@@ -1,0 +1,112 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+import NextBestPage from '@/components/article/NextBestPage.astro';
+import { routesData } from '@/data/routes.data';
+
+const breadcrumbs = [{ name: '线路技术解析', url: '/routes' }];
+
+const nextPages = [
+  {
+    title: '全专线机场综合排行榜',
+    href: '/providers',
+    desc: '筛选搭载纯 IEPL / IPLC 内网专线的旗舰级服务商。',
+    type: '专线选型',
+  },
+  {
+    title: '协议百科 (VLESS / Hysteria 2)',
+    href: '/protocols',
+    desc: '了解不同协议与专线链路搭配的最佳实践。',
+    type: '协议指南',
+  },
+];
+---
+
+<BaseLayout
+  title="IEPL / IPLC 专线与 BGP 中转网络技术深度对比 (2026 权威解析)"
+  description="深度解析跨境代理线路物理层差异：IEPL 国际以太网专线、IPLC 物理专线、BGP 动态多线与普通公网中转的延迟、丢包率与抗干扰能力对比。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="mb-8">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-cyan/10 border border-tech-cyan/30 text-tech-cyan text-xs font-semibold mb-3">
+      <Icon name="server" class="w-3.5 h-3.5" />
+      <span>物理链路与骨干网架构</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">跨境代理线路深度解析</h1>
+    <p class="text-sm text-slate-400 mt-2 max-w-3xl">
+      为什么专线机场在晚高峰依然能跑满千兆且 0 丢包？本文为您彻底厘清 IEPL、IPLC、BGP 与普通公网中转的底层原理。
+    </p>
+  </div>
+
+  <div class="space-y-6 mb-12">
+    {routesData.map((route) => (
+      <div class="glass-card-hover rounded-2xl p-6 sm:p-8 border border-slate-800/80 space-y-4">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div>
+            <div class="flex items-center gap-2.5 flex-wrap">
+              <h2 class="text-xl sm:text-2xl font-bold text-white">{route.name}</h2>
+              {route.bypassGfw ? (
+                <span class="px-2 py-0.5 rounded text-xs font-semibold bg-emerald-950/80 text-emerald-400 border border-emerald-500/30">
+                  物理绕过 GFW (不过墙)
+                </span>
+              ) : (
+                <span class="px-2 py-0.5 rounded text-xs font-semibold bg-slate-800 text-slate-400 border border-slate-700">
+                  公网加密隧道
+                </span>
+              )}
+            </div>
+            <div class="text-xs text-slate-500 font-mono mt-1">{route.fullName}</div>
+          </div>
+
+          <div class="flex items-center gap-4 text-xs font-mono">
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800 text-center">
+              <div class="text-slate-500 text-[10px]">稳定性</div>
+              <div class="text-emerald-400 font-bold">{route.stability}</div>
+            </div>
+            <div class="p-2 rounded-lg bg-slate-950 border border-slate-800 text-center">
+              <div class="text-slate-500 text-[10px]">成本级别</div>
+              <div class="text-amber-400 font-bold">{route.costLevel}</div>
+            </div>
+          </div>
+        </div>
+
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">{route.description}</p>
+
+        <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-900 text-xs">
+          <span class="font-bold text-tech-cyan">底层通信原理：</span>
+          <span class="text-slate-300">{route.mechanism}</span>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-xs">
+          <div class="p-3 rounded-lg bg-emerald-950/10 border border-emerald-500/10">
+            <div class="font-bold text-emerald-400 mb-1.5">核心优势 (Pros)</div>
+            <ul class="space-y-1 text-slate-400">
+              {route.pros.map((p) => (
+                <li class="flex items-start gap-1.5">
+                  <span class="text-emerald-400">✓</span>
+                  <span>{p}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="p-3 rounded-lg bg-rose-950/10 border border-rose-500/10">
+            <div class="font-bold text-rose-400 mb-1.5">技术局限 (Cons)</div>
+            <ul class="space-y-1 text-slate-400">
+              {route.cons.map((c) => (
+                <li class="flex items-start gap-1.5">
+                  <span class="text-rose-400">!</span>
+                  <span>{c}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <NextBestPage nextPages={nextPages} />
+</BaseLayout>

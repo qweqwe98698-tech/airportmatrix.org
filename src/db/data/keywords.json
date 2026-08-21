@@ -1,0 +1,62 @@
+[
+  {
+    "id": "kw_001",
+    "keyword": "ChatGPT 1020 报错怎么解决",
+    "searchIntent": "troubleshooting",
+    "searchVolumeGrowth": 160,
+    "commercialValueScore": 9.5,
+    "difficultyScore": 3.2,
+    "opportunityScore": 94,
+    "suggestedTemplate": "faq",
+    "targetEntities": [
+      { "id": "chatgpt_1020", "type": "issue" },
+      { "id": "guangsucloud", "type": "provider" }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "kw_002",
+    "keyword": "Clash Verge Rev TUN 模式怎么开",
+    "searchIntent": "tutorial",
+    "searchVolumeGrowth": 210,
+    "commercialValueScore": 8.8,
+    "difficultyScore": 2.8,
+    "opportunityScore": 96,
+    "suggestedTemplate": "tutorial",
+    "targetEntities": [
+      { "id": "clash-verge", "type": "client" },
+      { "id": "vless", "type": "protocol" }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "kw_003",
+    "keyword": "2026 最稳定不过墙 IEPL 专线机场推荐",
+    "searchIntent": "recommendation",
+    "searchVolumeGrowth": 145,
+    "commercialValueScore": 9.9,
+    "difficultyScore": 4.0,
+    "opportunityScore": 92,
+    "suggestedTemplate": "entity",
+    "targetEntities": [
+      { "id": "guangsucloud", "type": "provider" },
+      { "id": "iepl", "type": "route" }
+    ],
+    "status": "published"
+  },
+  {
+    "id": "kw_004",
+    "keyword": "光速云与星岛梦哪个好对比评测",
+    "searchIntent": "comparison",
+    "searchVolumeGrowth": 95,
+    "commercialValueScore": 9.2,
+    "difficultyScore": 2.1,
+    "opportunityScore": 89,
+    "suggestedTemplate": "compare",
+    "targetEntities": [
+      { "id": "guangsucloud", "type": "provider" },
+      { "id": "xingdaomeng", "type": "provider" }
+    ],
+    "status": "published"
+  }
+]

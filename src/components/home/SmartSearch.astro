@@ -1,0 +1,58 @@
+---
+import Icon from '../common/Icon.astro';
+---
+
+<div class="w-full max-w-4xl mx-auto">
+  <!-- Main Glowing Search Box (72px height, glass effect) -->
+  <form action="/search" method="get" class="relative group">
+    <div class="absolute -inset-1 rounded-2xl bg-gradient-to-r from-tech-emerald/30 via-tech-cyan/30 to-tech-violet/30 opacity-75 blur-lg group-hover:opacity-100 transition duration-500 group-hover:duration-200"></div>
+    
+    <div class="relative flex items-center h-[68px] sm:h-[76px] rounded-2xl bg-slate-950/90 border border-slate-700/80 shadow-2xl backdrop-blur-2xl px-4 sm:px-6 transition-all focus-within:border-tech-cyan focus-within:ring-2 focus-within:ring-tech-cyan/20">
+      <div class="text-slate-400 mr-3.5 flex-shrink-0">
+        <Icon name="search" class="w-5 h-5 sm:w-6 sm:h-6 text-slate-400 group-focus-within:text-tech-cyan transition-colors" />
+      </div>
+
+      <input
+        type="text"
+        name="q"
+        placeholder="搜索问题、机场品牌、客户端教程（如：ChatGPT 1020报错、Clash Verge TUN模式、光速云）..."
+        class="w-full h-full bg-transparent text-slate-100 placeholder-slate-500 text-xs sm:text-base outline-none font-medium pr-20"
+        autocomplete="off"
+      />
+
+      <div class="flex items-center gap-2 flex-shrink-0">
+        <kbd class="hidden sm:inline-flex items-center px-2 py-1 text-[11px] font-mono bg-slate-900 text-slate-400 rounded-lg border border-slate-700">⌘K</kbd>
+        <button
+          type="submit"
+          class="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs transition-all shadow-glow flex items-center gap-1"
+        >
+          <span>智能搜索</span>
+          <Icon name="arrow-right" class="w-3.5 h-3.5" />
+        </button>
+      </div>
+    </div>
+  </form>
+
+  <!-- Hot Search Trend Pills -->
+  <div class="flex items-center justify-center gap-2 sm:gap-2.5 mt-4 flex-wrap text-xs text-slate-400">
+    <span class="inline-flex items-center gap-1 text-slate-300 font-semibold text-[11px] uppercase tracking-wider">
+      <span class="text-amber-400">🔥</span>
+      <span>实时热门：</span>
+    </span>
+    <a href="/search?q=光速云" class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-tech-emerald hover:border-tech-emerald/40 transition-colors text-[11px]">
+      光速云 9Gbps实测
+    </a>
+    <a href="/search?q=Clash+Verge" class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-tech-cyan hover:border-tech-cyan/40 transition-colors text-[11px]">
+      Clash Verge Rev
+    </a>
+    <a href="/search?q=ChatGPT" class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-tech-emerald hover:border-tech-emerald/40 transition-colors text-[11px]">
+      ChatGPT 1020 报错
+    </a>
+    <a href="/search?q=Shadowrocket" class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-tech-cyan hover:border-tech-cyan/40 transition-colors text-[11px]">
+      小火箭订阅
+    </a>
+    <a href="/search?q=IEPL" class="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-800 text-slate-300 hover:text-tech-violet hover:border-tech-violet/40 transition-colors text-[11px]">
+      IEPL 专线
+    </a>
+  </div>
+</div>

@@ -1,0 +1,148 @@
+[
+  {
+    "id": "vless",
+    "slug": "vless",
+    "name": "VLESS + Reality",
+    "tagline": "新一代无损轻量协议 · TLS证书偷渡抗封锁标杆",
+    "author": "Xray-core Project",
+    "year": 2023,
+    "transport": "TCP / TLS 1.3 / Vision Flow",
+    "encryption": "XTLS-Reality 借用知名网站真实证书",
+    "scores": {
+      "speed": 9.8,
+      "security": 9.9,
+      "antiBlocking": 9.9,
+      "configurationDifficulty": 3
+    },
+    "pros": [
+      "借用苹果、微软等全球合规大站真实证书，无自建伪装站被识破风险",
+      "XTLS Vision 消除双重加密性能损耗，吞吐量提升 30%+",
+      "握手特征与真实 HTTPS 流量高度一致"
+    ],
+    "cons": [
+      "UDP 转发性能在丢包环境下逊于专门的 QUIC 协议"
+    ],
+    "bestUseCases": ["敏感时期抗干扰", "大带宽 4K 追剧", "办公主力网络"],
+    "supportedClients": ["clash-verge", "shadowrocket", "sing-box", "v2rayn"],
+    "relations": [
+      { "targetId": "clash-verge", "targetType": "client", "relationType": "supports" },
+      { "targetId": "guangsucloud", "targetType": "provider", "relationType": "supports" }
+    ]
+  },
+  {
+    "id": "hysteria2",
+    "slug": "hysteria2",
+    "name": "Hysteria 2",
+    "tagline": "基于定制 QUIC/UDP 的恶劣网络暴力加速协议",
+    "author": "Tobyxdd & Hysteria Team",
+    "year": 2023,
+    "transport": "UDP / Custom QUIC",
+    "encryption": "TLS 1.3 + 自研端口跳跃",
+    "scores": {
+      "speed": 10.0,
+      "security": 9.2,
+      "antiBlocking": 9.4,
+      "configurationDifficulty": 3
+    },
+    "pros": [
+      "恶劣高丢包网络（如跨洋晚高峰）下依然能跑满带宽",
+      "自研拥塞控制算法，抗丢包能力超越 BBR",
+      "支持端口跳跃 (Port Hopping) 规避运营商 UDP 限速"
+    ],
+    "cons": [
+      "部分地区省份运营商对 UDP 流量有 QoS 丢包限制"
+    ],
+    "bestUseCases": ["晚高峰跨洋看视频", "高丢包移动蜂窝网络", "海外大文件传输"],
+    "supportedClients": ["clash-verge", "shadowrocket", "sing-box", "v2rayn", "surge"],
+    "relations": [
+      { "targetId": "sing-box", "targetType": "client", "relationType": "supports" },
+      { "targetId": "guangsucloud", "targetType": "provider", "relationType": "supports" }
+    ]
+  },
+  {
+    "id": "trojan",
+    "slug": "trojan",
+    "name": "Trojan-GFW",
+    "tagline": "经典标准 HTTPS 流量仿冒协议 · 稳固可靠",
+    "author": "GreaterFire",
+    "year": 2019,
+    "transport": "TCP / TLS 1.3",
+    "encryption": "标准 TLS 密码套件",
+    "scores": {
+      "speed": 9.2,
+      "security": 9.5,
+      "antiBlocking": 9.0,
+      "configurationDifficulty": 2
+    },
+    "pros": [
+      "几乎所有客户端与路由器固件 100% 原生支持",
+      "行为与常规 HTTPS 网站完全一致，误判率极低",
+      "协议开销小，CPU 占用极低"
+    ],
+    "cons": [
+      "依赖自建域名与合法证书，需要定期维护"
+    ],
+    "bestUseCases": ["跨平台通用备用", "老旧软路由设备", "企业常规出海"],
+    "supportedClients": ["clash-verge", "shadowrocket", "sing-box", "v2rayn", "surge"],
+    "relations": [
+      { "targetId": "clash-verge", "targetType": "client", "relationType": "supports" }
+    ]
+  },
+  {
+    "id": "shadowsocks",
+    "slug": "shadowsocks",
+    "name": "Shadowsocks 2022",
+    "tagline": "现代对称密码学重构的高性能轻量流代理",
+    "author": "Shadowsocks-Rust Team",
+    "year": 2022,
+    "transport": "TCP / UDP",
+    "encryption": "AEAD 2022 (Blake3-AES-256-GCM)",
+    "scores": {
+      "speed": 9.6,
+      "security": 9.4,
+      "antiBlocking": 8.5,
+      "configurationDifficulty": 1
+    },
+    "pros": [
+      "纯对称密码学处理，内存与 CPU 开销全行业最低",
+      "配合 IEPL/IPLC 内网物理专线是天作之合",
+      "全平台客户端生态支持最完善"
+    ],
+    "cons": [
+      "若走公网直连容易被主动探测特征识别，必须配合专线使用"
+    ],
+    "bestUseCases": ["IEPL 专线传输", "极速低延迟联机游戏", "高并发长连接"],
+    "supportedClients": ["clash-verge", "shadowrocket", "sing-box", "v2rayn", "surge"],
+    "relations": [
+      { "targetId": "iepl", "targetType": "route", "relationType": "runs_on" }
+    ]
+  },
+  {
+    "id": "tuic",
+    "slug": "tuic",
+    "name": "TUIC v5",
+    "tagline": "极客自研基于 QUIC 协议的高并发多路复用网络栈",
+    "author": "EAimTY",
+    "year": 2023,
+    "transport": "UDP / QUIC",
+    "encryption": "TLS 1.3 / BBR-like",
+    "scores": {
+      "speed": 9.7,
+      "security": 9.4,
+      "antiBlocking": 9.2,
+      "configurationDifficulty": 4
+    },
+    "pros": [
+      "单连接多路复用彻底消除队头阻塞 (Head-of-Line Blocking)",
+      "0-RTT 极速连接重连，切换 Wi-Fi/5G 零感知"
+    ],
+    "cons": [
+      "仅在 sing-box 与 Surge 等现代客户端中得到较好支持"
+    ],
+    "bestUseCases": ["频繁移动切换网络", "高频短连接 API 访问", "多设备并发"],
+    "supportedClients": ["sing-box", "clash-verge", "surge"],
+    "relations": [
+      { "targetId": "sing-box", "targetType": "client", "relationType": "supports" }
+    ]
+  }
+]

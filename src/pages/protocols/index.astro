@@ -1,0 +1,75 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+import { protocolsData } from '@/data/protocols.data';
+
+const breadcrumbs = [{ name: '协议百科', url: '/protocols' }];
+---
+
+<BaseLayout
+  title="前沿代理协议百科与抗封锁对比 (VLESS Reality / Hysteria 2 / Trojan / Shadowsocks)"
+  description="系统性解析现代网络代理传输协议：TLS 证书伪装、QUIC/UDP 暴力抗拥塞、AEAD 加密与适用网络环境全景对比指南。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="mb-8">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-violet/10 border border-tech-violet/30 text-violet-400 text-xs font-semibold mb-3">
+      <Icon name="cpu" class="w-3.5 h-3.5" />
+      <span>前沿密码学与传输层技术</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">代理协议知识库与选型指南</h1>
+    <p class="text-sm text-slate-400 mt-2 max-w-3xl">
+      从协议底层解析抗封锁与低延迟的核心机制，助您根据自身网络运营商（电信/联通/移动/校园网）挑选最高效的节点协议。
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+    {protocolsData.map((proto) => (
+      <div class="glass-card-hover rounded-xl p-6 border border-slate-800/80 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <h2 class="text-xl font-bold text-white font-mono">{proto.name}</h2>
+            <span class="text-xs font-mono text-tech-emerald font-bold">抗封锁 {proto.antiBlockingScore}/10</span>
+          </div>
+          <div class="text-xs text-slate-400 font-mono mb-3">{proto.fullName}</div>
+          <p class="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4">{proto.summary}</p>
+
+          <div class="p-3 rounded-lg bg-slate-950/80 border border-slate-900 mb-4 text-xs space-y-1.5">
+            <div class="flex justify-between">
+              <span class="text-slate-500">传输层:</span>
+              <span class="text-slate-300 font-mono">{proto.transport}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-slate-500">加密机制:</span>
+              <span class="text-slate-300 font-mono text-[11px] truncate max-w-[200px]">{proto.encryption}</span>
+            </div>
+          </div>
+
+          <div class="text-xs text-slate-400 mb-2 font-medium">最佳使用场景：</div>
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            {proto.bestUseCases.map((useCase) => (
+              <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                {useCase}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between">
+          <div class="text-xs text-slate-500">
+            支持: <span class="text-slate-300">{proto.supportedClients.join(', ')}</span>
+          </div>
+          <a
+            href={`/protocol/${proto.slug}`}
+            class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors flex items-center gap-1"
+          >
+            <span>深度原理</span>
+            <Icon name="arrow-right" class="w-3 h-3" />
+          </a>
+        </div>
+      </div>
+    ))}
+  </div>
+</BaseLayout>

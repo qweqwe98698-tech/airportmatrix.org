@@ -1,0 +1,41 @@
+[
+  {
+    "id": "chatgpt_1020",
+    "slug": "chatgpt-access-blocked-solution",
+    "title": "ChatGPT 1020 / Access Denied 报错与防风控解决方案",
+    "category": "ai_blocked",
+    "symptom": "打开 chatgpt.com 出现 Error 1020 Access Denied 或无法输入提示词提示 Unsupported Country。",
+    "rootCause": "当前出口节点 IP 被 Cloudflare 标记为万人骑机房 IP，或客户端 WebRTC 泄露了中国大陆局域网 IP。",
+    "solutionSteps": [
+      "切换至机场专设的【AI 专线 / 住宅原生 IP】节点（如光速云 US-AI 原生专线）",
+      "在客户端（Clash Verge / Shadowrocket）中开启 Fake-IP 并关闭 WebRTC 真实 IP 广播",
+      "使用无痕浏览器或清理 chatgpt.com 的 LocalStorage 与 Cookie 缓存后重新登录"
+    ],
+    "relatedTools": ["ChatGPT", "Claude", "Cursor"],
+    "relatedClients": ["clash-verge", "shadowrocket", "sing-box"],
+    "recommendedProviders": ["guangsucloud", "u1s1", "xingdaomeng"],
+    "relations": [
+      { "targetId": "guangsucloud", "targetType": "provider", "relationType": "resolves" },
+      { "targetId": "clash-verge", "targetType": "client", "relationType": "requires" }
+    ]
+  },
+  {
+    "id": "node_timeout",
+    "slug": "node-timeout-troubleshooting-guide",
+    "title": "节点全部超时 / 测速全红 / 无法连接全流程排查指南",
+    "category": "connection",
+    "symptom": "客户端所有节点延迟显示 Timeout 或 9999ms，网页完全打不开。",
+    "rootCause": "系统本地时间偏差超过 90 秒导致 TLS 握手失败、系统代理端口被其他杀毒软件占用，或订阅链接已到期。",
+    "solutionSteps": [
+      "打开系统设置，强制同步 Windows/Mac Internet 时间（误差必须 < 30秒）",
+      "右键客户端选择【更新订阅 (Update Subscription)】，拉取最新可用节点列表",
+      "检查本地 7890 端口占用情况，重启客户端并以管理员权限开启 TUN 虚拟网卡模式"
+    ],
+    "relatedTools": ["Google", "GitHub", "YouTube"],
+    "relatedClients": ["clash-verge", "v2rayn", "shadowrocket"],
+    "recommendedProviders": ["guangsucloud", "xingdaomeng"],
+    "relations": [
+      { "targetId": "clash-verge", "targetType": "client", "relationType": "requires" }
+    ]
+  }
+]

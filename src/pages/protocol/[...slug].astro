@@ -1,0 +1,103 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+import NextBestPage from '@/components/article/NextBestPage.astro';
+import { protocolsData } from '@/data/protocols.data';
+
+export function getStaticPaths() {
+  return protocolsData.map((proto) => ({
+    params: { slug: proto.slug },
+    props: { proto },
+  }));
+}
+
+const { proto } = Astro.props;
+
+const breadcrumbs = [
+  { name: '协议百科', url: '/protocols' },
+  { name: `${proto.name} 深度原理`, url: `/protocol/${proto.slug}` },
+];
+
+const nextPages = [
+  {
+    title: '支持该协议的精选机场矩阵',
+    href: '/providers',
+    desc: `在综合矩阵库中按 ${proto.name} 协议进行筛选，获取高质量落地节点。`,
+    type: '节点推荐',
+  },
+  {
+    title: 'Clash Verge Rev 客户端配置指南',
+    href: '/client/clash-verge',
+    desc: '了解如何在客户端中正确配置该协议并启用 TUN 模式。',
+    type: '客户端实战',
+  },
+];
+---
+
+<BaseLayout
+  title={`${proto.name} (${proto.fullName}) 协议原理与抗封锁深度解析`}
+  description={`${proto.name} 深度技术解析：加密方式 ${proto.encryption}，传输层 ${proto.transport}。抗封锁评分 ${proto.antiBlockingScore}/10，吞吐评分 ${proto.throughputScore}/10。`}
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900 to-slate-950 border border-slate-800 mb-8">
+    <div class="flex items-center gap-2 mb-2">
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-white font-mono">{proto.name}</h1>
+      <span class="px-2 py-0.5 rounded text-xs font-semibold bg-tech-violet/20 text-violet-400 border border-tech-violet/30">
+        PROTOCOL
+      </span>
+    </div>
+    <div class="text-xs sm:text-sm text-slate-400 font-mono mb-4">{proto.fullName}</div>
+    <p class="text-sm sm:text-base text-slate-300 max-w-3xl leading-relaxed">{proto.summary}</p>
+  </div>
+
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+    <div class="lg:col-span-2 space-y-6">
+      <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3">
+        <h2 class="text-lg font-bold text-white">技术原理解析</h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">{proto.description}</p>
+      </div>
+
+      <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3">
+        <h2 class="text-lg font-bold text-white">适用场景与网络选型建议</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {proto.bestUseCases.map((uc) => (
+            <div class="p-3 rounded-lg bg-slate-950/80 border border-slate-900 text-xs text-slate-300 flex items-center gap-2">
+              <span class="text-tech-emerald">✓</span>
+              <span>{uc}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="space-y-6">
+      <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3">
+        <h3 class="text-sm font-bold text-white uppercase tracking-wider">性能指标</h3>
+        <dl class="divide-y divide-slate-800 text-xs">
+          <div class="py-2.5 flex justify-between">
+            <dt class="text-slate-400">抗封锁能力</dt>
+            <dd class="font-bold text-emerald-400 font-mono">{proto.antiBlockingScore} / 10</dd>
+          </div>
+          <div class="py-2.5 flex justify-between">
+            <dt class="text-slate-400">吞吐爆发力</dt>
+            <dd class="font-bold text-cyan-400 font-mono">{proto.throughputScore} / 10</dd>
+          </div>
+          <div class="py-2.5 flex justify-between">
+            <dt class="text-slate-400">传输层</dt>
+            <dd class="text-slate-200 font-mono">{proto.transport}</dd>
+          </div>
+          <div class="py-2.5 flex justify-between">
+            <dt class="text-slate-400">支持客户端</dt>
+            <dd class="text-slate-200">{proto.supportedClients.join(', ')}</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <NextBestPage nextPages={nextPages} />
+</BaseLayout>

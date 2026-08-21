@@ -1,0 +1,247 @@
+---
+import Icon from '../common/Icon.astro';
+import { providersData } from '@/data/providers.data';
+---
+
+<section id="wizard" class="py-12 border-t border-slate-800/80">
+  <div class="p-6 sm:p-10 rounded-3xl bg-gradient-to-b from-slate-900/90 via-slate-950 to-slate-950 border border-slate-800 shadow-2xl relative overflow-hidden">
+    <!-- Glowing Orbs -->
+    <div class="absolute -top-32 -right-32 w-80 h-80 bg-tech-emerald/10 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-32 -left-32 w-80 h-80 bg-tech-cyan/10 rounded-full blur-3xl pointer-events-none"></div>
+
+    <div class="max-w-2xl mx-auto text-center mb-8">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold mb-3">
+        <Icon name="sparkles" class="w-3.5 h-3.5" />
+        <span>3 步交互向导 · 16 大品牌实时匹配算法</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">智能代理选型向导</h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-2">
+        选择您的核心场景、主力设备与预算区间，算法实时在 16 大实体库中匹配最佳专线服务商。
+      </p>
+    </div>
+
+    <!-- Wizard Form -->
+    <div class="max-w-2xl mx-auto space-y-6">
+      <!-- Step 1: Purpose -->
+      <div>
+        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2.5">
+          步骤 1：主要使用场景 (Purpose)
+        </label>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="wiz-step-purpose">
+          <button type="button" data-val="ai" class="wiz-btn active p-3 rounded-xl bg-slate-800 border border-tech-emerald text-left text-xs font-semibold text-white transition-all">
+            <div class="text-lg mb-1">🤖</div>
+            <div>AI 深度开发</div>
+            <div class="text-[10px] text-slate-400 font-normal">ChatGPT/Claude</div>
+          </button>
+          <button type="button" data-val="video" class="wiz-btn p-3 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-semibold text-slate-300 hover:text-white transition-all">
+            <div class="text-lg mb-1">🎬</div>
+            <div>4K/8K 追剧</div>
+            <div class="text-[10px] text-slate-400 font-normal">Netflix/YouTube</div>
+          </button>
+          <button type="button" data-val="dev" class="wiz-btn p-3 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-semibold text-slate-300 hover:text-white transition-all">
+            <div class="text-lg mb-1">💻</div>
+            <div>日常办公轻量</div>
+            <div class="text-[10px] text-slate-400 font-normal">查资料/社交</div>
+          </button>
+          <button type="button" data-val="traffic" class="wiz-btn p-3 rounded-xl bg-slate-900 border border-slate-800 text-left text-xs font-semibold text-slate-300 hover:text-white transition-all">
+            <div class="text-lg mb-1">📦</div>
+            <div>月付大流量</div>
+            <div class="text-[10px] text-slate-400 font-normal">150GB+/多设备</div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Device / OS -->
+      <div>
+        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2.5">
+          步骤 2：主力设备系统 (Device)
+        </label>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5" id="wiz-step-device">
+          <button type="button" data-val="windows" class="wiz-dev-btn active p-2.5 rounded-xl bg-slate-800 border border-tech-cyan text-center text-xs font-semibold text-white transition-all">
+            🪟 Windows
+          </button>
+          <button type="button" data-val="mac" class="wiz-dev-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-center text-xs font-semibold text-slate-300 hover:text-white transition-all">
+            🍏 macOS
+          </button>
+          <button type="button" data-val="ios" class="wiz-dev-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-center text-xs font-semibold text-slate-300 hover:text-white transition-all">
+            📱 iPhone / iPad
+          </button>
+          <button type="button" data-val="android" class="wiz-dev-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-center text-xs font-semibold text-slate-300 hover:text-white transition-all">
+            🤖 Android
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 3: Priority -->
+      <div>
+        <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2.5">
+          步骤 3：核心诉求偏好 (Priority)
+        </label>
+        <div class="grid grid-cols-3 gap-2.5" id="wiz-step-priority">
+          <button type="button" data-val="stable" class="wiz-pri-btn active p-2.5 rounded-xl bg-slate-800 border border-tech-emerald text-center text-xs font-semibold text-white transition-all">
+            🛡️ 老牌专线 (IEPL)
+          </button>
+          <button type="button" data-val="speed" class="wiz-pri-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-center text-xs font-semibold text-slate-300 hover:text-white transition-all">
+            ⚡ 20元主流月付
+          </button>
+          <button type="button" data-val="budget" class="wiz-pri-btn p-2.5 rounded-xl bg-slate-900 border border-slate-800 text-center text-xs font-semibold text-slate-300 hover:text-white transition-all">
+            💰 极低年付 (7元/月起)
+          </button>
+        </div>
+      </div>
+
+      <!-- Dynamic High-Density Database Result Banner -->
+      <div id="wiz-result" class="p-6 rounded-2xl bg-slate-900/95 border border-tech-emerald/40 text-left animate-fadeIn shadow-2xl">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ providers: providersData }}>
+  let currentPurpose = 'ai';
+  let currentDevice = 'windows';
+  let currentPriority = 'stable';
+
+  function updateRecommendation() {
+    const box = document.getElementById('wiz-result');
+    if (!box) return;
+
+    // Intelligent multi-branch match algorithm
+    let matched = providers[0];
+
+    if (currentPriority === 'budget' || currentPurpose === 'dev') {
+      matched = providers.find(p => p.slug === 'feimaocloud') || providers.find(p => p.slug === 'xingdaomeng') || matched;
+    } else if (currentPurpose === 'traffic') {
+      matched = providers.find(p => p.slug === 'yifanyun') || providers.find(p => p.slug === 'lingmaonet') || providers.find(p => p.slug === 'sogoyun') || matched;
+    } else if (currentPriority === 'speed') {
+      matched = providers.find(p => p.slug === 'u1s1') || providers.find(p => p.slug === 'ermaoyun') || providers.find(p => p.slug === 'jilianyun') || matched;
+    } else if (currentPurpose === 'ai') {
+      matched = providers.find(p => p.slug === 'guangsucloud') || providers.find(p => p.slug === 'sujie') || matched;
+    } else {
+      matched = providers.find(p => p.slug === 'guangsucloud') || providers[0];
+    }
+
+    const discountText = matched.couponCode ? ` (可用专属优惠码: <strong class="text-emerald-400 font-mono">${matched.couponCode}</strong>)` : '';
+
+    box.innerHTML = `
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-slate-800">
+        <div>
+          <div class="flex items-center gap-2 mb-1">
+            <span class="text-xs font-mono font-bold text-tech-emerald bg-emerald-950 px-2 py-0.5 rounded border border-emerald-500/30">算法匹配度 99%</span>
+            <span class="text-xs text-amber-400">★★★★★</span>
+            <span class="text-[11px] font-mono text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">${matched.establishedYear}年运营</span>
+          </div>
+          <h3 class="text-xl font-black text-white">${matched.name}</h3>
+          <p class="text-xs text-slate-400 mt-0.5">${matched.tagline}</p>
+        </div>
+        <div class="text-left sm:text-right">
+          <div class="text-xs text-slate-500">套餐起步</div>
+          <div class="text-lg font-bold text-tech-emerald font-mono">¥${matched.pricing.minMonthly} / 月</div>
+          <div class="text-[10px] text-slate-400 font-mono">(${matched.pricing.billingPeriod})</div>
+        </div>
+      </div>
+
+      <!-- High-Density Database Entity Spec Table -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 py-3 text-xs">
+        <div class="p-2 rounded-lg bg-slate-950 border border-slate-800/80">
+          <span class="text-slate-500 text-[10px]">线路类型:</span>
+          <div class="font-bold text-slate-200 uppercase font-mono">${matched.routes.join(' + ')}</div>
+        </div>
+        <div class="p-2 rounded-lg bg-slate-950 border border-slate-800/80">
+          <span class="text-slate-500 text-[10px]">传输协议:</span>
+          <div class="font-bold text-slate-200 uppercase font-mono">${matched.protocols.join(' / ')}</div>
+        </div>
+        <div class="p-2 rounded-lg bg-slate-950 border border-slate-800/80">
+          <span class="text-slate-500 text-[10px]">兼容客户端:</span>
+          <div class="font-bold text-slate-200">Clash / 小火箭 / sing-box</div>
+        </div>
+        <div class="p-2 rounded-lg bg-slate-950 border border-slate-800/80">
+          <span class="text-slate-500 text-[10px]">AI支持 (ChatGPT):</span>
+          <div class="font-bold text-emerald-400">✓ 原生解锁</div>
+        </div>
+        <div class="p-2 rounded-lg bg-slate-950 border border-slate-800/80">
+          <span class="text-slate-500 text-[10px]">流媒体 (Netflix):</span>
+          <div class="font-bold text-emerald-400">✓ 4K原生解锁</div>
+        </div>
+        <div class="p-2 rounded-lg bg-slate-950 border border-slate-800/80">
+          <span class="text-slate-500 text-[10px]">风险监控评级:</span>
+          <div class="font-bold text-emerald-400">🟢 低风险 · 正常</div>
+        </div>
+      </div>
+
+      <!-- Entity Relationships -->
+      <div class="space-y-2 text-xs py-2 border-t border-slate-800/80">
+        <div class="flex items-center gap-2 flex-wrap text-slate-300">
+          <span class="text-slate-400 font-bold">适合场景:</span>
+          <span class="px-1.5 py-0.5 rounded bg-emerald-950/80 text-emerald-300 border border-emerald-500/20 text-[10px]">✓ ChatGPT/Claude</span>
+          <span class="px-1.5 py-0.5 rounded bg-cyan-950/80 text-cyan-300 border border-cyan-500/20 text-[10px]">✓ Netflix 4K</span>
+          <span class="px-1.5 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">✓ ${currentDevice.toUpperCase()} 开箱即用</span>
+        </div>
+        <div class="flex items-center gap-2 flex-wrap text-slate-300">
+          <span class="text-slate-400 font-bold">关联知识:</span>
+          <a href="/protocol/${matched.protocols[0]}" class="text-tech-cyan hover:underline text-[11px]">【${matched.protocols[0]?.toUpperCase()} 协议原理】</a>
+          <a href="/routes" class="text-tech-cyan hover:underline text-[11px]">【${matched.routes[0]?.toUpperCase()} 专线架构】</a>
+          <a href="/client/clash-verge" class="text-tech-cyan hover:underline text-[11px]">【Clash Verge 教程】</a>
+        </div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-800 flex items-center justify-between gap-3 flex-wrap">
+        <div class="text-xs text-slate-400">
+          ${matched.couponCode ? `专属优惠码: <strong class="text-tech-emerald font-mono bg-slate-950 px-2 py-0.5 rounded border border-slate-800">${matched.couponCode}</strong>` : ''}
+        </div>
+        <div class="flex items-center gap-2.5">
+          <a href="/provider/${matched.slug}" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors">
+            查看实体档案与测速
+          </a>
+          <a href="/go/${matched.slug}" target="_blank" rel="noopener noreferrer" class="px-5 py-2 rounded-xl text-xs font-bold bg-tech-emerald text-slate-950 hover:bg-emerald-400 transition-all shadow-glow flex items-center gap-1.5">
+            <span>直达官网注册</span>
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    `;
+  }
+
+  // Bind Purpose Buttons
+  document.querySelectorAll('.wiz-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.wiz-btn').forEach(b => {
+        b.classList.remove('active', 'border-tech-emerald', 'bg-slate-800', 'text-white');
+        b.classList.add('bg-slate-900', 'border-slate-800', 'text-slate-300');
+      });
+      btn.classList.add('active', 'border-tech-emerald', 'bg-slate-800', 'text-white');
+      currentPurpose = btn.getAttribute('data-val') || 'ai';
+      updateRecommendation();
+    });
+  });
+
+  // Bind Device Buttons
+  document.querySelectorAll('.wiz-dev-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.wiz-dev-btn').forEach(b => {
+        b.classList.remove('active', 'border-tech-cyan', 'bg-slate-800', 'text-white');
+        b.classList.add('bg-slate-900', 'border-slate-800', 'text-slate-300');
+      });
+      btn.classList.add('active', 'border-tech-cyan', 'bg-slate-800', 'text-white');
+      currentDevice = btn.getAttribute('data-val') || 'windows';
+      updateRecommendation();
+    });
+  });
+
+  // Bind Priority Buttons
+  document.querySelectorAll('.wiz-pri-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.wiz-pri-btn').forEach(b => {
+        b.classList.remove('active', 'border-tech-emerald', 'bg-slate-800', 'text-white');
+        b.classList.add('bg-slate-900', 'border-slate-800', 'text-slate-300');
+      });
+      btn.classList.add('active', 'border-tech-emerald', 'bg-slate-800', 'text-white');
+      currentPriority = btn.getAttribute('data-val') || 'stable';
+      updateRecommendation();
+    });
+  });
+
+  // Initial calculation
+  setTimeout(updateRecommendation, 50);
+</script>

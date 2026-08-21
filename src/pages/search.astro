@@ -1,0 +1,152 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+import { providersData } from '@/data/providers.data';
+import { clientsData } from '@/data/clients.data';
+import { protocolsData } from '@/data/protocols.data';
+import { articlesData } from '@/data/articles.data';
+
+const breadcrumbs = [{ name: '全站搜索', url: '/search' }];
+
+const searchIndex = [
+  ...providersData.map((p) => ({
+    title: p.name,
+    desc: `${p.tagline} - ${p.description}`,
+    url: `/provider/${p.slug}`,
+    category: '机场服务商',
+    tags: [...p.routes, ...p.protocols, '机场', '评测', '推荐'],
+  })),
+  ...clientsData.map((c) => ({
+    title: c.name,
+    desc: `${c.tagline} - ${c.description}`,
+    url: `/client/${c.slug}`,
+    category: '客户端教程',
+    tags: [...c.platforms, ...c.protocols, '客户端', '配置', 'TUN模式'],
+  })),
+  ...protocolsData.map((pr) => ({
+    title: `${pr.name} (${pr.fullName})`,
+    desc: `${pr.summary} - ${pr.description}`,
+    url: `/protocol/${pr.slug}`,
+    category: '协议百科',
+    tags: [pr.name, pr.encryption, pr.transport, '协议', '抗封锁'],
+  })),
+  ...articlesData.map((a) => ({
+    title: a.title,
+    desc: `${a.subtitle} - ${a.description}`,
+    url: `/articles/${a.slug}`,
+    category: '排错与指南',
+    tags: [...a.tags, a.primaryIntent, '指南', '故障排查', 'TUN', 'Timeout'],
+  })),
+];
+---
+
+<BaseLayout
+  title="全站搜索 · 机场、客户端与故障排除知识库"
+  description="实时搜索 AirportMatrix 数据库：支持机场名称、客户端教程、前沿协议、专线类型与常见网络故障报错即时检索。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="max-w-3xl mx-auto py-6">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-extrabold text-white">全站智能搜索</h1>
+      <p class="text-xs sm:text-sm text-slate-400 mt-2">支持搜索机场品牌、客户端、协议百科以及各类常见报错与排错手册。</p>
+    </div>
+
+    <!-- Search Input Box -->
+    <div class="relative mb-8">
+      <input
+        type="text"
+        id="search-input"
+        placeholder="输入关键词（如 Clash、Timeout、ChatGPT、IEPL、VLESS）..."
+        class="w-full px-5 py-4 pl-12 rounded-2xl bg-slate-900 border border-slate-700 focus:border-tech-cyan focus:ring-2 focus:ring-tech-cyan/20 text-slate-100 text-sm outline-none transition-all shadow-xl"
+        autofocus
+      />
+      <div class="absolute left-4 top-4 text-slate-400">
+        <Icon name="search" class="w-5 h-5" />
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div id="results-count" class="text-xs text-slate-400 mb-4 font-mono hidden">
+      共检索到 <span id="count-num" class="text-tech-cyan font-bold">0</span> 条匹配结果
+    </div>
+
+    <div id="search-results" class="space-y-3">
+      <!-- Injected by JavaScript -->
+    </div>
+  </div>
+</BaseLayout>
+
+<script define:vars={{ searchIndex }}>
+  const input = document.getElementById('search-input');
+  const resultsContainer = document.getElementById('search-results');
+  const resultsCount = document.getElementById('results-count');
+  const countNum = document.getElementById('count-num');
+
+  // Read URL query parameter if present
+  const urlParams = new URLSearchParams(window.location.search);
+  const initialQuery = urlParams.get('q') || '';
+  if (input && initialQuery) {
+    input.value = initialQuery;
+  }
+
+  function doSearch(query) {
+    if (!resultsContainer || !resultsCount || !countNum) return;
+    const q = query.trim().toLowerCase();
+
+    if (!q) {
+      resultsContainer.innerHTML = `
+        <div class="text-center py-12 text-slate-500 text-xs">
+          请输入任意关键词开始检索知识库...
+        </div>
+      `;
+      resultsCount.classList.add('hidden');
+      return;
+    }
+
+    const matched = searchIndex.filter(item => {
+      const titleMatch = item.title.toLowerCase().includes(q);
+      const descMatch = item.desc.toLowerCase().includes(q);
+      const tagMatch = item.tags.some(t => t.toLowerCase().includes(q));
+      const catMatch = item.category.toLowerCase().includes(q);
+      return titleMatch || descMatch || tagMatch || catMatch;
+    });
+
+    resultsCount.classList.remove('hidden');
+    countNum.textContent = matched.length.toString();
+
+    if (matched.length === 0) {
+      resultsContainer.innerHTML = `
+        <div class="p-8 rounded-xl bg-slate-900/40 border border-slate-800 text-center text-slate-400 text-xs">
+          未找到与 “<span class="text-white font-bold">${q}</span>” 相关的结果。建议更换关键词或查阅 <a href="/articles" class="text-tech-cyan underline">完整知识库</a>。
+        </div>
+      `;
+      return;
+    }
+
+    resultsContainer.innerHTML = matched.map(item => `
+      <a href="${item.url}" class="block p-4 sm:p-5 rounded-xl bg-slate-900/60 border border-slate-800/80 hover:border-tech-cyan/40 hover:bg-slate-850 transition-all group">
+        <div class="flex items-center gap-2 mb-1.5">
+          <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-800 text-tech-cyan border border-slate-700">
+            ${item.category}
+          </span>
+          <span class="text-sm font-bold text-white group-hover:text-tech-cyan transition-colors">
+            ${item.title}
+          </span>
+        </div>
+        <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">${item.desc}</p>
+      </a>
+    `).join('');
+  }
+
+  if (input) {
+    input.addEventListener('input', (e) => {
+      doSearch(e.target.value);
+    });
+    if (initialQuery) {
+      doSearch(initialQuery);
+    }
+  }
+</script>

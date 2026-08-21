@@ -1,0 +1,16 @@
+{
+  "date": "2026-08-21",
+  "metrics": {
+    "page_views": 128000,
+    "search_queries": 45600,
+    "clicks": 18900,
+    "conversions": 3400
+  },
+  "top_keywords": ["ChatGPT 1020", "光速云 9Gbps", "Clash Verge TUN模式", "IEPL专线", "优惠码AMM"],
+  "top_entities": ["provider_guangsucloud", "client_clash_verge", "protocol_vless", "route_iepl"],
+  "update_actions": [
+    "全面实测并入库光速云 9Gbps 测速数据",
+    "更新 Clash Verge Rev TUN 模式防报错指南",
+    "下架未通过专线履约与测试之实体"
+  ]
+}

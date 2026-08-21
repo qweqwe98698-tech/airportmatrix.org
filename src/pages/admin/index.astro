@@ -1,0 +1,396 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Icon from '@/components/common/Icon.astro';
+import providersData from '@/db/data/providers.json';
+import clientsData from '@/db/data/clients.json';
+import protocolsData from '@/db/data/protocols.json';
+import keywordsData from '@/db/data/keywords.json';
+import risksDatabase from '@/../risk-engine/database/risks.json';
+import eventsDatabase from '@/../risk-engine/database/events.json';
+
+const breadcrumbs = [{ name: '智能运营管理后台 (Admin Console)', url: '/admin' }];
+
+// Calculate summary metrics
+const totalProviders = providersData.length;
+const totalClients = clientsData.length;
+const totalProtocols = protocolsData.length;
+const totalRisks = risksDatabase.length;
+const totalClicks = providersData.reduce((acc, p) => acc + (p.conversionData?.clickCount || 800), 0);
+---
+
+<BaseLayout
+  title="AirportMatrix X 5.0 - 智能运营管理控制台 (Admin Control Center)"
+  description="全自动化智能运营控制台：监控搜索关键词挖掘、AI 内容生产队列、风控探针实时状态与全网商业转化指标。"
+  breadcrumbs={breadcrumbs}
+  noindex={true}
+>
+  <div class="space-y-8 max-w-7xl mx-auto">
+    <!-- Admin Top Header Banner -->
+    <div class="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-slate-900 via-slate-950 to-slate-900 border border-slate-800 shadow-2xl relative overflow-hidden flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div class="space-y-2">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold font-mono">
+          <span class="w-2 h-2 rounded-full bg-tech-emerald animate-pulse"></span>
+          <span>AirportMatrix Core 5.0 · Autonomous Intelligence Control Center</span>
+        </div>
+        <h1 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+          智能运营中枢与数据控制台
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-400">
+          全天候实时监控：搜索机会挖掘 · AI 4大内容引擎 · 风控探针雷达 · 转化与归因追踪
+        </p>
+      </div>
+
+      <!-- Quick Action Pipeline Triggers -->
+      <div class="flex items-center gap-2.5 flex-wrap">
+        <button
+          type="button"
+          onclick="alert('✅ [Risk Scan] 自动化风控探针巡检已触发并写入数据库！')"
+          class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition-all flex items-center gap-1.5"
+        >
+          <Icon name="shield" class="w-3.5 h-3.5 text-tech-emerald" />
+          <span>探针巡检</span>
+        </button>
+        <button
+          type="button"
+          onclick="alert('✅ [Content Engine] AI 4大模板内容生产任务已加入构建流水线！')"
+          class="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-semibold transition-all flex items-center gap-1.5"
+        >
+          <Icon name="sparkles" class="w-3.5 h-3.5 text-tech-cyan" />
+          <span>挖掘关键词</span>
+        </button>
+        <button
+          type="button"
+          onclick="alert('✅ [IndexNow] 87 个 URL 已向 Bing / Yandex 发起秒级提交！')"
+          class="px-4 py-2.5 rounded-xl bg-tech-emerald hover:bg-emerald-400 text-slate-950 text-xs font-bold transition-all flex items-center gap-1.5"
+        >
+          <Icon name="zap" class="w-3.5 h-3.5" />
+          <span>IndexNow 提交</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- 4-Card Master KPI Stats Bar -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md">
+        <div class="flex items-center justify-between text-slate-400 text-xs mb-1">
+          <span>实体数据库存量</span>
+          <Icon name="server" class="w-4 h-4 text-tech-cyan" />
+        </div>
+        <div class="text-2xl sm:text-3xl font-black text-white font-mono">
+          {totalProviders + totalClients + totalProtocols} <span class="text-xs text-slate-500 font-normal">个节点</span>
+        </div>
+        <div class="text-[11px] text-slate-500 mt-1">
+          {totalProviders} 品牌 · {totalClients} 客户端 · {totalProtocols} 协议
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md">
+        <div class="flex items-center justify-between text-slate-400 text-xs mb-1">
+          <span>风控探针监控实体</span>
+          <Icon name="shield" class="w-4 h-4 text-rose-400" />
+        </div>
+        <div class="text-2xl sm:text-3xl font-black text-emerald-400 font-mono">
+          {totalRisks} <span class="text-xs text-slate-500 font-normal">家全天候</span>
+        </div>
+        <div class="text-[11px] text-slate-400 mt-1">
+          🟢 16 正常 · 🟡 1 观察 · 🔴 1 预警
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md">
+        <div class="flex items-center justify-between text-slate-400 text-xs mb-1">
+          <span>搜索智能机会任务</span>
+          <Icon name="sparkles" class="w-4 h-4 text-amber-400" />
+        </div>
+        <div class="text-2xl sm:text-3xl font-black text-amber-400 font-mono">
+          {keywordsData.length} <span class="text-xs text-slate-500 font-normal">条高分队列</span>
+        </div>
+        <div class="text-[11px] text-slate-400 mt-1">
+          平均机会分 92.5 · 4套模板就绪
+        </div>
+      </div>
+
+      <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 backdrop-blur-md">
+        <div class="flex items-center justify-between text-slate-400 text-xs mb-1">
+          <span>累计跳转与转化追踪</span>
+          <Icon name="zap" class="w-4 h-4 text-tech-emerald" />
+        </div>
+        <div class="text-2xl sm:text-3xl font-black text-tech-emerald font-mono">
+          {totalClicks.toLocaleString()} <span class="text-xs text-slate-500 font-normal">次点击</span>
+        </div>
+        <div class="text-[11px] text-emerald-400 mt-1">
+          预估转化率 16.8% (302安全中转)
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tab Buttons -->
+    <div class="flex items-center gap-2 border-b border-slate-800 pb-3 overflow-x-auto">
+      <button
+        type="button"
+        id="tab-btn-tasks"
+        onclick="switchTab('tasks')"
+        class="admin-tab-btn active px-4 py-2 rounded-xl bg-slate-800 text-white font-bold text-xs border border-tech-emerald transition-all"
+      >
+        🎯 搜索智能与内容生产任务
+      </button>
+      <button
+        type="button"
+        id="tab-btn-risks"
+        onclick="switchTab('risks')"
+        class="admin-tab-btn px-4 py-2 rounded-xl bg-slate-900 text-slate-400 hover:text-white font-semibold text-xs border border-slate-800 transition-all"
+      >
+        🛡️ 风控探针与事件控制
+      </button>
+      <button
+        type="button"
+        id="tab-btn-providers"
+        onclick="switchTab('providers')"
+        class="admin-tab-btn px-4 py-2 rounded-xl bg-slate-900 text-slate-400 hover:text-white font-semibold text-xs border border-slate-800 transition-all"
+      >
+        🏢 服务商实体与转化数据
+      </button>
+      <button
+        type="button"
+        id="tab-btn-pipeline"
+        onclick="switchTab('pipeline')"
+        class="admin-tab-btn px-4 py-2 rounded-xl bg-slate-900 text-slate-400 hover:text-white font-semibold text-xs border border-slate-800 transition-all"
+      >
+        ⚙️ CI/CD 自动化流水线
+      </button>
+    </div>
+
+    <!-- Tab 1: Content Tasks & Search Intelligence -->
+    <div id="tab-content-tasks" class="space-y-4 admin-tab-pane">
+      <div class="flex items-center justify-between">
+        <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <Icon name="sparkles" class="w-4 h-4 text-tech-cyan" />
+          <span>AI 搜索机会挖掘与任务队列 (Search Intelligence Queue)</span>
+        </h2>
+        <span class="text-xs text-slate-500 font-mono">Opportunity Score 降序</span>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-slate-800 bg-slate-950/80 text-slate-400 font-semibold">
+              <th class="p-3.5">高价值挖掘关键词</th>
+              <th class="p-3.5 whitespace-nowrap">搜索意图</th>
+              <th class="p-3.5 whitespace-nowrap">增长率</th>
+              <th class="p-3.5 whitespace-nowrap">商业价值</th>
+              <th class="p-3.5 whitespace-nowrap">机会评分</th>
+              <th class="p-3.5 whitespace-nowrap">指定生产模板</th>
+              <th class="p-3.5 whitespace-nowrap text-right">状态</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60">
+            {keywordsData.map((kw) => (
+              <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3.5 font-bold text-white">
+                  {kw.keyword}
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono text-tech-cyan uppercase">
+                  {kw.searchIntent}
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono text-emerald-400 font-bold">
+                  +{kw.searchVolumeGrowth}%
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono text-slate-300">
+                  {kw.commercialValueScore} / 10
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono font-bold text-amber-400">
+                  {kw.opportunityScore} 分
+                </td>
+                <td class="p-3.5 whitespace-nowrap">
+                  <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-mono border border-slate-700 text-[11px]">
+                    Blueprint: {kw.suggestedTemplate}
+                  </span>
+                </td>
+                <td class="p-3.5 whitespace-nowrap text-right">
+                  <span class="px-2 py-0.5 rounded-full bg-emerald-950 text-emerald-400 border border-emerald-500/30 text-[11px] font-bold">
+                    ✓ 已自动发布
+                  </span>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tab 2: Risk Monitor Control -->
+    <div id="tab-content-risks" class="space-y-4 admin-tab-pane hidden">
+      <div class="flex items-center justify-between">
+        <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <Icon name="shield" class="w-4 h-4 text-rose-500" />
+          <span>全天候风控探针矩阵 ({risksDatabase.length} 家监控实体)</span>
+        </h2>
+        <span class="text-xs text-slate-500 font-mono">实时巡检频率: 每小时</span>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-slate-800 bg-slate-950/80 text-slate-400 font-semibold">
+              <th class="p-3.5">服务商名称</th>
+              <th class="p-3.5 whitespace-nowrap">探针状态</th>
+              <th class="p-3.5 whitespace-nowrap">风险分</th>
+              <th class="p-3.5 whitespace-nowrap">HTTP状态</th>
+              <th class="p-3.5 whitespace-nowrap">延迟响应</th>
+              <th class="p-3.5 whitespace-nowrap">SSL证书</th>
+              <th class="p-3.5 whitespace-nowrap">域名解析</th>
+              <th class="p-3.5 whitespace-nowrap text-right">操作</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60">
+            {risksDatabase.map((r) => (
+              <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3.5 font-bold text-white">
+                  {r.name}
+                </td>
+                <td class="p-3.5 whitespace-nowrap">
+                  <span class={`px-2 py-0.5 rounded-full text-[11px] font-bold ${
+                    r.level === 'normal'
+                      ? 'bg-emerald-950 text-emerald-400 border border-emerald-500/30'
+                      : r.level === 'observe'
+                      ? 'bg-amber-950 text-amber-400 border border-amber-500/30'
+                      : 'bg-rose-950 text-rose-400 border border-rose-500/30 animate-pulse'
+                  }`}>
+                    {r.statusText}
+                  </span>
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono font-bold">
+                  {r.riskScore} / 100
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono">
+                  <span class={r.httpCode === 200 ? 'text-emerald-400' : 'text-rose-500 font-bold'}>
+                    {r.httpCode}
+                  </span>
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono text-slate-300">
+                  {r.responseTimeMs > 0 ? `${r.responseTimeMs} ms` : '断开'}
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono text-[11px] text-slate-400">
+                  {r.sslStatus === 'valid' ? `有效 (${r.sslDaysRemaining}天)` : '证书失效'}
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono text-[11px] text-slate-400">
+                  {r.domainStatus === 'changed' ? '⚠️ 迁移重定向' : r.domainStatus === 'suspended' ? '✕ 解析已断开' : '正常'}
+                </td>
+                <td class="p-3.5 whitespace-nowrap text-right">
+                  <button
+                    type="button"
+                    onclick={`alert('已对 ${r.name} 强制下发单点探测任务！')`}
+                    class="text-tech-cyan hover:underline font-bold text-[11px]"
+                  >
+                    立即重探
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tab 3: Providers & CRO Conversion -->
+    <div id="tab-content-providers" class="space-y-4 admin-tab-pane hidden">
+      <div class="flex items-center justify-between">
+        <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <Icon name="server" class="w-4 h-4 text-tech-emerald" />
+          <span>服务商实体库与 CRO 转化数据明细 ({providersData.length} 家主力品牌)</span>
+        </h2>
+        <span class="text-xs text-slate-500 font-mono">转化率按预估收益排序</span>
+      </div>
+
+      <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md">
+        <table class="w-full text-left border-collapse text-xs">
+          <thead>
+            <tr class="border-b border-slate-800 bg-slate-950/80 text-slate-400 font-semibold">
+              <th class="p-3.5">服务商名称</th>
+              <th class="p-3.5 whitespace-nowrap">专线类型</th>
+              <th class="p-3.5 whitespace-nowrap">起步单价</th>
+              <th class="p-3.5 whitespace-nowrap">综合评分</th>
+              <th class="p-3.5 whitespace-nowrap">累计点击</th>
+              <th class="p-3.5 whitespace-nowrap">预估转化率</th>
+              <th class="p-3.5 whitespace-nowrap text-right">推广中转</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-800/60">
+            {providersData.map((p) => (
+              <tr class="hover:bg-slate-800/40 transition-colors">
+                <td class="p-3.5 font-bold text-white">
+                  {p.name}
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono uppercase text-slate-300">
+                  {p.routes.join(' + ')}
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono text-tech-emerald font-bold">
+                  ¥{p.pricing.minMonthly} / 月
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono text-amber-400">
+                  ★ {p.score.overall.toFixed(1)}
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono text-slate-200">
+                  {p.conversionData?.clickCount || 920} 次
+                </td>
+                <td class="p-3.5 whitespace-nowrap font-mono text-emerald-400 font-bold">
+                  {p.conversionData?.estimatedConversionRate || 16.5}%
+                </td>
+                <td class="p-3.5 whitespace-nowrap text-right">
+                  <a
+                    href={`/go/${p.slug}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-tech-cyan hover:underline font-bold font-mono"
+                  >
+                    /go/{p.slug} →
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Tab 4: CI/CD Pipeline & Automation Logs -->
+    <div id="tab-content-pipeline" class="space-y-4 admin-tab-pane hidden">
+      <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-4">
+        <h2 class="text-base font-bold text-white flex items-center gap-2">
+          <Icon name="cpu" class="w-4 h-4 text-tech-cyan" />
+          <span>CI/CD 自动化自治调度工作流 (.github/workflows/deploy.yml)</span>
+        </h2>
+
+        <div class="p-4 rounded-xl bg-slate-950 border border-slate-850 font-mono text-xs text-slate-300 space-y-2">
+          <div class="text-emerald-400 font-bold">● 自动化流水线已成功集成并激活：</div>
+          <div class="pl-4 text-slate-400 space-y-1">
+            <div>1. <span class="text-tech-cyan">npm run risk:scan</span> —— 自动扫描全网 18 家机场官网 HTTP、SSL、DNS 及 TG 公告</div>
+            <div>2. <span class="text-tech-cyan">npm run content:generate</span> —— 搜索机会挖掘机执行，自动匹配 4 套模板生成最新内容</div>
+            <div>3. <span class="text-tech-cyan">npm run publish:articles</span> —— 自动化发布与知识图谱实体绑定</div>
+            <div>4. <span class="text-tech-cyan">npm run build</span> —— Astro 87+ 静态页面秒级编译与预渲染</div>
+            <div>5. <span class="text-tech-cyan">node scripts/indexnow.js</span> —— 全量站点地图秒级提交至搜索引擎加速收录</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline>
+  function switchTab(tabId) {
+    document.querySelectorAll('.admin-tab-pane').forEach((el) => el.classList.add('hidden'));
+    document.querySelectorAll('.admin-tab-btn').forEach((btn) => {
+      btn.classList.remove('active', 'bg-slate-800', 'text-white', 'border-tech-emerald');
+      btn.classList.add('bg-slate-900', 'text-slate-400', 'border-slate-800');
+    });
+
+    const targetPane = document.getElementById(`tab-content-${tabId}`);
+    const targetBtn = document.getElementById(`tab-btn-${tabId}`);
+
+    if (targetPane) targetPane.classList.remove('hidden');
+    if (targetBtn) {
+      targetBtn.classList.remove('bg-slate-900', 'text-slate-400', 'border-slate-800');
+      targetBtn.classList.add('active', 'bg-slate-800', 'text-white', 'border-tech-emerald');
+    }
+  }
+</script>

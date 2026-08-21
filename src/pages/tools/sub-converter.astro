@@ -1,0 +1,226 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+
+const breadcrumbs = [
+  { name: '实用工具箱', url: '/tools' },
+  { name: '在线订阅转换与 Mihomo 规则生成器', url: '/tools/sub-converter' },
+];
+---
+
+<BaseLayout
+  title="在线订阅转换与 Mihomo (Clash.Meta) TUN 规则生成器 - AirportMatrix"
+  description="安全纯前端执行：一键将机场订阅转换为带有 Fake-IP、TUN 模式网卡接管、OpenAI / Netflix 专属分流的 Clash Verge Rev 配置文件。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="max-w-4xl mx-auto space-y-8">
+    <div>
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold mb-3">
+        <Icon name="cpu" class="w-3.5 h-3.5" />
+        <span>本地纯前端运算 · 0 隐私上传</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+        在线订阅转换与 Mihomo 规则生成器
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-400 mt-2">
+        输入任意机场订阅链接，一键生成注入 TUN 虚拟网卡、Fake-IP 防污染、海外 AI 与流媒体高级分流的标准配置。
+      </p>
+    </div>
+
+    <!-- Converter Form -->
+    <div class="p-6 sm:p-8 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-6">
+      <!-- Input Subscription URL -->
+      <div>
+        <label class="block text-xs font-bold text-slate-200 uppercase tracking-wider mb-2">
+          1. 粘贴您的机场订阅链接 (Subscription URL)
+        </label>
+        <input
+          type="text"
+          id="sub-url-input"
+          placeholder="https://your-airport-domain.com/api/v1/client/subscribe?token=xxxxxx"
+          class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-700 text-slate-100 text-xs sm:text-sm font-mono placeholder-slate-600 focus:border-tech-cyan focus:ring-1 focus:ring-tech-cyan outline-none"
+        />
+      </div>
+
+      <!-- Options -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1.5">目标客户端</label>
+          <select id="target-client" class="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 outline-none">
+            <option value="clash-verge">Clash Verge Rev (Mihomo)</option>
+            <option value="sing-box">sing-box</option>
+            <option value="shadowrocket">Shadowrocket (小火箭)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1.5">DNS 模式</label>
+          <select id="dns-mode" class="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 outline-none">
+            <option value="fake-ip">Fake-IP 防污染 (推荐)</option>
+            <option value="redir-host">Redir-Host 传统模式</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-300 mb-1.5">预设规则集</label>
+          <select id="rule-preset" class="w-full px-3 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-200 outline-none">
+            <option value="full">AI + 流媒体 + 广告拦截 (全能版)</option>
+            <option value="minimal">基础白名单直连 (极速版)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-3 pt-2">
+        <button
+          type="button"
+          id="generate-btn"
+          class="px-6 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-extrabold text-xs sm:text-sm transition-all shadow-glow flex items-center gap-2"
+        >
+          <Icon name="zap" class="w-4 h-4" />
+          <span>一键生成优化配置</span>
+        </button>
+      </div>
+
+      <!-- Output Section (hidden until click) -->
+      <div id="output-section" class="hidden space-y-3 pt-4 border-t border-slate-800">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-300">生成的 Mihomo YAML 配置片段：</span>
+          <button
+            type="button"
+            id="copy-config-btn"
+            class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-tech-cyan border border-slate-700 transition-colors flex items-center gap-1.5"
+          >
+            <Icon name="check" class="w-3.5 h-3.5" />
+            <span>复制配置文本</span>
+          </button>
+        </div>
+        <textarea
+          id="config-output"
+          readonly
+          rows="12"
+          class="w-full p-4 rounded-xl bg-slate-950 border border-slate-850 font-mono text-xs text-emerald-300 leading-relaxed outline-none"
+        ></textarea>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  const genBtn = document.getElementById('generate-btn');
+  const outSec = document.getElementById('output-section');
+  const outText = document.getElementById('config-output') as HTMLTextAreaElement;
+  const copyBtn = document.getElementById('copy-config-btn');
+  const subUrlInput = document.getElementById('sub-url-input') as HTMLInputElement;
+
+  if (genBtn && outSec && outText) {
+    genBtn.addEventListener('click', () => {
+      const url = subUrlInput?.value.trim() || 'https://your-subscription-url.com';
+      
+      const configTemplate = `# ========================================================
+# AirportMatrix X 4.0 优化配置文件 (Mihomo / Clash.Meta)
+# 生成时间: ${new Date().toISOString()}
+# 特性: 启用 TUN 虚拟网卡 + Fake-IP + OpenAI 独立分流
+# ========================================================
+
+port: 7890
+socks-port: 7891
+mixed-port: 7890
+allow-lan: false
+mode: rule
+log-level: info
+unified-delay: true
+tcp-concurrent: true
+
+tun:
+  enable: true
+  stack: mixed
+  dns-hijack:
+    - any:53
+    - tcp://any:53
+  auto-route: true
+  auto-detect-interface: true
+
+dns:
+  enable: true
+  listen: :1053
+  ipv6: false
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  nameserver:
+    - 223.5.5.5
+    - 119.29.29.29
+  fallback:
+    - https://1.1.1.1/dns-query
+    - https://8.8.8.8/dns-query
+
+proxy-providers:
+  AirportMatrixProvider:
+    type: http
+    url: "${url}"
+    interval: 86400
+    path: ./profiles/airportmatrix.yaml
+    health-check:
+      enable: true
+      interval: 300
+      url: https://www.google.com/generate_204
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    use:
+      - AirportMatrixProvider
+
+  - name: 🤖 OpenAI / ChatGPT
+    type: select
+    use:
+      - AirportMatrixProvider
+
+  - name: 🎬 国外媒体
+    type: select
+    use:
+      - AirportMatrixProvider
+
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+
+rules:
+  # OpenAI / ChatGPT
+  - DOMAIN-SUFFIX,openai.com,🤖 OpenAI / ChatGPT
+  - DOMAIN-SUFFIX,chatgpt.com,🤖 OpenAI / ChatGPT
+  - DOMAIN-SUFFIX,oaistatic.com,🤖 OpenAI / ChatGPT
+  - DOMAIN-SUFFIX,claude.ai,🤖 OpenAI / ChatGPT
+  - DOMAIN-SUFFIX,anthropic.com,🤖 OpenAI / ChatGPT
+  
+  # 流媒体
+  - DOMAIN-SUFFIX,netflix.com,🎬 国外媒体
+  - DOMAIN-SUFFIX,youtube.com,🎬 国外媒体
+  - DOMAIN-SUFFIX,googlevideo.com,🎬 国外媒体
+  - DOMAIN-SUFFIX,disneyplus.com,🎬 国外媒体
+  
+  # 国内直连
+  - GEOIP,CN,🎯 全球直连
+  - MATCH,🚀 节点选择
+`;
+
+      outText.value = configTemplate;
+      outSec.classList.remove('hidden');
+      outSec.scrollIntoView({ behavior: 'smooth' });
+    });
+  }
+
+  if (copyBtn && outText) {
+    copyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(outText.value).then(() => {
+        copyBtn.innerHTML = '<span>✓ 已成功复制到剪贴板</span>';
+        setTimeout(() => {
+          copyBtn.innerHTML = '<svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg><span>复制配置文本</span>';
+        }, 2000);
+      });
+    });
+  }
+</script>

@@ -1,0 +1,48 @@
+[
+  {
+    "id": "ai_chatgpt",
+    "entity_type": "ai_tool",
+    "name": "ChatGPT",
+    "company": "OpenAI",
+    "category": "AI",
+    "access": {
+      "availability": "受限地区（中国大陆/香港IP直接拦截）",
+      "network_requirements": "高纯净度原生住宅 IP 或低欺诈评分机房 IP，支持 TLS 1.3 与 HTTP/2",
+      "common_errors": ["Error 1020 Access Denied", "Country Not Supported", "Cloudflare Verification Loop"]
+    },
+    "problems": [
+      {
+        "title": "ChatGPT 提示 Access Denied (Error 1020)",
+        "solution": "当前节点 IP 被 Cloudflare 识别为高风险公用代理。切换到具备住宅原生 IP 的美日专线节点，并清除浏览器 Cookie。"
+      },
+      {
+        "title": "登录界面提示 Country Not Supported",
+        "solution": "当前节点位于未开放支持区域（如香港）。请在客户端将 OpenAI 规则分流切换为美国、日本或新加坡节点。"
+      }
+    ],
+    "recommended_clients": ["client_clash_verge", "client_shadowrocket", "client_sing_box"],
+    "recommended_providers": ["provider_guangsucloud"],
+    "related_articles": ["article_chatgpt_access_blocked_solution"]
+  },
+  {
+    "id": "ai_claude",
+    "entity_type": "ai_tool",
+    "name": "Claude",
+    "company": "Anthropic",
+    "category": "AI",
+    "access": {
+      "availability": "极高风控，对 IP 漂移与机房网段敏感",
+      "network_requirements": "固定原生美区/英区 IP，严格防止 WebRTC 泄漏真实地理位置",
+      "common_errors": ["Account Suspended", "App Unavailable in Your Region"]
+    },
+    "problems": [
+      {
+        "title": "Claude 频繁提示手机号不可用或账号被封",
+        "solution": "注册与日常访问必须绑定同一条纯净美国家宽节点，并在浏览器中关闭 WebRTC 局域网探测。"
+      }
+    ],
+    "recommended_clients": ["client_clash_verge", "client_surge"],
+    "recommended_providers": ["provider_guangsucloud"],
+    "related_articles": ["article_claude_anti_ban_guide"]
+  }
+]

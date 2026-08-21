@@ -1,0 +1,287 @@
+[
+  {
+    "id": "guangsucloud",
+    "slug": "guangsucloud",
+    "name": "光速云 (GuangSuCloud)",
+    "tagline": "全专线IEPL网络 · 9Gbps实测 424MB/s · 极速 4K/8K 与 AI 响应",
+    "description": "光速云是专注于极速与稳定性的高端专线机场，全节点部署企业级 IEPL 内网专线，有效避免晚高峰骨干网拥堵与断流。实测 YouTube 8K 秒开，ChatGPT/Claude 解锁率达 99.8%。",
+    "officialUrl": "https://sahude.gsyvipaff.com",
+    "affiliateUrl": "https://sahude.gsyvipaff.com/#/register?code=6b0c",
+    "status": "active",
+    "establishedYear": 2022,
+    "nodeCount": 68,
+    "entryLocations": ["深圳电信", "上海联通", "广州移动"],
+    "bandwidthLimit": "100GB ~ 2000GB / 月",
+    "refundPolicy": "24小时内未用流量超 1GB 可申请工单原路退款",
+    "couponCode": "AMM",
+    "discountInfo": "首单输入专属优惠码 AMM 享超值特惠",
+    "routes": ["iepl", "iplc"],
+    "protocols": ["vless", "hysteria2", "trojan"],
+    "clients": ["clash-verge", "shadowrocket", "sing-box", "v2rayn", "surge"],
+    "pricing": {
+      "minMonthly": 7.5,
+      "billingPeriod": "年付折合",
+      "annualDiscount": "年付享 7 折并赠送 20% 流量",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.8,
+      "stability": 9.9,
+      "speed": 9.9,
+      "support": 9.6,
+      "costPerformance": 9.7
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": ["ChatGPT", "Claude", "Gemini", "Cursor", "Midjourney"],
+      "notes": "全线配备美西、日本及新加坡原生住宅静态 IP，避开 Cloudflare 1020 报错与风控拦截。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": ["Netflix", "Disney+", "YouTube", "TikTok", "Bahamut", "Hulu"],
+      "notes": "多地区节点原生支持 4K/8K HDR 解锁，非自制剧随心看。"
+    },
+    "riskScore": 5,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 1420,
+      "estimatedConversionRate": 18.5,
+      "topAudience": "AI 开发者、高码率追剧族"
+    },
+    "relations": [
+      { "targetId": "vless", "targetType": "protocol", "relationType": "supports" },
+      { "targetId": "iepl", "targetType": "route", "relationType": "runs_on" },
+      { "targetId": "clash-verge", "targetType": "client", "relationType": "supports" },
+      { "targetId": "chatgpt_1020", "targetType": "issue", "relationType": "resolves" }
+    ],
+    "history": [
+      { "date": "2026-08-19", "type": "speedtest", "title": "9Gbps 宽带实测 424MB/s 满速通过" },
+      { "date": "2026-06-10", "type": "upgrade", "title": "全线升级 VLESS + Reality 新协议" }
+    ]
+  },
+  {
+    "id": "xingdaomeng",
+    "slug": "xingdaomeng",
+    "name": "星岛梦 (XingDaoMeng)",
+    "tagline": "企业级内网专线 · 不限时流量包 · 长期稳定之选",
+    "description": "星岛梦以超长待机与高可靠性著称，提供极具性价比的不限时按量流量包。适合不经常出海但关键时刻要求 100% 连通率的用户。",
+    "officialUrl": "https://guangs.xingdaomeng.com",
+    "affiliateUrl": "https://guangs.xingdaomeng.com/#/register?code=i17n",
+    "status": "active",
+    "establishedYear": 2021,
+    "nodeCount": 55,
+    "entryLocations": ["江苏联通", "广东电信"],
+    "bandwidthLimit": "不限时 100GB ~ 1000GB",
+    "refundPolicy": "支持 3 天内未消耗套餐退款",
+    "couponCode": "AMM",
+    "discountInfo": "输入专属优惠码 AMM 享折上折优惠",
+    "routes": ["iepl", "bgp"],
+    "protocols": ["shadowsocks", "vless"],
+    "clients": ["clash-verge", "shadowrocket", "sing-box", "v2rayn", "surge"],
+    "pricing": {
+      "minMonthly": 12.0,
+      "billingPeriod": "按量/月付",
+      "annualDiscount": "年付享专属备用流量池",
+      "hasUnlimitedTraffic": true
+    },
+    "score": {
+      "overall": 9.5,
+      "stability": 9.7,
+      "speed": 9.4,
+      "support": 9.3,
+      "costPerformance": 9.6
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": ["ChatGPT", "Claude", "Gemini"],
+      "notes": "精选节点支持 OpenAI 与 Claude 网页版流畅对话。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": ["Netflix", "Disney+", "YouTube"],
+      "notes": "港台日美主流流媒体全解锁。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 1180,
+      "estimatedConversionRate": 16.2,
+      "topAudience": "轻度办公、不限时备用用户"
+    },
+    "relations": [
+      { "targetId": "iepl", "targetType": "route", "relationType": "runs_on" },
+      { "targetId": "clash-verge", "targetType": "client", "relationType": "supports" },
+      { "targetId": "node_timeout", "targetType": "issue", "relationType": "resolves" }
+    ],
+    "history": [
+      { "date": "2026-07-15", "type": "maintenance", "title": "企业专线入口负载均衡扩容" }
+    ]
+  },
+  {
+    "id": "feimaocloud",
+    "slug": "feimaocloud",
+    "name": "飞猫云 (FeiMaoCloud)",
+    "tagline": "亲民性价比之选 · 14.9元超大流量 · 学生与追剧党首选",
+    "description": "飞猫云主打极致性价比，14.9元即可畅享上百吉流量。采用智能 BGP 动态优化选路，晚高峰看 4K 视频丝滑流畅。",
+    "officialUrl": "https://guangs.flycataff.com",
+    "affiliateUrl": "https://guangs.flycataff.com/#/register?code=lO0v",
+    "status": "active",
+    "establishedYear": 2023,
+    "nodeCount": 48,
+    "entryLocations": ["广州移动", "杭州电信"],
+    "bandwidthLimit": "150GB ~ 1200GB / 月",
+    "refundPolicy": "开通后 12 小时内故障可退款",
+    "couponCode": "flycat888",
+    "discountInfo": "输入新人码 flycat888 享专属立减",
+    "routes": ["bgp", "iepl"],
+    "protocols": ["vless", "trojan"],
+    "clients": ["clash-verge", "shadowrocket", "v2rayn"],
+    "pricing": {
+      "minMonthly": 14.9,
+      "billingPeriod": "月付",
+      "annualDiscount": "年付享额外大额折扣",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.3,
+      "stability": 9.2,
+      "speed": 9.4,
+      "support": 9.1,
+      "costPerformance": 9.9
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": ["ChatGPT", "Cursor"],
+      "notes": "支持 AI 对话与代码补全。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": ["YouTube", "Netflix", "TikTok"],
+      "notes": "解锁港日美韩 Netflix。"
+    },
+    "riskScore": 10,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 940,
+      "estimatedConversionRate": 17.1,
+      "topAudience": "学生党、月付高性价比用户"
+    },
+    "relations": [
+      { "targetId": "bgp", "targetType": "route", "relationType": "runs_on" },
+      { "targetId": "shadowrocket", "targetType": "client", "relationType": "supports" }
+    ],
+    "history": []
+  },
+  {
+    "id": "u1s1",
+    "slug": "u1s1",
+    "name": "U1S1 机场",
+    "tagline": "实话实说好线路 · 低延迟游戏专线 · 高速率稳定输出",
+    "description": "U1S1 机场以透明、直爽、无虚标著称，专线接入严格控制用户密度，晚高峰时段延迟波动小于 5ms，深受游戏与高频网络用户喜爱。",
+    "officialUrl": "https://guangs.vipaff.cc",
+    "affiliateUrl": "https://guangs.vipaff.cc/#/register?code=6B0c",
+    "status": "active",
+    "establishedYear": 2022,
+    "nodeCount": 62,
+    "entryLocations": ["深圳电信", "上海移动"],
+    "bandwidthLimit": "100GB ~ 800GB / 月",
+    "refundPolicy": "工单退款保障",
+    "couponCode": "u1s1vip",
+    "discountInfo": "优惠码 u1s1vip 限时 8.5 折",
+    "routes": ["iepl"],
+    "protocols": ["vless", "shadowsocks"],
+    "clients": ["clash-verge", "shadowrocket", "sing-box", "surge"],
+    "pricing": {
+      "minMonthly": 20.0,
+      "billingPeriod": "月付",
+      "annualDiscount": "年付 8 折",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.6,
+      "stability": 9.8,
+      "speed": 9.7,
+      "support": 9.4,
+      "costPerformance": 9.4
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": ["ChatGPT", "Claude", "Gemini", "Cursor"],
+      "notes": "全线干净家宽住宅落地 IP。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": ["Netflix", "Disney+", "YouTube", "Bahamut"],
+      "notes": "支持全区流媒体最高画质。"
+    },
+    "riskScore": 12,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 1050,
+      "estimatedConversionRate": 15.8,
+      "topAudience": "游戏玩家、极客开发者"
+    },
+    "relations": [
+      { "targetId": "iepl", "targetType": "route", "relationType": "runs_on" },
+      { "targetId": "vless", "targetType": "protocol", "relationType": "supports" }
+    ],
+    "history": [
+      { "date": "2026-08-01", "type": "node_update", "title": "新增美西低延迟专线节点" }
+    ]
+  },
+  {
+    "id": "weitucloud",
+    "slug": "weitucloud",
+    "name": "唯兔云 (WeiTuCloud)",
+    "tagline": "三网智能调度优化 · 60+ 落地节点 · 4K秒开",
+    "description": "唯兔云具备完善的自动化容灾与负载均衡体系，多线 BGP + IEPL 混合架构，智能感知运营商路由状态并自动选择最优出口。",
+    "officialUrl": "https://guangs.v2yunvipaff.com",
+    "affiliateUrl": "https://guangs.v2yunvipaff.com/#/register?code=Gsy6",
+    "status": "active",
+    "establishedYear": 2023,
+    "nodeCount": 60,
+    "entryLocations": ["广东移动", "江苏电信", "北京联通"],
+    "bandwidthLimit": "120GB ~ 1500GB / 月",
+    "refundPolicy": "支持 24 小时体验保障",
+    "couponCode": "AMM",
+    "discountInfo": "优惠码 AMM 享受专属直降",
+    "routes": ["iepl", "bgp"],
+    "protocols": ["vless", "trojan", "hysteria2"],
+    "clients": ["clash-verge", "shadowrocket", "sing-box", "v2rayn"],
+    "pricing": {
+      "minMonthly": 18.0,
+      "billingPeriod": "月付",
+      "annualDiscount": "年付折合每月 12 元",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.4,
+      "stability": 9.5,
+      "speed": 9.6,
+      "support": 9.2,
+      "costPerformance": 9.5
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": ["ChatGPT", "Claude", "Gemini"],
+      "notes": "解锁率高，防风控策略完善。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": ["Netflix", "Disney+", "YouTube", "TikTok"],
+      "notes": "主流海外媒体一网打尽。"
+    },
+    "riskScore": 15,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 820,
+      "estimatedConversionRate": 14.9,
+      "topAudience": "三网异网优化用户"
+    },
+    "relations": [
+      { "targetId": "hysteria2", "targetType": "protocol", "relationType": "supports" },
+      { "targetId": "iepl", "targetType": "route", "relationType": "runs_on" }
+    ],
+    "history": []
+  }
+]

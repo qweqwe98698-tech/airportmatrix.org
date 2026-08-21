@@ -1,0 +1,33 @@
+{
+  "name": "airportmatrix-org",
+  "type": "module",
+  "version": "4.0.0",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "publish:articles": "node scripts/auto_publish.js",
+    "risk:scan": "node scripts/run_risk_scan.js",
+    "content:generate": "node scripts/auto_generate_content.js",
+    "seo:check": "node scripts/seo_health_check.js",
+    "astro": "astro",
+    "check": "astro check",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^4.1.0",
+    "@astrojs/sitemap": "^3.2.1",
+    "@astrojs/tailwind": "^5.1.5",
+    "@tailwindcss/typography": "^0.5.16",
+    "astro": "^5.4.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.0.2",
+    "tailwindcss": "^3.4.17"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.5",
+    "typescript": "^5.7.3"
+  }
+}

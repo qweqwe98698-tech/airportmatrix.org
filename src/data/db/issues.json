@@ -1,0 +1,27 @@
+[
+  {
+    "id": "issue_node_all_timeout",
+    "entity_type": "network_issue",
+    "title": "节点全部超时与全红无法连接",
+    "category": ["client", "network", "subscription", "protocol"],
+    "symptoms": ["所有节点延迟显示 Timeout 或 0ms", "无法打开任何外网", "右下角系统代理未生效"],
+    "possible_causes": [
+      "本地系统时间与网络标准时间相差超过 60 秒（TLS握手失效）",
+      "机场订阅套餐已欠费或流量耗尽",
+      "本地 7890 端口被其他代理或开发工具死锁占用",
+      "机场入口服务器突发维护或域名遭遇污染"
+    ],
+    "solutions": [
+      { "step": 1, "content": "打开 Windows 设置 -> 时间和语言 -> 点击【立即同步时间】。" },
+      { "step": 2, "content": "登录机场后台，确认账户状态正常且流量未用尽。" },
+      { "step": 3, "content": "在客户端右键订阅卡片选择【更新订阅】重新拉取最新节点 IP。" },
+      { "step": 4, "content": "开启 TUN 虚拟网卡模式绕过系统代理端口冲突。" }
+    ],
+    "related_entities": {
+      "clients": ["client_clash_verge", "client_v2rayn", "client_shadowrocket"],
+      "protocols": ["protocol_vless", "protocol_hysteria2"],
+      "providers": ["provider_guangsucloud"]
+    },
+    "seo_keywords": ["节点全部超时", "Clash全红", "节点Timeout怎么办", "机场无法连接排查"]
+  }
+]

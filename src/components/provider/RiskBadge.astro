@@ -1,0 +1,27 @@
+---
+import { RISK_LEVELS } from '@/data/taxonomies';
+
+interface Props {
+  level: 'safe' | 'moderate' | 'high' | 'critical';
+  showDesc?: boolean;
+}
+
+const { level, showDesc = false } = Astro.props;
+const info = RISK_LEVELS[level] || RISK_LEVELS.safe;
+---
+
+<div class="inline-flex items-center gap-1.5">
+  <span class={`inline-flex items-center px-2 py-0.5 rounded-full text-xs font-semibold ${
+    level === 'safe'
+      ? 'bg-emerald-950/70 text-emerald-400 border border-emerald-500/30'
+      : level === 'moderate'
+      ? 'bg-amber-950/70 text-amber-400 border border-amber-500/30'
+      : 'bg-rose-950/70 text-rose-400 border border-rose-500/30 animate-pulse'
+  }`}>
+    <span class={`w-1.5 h-1.5 rounded-full mr-1 ${
+      level === 'safe' ? 'bg-emerald-400' : level === 'moderate' ? 'bg-amber-400' : 'bg-rose-500'
+    }`}></span>
+    {info.label}
+  </span>
+  {showDesc && <span class="text-[11px] text-slate-400">{info.desc}</span>}
+</div>

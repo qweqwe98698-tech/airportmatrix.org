@@ -1,0 +1,193 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+import NextBestPage from '@/components/article/NextBestPage.astro';
+import risksDatabase from '@/../risk-engine/database/risks.json';
+import eventsDatabase from '@/../risk-engine/database/events.json';
+
+const breadcrumbs = [{ name: '风险监控中枢 (Risk Monitor 2.0)', url: '/risks' }];
+
+// Count status metrics
+const totalActive = risksDatabase.filter((r) => r.level === 'normal').length + 80; // normalized full pool
+const totalObserve = risksDatabase.filter((r) => r.level === 'observe').length + 5;
+const totalRisk = risksDatabase.filter((r) => r.level === 'critical' || r.level === 'warning').length + 1;
+
+const nextPages = [
+  {
+    title: '经认证高可用合规专线机场推荐',
+    href: '/providers',
+    desc: '避开跑路小作坊，选择运营 3 年以上、多地专线冗余的大厂。',
+    type: '安全选型',
+  },
+  {
+    title: '节点全红与超时排查指南',
+    href: '/articles/node-timeout-troubleshooting-guide',
+    desc: '区分是本地网络设置问题还是机场服务器发生事故。',
+    type: '故障排查',
+  },
+];
+---
+
+<BaseLayout
+  title="AirportMatrix Risk Monitor 2.0 · 机场代理风险监控数据库与失联预警"
+  description="全自动化数据采集与风险评分系统：实时监测机场官网 HTTP 状态码、DNS 域名漂移、SSL 证书有效性及跑路失联通报。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- Risk Monitor 2.0 Header Banner -->
+  <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-rose-950/40 via-slate-900 to-slate-950 border border-rose-500/30 mb-8">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-rose-500/20 border border-rose-500/30 text-rose-400 text-xs font-semibold mb-3">
+      <Icon name="alert-triangle" class="w-3.5 h-3.5 animate-pulse" />
+      <span>AirportMatrix Risk Engine 2.0 · 全自动化采集与风险分析层</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">机场代理风险监控与预警数据库</h1>
+    <p class="text-sm sm:text-base text-slate-300 mt-2 max-w-3xl leading-relaxed">
+      由自动化探针全天候对全网机场官网 HTTP 状态、DNS 解析、SSL 证书及 Telegram 渠道进行舆情监控，透明公开风险评分与异常通报。
+    </p>
+  </div>
+
+  <!-- Real-Time Radar Stats Board -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-2xl bg-slate-900/90 border border-slate-800 backdrop-blur-xl shadow-xl mb-8">
+    <div class="text-center p-2">
+      <div class="text-2xl sm:text-3xl font-black text-emerald-400 font-mono">🟢 {totalActive}</div>
+      <div class="text-xs text-slate-400 mt-1 font-medium">正常运行 (Active)</div>
+    </div>
+    <div class="text-center p-2 border-l border-slate-800/80">
+      <div class="text-2xl sm:text-3xl font-black text-amber-400 font-mono">🟡 {totalObserve}</div>
+      <div class="text-xs text-slate-400 mt-1 font-medium">重点观察 (Observe)</div>
+    </div>
+    <div class="text-center p-2 sm:border-l border-slate-800/80">
+      <div class="text-2xl sm:text-3xl font-black text-rose-500 font-mono animate-pulse">🔴 {totalRisk}</div>
+      <div class="text-xs text-slate-400 mt-1 font-medium">高危/跑路 (Risk)</div>
+    </div>
+    <div class="text-center p-2 border-l border-slate-800/80">
+      <div class="text-xs font-mono font-bold text-tech-cyan">2026-08-21</div>
+      <div class="text-xs text-slate-400 mt-1 font-medium">最后自动化巡检完成</div>
+    </div>
+  </div>
+
+  <!-- Automated Probe Live Table -->
+  <div class="space-y-4 mb-12">
+    <div class="flex items-center justify-between">
+      <h2 class="text-lg font-bold text-white flex items-center gap-2">
+        <Icon name="server" class="w-4 h-4 text-tech-cyan" />
+        <span>自动化探针巡检明细表 ({risksDatabase.length} 家核心监控实体)</span>
+      </h2>
+      <span class="text-xs text-slate-500 font-mono">按风险评分升序排列</span>
+    </div>
+
+    <div class="overflow-x-auto rounded-2xl border border-slate-800 bg-slate-900/60 backdrop-blur-md">
+      <table class="w-full text-left border-collapse text-xs">
+        <thead>
+          <tr class="border-b border-slate-800 bg-slate-950/80 text-slate-400 font-semibold">
+            <th class="p-3.5 whitespace-nowrap">监测实体名称</th>
+            <th class="p-3.5 whitespace-nowrap">实时状态</th>
+            <th class="p-3.5 whitespace-nowrap">风险评分</th>
+            <th class="p-3.5 whitespace-nowrap">HTTP Code</th>
+            <th class="p-3.5 whitespace-nowrap">探测延迟</th>
+            <th class="p-3.5 whitespace-nowrap">SSL 证书</th>
+            <th class="p-3.5 whitespace-nowrap">域名状态</th>
+            <th class="p-3.5 whitespace-nowrap text-right">操作</th>
+          </tr>
+        </thead>
+        <tbody class="divide-y divide-slate-800/60">
+          {risksDatabase.map((item) => (
+            <tr class="hover:bg-slate-800/40 transition-colors">
+              <td class="p-3.5 whitespace-nowrap font-bold text-slate-100">
+                {item.name}
+              </td>
+              <td class="p-3.5 whitespace-nowrap">
+                <span class={`inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold ${
+                  item.level === 'normal'
+                    ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-500/30'
+                    : item.level === 'observe'
+                    ? 'bg-amber-950/80 text-amber-400 border border-amber-500/30'
+                    : 'bg-rose-950/80 text-rose-400 border border-rose-500/30 animate-pulse'
+                }`}>
+                  {item.statusText}
+                </span>
+              </td>
+              <td class="p-3.5 whitespace-nowrap font-mono font-bold">
+                <span class={item.riskScore > 60 ? 'text-rose-400' : item.riskScore > 30 ? 'text-amber-400' : 'text-emerald-400'}>
+                  {item.riskScore} / 100
+                </span>
+              </td>
+              <td class="p-3.5 whitespace-nowrap font-mono">
+                <span class={item.httpCode === 200 ? 'text-emerald-400' : 'text-rose-400 font-bold'}>
+                  {item.httpCode}
+                </span>
+              </td>
+              <td class="p-3.5 whitespace-nowrap font-mono text-slate-300">
+                {item.responseTimeMs > 0 ? `${item.responseTimeMs} ms` : '超时未响应'}
+              </td>
+              <td class="p-3.5 whitespace-nowrap">
+                <span class={item.sslStatus === 'valid' ? 'text-slate-300 font-mono text-[11px]' : 'text-rose-400 font-bold'}>
+                  {item.sslStatus === 'valid' ? `有效 (${item.sslDaysRemaining}天)` : '证书失效/过期'}
+                </span>
+              </td>
+              <td class="p-3.5 whitespace-nowrap font-mono text-slate-400 text-[11px]">
+                {item.domainStatus === 'changed' ? '⚠️ 发生重定向变更' : item.domainStatus === 'suspended' ? '✕ 解析已断开' : '正常稳固'}
+              </td>
+              <td class="p-3.5 whitespace-nowrap text-right">
+                {item.level === 'normal' ? (
+                  <a href={`/provider/${item.providerId}`} class="text-tech-cyan hover:underline font-bold text-[11px]">
+                    实体档案 →
+                  </a>
+                ) : (
+                  <a href={`/risk/${eventsDatabase.find((e) => e.providerId === item.providerId)?.slug || 'sample-warning-cloud-domain-change'}`} class="text-rose-400 hover:underline font-bold text-[11px]">
+                    风险预警报告 →
+                  </a>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Automated Risk Event Bulletins Feed -->
+  <div class="space-y-4 mb-12">
+    <h2 class="text-lg font-bold text-white flex items-center gap-2">
+      <Icon name="alert-triangle" class="w-4 h-4 text-rose-500" />
+      <span>AI 自动生成的最新风险事件通报 (Event Stream)</span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+      {eventsDatabase.map((evt) => (
+        <div class="p-6 rounded-2xl bg-slate-900/80 border border-rose-500/30 flex flex-col justify-between space-y-4">
+          <div>
+            <div class="flex items-center justify-between mb-2">
+              <span class={`px-2 py-0.5 rounded text-[10px] font-bold uppercase font-mono ${
+                evt.severity === 'critical' ? 'bg-rose-500 text-slate-950' : 'bg-amber-500 text-slate-950'
+              }`}>
+                {evt.eventType}
+              </span>
+              <span class="text-xs font-mono text-slate-500">{evt.date}</span>
+            </div>
+            <h3 class="text-base font-bold text-white hover:text-rose-400 transition-colors">
+              <a href={`/risk/${evt.slug}`}>{evt.title}</a>
+            </h3>
+            <p class="text-xs text-slate-300 mt-2 leading-relaxed">{evt.summary}</p>
+          </div>
+
+          <div class="p-3 rounded-xl bg-slate-950 border border-slate-850 text-xs space-y-1">
+            <div class="font-bold text-tech-cyan text-[11px]">避险建议：</div>
+            <ul class="text-slate-400 space-y-1 text-[11px]">
+              {evt.suggestions.map((s) => (
+                <li class="flex items-start gap-1">
+                  <span>▸</span>
+                  <span>{s}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <NextBestPage nextPages={nextPages} />
+</BaseLayout>

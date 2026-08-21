@@ -1,0 +1,110 @@
+---
+import type { Provider } from '@/data/providers.data';
+import RiskBadge from './RiskBadge.astro';
+import Icon from '../common/Icon.astro';
+
+interface Props {
+  providers: Provider[];
+}
+
+const { providers } = Astro.props;
+---
+
+<div class="overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/60 backdrop-blur-md">
+  <table class="w-full text-left border-collapse text-xs">
+    <thead>
+      <tr class="border-b border-slate-800 bg-slate-950/80 text-slate-400 font-semibold">
+        <th class="p-3.5 whitespace-nowrap">机场品牌</th>
+        <th class="p-3.5 whitespace-nowrap">综合评分</th>
+        <th class="p-3.5 whitespace-nowrap">起步价格</th>
+        <th class="p-3.5 whitespace-nowrap">专线与线路</th>
+        <th class="p-3.5 whitespace-nowrap">核心协议</th>
+        <th class="p-3.5 whitespace-nowrap">AI 与流媒体</th>
+        <th class="p-3.5 whitespace-nowrap">风险评级</th>
+        <th class="p-3.5 whitespace-nowrap text-right">操作</th>
+      </tr>
+    </thead>
+    <tbody class="divide-y divide-slate-800/60">
+      {providers.map((p) => (
+        <tr class="hover:bg-slate-800/40 transition-colors">
+          <td class="p-3.5 whitespace-nowrap">
+            <div class="flex items-center gap-2">
+              <a href={`/provider/${p.slug}`} class="font-bold text-slate-100 hover:text-tech-cyan transition-colors">
+                {p.name}
+              </a>
+              <span class="text-[10px] text-slate-500 font-mono">({p.establishedYear})</span>
+            </div>
+            <div class="text-[11px] text-slate-400 max-w-xs truncate">{p.tagline}</div>
+          </td>
+
+          <td class="p-3.5 whitespace-nowrap">
+            <div class="inline-flex items-center gap-1 font-mono font-bold text-tech-emerald bg-emerald-950/40 px-2 py-0.5 rounded border border-emerald-500/20">
+              <span>{p.score.overall.toFixed(1)}</span>
+            </div>
+          </td>
+
+          <td class="p-3.5 whitespace-nowrap font-mono font-medium text-slate-200">
+            ¥{p.pricing.minMonthly} / 月
+          </td>
+
+          <td class="p-3.5 whitespace-nowrap">
+            <div class="flex gap-1 flex-wrap">
+              {p.routes.map((r) => (
+                <span class="px-1.5 py-0.5 rounded text-[10px] bg-slate-800 text-cyan-300 border border-cyan-500/20 uppercase font-medium">
+                  {r}
+                </span>
+              ))}
+            </div>
+          </td>
+
+          <td class="p-3.5 whitespace-nowrap">
+            <div class="flex gap-1 flex-wrap">
+              {p.protocols.slice(0, 2).map((proto) => (
+                <span class="px-1.5 py-0.5 rounded text-[10px] bg-slate-900 text-slate-300 border border-slate-700 font-mono">
+                  {proto}
+                </span>
+              ))}
+            </div>
+          </td>
+
+          <td class="p-3.5 whitespace-nowrap">
+            <div class="flex items-center gap-2">
+              <span class={`inline-flex items-center gap-1 ${p.aiSupport.chatgpt ? 'text-emerald-400' : 'text-slate-500'}`}>
+                <Icon name="bot" class="w-3.5 h-3.5" />
+                <span>AI 全绿</span>
+              </span>
+              <span class={`inline-flex items-center gap-1 ${p.streamingSupport.netflix ? 'text-cyan-400' : 'text-slate-500'}`}>
+                <Icon name="tv" class="w-3.5 h-3.5" />
+                <span>4K解锁</span>
+              </span>
+            </div>
+          </td>
+
+          <td class="p-3.5 whitespace-nowrap">
+            <RiskBadge level={p.riskLevel} />
+          </td>
+
+          <td class="p-3.5 whitespace-nowrap text-right">
+            <div class="flex items-center justify-end gap-1.5">
+              <a
+                href={`/provider/${p.slug}`}
+                class="px-2.5 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 text-[11px] font-medium transition-colors"
+              >
+                详情
+              </a>
+              <a
+                href={p.affiliateUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-2.5 py-1 rounded bg-tech-emerald hover:bg-emerald-400 text-slate-950 text-[11px] font-bold transition-colors inline-flex items-center gap-1"
+              >
+                <span>官网</span>
+                <Icon name="external-link" class="w-2.5 h-2.5" />
+              </a>
+            </div>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>

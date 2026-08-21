@@ -1,0 +1,40 @@
+---
+import Icon from '../common/Icon.astro';
+
+interface FAQ {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  faqs: FAQ[];
+}
+
+const { faqs } = Astro.props;
+---
+
+<div class="my-10 space-y-4">
+  <div class="flex items-center gap-2 mb-6">
+    <div class="p-1 rounded-md bg-cyan-500/20 text-cyan-400">
+      <Icon name="help-circle" class="w-5 h-5" />
+    </div>
+    <h3 class="text-xl font-bold text-slate-100">高频核心疑问解答 (FAQ)</h3>
+  </div>
+
+  <div class="space-y-3">
+    {faqs.map((faq, index) => (
+      <details class="group rounded-xl border border-slate-800 bg-slate-900/60 p-4 transition-all duration-200 open:border-slate-700 open:bg-slate-900/90">
+        <summary class="flex cursor-pointer items-center justify-between font-semibold text-slate-200 hover:text-tech-cyan text-sm list-none select-none">
+          <span class="flex items-center gap-2.5">
+            <span class="text-xs font-mono text-cyan-400 font-bold">Q{index + 1}.</span>
+            <span>{faq.question}</span>
+          </span>
+          <Icon name="chevron-down" class="w-4 h-4 text-slate-400 transition-transform duration-200 group-open:rotate-180" />
+        </summary>
+        <div class="mt-3 pt-3 border-t border-slate-800/80 text-xs sm:text-sm text-slate-400 leading-relaxed pl-6">
+          {faq.answer}
+        </div>
+      </details>
+    ))}
+  </div>
+</div>

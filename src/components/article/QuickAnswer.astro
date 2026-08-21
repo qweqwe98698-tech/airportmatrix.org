@@ -1,0 +1,21 @@
+---
+import Icon from '../common/Icon.astro';
+
+interface Props {
+  answer: string;
+}
+
+const { answer } = Astro.props;
+---
+
+<div class="my-6 p-4 sm:p-5 rounded-xl bg-gradient-to-br from-emerald-950/40 to-slate-900/80 border border-emerald-500/30 shadow-glow relative overflow-hidden">
+  <div class="flex items-center gap-2 mb-2">
+    <div class="p-1 rounded-md bg-emerald-500/20 text-emerald-400">
+      <Icon name="sparkles" class="w-4 h-4" />
+    </div>
+    <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">Quick Answer · 核心快速结论</span>
+  </div>
+  <p class="text-sm sm:text-base text-slate-100 font-medium leading-relaxed">
+    {answer}
+  </p>
+</div>

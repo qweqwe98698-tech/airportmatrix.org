@@ -1,0 +1,440 @@
+[
+  {
+    "providerId": "guangsucloud",
+    "name": "光速云 (GuangSuCloud)",
+    "officialUrl": "https://sahude.gsyvipaff.com",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 192,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "sahude.gsyvipaff.com",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "xingdaomeng",
+    "name": "星岛梦 (XingDaoMeng)",
+    "officialUrl": "https://guangs.xingdaomeng.com",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 142,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.xingdaomeng.com",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "feimaocloud",
+    "name": "飞猫云 (FeiMaoCloud)",
+    "officialUrl": "https://guangs.flycataff.com",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 160,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.flycataff.com",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "u1s1",
+    "name": "U1S1 机场",
+    "officialUrl": "https://guangs.vipaff.cc",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 155,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.vipaff.cc",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "weitucloud",
+    "name": "唯兔云 (WeiTuCloud)",
+    "officialUrl": "https://guangs.v2yunvipaff.com",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 122,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.v2yunvipaff.com",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "lingmaonet",
+    "name": "灵猫网络 (LingMaoNet)",
+    "officialUrl": "https://vip01.civetnet.com",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 173,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "vip01.civetnet.com",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "jilianyun",
+    "name": "极连云 (JiLianYun)",
+    "officialUrl": "https://guangs.jlyvipaff.com",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 137,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.jlyvipaff.com",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "yuzhoucloud",
+    "name": "宇宙云 (YuZhouCloud)",
+    "officialUrl": "https://guangs.yuzoucloud.cc",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 127,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.yuzoucloud.cc",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "guangnianti",
+    "name": "光年梯 (GuangNianTi)",
+    "officialUrl": "https://guangs.gntaff.com",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 149,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.gntaff.com",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "yifanyun",
+    "name": "一翻云 (YiFanYun)",
+    "officialUrl": "https://guangs.1flyunaff.cc",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 159,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.1flyunaff.cc",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "ermaoyun",
+    "name": "二猫云 (ErMaoYun)",
+    "officialUrl": "https://guangs.2maoyunaff.cc",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 182,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.2maoyunaff.cc",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "sogoyun",
+    "name": "SOGO 云 (SOGOYun)",
+    "officialUrl": "https://guangs.sogoyunaff.cc",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 166,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.sogoyunaff.cc",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "kexinyun",
+    "name": "可信云 (KeXinYun)",
+    "officialUrl": "https://guangs.kosingaff.com",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 190,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.kosingaff.com",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "sujie",
+    "name": "速界 (SuJie)",
+    "officialUrl": "https://guangs.speedworldaff.cc",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 130,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.speedworldaff.cc",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "kuaili",
+    "name": "快狸 (KuaiLi)",
+    "officialUrl": "https://guangs.kuailicloud.cc",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 180,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.kuailicloud.cc",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "quanqiuyun",
+    "name": "全球云 (QuanQiuYun)",
+    "officialUrl": "https://guangs.gcvipaff.com",
+    "riskScore": 5,
+    "level": "normal",
+    "statusText": "🟢 正常运行",
+    "websiteStatus": "up",
+    "httpCode": 200,
+    "responseTimeMs": 154,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 180,
+    "domainStatus": "stable",
+    "currentDomain": "guangs.gcvipaff.com",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "routine_check",
+        "title": "自动化全链路安全巡检通过"
+      }
+    ]
+  },
+  {
+    "providerId": "sample_warning_cloud",
+    "name": "某观察期机场 (Sample Warning)",
+    "officialUrl": "https://sample-warning-proxy.cc",
+    "riskScore": 45,
+    "level": "observe",
+    "statusText": "🟡 重点观察",
+    "websiteStatus": "warning",
+    "httpCode": 502,
+    "responseTimeMs": 4200,
+    "sslStatus": "valid",
+    "sslDaysRemaining": 14,
+    "domainStatus": "changed",
+    "currentDomain": "sample-warning-proxy.cc",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [
+      "domain_change",
+      "http_warning"
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "domain_change",
+        "title": "主域名发生重定向迁移"
+      }
+    ]
+  },
+  {
+    "providerId": "sample_scam_workshop",
+    "name": "某超低价跑路作坊 (Sample Dead)",
+    "officialUrl": "https://cheap-scam-proxy-dead.com",
+    "riskScore": 95,
+    "level": "critical",
+    "statusText": "🔴 跑路失联",
+    "websiteStatus": "down",
+    "httpCode": 521,
+    "responseTimeMs": 0,
+    "sslStatus": "expired",
+    "sslDaysRemaining": 0,
+    "domainStatus": "suspended",
+    "currentDomain": "cheap-scam-proxy-dead.com",
+    "lastChecked": "2026-08-21T05:36:16.846Z",
+    "signals": [
+      "website_down",
+      "ssl_expired"
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "runaway",
+        "title": "低价三年套餐跑路失联"
+      }
+    ]
+  }
+]

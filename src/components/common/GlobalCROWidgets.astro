@@ -1,0 +1,53 @@
+---
+import Icon from './Icon.astro';
+---
+
+<!-- Global Toast Notification Container -->
+<div
+  id="cro-toast"
+  class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-3 p-4 rounded-2xl bg-slate-900/95 border border-tech-emerald/50 shadow-2xl backdrop-blur-xl text-xs text-white"
+>
+  <div class="p-2 rounded-xl bg-emerald-500/20 text-emerald-400">
+    <Icon name="check" class="w-4 h-4" />
+  </div>
+  <div>
+    <div class="font-bold text-tech-emerald" id="cro-toast-title">优惠码已成功复制！</div>
+    <div class="text-slate-400 text-[11px] mt-0.5" id="cro-toast-desc">结账时粘贴即可激活专属折扣</div>
+  </div>
+</div>
+
+<script>
+  // Toast trigger function
+  function showToast(title: string, desc: string) {
+    const toast = document.getElementById('cro-toast');
+    const tTitle = document.getElementById('cro-toast-title');
+    const tDesc = document.getElementById('cro-toast-desc');
+    if (!toast || !tTitle || !tDesc) return;
+
+    tTitle.textContent = title;
+    tDesc.textContent = desc;
+
+    toast.classList.remove('translate-y-20', 'opacity-0', 'pointer-events-none');
+    toast.classList.add('translate-y-0', 'opacity-100');
+
+    setTimeout(() => {
+      toast.classList.add('translate-y-20', 'opacity-0', 'pointer-events-none');
+      toast.classList.remove('translate-y-0', 'opacity-100');
+    }, 2800);
+  }
+
+  // Bind all .copy-code-btn buttons on page
+  document.addEventListener('click', (e) => {
+    const target = (e.target as HTMLElement).closest('.copy-code-btn');
+    if (target) {
+      const code = target.getAttribute('data-code');
+      if (code) {
+        navigator.clipboard.writeText(code).then(() => {
+          showToast(`优惠码【${code}】已复制到剪贴板！`, '结账时直接粘贴即可立享专属折扣');
+        }).catch(() => {
+          showToast(`已选中优惠码【${code}】`, '请手动按 Ctrl+C 复制');
+        });
+      }
+    }
+  });
+</script>

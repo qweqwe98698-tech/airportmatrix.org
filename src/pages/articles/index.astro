@@ -1,0 +1,76 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+import { articlesData } from '@/data/articles.data';
+
+const breadcrumbs = [{ name: '知识库与深度指南', url: '/articles' }];
+---
+
+<BaseLayout
+  title="网络访问知识图谱与排错手册 (D4~D6 深度指南)"
+  description="汇聚代理客户端实战、TUN 虚拟网卡、DNS 防污染、海外 AI 解锁与全网节点全红 Timeout 故障排查深度长文。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="mb-8">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold mb-3">
+      <Icon name="sparkles" class="w-3.5 h-3.5" />
+      <span>严格内容深度门禁 · 零废话零软文</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">知识库与深度排错手册</h1>
+    <p class="text-sm text-slate-400 mt-2 max-w-3xl">
+      所有内容均符合 D4~D6 深度标准：提供明确的 Quick Answer、步骤诊断表、底层原理与 FAQ，真正解决用户的核心搜索任务。
+    </p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+    {articlesData.map((article) => (
+      <a
+        href={`/articles/${article.slug}`}
+        class="glass-card-hover rounded-2xl p-6 sm:p-7 border border-slate-800/80 flex flex-col justify-between group"
+      >
+        <div>
+          <div class="flex items-center gap-2 mb-3 flex-wrap">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-tech-emerald/10 text-tech-emerald border border-tech-emerald/30">
+              {article.depthLevel} 深度指南
+            </span>
+            <span class="text-xs text-slate-400 font-mono">
+              约 {article.wordCount} 字 · 阅读 {article.readingTime}
+            </span>
+          </div>
+
+          <h2 class="text-xl font-bold text-white group-hover:text-tech-cyan transition-colors mb-2 leading-snug">
+            {article.title}
+          </h2>
+          <p class="text-xs text-slate-400 leading-relaxed mb-4">
+            {article.description}
+          </p>
+
+          <!-- Quick Answer Preview snippet -->
+          <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-900 text-xs text-slate-300 mb-4">
+            <span class="font-bold text-tech-emerald">快速摘要：</span>
+            <span class="line-clamp-2 text-slate-400">{article.quickAnswer}</span>
+          </div>
+
+          <div class="flex flex-wrap gap-1.5 mb-4">
+            {article.tags.map((tag) => (
+              <span class="text-[11px] px-2 py-0.5 rounded bg-slate-800 text-slate-300">
+                #{tag}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/80 flex items-center justify-between text-xs text-slate-500">
+          <span>{article.author} · {article.updatedDate}</span>
+          <span class="text-tech-emerald font-bold flex items-center gap-1 group-hover:underline">
+            阅读完整指南
+            <Icon name="arrow-right" class="w-3.5 h-3.5" />
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</BaseLayout>

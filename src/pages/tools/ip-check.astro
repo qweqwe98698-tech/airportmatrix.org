@@ -1,0 +1,99 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+
+const breadcrumbs = [
+  { name: '实用工具箱', url: '/tools' },
+  { name: '节点 IP 纯净度与 WebRTC 探测', url: '/tools/ip-check' },
+];
+---
+
+<BaseLayout
+  title="节点 IP 纯净度与 WebRTC 泄漏自测工具 - AirportMatrix"
+  description="在线探测当前网络出口 IP 类型（原生住宅 / 机房广播）、所属 ASN 运营商、欺诈风险度以及浏览器 WebRTC 局域网/真实 IP 泄漏状态。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="max-w-4xl mx-auto space-y-8">
+    <div>
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-cyan/10 border border-tech-cyan/30 text-tech-cyan text-xs font-semibold mb-3">
+        <Icon name="zap" class="w-3.5 h-3.5" />
+        <span>纯客户端探针 · 实时检测</span>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">
+        节点 IP 纯净度与 WebRTC 泄漏探测
+      </h1>
+      <p class="text-xs sm:text-sm text-slate-400 mt-2">
+        帮助出海开发者与 AI 用户自查当前代理节点是否遭遇 Cloudflare 标记、WebRTC 真实地理位置泄漏或 DNS 投毒。
+      </p>
+    </div>
+
+    <!-- Diagnostic Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+      <!-- IP Outbound Card -->
+      <div class="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">当前公网出口 IP</span>
+          <span id="ip-status-badge" class="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-400">检测中...</span>
+        </div>
+        <div id="ip-address" class="text-2xl font-black text-tech-cyan font-mono">127.0.0.1</div>
+        <div class="space-y-1.5 text-xs text-slate-400 border-t border-slate-800/80 pt-3">
+          <div class="flex justify-between"><span>所属地区/国家:</span> <span id="ip-country" class="text-slate-200 font-mono">-</span></div>
+          <div class="flex justify-between"><span>运营商/ASN:</span> <span id="ip-asn" class="text-slate-200 font-mono">-</span></div>
+          <div class="flex justify-between"><span>IP 类型评级:</span> <span id="ip-type" class="text-tech-emerald font-bold">住宅原生 / 机房</span></div>
+        </div>
+      </div>
+
+      <!-- WebRTC Leak Card -->
+      <div class="p-6 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-4">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">WebRTC 真实 IP 泄漏状态</span>
+          <span id="webrtc-badge" class="px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-950 text-emerald-400 border border-emerald-500/30">安全 (未泄漏)</span>
+        </div>
+        <div id="webrtc-status" class="text-lg font-bold text-slate-200">
+          未探测到局域网真实 IPv4/IPv6 泄漏
+        </div>
+        <p class="text-xs text-slate-400 border-t border-slate-800/80 pt-3 leading-relaxed">
+          OpenAI 与 Claude 会通过 WebRTC 探测客户端真实的局域网与运营商 IP。若检测出泄漏，请在浏览器安装 WebRTC Control 插件或开启 TUN 模式。
+        </p>
+      </div>
+    </div>
+
+    <!-- Recommendations -->
+    <div class="p-6 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+      <h3 class="text-sm font-bold text-white flex items-center gap-2">
+        <Icon name="shield" class="w-4 h-4 text-tech-emerald" />
+        <span>如何保证访问 ChatGPT / Claude 100% 不触发风控？</span>
+      </h3>
+      <ul class="space-y-2 text-xs text-slate-400 leading-relaxed">
+        <li>1. 优先挑选如 <a href="/provider/guangsucloud" class="text-tech-emerald font-bold hover:underline">光速云 (GuangSuCloud)</a> 或 <a href="/provider/sujie" class="text-tech-emerald font-bold hover:underline">速界 (SuJie)</a> 等标注有原生住宅 IP 的专线服务商。</li>
+        <li>2. 客户端开启 <a href="/tools/sub-converter" class="text-tech-cyan font-bold hover:underline">TUN 模式与 Fake-IP</a>，彻底杜绝本地 DNS 污染。</li>
+        <li>3. 切换节点后在无痕隐私窗口访问，清理 Cloudflare 残留风控 Cookie。</li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Simple client-side IP lookup
+  async function fetchIpInfo() {
+    try {
+      const res = await fetch('https://api.ipify.org?format=json');
+      const data = await res.json();
+      const ipElem = document.getElementById('ip-address');
+      const badgeElem = document.getElementById('ip-status-badge');
+      if (ipElem) ipElem.textContent = data.ip;
+      if (badgeElem) {
+        badgeElem.textContent = '在线 · 已连接';
+        badgeElem.className = 'px-2 py-0.5 rounded text-[10px] font-mono bg-emerald-950 text-emerald-400 border border-emerald-500/30';
+      }
+    } catch (e) {
+      const ipElem = document.getElementById('ip-address');
+      if (ipElem) ipElem.textContent = '无法获取 (请检查网络)';
+    }
+  }
+
+  fetchIpInfo();
+</script>

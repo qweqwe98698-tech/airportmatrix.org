@@ -1,0 +1,156 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import ProviderCard from '@/components/provider/ProviderCard.astro';
+import ProviderCompareTable from '@/components/provider/ProviderCompareTable.astro';
+import Icon from '@/components/common/Icon.astro';
+import { providersData } from '@/data/providers.data';
+
+const breadcrumbs = [{ name: '机场矩阵库', url: '/providers' }];
+---
+
+<BaseLayout
+  title="机场综合矩阵库与参数对比中心 (2026 实时更新)"
+  description="全方位多维筛选：IEPL/IPLC 专线、VLESS/Hysteria2 协议、ChatGPT 原生解锁、Netflix 4K 解锁、价格与节点覆盖实测排行榜。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- Page Header -->
+  <div class="mb-8">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold mb-3">
+      <Icon name="server" class="w-3.5 h-3.5" />
+      <span>实时数据库 · {providersData.length} 家精选大厂</span>
+    </div>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">机场综合矩阵库</h1>
+    <p class="text-sm text-slate-400 mt-2 max-w-3xl">
+      所有入库机场均经过团队独立全天候网络链路探测、敏感时期稳定性追踪与退款履约核验。支持按线路、协议、应用场景进行多维过滤。
+    </p>
+  </div>
+
+  <!-- Interactive Matrix Toolbar / Filter -->
+  <div class="p-4 sm:p-6 rounded-xl bg-slate-900/80 border border-slate-800 mb-8 space-y-4">
+    <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
+      <div class="text-xs font-bold text-slate-200 uppercase tracking-wider">多维矩阵筛选器</div>
+      <div class="text-xs text-slate-400">已收录 <span class="text-tech-emerald font-mono font-bold">{providersData.length}</span> 个验证实体</div>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+      <div>
+        <span class="text-slate-400 block mb-1.5 font-medium">线路类型：</span>
+        <div class="flex flex-wrap gap-1.5" id="route-filters">
+          <button type="button" class="filter-btn active px-2.5 py-1 rounded bg-tech-emerald text-slate-950 font-bold" data-filter="all">全部</button>
+          <button type="button" class="filter-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-filter="iepl">IEPL 专线</button>
+          <button type="button" class="filter-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-filter="iplc">IPLC 专线</button>
+          <button type="button" class="filter-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-filter="bgp">BGP 中转</button>
+        </div>
+      </div>
+
+      <div>
+        <span class="text-slate-400 block mb-1.5 font-medium">场景解锁：</span>
+        <div class="flex flex-wrap gap-1.5" id="scenario-filters">
+          <button type="button" class="scenario-btn active px-2.5 py-1 rounded bg-tech-emerald text-slate-950 font-bold" data-scenario="all">全部场景</button>
+          <button type="button" class="scenario-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-scenario="ai">ChatGPT 原生</button>
+          <button type="button" class="scenario-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-scenario="streaming">Netflix 4K</button>
+        </div>
+      </div>
+
+      <div>
+        <span class="text-slate-400 block mb-1.5 font-medium">协议支持：</span>
+        <div class="flex flex-wrap gap-1.5" id="protocol-filters">
+          <button type="button" class="proto-btn active px-2.5 py-1 rounded bg-tech-emerald text-slate-950 font-bold" data-proto="all">全部协议</button>
+          <button type="button" class="proto-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-proto="vless">VLESS</button>
+          <button type="button" class="proto-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-proto="hysteria2">Hysteria 2</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cards Grid View -->
+  <div class="mb-12">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-bold text-white flex items-center gap-2">
+        <Icon name="layers" class="w-4 h-4 text-tech-emerald" />
+        <span>实体详细卡片视图</span>
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="provider-cards-container">
+      {providersData.map((provider) => (
+        <div class="provider-item" data-routes={provider.routes.join(',')} data-protocols={provider.protocols.join(',')} data-ai={provider.aiSupport.chatgpt ? 'true' : 'false'} data-streaming={provider.streamingSupport.netflix ? 'true' : 'false'}>
+          <ProviderCard provider={provider} />
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Detailed Compare Table View -->
+  <div class="mb-12">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-bold text-white flex items-center gap-2">
+        <Icon name="server" class="w-4 h-4 text-tech-cyan" />
+        <span>全参数横向对比矩阵表</span>
+      </h2>
+    </div>
+    <ProviderCompareTable providers={providersData} />
+  </div>
+</BaseLayout>
+
+<script>
+  let activeRoute = 'all';
+  let activeScenario = 'all';
+  let activeProto = 'all';
+
+  function applyFilters() {
+    const items = document.querySelectorAll('.provider-item');
+    items.forEach((item: any) => {
+      const routes = item.dataset.routes || '';
+      const protocols = item.dataset.protocols || '';
+      const ai = item.dataset.ai === 'true';
+      const streaming = item.dataset.streaming === 'true';
+
+      let matchRoute = (activeRoute === 'all' || routes.includes(activeRoute));
+      let matchScenario = (activeScenario === 'all' || (activeScenario === 'ai' && ai) || (activeScenario === 'streaming' && streaming));
+      let matchProto = (activeProto === 'all' || protocols.includes(activeProto));
+
+      if (matchRoute && matchScenario && matchProto) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  }
+
+  // Bind Route Filters
+  document.querySelectorAll('.filter-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold'));
+      document.querySelectorAll('.filter-btn').forEach(b => b.classList.add('bg-slate-800', 'text-slate-300'));
+      btn.classList.add('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold');
+      activeRoute = btn.getAttribute('data-filter') || 'all';
+      applyFilters();
+    });
+  });
+
+  // Bind Scenario Filters
+  document.querySelectorAll('.scenario-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold'));
+      document.querySelectorAll('.scenario-btn').forEach(b => b.classList.add('bg-slate-800', 'text-slate-300'));
+      btn.classList.add('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold');
+      activeScenario = btn.getAttribute('data-scenario') || 'all';
+      applyFilters();
+    });
+  });
+
+  // Bind Proto Filters
+  document.querySelectorAll('.proto-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.proto-btn').forEach(b => b.classList.remove('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold'));
+      document.querySelectorAll('.proto-btn').forEach(b => b.classList.add('bg-slate-800', 'text-slate-300'));
+      btn.classList.add('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold');
+      activeProto = btn.getAttribute('data-proto') || 'all';
+      applyFilters();
+    });
+  });
+</script>

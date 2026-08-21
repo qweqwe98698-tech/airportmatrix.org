@@ -1,0 +1,169 @@
+---
+/**
+ * GeoSchema.astro - SEO & GEO (Generative Engine Optimization) Schema Generator
+ * Generates JSON-LD for Search Engines & LLM scrapers (ChatGPT Search, Perplexity, Claude, Google Gemini)
+ */
+
+export interface Props {
+  type?: 'Article' | 'SoftwareApplication' | 'HowTo' | 'FAQPage' | 'Product' | 'WebSite';
+  title: string;
+  description: string;
+  url?: string;
+  publishedTime?: string;
+  modifiedTime?: string;
+  author?: string;
+  faqs?: Array<{ question: string; answer: string }>;
+  softwareData?: {
+    name: string;
+    operatingSystem: string;
+    applicationCategory: string;
+    downloadUrl: string;
+    softwareVersion: string;
+  };
+  productData?: {
+    name: string;
+    ratingValue: number;
+    reviewCount: number;
+    price: number;
+    priceCurrency: string;
+  };
+  howToSteps?: Array<{ name: string; text: string }>;
+  breadcrumbs?: Array<{ name: string; url: string }>;
+}
+
+const {
+  type = 'Article',
+  title,
+  description,
+  url = Astro.url.href,
+  publishedTime = '2026-08-21T00:00:00Z',
+  modifiedTime = new Date().toISOString(),
+  author = 'AirportMatrix Intelligence Core',
+  faqs = [],
+  softwareData,
+  productData,
+  howToSteps = [],
+  breadcrumbs = [],
+} = Astro.props;
+
+const siteUrl = 'https://airportmatrix.org';
+
+// 1. Base WebSite & Organization
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'AirportMatrix X',
+  url: siteUrl,
+  logo: `${siteUrl}/favicon.svg`,
+  description: '中文互联网首个机场代理趋势数据库与生态数据中心',
+};
+
+// 2. BreadcrumbList Schema
+const breadcrumbSchema = breadcrumbs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: breadcrumbs.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.url.startsWith('http') ? item.url : `${siteUrl}${item.url}`,
+  })),
+} : null;
+
+// 3. Main Specific Schema
+let mainSchema: any = null;
+
+if (type === 'SoftwareApplication' && softwareData) {
+  mainSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: softwareData.name,
+    operatingSystem: softwareData.operatingSystem,
+    applicationCategory: softwareData.applicationCategory,
+    downloadUrl: softwareData.downloadUrl,
+    softwareVersion: softwareData.softwareVersion,
+    description: description,
+    offers: {
+      '@type': 'Offer',
+      price: '0.00',
+      priceCurrency: 'USD',
+    },
+  };
+} else if (type === 'Product' && productData) {
+  mainSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: productData.name,
+    description: description,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: productData.ratingValue,
+      bestRating: '10',
+      worstRating: '1',
+      reviewCount: productData.reviewCount || 128,
+    },
+    offers: {
+      '@type': 'Offer',
+      price: productData.price.toString(),
+      priceCurrency: productData.priceCurrency || 'CNY',
+      availability: 'https://schema.org/InStock',
+    },
+  };
+} else if (type === 'HowTo' && howToSteps.length > 0) {
+  mainSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: title,
+    description: description,
+    step: howToSteps.map((s, idx) => ({
+      '@type': 'HowToStep',
+      position: idx + 1,
+      name: s.name,
+      text: s.text,
+    })),
+  };
+} else {
+  mainSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: title,
+    description: description,
+    url: url,
+    datePublished: publishedTime,
+    dateModified: modifiedTime,
+    author: {
+      '@type': 'Organization',
+      name: author,
+      url: siteUrl,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'AirportMatrix X',
+      logo: {
+        '@type': 'ImageObject',
+        url: `${siteUrl}/favicon.svg`,
+      },
+    },
+  };
+}
+
+// 4. FAQPage Schema
+const faqSchema = faqs && faqs.length > 0 ? {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((faq) => ({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
+  })),
+} : null;
+---
+
+<!-- JSON-LD Structured Data Injection for SEO & GEO LLMs -->
+<script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+{breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
+{mainSchema && <script type="application/ld+json" set:html={JSON.stringify(mainSchema)} />}
+{faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}

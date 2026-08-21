@@ -1,0 +1,86 @@
+[
+  {
+    "keyword": "机场推荐2026",
+    "cluster": "commercial_recommendation",
+    "type": ["commercial", "brand"],
+    "search_intent": "comparison",
+    "trend_score": 99,
+    "metrics": { "growth": 95, "competition": 85, "commercial": 100 },
+    "recommended_content": ["matrix", "pillar"],
+    "target_url": "/providers",
+    "depth_level": "D6",
+    "related_entities": ["provider_guangsucloud", "route_iepl"]
+  },
+  {
+    "keyword": "稳定机场推荐",
+    "cluster": "commercial_recommendation",
+    "type": ["commercial", "stable"],
+    "search_intent": "comparison",
+    "trend_score": 98,
+    "metrics": { "growth": 90, "competition": 80, "commercial": 98 },
+    "recommended_content": ["matrix", "review"],
+    "target_url": "/providers",
+    "depth_level": "D5",
+    "related_entities": ["provider_guangsucloud", "route_iepl"]
+  },
+  {
+    "keyword": "便宜稳定机场",
+    "cluster": "commercial_recommendation",
+    "type": ["commercial", "budget"],
+    "search_intent": "comparison",
+    "trend_score": 96,
+    "metrics": { "growth": 92, "competition": 75, "commercial": 92 },
+    "recommended_content": ["matrix", "recommendation"],
+    "target_url": "/recommend",
+    "depth_level": "D5",
+    "related_entities": ["provider_guangsucloud"]
+  },
+  {
+    "keyword": "IEPL专线机场推荐",
+    "cluster": "route_and_protocol",
+    "type": ["commercial", "premium"],
+    "search_intent": "comparison",
+    "trend_score": 94,
+    "metrics": { "growth": 88, "competition": 60, "commercial": 96 },
+    "recommended_content": ["pillar", "matrix"],
+    "target_url": "/routes",
+    "depth_level": "D6",
+    "related_entities": ["route_iepl", "provider_guangsucloud"]
+  },
+  {
+    "keyword": "光速云怎么样靠谱吗",
+    "cluster": "brand_review",
+    "type": ["brand", "review"],
+    "search_intent": "comparison",
+    "trend_score": 98,
+    "metrics": { "growth": 95, "competition": 20, "commercial": 99 },
+    "recommended_content": ["review", "matrix"],
+    "target_url": "/provider/guangsucloud",
+    "depth_level": "D5",
+    "related_entities": ["provider_guangsucloud", "route_iepl"]
+  },
+  {
+    "keyword": "光速云测速与优惠码AMM",
+    "cluster": "brand_review",
+    "type": ["brand", "review"],
+    "search_intent": "comparison",
+    "trend_score": 99,
+    "metrics": { "growth": 98, "competition": 15, "commercial": 100 },
+    "recommended_content": ["review", "matrix"],
+    "target_url": "/articles/guangsucloud-in-depth-review-2026",
+    "depth_level": "D6",
+    "related_entities": ["provider_guangsucloud", "client_clash_verge"]
+  },
+  {
+    "keyword": "ChatGPT 1020 Access Denied怎么办",
+    "cluster": "ai_solution",
+    "type": ["problem", "commercial"],
+    "search_intent": "solution",
+    "trend_score": 99,
+    "metrics": { "growth": 96, "competition": 40, "commercial": 98 },
+    "recommended_content": ["troubleshooting", "matrix"],
+    "target_url": "/articles/chatgpt-access-blocked-solution",
+    "depth_level": "D5",
+    "related_entities": ["ai_chatgpt", "provider_guangsucloud"]
+  }
+]

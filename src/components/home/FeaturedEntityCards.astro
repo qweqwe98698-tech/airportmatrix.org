@@ -1,0 +1,144 @@
+---
+import Icon from '../common/Icon.astro';
+import { providersData } from '@/data/providers.data';
+
+// Top 4 representative database entities
+const featured = providersData.slice(0, 4);
+---
+
+<section class="py-12 border-t border-slate-800/80">
+  <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="w-2 h-2 rounded-full bg-tech-emerald"></span>
+        <span class="text-xs font-bold text-tech-emerald tracking-wider uppercase">Database Entity Records</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">数据库精选实体与关系图谱</h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-1">
+        不仅提供评测，更提供多维参数、协议绑定、客户端兼容性与上下游知识关联。
+      </p>
+    </div>
+    <a href="/providers" class="text-xs font-semibold text-tech-cyan hover:underline flex items-center gap-1">
+      <span>查看全部 16 家品牌档案</span>
+      <span>→</span>
+    </a>
+  </div>
+
+  <!-- 2-Column High-Density Database Entity Cards (Desktop) -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {featured.map((provider) => (
+      <div class="p-6 sm:p-7 rounded-2xl bg-slate-900/80 border border-slate-800 hover:border-slate-700 transition-all flex flex-col justify-between space-y-5 shadow-lg group">
+        <!-- Top Row: Name, Score & Price -->
+        <div>
+          <div class="flex items-start justify-between gap-4 pb-4 border-b border-slate-800/80">
+            <div>
+              <div class="flex items-center gap-2 mb-1.5 flex-wrap">
+                <span class="text-xs font-mono font-bold text-tech-emerald bg-emerald-950 px-2 py-0.5 rounded border border-emerald-500/30">
+                  综合评分 {provider.score.overall.toFixed(1)} / 10
+                </span>
+                <span class="text-xs text-amber-400">★★★★★</span>
+                <span class="text-[11px] font-mono text-slate-400 bg-slate-800 px-1.5 py-0.5 rounded">
+                  {provider.establishedYear}年运营
+                </span>
+              </div>
+              <h3 class="text-xl font-black text-white group-hover:text-tech-cyan transition-colors">
+                {provider.name}
+              </h3>
+              <p class="text-xs text-slate-400 mt-1 line-clamp-1">{provider.tagline}</p>
+            </div>
+            
+            <div class="text-right flex-shrink-0">
+              <div class="text-xs text-slate-500">套餐起步</div>
+              <div class="text-lg font-bold text-tech-emerald font-mono">¥{provider.pricing.minMonthly} / 月</div>
+              <div class="text-[10px] text-slate-400 font-mono">({provider.pricing.billingPeriod})</div>
+            </div>
+          </div>
+
+          <!-- Multi-dimensional Spec Grid (High Data Density) -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 py-4 text-xs">
+            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-850">
+              <div class="text-slate-500 text-[11px] mb-0.5">线路类型</div>
+              <div class="font-bold text-slate-200 uppercase font-mono">{provider.routes.join(' + ')}</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-850">
+              <div class="text-slate-500 text-[11px] mb-0.5">主力协议</div>
+              <div class="font-bold text-slate-200 uppercase font-mono">{provider.protocols.join(' / ')}</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-850">
+              <div class="text-slate-500 text-[11px] mb-0.5">兼容客户端</div>
+              <div class="font-bold text-slate-200 truncate">Clash / 小火箭 / sing-box</div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-850">
+              <div class="text-slate-500 text-[11px] mb-0.5">AI 支持 (ChatGPT)</div>
+              <div class="font-bold text-emerald-400 flex items-center gap-1">
+                <span>✓ 完美解锁</span>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-850">
+              <div class="text-slate-500 text-[11px] mb-0.5">流媒体 (Netflix)</div>
+              <div class="font-bold text-emerald-400 flex items-center gap-1">
+                <span>✓ 4K 原生解锁</span>
+              </div>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-950/80 border border-slate-850">
+              <div class="text-slate-500 text-[11px] mb-0.5">风险监控评级</div>
+              <div class="font-bold text-emerald-400 flex items-center gap-1">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                <span>低风险 · 绿灯</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Entity Relationships (适合场景 & 关联知识) -->
+          <div class="space-y-2.5 pt-1 text-xs border-t border-slate-800/60">
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-slate-400 font-bold flex-shrink-0">适合场景:</span>
+              <span class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-500/20 text-[11px]">✓ ChatGPT / Claude</span>
+              <span class="px-2 py-0.5 rounded bg-cyan-950/60 text-cyan-300 border border-cyan-500/20 text-[11px]">✓ Netflix 4K</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px]">✓ GitHub / 终端</span>
+              <span class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[11px]">✓ Clash Verge Rev</span>
+            </div>
+
+            <div class="flex items-center gap-2 flex-wrap">
+              <span class="text-slate-400 font-bold flex-shrink-0">关联知识:</span>
+              <a href="/protocol/vless" class="text-tech-cyan hover:underline text-[11px]">VLESS 协议原理</a>
+              <span class="text-slate-700">·</span>
+              <a href="/routes" class="text-tech-cyan hover:underline text-[11px]">IEPL 专线架构</a>
+              <span class="text-slate-700">·</span>
+              <a href="/client/clash-verge" class="text-tech-cyan hover:underline text-[11px]">Clash 配置教程</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Action Links -->
+        <div class="pt-4 border-t border-slate-800 flex items-center justify-between gap-3">
+          <div class="text-xs">
+            {provider.couponCode && (
+              <span class="text-slate-400 text-[11px]">
+                优惠码: <strong class="text-tech-emerald font-mono bg-slate-950 px-2 py-0.5 rounded border border-slate-800">{provider.couponCode}</strong>
+              </span>
+            )}
+          </div>
+
+          <div class="flex items-center gap-2.5">
+            <a
+              href={`/provider/${provider.slug}`}
+              class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors"
+            >
+              实体档案与测速
+            </a>
+            <a
+              href={`/go/${provider.slug}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-4 py-2 rounded-xl text-xs font-bold bg-tech-emerald text-slate-950 hover:bg-emerald-400 transition-all flex items-center gap-1"
+            >
+              <span>直达官网</span>
+              <span>→</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,119 @@
+---
+import Icon from './Icon.astro';
+import { entityGraph } from '@/db';
+
+export interface Props {
+  entityId: string;
+}
+
+const { entityId } = Astro.props;
+const connected = entityGraph.getConnectedEntities(entityId);
+
+const protocols = connected.filter((c) => c.node.type === 'protocol');
+const routes = connected.filter((c) => c.node.type === 'route');
+const clients = connected.filter((c) => c.node.type === 'client');
+const providers = connected.filter((c) => c.node.type === 'provider');
+const issues = connected.filter((c) => c.node.type === 'issue');
+---
+
+{connected.length > 0 && (
+  <div class="p-5 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3.5 my-6">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <span class="w-2 h-2 rounded-full bg-tech-cyan animate-pulse"></span>
+        <span class="text-xs font-bold text-tech-cyan uppercase tracking-wider">Entity Knowledge Graph (实体关联拓扑)</span>
+      </div>
+      <span class="text-[10px] font-mono text-slate-500">{connected.length} 个拓扑关联节点</span>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+      <!-- Related Protocols & Routes -->
+      {(protocols.length > 0 || routes.length > 0) && (
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-850 space-y-1.5">
+          <div class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5">
+            <Icon name="layers" class="w-3.5 h-3.5 text-tech-emerald" />
+            <span>底层协议与专线架构：</span>
+          </div>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            {protocols.map((p) => (
+              <a
+                href={`/protocol/${p.node.slug}`}
+                class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-500/30 hover:border-emerald-400 text-[11px] font-mono transition-colors"
+              >
+                {p.node.name}
+              </a>
+            ))}
+            {routes.map((r) => (
+              <a
+                href="/routes"
+                class="px-2 py-0.5 rounded bg-cyan-950/60 text-cyan-300 border border-cyan-500/30 hover:border-cyan-400 text-[11px] font-mono transition-colors"
+              >
+                {r.node.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Compatible Clients -->
+      {clients.length > 0 && (
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-850 space-y-1.5">
+          <div class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5">
+            <Icon name="cpu" class="w-3.5 h-3.5 text-tech-cyan" />
+            <span>适配主流客户端生态：</span>
+          </div>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            {clients.map((c) => (
+              <a
+                href={`/client/${c.node.slug}`}
+                class="px-2 py-0.5 rounded bg-slate-900 text-slate-200 border border-slate-700 hover:border-tech-cyan text-[11px] font-medium transition-colors"
+              >
+                {c.node.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Associated Providers -->
+      {providers.length > 0 && (
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-850 space-y-1.5">
+          <div class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5">
+            <Icon name="server" class="w-3.5 h-3.5 text-tech-emerald" />
+            <span>适配优质服务商档案：</span>
+          </div>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            {providers.map((pr) => (
+              <a
+                href={`/provider/${pr.node.slug}`}
+                class="px-2 py-0.5 rounded bg-emerald-950/60 text-emerald-300 border border-emerald-500/30 hover:border-emerald-400 text-[11px] font-medium transition-colors"
+              >
+                {pr.node.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+
+      <!-- Solved Issues -->
+      {issues.length > 0 && (
+        <div class="p-3 rounded-xl bg-slate-950/80 border border-slate-850 space-y-1.5">
+          <div class="text-[11px] font-semibold text-slate-400 flex items-center gap-1.5">
+            <Icon name="alert-triangle" class="w-3.5 h-3.5 text-amber-400" />
+            <span>关联故障排查指南：</span>
+          </div>
+          <div class="flex items-center gap-1.5 flex-wrap">
+            {issues.map((iss) => (
+              <a
+                href={`/articles/${iss.node.slug}`}
+                class="px-2 py-0.5 rounded bg-amber-950/60 text-amber-300 border border-amber-500/30 hover:border-amber-400 text-[11px] transition-colors"
+              >
+                {iss.node.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  </div>
+)}

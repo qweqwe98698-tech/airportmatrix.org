@@ -1,0 +1,92 @@
+---
+import Icon from '../common/Icon.astro';
+
+const entities = [
+  {
+    title: 'Provider 品牌数据库',
+    desc: '收录 100+ 经真实全天候测速与履约审查的专线/中转服务商，含 9Gbps 测速、解锁实测与优惠码。',
+    count: '100+ 实体',
+    href: '/providers',
+    badge: 'Flagship Core',
+    icon: 'server',
+  },
+  {
+    title: 'Client 客户端知识库',
+    desc: '覆盖 Windows, macOS, iOS, Android, Linux 主流开源客户端官方下载与 TUN 虚拟网卡实操。',
+    count: '20+ 客户端',
+    href: '/clients',
+    badge: 'Cross-Platform',
+    icon: 'cpu',
+  },
+  {
+    title: 'Protocol 协议百科',
+    desc: '深度拆解 VLESS Reality、Hysteria 2、Trojan、Shadowsocks 2022 底层传输与抗封锁密码学。',
+    count: '30+ 协议',
+    href: '/protocols',
+    badge: 'RFC Standards',
+    icon: 'layers',
+  },
+  {
+    title: 'Route 线路架构库',
+    desc: '剖析 IEPL 国际专线、IPLC 点对点物理光纤、BGP 动态多线中转的延迟丢包差异与成本模型。',
+    count: '50+ 线路模型',
+    href: '/routes',
+    badge: 'Infrastructure',
+    icon: 'zap',
+  },
+];
+---
+
+<section class="py-12 border-t border-slate-800/80">
+  <div class="flex items-end justify-between mb-8">
+    <div>
+      <div class="flex items-center gap-2 mb-1">
+        <span class="w-2 h-2 rounded-full bg-tech-emerald"></span>
+        <span class="text-xs font-bold text-tech-emerald tracking-wider uppercase">Database Explorer</span>
+      </div>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">探索实体知识数据库</h2>
+      <p class="text-xs sm:text-sm text-slate-400 mt-1">
+        像查阅 GitHub 与 Wikipedia 一样检索代理网络生态中的每一个核心实体。
+      </p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    {entities.map((item) => (
+      <a
+        href={item.href}
+        class="glass-card-hover rounded-2xl p-6 sm:p-7 border border-slate-800/80 flex flex-col justify-between group"
+      >
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2.5">
+              <div class="p-2 rounded-lg bg-slate-900 border border-slate-800 text-tech-cyan">
+                <Icon name={item.icon} class="w-5 h-5" />
+              </div>
+              <span class="text-xs font-mono font-bold text-slate-400 bg-slate-900 px-2 py-0.5 rounded border border-slate-800">
+                {item.count}
+              </span>
+            </div>
+            <span class="text-[10px] font-mono font-bold text-tech-emerald bg-emerald-950/60 px-2 py-0.5 rounded border border-emerald-500/30">
+              {item.badge}
+            </span>
+          </div>
+
+          <h3 class="text-xl font-bold text-white group-hover:text-tech-cyan transition-colors mb-2">
+            {item.title}
+          </h3>
+          <p class="text-xs sm:text-sm text-slate-400 leading-relaxed mb-6">
+            {item.desc}
+          </p>
+        </div>
+
+        <div class="pt-4 border-t border-slate-800/60 flex items-center justify-between text-xs text-slate-400 group-hover:text-slate-200">
+          <span>进入实体目录</span>
+          <span class="text-tech-emerald font-bold flex items-center gap-1 group-hover:underline">
+            Explore →
+          </span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

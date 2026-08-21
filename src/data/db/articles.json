@@ -1,0 +1,62 @@
+[
+  {
+    "id": "article_guangsucloud_in_depth_review",
+    "type": "article",
+    "title": "光速云 (GuangSuCloud) 2026 深度实测报告：IEPL 企业专线、9Gbps 测速、VLESS 协议与 ChatGPT 解锁全记录",
+    "description": "基于真实 MiaoKO 9Gbps 测速与 70+ 节点解锁大图，深度评测光速云架构、香港 424MB/s 满速、专属 8 折优惠码【AMM】与全平台配置教程。",
+    "category": "brand_review",
+    "topic": "topic_iepl",
+    "entities": ["provider_guangsucloud", "protocol_vless", "route_iepl"],
+    "intent": "review",
+    "seo": {
+      "keywords": ["光速云评测", "光速云怎么样", "IEPL专线", "VLESS测速", "优惠码AMM", "ChatGPT全绿"],
+      "schema": "Article"
+    },
+    "links": {
+      "related": ["article_clash_verge_rev_complete_tutorial", "article_chatgpt_access_blocked_solution"],
+      "pillar": "topic_iepl"
+    },
+    "update_frequency": "monthly",
+    "status": "published"
+  },
+  {
+    "id": "article_clash_verge_rev_complete_tutorial",
+    "type": "article",
+    "title": "Clash Verge Rev 完整使用配置与避坑指南",
+    "description": "从官方下载、订阅导入到 TUN 虚拟网卡接管与 Fake-IP 防污染实战。",
+    "category": "client_tutorial",
+    "topic": "topic_clash_ecosystem",
+    "entities": ["client_clash_verge", "protocol_vless", "route_iepl"],
+    "intent": "problem_solution",
+    "seo": {
+      "keywords": ["Clash Verge Rev", "Mihomo内核", "TUN模式", "订阅导入"],
+      "schema": "HowTo"
+    },
+    "links": {
+      "related": ["article_guangsucloud_in_depth_review", "article_chatgpt_access_blocked_solution"],
+      "pillar": "topic_clash_ecosystem"
+    },
+    "update_frequency": "monthly",
+    "status": "published"
+  },
+  {
+    "id": "article_chatgpt_access_blocked_solution",
+    "type": "article",
+    "title": "ChatGPT 报错 1020 / Access Denied 原生 IP 破局终极指南",
+    "description": "深度剖析 OpenAI 风控模型与原生住宅 IP 识别策略。",
+    "category": "ai_solution",
+    "topic": "topic_ai_access",
+    "entities": ["ai_chatgpt", "provider_guangsucloud", "provider_tag_internet"],
+    "intent": "problem_solution",
+    "seo": {
+      "keywords": ["ChatGPT 1020", "Access Denied", "OpenAI原生IP", "Cloudflare验证"],
+      "schema": "FAQPage"
+    },
+    "links": {
+      "related": ["article_clash_verge_rev_complete_tutorial", "article_guangsucloud_in_depth_review"],
+      "pillar": "topic_ai_access"
+    },
+    "update_frequency": "monthly",
+    "status": "published"
+  }
+]

@@ -1,0 +1,139 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+import NextBestPage from '@/components/article/NextBestPage.astro';
+import eventsDatabase from '@/../risk-engine/database/events.json';
+import risksDatabase from '@/../risk-engine/database/risks.json';
+
+export function getStaticPaths() {
+  return eventsDatabase.map((evt) => ({
+    params: { slug: evt.slug },
+    props: { evt },
+  }));
+}
+
+const { evt } = Astro.props;
+const riskInfo = risksDatabase.find((r) => r.providerId === evt.providerId) || risksDatabase[0];
+
+const breadcrumbs = [
+  { name: '风险监控中枢', url: '/risks' },
+  { name: evt.title, url: `/risk/${evt.slug}` },
+];
+
+const nextPages = [
+  {
+    title: '查看 16 大稳定专线机场矩阵（杜绝跑路）',
+    href: '/providers',
+    desc: '全面选择具备 3 年以上运营资质、全 IEPL 企业专线的合规大厂。',
+    type: '避险替代方案',
+  },
+  {
+    title: '智能代理选型向导',
+    href: '/recommend/wizard',
+    desc: '30 秒根据预算与场景匹配当前在线可用的最佳专线。',
+    type: '智能选型',
+  },
+];
+---
+
+<BaseLayout
+  title={`${evt.title} - 官网打不开/域名更换最新状态 - AirportMatrix`}
+  description={`【风险通报】${evt.summary}。监测时间：${evt.date}。针对 ${evt.providerName} 的实时 HTTP 探测与避险对策建议。`}
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- Event Header -->
+  <div class="max-w-4xl mx-auto space-y-8">
+    <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-rose-950/40 via-slate-900 to-slate-950 border border-rose-500/30">
+      <div class="flex items-center gap-2 mb-3">
+        <span class={`px-2.5 py-0.5 rounded text-xs font-bold font-mono uppercase ${
+          evt.severity === 'critical' ? 'bg-rose-500 text-slate-950' : 'bg-amber-500 text-slate-950'
+        }`}>
+          {evt.severity === 'critical' ? '🔴 高危通报' : '🟡 风险预警'}
+        </span>
+        <span class="text-xs text-slate-500 font-mono">事件编号: {evt.id}</span>
+        <span class="text-xs text-slate-500 font-mono">·</span>
+        <span class="text-xs text-slate-400 font-mono">监测时间: {evt.date}</span>
+      </div>
+
+      <h1 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight">
+        {evt.title}
+      </h1>
+
+      <p class="text-xs sm:text-sm text-slate-300 mt-3 leading-relaxed">
+        {evt.summary}
+      </p>
+    </div>
+
+    <!-- Diagnostic Details Card -->
+    <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-4">
+      <h2 class="text-base font-bold text-white flex items-center gap-2">
+        <Icon name="zap" class="w-4 h-4 text-tech-cyan" />
+        <span>自动探针实时诊断参数 (Probe Diagnostics)</span>
+      </h2>
+
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+        <div class="p-3 rounded-xl bg-slate-950 border border-slate-850">
+          <span class="text-slate-500 text-[11px]">HTTP 状态码:</span>
+          <div class={`text-base font-bold font-mono ${riskInfo.httpCode === 200 ? 'text-emerald-400' : 'text-rose-500'}`}>
+            {riskInfo.httpCode}
+          </div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-950 border border-slate-850">
+          <span class="text-slate-500 text-[11px]">综合风险评分:</span>
+          <div class={`text-base font-bold font-mono ${riskInfo.riskScore > 60 ? 'text-rose-500' : 'text-amber-400'}`}>
+            {riskInfo.riskScore} / 100
+          </div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-950 border border-slate-850">
+          <span class="text-slate-500 text-[11px]">SSL 证书状态:</span>
+          <div class="text-xs font-bold text-slate-200 mt-1">
+            {riskInfo.sslStatus === 'valid' ? `有效 (${riskInfo.sslDaysRemaining}天)` : '证书失效/异常'}
+          </div>
+        </div>
+        <div class="p-3 rounded-xl bg-slate-950 border border-slate-850">
+          <span class="text-slate-500 text-[11px]">域名解析状态:</span>
+          <div class="text-xs font-bold text-slate-200 mt-1">
+            {riskInfo.domainStatus === 'changed' ? '发生重定向迁移' : riskInfo.domainStatus === 'suspended' ? '已断开解析' : '正常'}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Suggested Actions -->
+    <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+      <h2 class="text-base font-bold text-emerald-400 flex items-center gap-2">
+        <Icon name="shield" class="w-4 h-4 text-emerald-400" />
+        <span>建议用户采取的避险措施 (Action Items)</span>
+      </h2>
+      <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+        {evt.suggestions.map((s, idx) => (
+          <li class="flex items-start gap-2">
+            <span class="text-emerald-400 font-bold font-mono">0{idx + 1}.</span>
+            <span>{s}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- Recommended Safe Alternatives -->
+    <div class="p-6 rounded-2xl bg-gradient-to-r from-emerald-950/30 to-slate-900 border border-emerald-500/30 space-y-3">
+      <h3 class="text-sm font-bold text-white">🛡️ 需要紧急备用专线出海？</h3>
+      <p class="text-xs text-slate-400">
+        推荐使用经过 9Gbps 宽带真实测速、运营超 3 年以上的老牌专线服务商：
+      </p>
+      <div class="flex items-center gap-3 pt-1 flex-wrap">
+        <a href="/provider/guangsucloud" class="px-4 py-2 rounded-xl bg-tech-emerald text-slate-950 font-bold text-xs hover:bg-emerald-400 transition-colors">
+          前往光速云 (7.5元/月起 IEPL专线)
+        </a>
+        <a href="/providers" class="px-4 py-2 rounded-xl bg-slate-800 text-slate-200 font-semibold text-xs border border-slate-700 hover:bg-slate-700 transition-colors">
+          查阅 16 大全景矩阵榜单
+        </a>
+      </div>
+    </div>
+
+    <NextBestPage nextPages={nextPages} />
+  </div>
+</BaseLayout>

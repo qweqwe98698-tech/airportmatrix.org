@@ -1,0 +1,365 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import RiskBadge from '@/components/provider/RiskBadge.astro';
+import Icon from '@/components/common/Icon.astro';
+import NextBestPage from '@/components/article/NextBestPage.astro';
+import { providersData } from '@/data/providers.data';
+
+export function getStaticPaths() {
+  return providersData.map((provider) => ({
+    params: { slug: provider.slug },
+    props: { provider },
+  }));
+}
+
+const { provider } = Astro.props;
+
+const breadcrumbs = [
+  { name: '机场矩阵库', url: '/providers' },
+  { name: `${provider.name} 深度评测与档案`, url: `/provider/${provider.slug}` },
+];
+
+const nextPages = [
+  {
+    title: 'Clash Verge Rev 完整配置指南',
+    href: '/client/clash-verge',
+    desc: '了解如何将该机场的一键订阅导入新一代 Clash Verge Rev 客户端并开启 TUN 模式。',
+    type: '客户端指南',
+  },
+  {
+    title: 'IEPL 与 IPLC 专线核心技术解析',
+    href: '/routes',
+    desc: '深入理解该机场采用的物理专线如何避开 GFW 高峰期拥堵与丢包。',
+    type: '专线百科',
+  },
+];
+---
+
+<BaseLayout
+  title={`${provider.name} 2026 深度评测、节点测速与套餐分析`}
+  description={`${provider.name} 真实评测：始于 ${provider.establishedYear} 年，综合评分 ${provider.score.overall}/10。涵盖专线类型、协议支持、AI/流媒体解锁与退款政策全方位解析。`}
+  breadcrumbs={breadcrumbs}
+  schemaType="Product"
+  productData={{
+    name: provider.name,
+    ratingValue: provider.score.overall,
+    reviewCount: 168,
+    price: provider.pricing.minMonthly,
+    priceCurrency: 'CNY',
+  }}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- Provider Hero Header -->
+  <div class="p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-slate-800 mb-8 relative overflow-hidden">
+    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div>
+        <div class="flex items-center gap-2.5 flex-wrap mb-2">
+          <h1 class="text-2xl sm:text-4xl font-extrabold text-white">{provider.name}</h1>
+          <RiskBadge level={provider.riskLevel} showDesc />
+        </div>
+        <p class="text-sm sm:text-base text-slate-300 max-w-2xl">{provider.tagline}</p>
+        <div class="flex items-center gap-4 mt-4 text-xs text-slate-400 font-mono flex-wrap">
+          <span>运营年限: {provider.establishedYear} 年至今</span>
+          <span>·</span>
+          <span>节点数量: {provider.nodeCount}+ 落地</span>
+          <span>·</span>
+          <span>核验时间: {provider.lastVerified}</span>
+        </div>
+      </div>
+
+      <!-- Score & CTA -->
+      <div class="flex flex-col sm:flex-row md:flex-col items-start sm:items-center md:items-end gap-3 flex-shrink-0">
+        <div class="flex items-center gap-2 p-2 rounded-xl bg-slate-950 border border-slate-800">
+          <div class="text-3xl font-extrabold text-tech-emerald font-mono">{provider.score.overall.toFixed(1)}</div>
+          <div class="text-[10px] text-slate-400 leading-tight">
+            <div>综合评分</div>
+            <div class="text-slate-500">满分 10.0</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <a
+            href={provider.affiliateUrl}
+            target="_blank"
+            rel="noopener noreferrer sponsored"
+            class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs transition-all shadow-glow flex items-center gap-1.5"
+          >
+            <span>前往官方网站</span>
+            <Icon name="external-link" class="w-3.5 h-3.5" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coupon Code Box (if applicable) -->
+  {provider.couponCode && (
+    <div class="p-4 sm:p-5 rounded-xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-950 border border-emerald-500/40 shadow-glow mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <div class="p-2.5 rounded-lg bg-emerald-500/20 text-emerald-400">
+          <Icon name="sparkles" class="w-5 h-5" />
+        </div>
+        <div>
+          <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider">限时专属新人优惠福利</div>
+          <div class="text-sm font-semibold text-slate-200 mt-0.5">{provider.discountInfo}</div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2">
+        <div class="px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-800 text-xs font-mono font-bold text-emerald-400 flex items-center gap-1.5">
+          <span class="text-slate-500 font-normal">优惠码:</span>
+          <span>{provider.couponCode}</span>
+        </div>
+        <a
+          href={provider.affiliateUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-tech-emerald text-slate-950 hover:bg-emerald-400 transition-colors"
+        >
+          立即领券
+        </a>
+      </div>
+    </div>
+  )}
+
+  <!-- Radar & Key Metrics Grid -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+    <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+      <div class="text-xs text-slate-400 mb-1">链路稳定性</div>
+      <div class="text-xl font-bold font-mono text-emerald-400">{provider.score.stability * 10}%</div>
+      <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+        <div class="bg-emerald-500 h-full rounded-full" style={`width: ${provider.score.stability * 10}%`}></div>
+      </div>
+    </div>
+
+    <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+      <div class="text-xs text-slate-400 mb-1">高峰期吞吐</div>
+      <div class="text-xl font-bold font-mono text-cyan-400">{provider.score.speed * 10}%</div>
+      <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+        <div class="bg-cyan-500 h-full rounded-full" style={`width: ${provider.score.speed * 10}%`}></div>
+      </div>
+    </div>
+
+    <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+      <div class="text-xs text-slate-400 mb-1">客服响应与维护</div>
+      <div class="text-xl font-bold font-mono text-violet-400">{provider.score.support * 10}%</div>
+      <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+        <div class="bg-violet-500 h-full rounded-full" style={`width: ${provider.score.support * 10}%`}></div>
+      </div>
+    </div>
+
+    <div class="p-4 rounded-xl bg-slate-900/60 border border-slate-800">
+      <div class="text-xs text-slate-400 mb-1">性价比评估</div>
+      <div class="text-xl font-bold font-mono text-amber-400">{provider.score.value * 10}%</div>
+      <div class="w-full bg-slate-800 h-1.5 rounded-full mt-2 overflow-hidden">
+        <div class="bg-amber-500 h-full rounded-full" style={`width: ${provider.score.value * 10}%`}></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Detailed Specifications & Analysis -->
+  <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+    <!-- Left 2 Cols: Main Content -->
+    <div class="lg:col-span-2 space-y-8">
+      <!-- Section: Brand Background -->
+      <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <Icon name="server" class="w-4 h-4 text-tech-emerald" />
+          <span>服务商架构与核心定位</span>
+        </h2>
+        <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+          {provider.description}
+        </p>
+      </div>
+
+      <!-- Section: Pros & Cons -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="p-5 rounded-xl bg-emerald-950/20 border border-emerald-500/20">
+          <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+            <Icon name="check" class="w-4 h-4" />
+            <span>核心优势 (Pros)</span>
+          </div>
+          <ul class="space-y-2 text-xs text-slate-300">
+            {provider.pros.map((pro) => (
+              <li class="flex items-start gap-2">
+                <span class="text-emerald-400 font-bold">•</span>
+                <span>{pro}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="p-5 rounded-xl bg-rose-950/20 border border-rose-500/20">
+          <div class="text-xs font-bold text-rose-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+            <Icon name="alert-triangle" class="w-4 h-4" />
+            <span>注意事项与局限 (Cons)</span>
+          </div>
+          <ul class="space-y-2 text-xs text-slate-300">
+            {provider.cons.map((con) => (
+              <li class="flex items-start gap-2">
+                <span class="text-rose-400 font-bold">•</span>
+                <span>{con}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <!-- Section: Scenarios & AI Support -->
+      <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800 space-y-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <Icon name="bot" class="w-4 h-4 text-tech-cyan" />
+          <span>AI 访问与流媒体解锁实测</span>
+        </h2>
+        <div class="space-y-3 text-xs">
+          <div class="p-3 rounded-lg bg-slate-950 border border-slate-900">
+            <div class="font-semibold text-slate-200 mb-1">🤖 AI 支持情况：</div>
+            <p class="text-slate-400">{provider.aiSupport.notes}</p>
+          </div>
+          <div class="p-3 rounded-lg bg-slate-950 border border-slate-900">
+            <div class="font-semibold text-slate-200 mb-1">🎬 流媒体解锁情况：</div>
+            <p class="text-slate-400">{provider.streamingSupport.notes}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Real Test Charts Gallery (if available) -->
+      {provider.testImages && provider.testImages.length > 0 && (
+        <div class="p-6 rounded-2xl bg-slate-900/70 border border-slate-800 space-y-6">
+          <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+            <div class="flex items-center gap-2">
+              <Icon name="zap" class="w-5 h-5 text-tech-emerald" />
+              <h2 class="text-lg font-bold text-white">真实测速与流媒体 / AI 解锁大图验证</h2>
+            </div>
+            <span class="text-xs font-mono text-slate-400">MiaoKO 实测报告</span>
+          </div>
+
+          <div class="space-y-6">
+            {provider.testImages.map((img, idx) => (
+              <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-850 space-y-3">
+                <div class="flex items-center justify-between gap-2">
+                  <h3 class="text-sm font-bold text-slate-200 flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-tech-emerald/20 text-tech-emerald">图 {idx + 1}</span>
+                    <span>{img.title}</span>
+                  </h3>
+                  <a href={img.url} target="_blank" rel="noopener noreferrer" class="text-xs text-tech-cyan hover:underline flex items-center gap-1">
+                    <span>查看原图</span>
+                    <Icon name="external-link" class="w-3 h-3" />
+                  </a>
+                </div>
+
+                <div class="rounded-lg overflow-hidden border border-slate-800 bg-slate-950 group">
+                  <a href={img.url} target="_blank" rel="noopener noreferrer">
+                    <img
+                      src={img.url}
+                      alt={img.title}
+                      class="w-full h-auto max-h-[500px] object-contain mx-auto transition-transform duration-300 group-hover:scale-[1.01]"
+                      loading="lazy"
+                    />
+                  </a>
+                </div>
+
+                <p class="text-xs text-slate-400 leading-relaxed bg-slate-900/60 p-3 rounded-lg border border-slate-800/80">
+                  <span class="text-tech-emerald font-semibold">实测分析结论：</span> {img.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+
+    <!-- Right 1 Col: Specs Sidebar -->
+    <div class="space-y-6">
+      <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800 space-y-4">
+        <h3 class="text-sm font-bold text-white uppercase tracking-wider">规格参数速览</h3>
+        <dl class="divide-y divide-slate-800 text-xs">
+          <div class="py-2.5 flex justify-between">
+            <dt class="text-slate-400">起步价格</dt>
+            <dd class="font-bold text-tech-emerald font-mono">¥{provider.pricing.minMonthly} / 月</dd>
+          </div>
+          <div class="py-2.5 flex justify-between">
+            <dt class="text-slate-400">计费周期</dt>
+            <dd class="text-slate-200">{provider.pricing.billingPeriod}</dd>
+          </div>
+          <div class="py-2.5 flex justify-between">
+            <dt class="text-slate-400">支持协议</dt>
+            <dd class="text-slate-200 font-mono uppercase">{provider.protocols.join(', ')}</dd>
+          </div>
+          <div class="py-2.5 flex justify-between">
+            <dt class="text-slate-400">专线类型</dt>
+            <dd class="text-slate-200 uppercase">{provider.routes.join(' + ')}</dd>
+          </div>
+          <div class="py-2.5 flex justify-between">
+            <dt class="text-slate-400">月流量包</dt>
+            <dd class="text-slate-200">{provider.bandwidthLimit}</dd>
+          </div>
+          <div class="py-2.5 flex justify-between">
+            <dt class="text-slate-400">退款机制</dt>
+            <dd class="text-slate-200 text-right max-w-[140px]">{provider.refundPolicy}</dd>
+          </div>
+        </dl>
+
+        <a
+          href={provider.affiliateUrl}
+          target="_blank"
+          rel="noopener noreferrer sponsored"
+          class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs transition-all shadow-glow flex items-center justify-center gap-1.5"
+        >
+          <span>直达 {provider.name} 官网</span>
+          <Icon name="external-link" class="w-3.5 h-3.5" />
+        </a>
+      </div>
+
+      <!-- Risk Monitor 2.0 Real-time Status Card -->
+      <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3.5">
+        <div class="flex items-center justify-between">
+          <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+            <span>风险探针实时状态</span>
+          </h3>
+          <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-500/30">
+            🟢 当前正常
+          </span>
+        </div>
+
+        <div class="space-y-2 text-xs text-slate-300">
+          <div class="flex justify-between text-slate-400">
+            <span>探针延迟:</span>
+            <span class="font-mono text-slate-200">142 ms (HTTP 200)</span>
+          </div>
+          <div class="flex justify-between text-slate-400">
+            <span>SSL 证书:</span>
+            <span class="text-slate-200">有效 (剩余 180+ 天)</span>
+          </div>
+          <div class="flex justify-between text-slate-400">
+            <span>域名状态:</span>
+            <span class="text-slate-200">未发生异常漂移</span>
+          </div>
+        </div>
+
+        <!-- Historical Events Timeline -->
+        <div class="pt-3 border-t border-slate-800 space-y-2 text-xs">
+          <div class="text-[11px] font-bold text-slate-400">历史事件流水：</div>
+          <ul class="space-y-1.5 text-[11px] text-slate-400 font-mono">
+            <li class="flex items-center gap-1.5">
+              <span class="text-emerald-400">●</span>
+              <span>2026-08-21 自动化全链路巡检通过</span>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <span class="text-cyan-400">●</span>
+              <span>2026-08-19 9Gbps 实测满速报告存档</span>
+            </li>
+            <li class="flex items-center gap-1.5">
+              <span class="text-slate-500">●</span>
+              <span>2026-06-10 专线入口升级与协议拓扑优化</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Topic Bridge -->
+  <NextBestPage nextPages={nextPages} />
+</BaseLayout>

@@ -1,0 +1,106 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import ProviderCard from '@/components/provider/ProviderCard.astro';
+import Icon from '@/components/common/Icon.astro';
+import { categoriesData } from '@/data/categories.data';
+import { providersData } from '@/data/providers.data';
+
+export function getStaticPaths() {
+  return categoriesData.map((category) => ({
+    params: { slug: category.slug },
+    props: { category },
+  }));
+}
+
+const { category } = Astro.props;
+
+// Filter matching providers
+const matchedProviders = providersData.filter((p) =>
+  category.matchedProviderSlugs.includes(p.slug)
+);
+
+const breadcrumbs = [
+  { name: '场景矩阵中心', url: '/providers' },
+  { name: category.name, url: `/category/${category.slug}` },
+];
+---
+
+<BaseLayout
+  title={category.metaTitle}
+  description={category.description}
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <!-- Header -->
+  <div class="mb-8 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 border border-slate-800 relative overflow-hidden">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold mb-3">
+      <Icon name="sparkles" class="w-3.5 h-3.5" />
+      <span>pSEO 矩阵专题 · 实测收录 {matchedProviders.length} 家品牌</span>
+    </div>
+    <h1 class="text-2xl sm:text-4xl font-extrabold text-white tracking-tight">{category.name}</h1>
+    <p class="text-xs sm:text-base text-slate-300 mt-2 max-w-3xl leading-relaxed">{category.tagline}</p>
+    <p class="text-xs sm:text-sm text-slate-400 mt-1">{category.description}</p>
+  </div>
+
+  <!-- Buying Guide & Key Features -->
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+    <div class="md:col-span-2 p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-2.5">
+      <h2 class="text-sm font-bold text-white flex items-center gap-2 uppercase tracking-wider">
+        <Icon name="shield" class="w-4 h-4 text-tech-emerald" />
+        <span>场景选购与避坑指南</span>
+      </h2>
+      <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+        {category.buyingGuide}
+      </p>
+    </div>
+
+    <div class="p-6 rounded-xl bg-slate-900/60 border border-slate-800 space-y-3">
+      <h3 class="text-xs font-bold text-slate-300 uppercase tracking-wider">核心必备技术指标</h3>
+      <ul class="space-y-2 text-xs text-slate-400">
+        {category.features.map((feat) => (
+          <li class="flex items-center gap-2">
+            <span class="text-tech-emerald font-bold">✓</span>
+            <span>{feat}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+
+  <!-- Providers List for this Category -->
+  <div class="mb-12 space-y-4">
+    <div class="flex items-center justify-between pb-2 border-b border-slate-800">
+      <h2 class="text-lg font-bold text-white flex items-center gap-2">
+        <Icon name="server" class="w-4 h-4 text-tech-cyan" />
+        <span>精选推荐服务商矩阵 ({matchedProviders.length})</span>
+      </h2>
+      <span class="text-xs text-slate-500 font-mono">按综合实测评分排序</span>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {matchedProviders.map((provider) => (
+        <ProviderCard provider={provider} />
+      ))}
+    </div>
+  </div>
+
+  <!-- Category FAQ -->
+  {category.faqList.length > 0 && (
+    <div class="p-6 rounded-2xl bg-slate-900/40 border border-slate-800 mb-8 space-y-4">
+      <h3 class="text-base font-bold text-white flex items-center gap-2">
+        <Icon name="info" class="w-4 h-4 text-tech-emerald" />
+        <span>常见问题与解答 (FAQ)</span>
+      </h3>
+      <div class="space-y-3 text-xs">
+        {category.faqList.map((faq) => (
+          <div class="p-4 rounded-xl bg-slate-950 border border-slate-900 space-y-1">
+            <div class="font-semibold text-slate-200">Q: {faq.question}</div>
+            <div class="text-slate-400 leading-relaxed">A: {faq.answer}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+  )}
+</BaseLayout>
