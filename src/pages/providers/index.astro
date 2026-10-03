@@ -13,6 +13,8 @@ const breadcrumbs = [{ name: '机场矩阵库', url: '/providers' }];
   title="机场综合矩阵库与参数对比中心 (2026 实时更新)"
   description="全方位多维筛选：IEPL/IPLC 专线、VLESS/Hysteria2 协议、ChatGPT 原生解锁、Netflix 4K 解锁、价格与节点覆盖实测排行榜。"
   breadcrumbs={breadcrumbs}
+  schemaType="ItemList"
+  itemList={providersData.map(p => ({ name: p.name, url: `/provider/${p.slug}` }))}
 >
   <Breadcrumb items={breadcrumbs} />
 
@@ -93,6 +95,56 @@ const breadcrumbs = [{ name: '机场矩阵库', url: '/providers' }];
       </h2>
     </div>
     <ProviderCompareTable providers={providersData} />
+  </div>
+
+  <!-- Featured Head-to-Head Comparisons (Cures Orphan Pages) -->
+  <div class="mb-12">
+    <div class="flex items-center justify-between mb-4">
+      <h2 class="text-lg font-bold text-white flex items-center gap-2">
+        <Icon name="zap" class="w-4 h-4 text-tech-emerald" />
+        <span>热门双雄横向深度实测对比</span>
+      </h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <a
+        href="/compare/guangsucloud-vs-xingdaomeng"
+        class="glass-card-hover rounded-xl p-4 border border-slate-800/80 block hover:border-tech-emerald/50 transition-all group"
+      >
+        <div class="text-xs font-bold text-tech-emerald font-mono mb-1">旗舰专线对决</div>
+        <div class="text-sm font-bold text-white group-hover:text-tech-cyan transition-colors">光速云 vs 星岛梦</div>
+        <p class="text-xs text-slate-400 mt-1 line-clamp-2">IEPL 专线吞吐、9Gbps 极速与月付性价比全方位实测对比。</p>
+        <div class="text-[11px] text-tech-cyan mt-3 flex items-center gap-1 font-semibold">
+          <span>阅读完整对比报告</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a
+        href="/compare/u1s1-vs-yifanyun"
+        class="glass-card-hover rounded-xl p-4 border border-slate-800/80 block hover:border-tech-emerald/50 transition-all group"
+      >
+        <div class="text-xs font-bold text-tech-emerald font-mono mb-1">主流月付角逐</div>
+        <div class="text-sm font-bold text-white group-hover:text-tech-cyan transition-colors">U1S1 vs 一番云</div>
+        <p class="text-xs text-slate-400 mt-1 line-clamp-2">20元档位高性价比专线、大流量与流媒体解锁能力详评。</p>
+        <div class="text-[11px] text-tech-cyan mt-3 flex items-center gap-1 font-semibold">
+          <span>阅读完整对比报告</span>
+          <span>→</span>
+        </div>
+      </a>
+
+      <a
+        href="/compare/weitucloud-vs-yuzhoucloud"
+        class="glass-card-hover rounded-xl p-4 border border-slate-800/80 block hover:border-tech-emerald/50 transition-all group"
+      >
+        <div class="text-xs font-bold text-tech-emerald font-mono mb-1">新兴黑马较量</div>
+        <div class="text-sm font-bold text-white group-hover:text-tech-cyan transition-colors">唯兔云 vs 宇宙云</div>
+        <p class="text-xs text-slate-400 mt-1 line-clamp-2">新一代 VLESS 协议支持、抗封锁表现与晚高峰延迟实测。</p>
+        <div class="text-[11px] text-tech-cyan mt-3 flex items-center gap-1 font-semibold">
+          <span>阅读完整对比报告</span>
+          <span>→</span>
+        </div>
+      </a>
+    </div>
   </div>
 </BaseLayout>
 

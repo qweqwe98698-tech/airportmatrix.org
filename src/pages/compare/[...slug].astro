@@ -56,7 +56,7 @@ const breadcrumbs = [
           <div><span class="text-slate-500">专线与协议：</span><span class="text-slate-200 uppercase">{providerA.routes.join('+')} / {providerA.protocols.join('+')}</span></div>
           <div><span class="text-slate-500">专属优惠码：</span><span class="text-tech-emerald font-mono font-bold">{providerA.couponCode || '无'}</span></div>
         </div>
-        <a href={providerA.affiliateUrl} target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 rounded-xl text-center bg-tech-emerald text-slate-950 font-bold text-xs hover:bg-emerald-400 transition-colors">
+        <a href={providerA.affiliateUrl} target="_blank" rel="nofollow sponsored noopener noreferrer" class="block w-full py-2.5 rounded-xl text-center bg-tech-emerald text-slate-950 font-bold text-xs hover:bg-emerald-400 transition-colors">
           前往 {providerA.name} 官网 →
         </a>
       </div>
@@ -74,7 +74,7 @@ const breadcrumbs = [
           <div><span class="text-slate-500">专线与协议：</span><span class="text-slate-200 uppercase">{providerB.routes.join('+')} / {providerB.protocols.join('+')}</span></div>
           <div><span class="text-slate-500">专属优惠码：</span><span class="text-tech-cyan font-mono font-bold">{providerB.couponCode || '无'}</span></div>
         </div>
-        <a href={providerB.affiliateUrl} target="_blank" rel="noopener noreferrer" class="block w-full py-2.5 rounded-xl text-center bg-tech-cyan text-slate-950 font-bold text-xs hover:bg-cyan-400 transition-colors">
+        <a href={providerB.affiliateUrl} target="_blank" rel="nofollow sponsored noopener noreferrer" class="block w-full py-2.5 rounded-xl text-center bg-tech-cyan text-slate-950 font-bold text-xs hover:bg-cyan-400 transition-colors">
           前往 {providerB.name} 官网 →
         </a>
       </div>

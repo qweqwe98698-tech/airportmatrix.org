@@ -11,12 +11,13 @@ interface Props {
   description?: string;
   canonicalUrl?: string;
   ogImage?: string;
-  schemaType?: 'WebSite' | 'Article' | 'FAQPage' | 'Product' | 'SoftwareApplication' | 'HowTo';
+  schemaType?: 'WebSite' | 'Article' | 'FAQPage' | 'Product' | 'SoftwareApplication' | 'HowTo' | 'ItemList';
   articleData?: any;
   faqData?: any;
   breadcrumbs?: any;
   softwareData?: any;
   productData?: any;
+  itemList?: any;
   howToSteps?: any;
   noindex?: boolean;
 }
@@ -32,6 +33,7 @@ const {
   breadcrumbs,
   softwareData,
   productData,
+  itemList,
   howToSteps,
   noindex = false,
 } = Astro.props;
@@ -62,6 +64,7 @@ const {
       faqs={faqData}
       softwareData={softwareData}
       productData={productData}
+      itemList={itemList}
       howToSteps={howToSteps}
       breadcrumbs={breadcrumbs}
     />

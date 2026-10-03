@@ -1,0 +1,83 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+
+const breadcrumbs = [{ name: '关于我们', url: '/about' }];
+---
+
+<BaseLayout
+  title="关于我们 · AirportMatrix 实验室使命与独立性准则"
+  description="AirportMatrix X 是专注于网络通信、跨境专线链路与代理协议研究的独立数据平台。了解我们的工程师背景、客观评测立场与数据监测体系。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="max-w-4xl mx-auto space-y-10 py-4">
+    <!-- Header -->
+    <header class="space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold">
+        <Icon name="shield-check" class="w-4 h-4" />
+        <span>客观 · 严谨 · 独立数据</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">关于 AirportMatrix 评测实验室</h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-medium">
+        我们是由网络工程研发者、自动化测试工程师与跨境数据分析师组成的独立技术小组。
+      </p>
+    </header>
+
+    <!-- Mission & Core Values -->
+    <section class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold">01</div>
+        <h2 class="text-base font-bold text-white">真实链路实测</h2>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          杜绝虚假跑分与商业软文。所有入库服务商均通过自建 MiaoKO 探针集群在晚高峰执行 9Gbps 宽带真实吞吐测试。
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center font-bold">02</div>
+        <h2 class="text-base font-bold text-white">协议与拓扑透明</h2>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          深入拆解 IEPL/IPLC 专线入口跳板、BGP 动态中转与 VLESS/Hysteria2 协议底层，为开发者与极客提供透明的技术全景。
+        </p>
+      </div>
+
+      <div class="p-6 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-rose-500/20 text-rose-400 flex items-center justify-center font-bold">03</div>
+        <h2 class="text-base font-bold text-white">风险预警与用户本位</h2>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          设立 7×24 小时风险探针雷达，监控服务商域名漂移、阻断丢包与跑路迹象，第一时间向网络从业者发布避坑警报。
+        </p>
+      </div>
+    </section>
+
+    <!-- Editorial Independence -->
+    <section class="p-8 rounded-2xl bg-slate-900/50 border border-slate-800 space-y-4">
+      <h2 class="text-xl font-bold text-white flex items-center gap-2">
+        <Icon name="zap" class="w-5 h-5 text-tech-emerald" />
+        <span>独立性与编辑准则</span>
+      </h2>
+      <div class="space-y-3 text-sm text-slate-300 leading-relaxed">
+        <p>
+          AirportMatrix 保持完全独立的编辑与数据裁决权。我们不接受任何付费刷榜、不接受任何付费删改真实差评的要求。
+        </p>
+        <p>
+          即使服务商赞助了测试资源或提供商业推广返利，其最终评分与评级依然 100% 由链路稳定性模型、测速数据与履约声誉客观计算得出。若入库品牌发生严重跑路或恶意扣费行为，系统将触发风险降级并在风险中心全站公示。
+        </p>
+      </div>
+    </section>
+
+    <!-- Team Contact -->
+    <section class="p-8 rounded-2xl bg-slate-950 border border-slate-850 space-y-4">
+      <h2 class="text-xl font-bold text-white">联系与数据纠错</h2>
+      <p class="text-xs text-slate-400 leading-relaxed">
+        若您是网络服务商希望申请实验室复测，或用户发现数据滞后，欢迎通过反馈渠道提交工单与测试日志。
+      </p>
+      <div class="pt-2 text-xs font-mono text-tech-emerald">
+        <span>数据监测核心版本: TrendMatrix Engine v5.0 (2026)</span>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

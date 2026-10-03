@@ -1,0 +1,57 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+
+const breadcrumbs = [{ name: '服务条款', url: '/terms' }];
+---
+
+<BaseLayout
+  title="服务条款与免责声明 · AirportMatrix 平台使用规范"
+  description="AirportMatrix 平台使用规范、法律免责声明与学术科研使用指引。使用本站服务即表示您已阅读并同意本条款。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="max-w-4xl mx-auto space-y-8 py-4">
+    <header class="space-y-3">
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">服务条款与免责声明 (Terms of Service)</h1>
+      <p class="text-xs text-slate-400 font-mono">生效日期：2026 年 8 月 1 日 · 最近修订：2026 年 10 月 3 日</p>
+    </header>
+
+    <div class="space-y-6 text-sm text-slate-300 leading-relaxed bg-slate-900/60 p-6 sm:p-8 rounded-2xl border border-slate-800">
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white">1. 服务宗旨与用途限制</h2>
+        <p>
+          AirportMatrix 平台所收录的技术评测、网络拓扑解析、测速图表与协议教程，仅供计算机网络协议研究、学术文献检索、跨境软件开发与海外科研办公参考交流。
+        </p>
+        <p class="text-rose-400 font-semibold">
+          任何使用者严禁将本站资料用于任何违反所在国家与地区法律法规的非法活动。因违反当地法律规定而引发的一切责任由使用者自行承担。
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white">2. 第三方服务履约免责</h2>
+        <p>
+          本平台仅作为中立的网络质量探测与数据聚合呈现平台，并非任何网络服务商的运营方或担保方。
+        </p>
+        <p>
+          第三方服务商的套餐定价调整、节点线路可用性、退款纠纷、服务器维护或因不可抗力导致的业务中断，均由该第三方服务商独立承担履约责任。本平台不承担任何直接或连带之经济损失赔偿责任。
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white">3. 数据时效性与准确性</h2>
+        <p>
+          尽管我们的自动化探针体系持续对全站入库服务商进行轮询巡检，但由于跨国网络链路存在突发拥堵、海底光缆故障或防火墙规则动态变动，本平台无法保证所有测试数据在每一个瞬时绝对无误。所有数据指标仅代表采样窗口期间的客观状态。
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white">4. 知识产权与原创保护</h2>
+        <p>
+          AirportMatrix 原创撰写的评测文章、网络架构分析图解、评分算法模型以及数据汇总结构，均受相关版权法律保护。未经许可，禁止通过爬虫程序进行恶意镜像复制或未署名抄袭。
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

@@ -1,0 +1,58 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+
+const breadcrumbs = [{ name: '隐私政策', url: '/privacy' }];
+---
+
+<BaseLayout
+  title="隐私政策 · AirportMatrix 个人隐私与数据安全保障"
+  description="AirportMatrix 遵循严格的隐私保护与最小化数据收集原则。本页面详述我们如何处理日志信息、本地存储与第三方外链。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="max-w-4xl mx-auto space-y-8 py-4">
+    <header class="space-y-3">
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">隐私政策 (Privacy Policy)</h1>
+      <p class="text-xs text-slate-400 font-mono">生效日期：2026 年 8 月 1 日 · 最近修订：2026 年 10 月 3 日</p>
+    </header>
+
+    <div class="space-y-6 text-sm text-slate-300 leading-relaxed bg-slate-900/60 p-6 sm:p-8 rounded-2xl border border-slate-800">
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white">1. 数据收集原则</h2>
+        <p>
+          AirportMatrix 坚定秉持<strong>零敏感数据收集</strong>原则。作为纯静态内容与技术参考平台，我们不设任何用户注册系统，不收集您的姓名、电话号码、支付账号或任何个人实名信息。
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white">2. 访问日志与技术参数</h2>
+        <p>
+          当您访问本网站时，我们的内容分发网络（CDN）提供商可能会记录标准网络日志（包括 IP 地址、浏览器 User-Agent、请求时间戳和被请求页面）。该日志仅用于网络安全防护、防范 DDoS 恶意攻击以及分析聚合访问流量趋势，绝不会与个人身份进行关联追踪。
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white">3. 本地存储 (LocalStorage)</h2>
+        <p>
+          本站仅使用浏览器的 LocalStorage 保存您的本地偏好设置（如选型向导的选项历史、暗黑主题偏好），这些数据 100% 保存在您的本地设备上，不会上传至任何远程服务器。
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white">4. 外部链接与第三方网站</h2>
+        <p>
+          本网站包含大量指向第三方服务商网站的外部链接。当您点击这些链接并跳转离开 AirportMatrix 时，您将受该第三方网站自身的隐私政策与服务条款约束。我们建议您在第三方网站进行任何注册或支付前，仔细阅读其相关隐私声明。
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white">5. 政策变更与联系</h2>
+        <p>
+          我们可能会适时更新本隐私政策。任何重大变更均会在本页面公示最新修订日期。若您对本隐私政策有任何疑问，请通过官方支持渠道进行联系。
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

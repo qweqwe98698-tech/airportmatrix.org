@@ -5,9 +5,9 @@ import Icon from './Icon.astro';
 
 <footer class="mt-auto border-t border-border-subtle bg-slate-950/80 backdrop-blur-md">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-8 mb-12">
       <!-- Brand Mission -->
-      <div class="md:col-span-2 space-y-4">
+      <div class="sm:col-span-2 md:col-span-2 space-y-4">
         <div class="flex items-center gap-2">
           <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-tech-emerald to-tech-cyan p-0.5 shadow-glow">
             <div class="w-full h-full bg-slate-900 rounded-[5px] flex items-center justify-center">
@@ -32,6 +32,7 @@ import Icon from './Icon.astro';
         <ul class="space-y-2 text-xs text-slate-400">
           <li><a href="/providers" class="hover:text-tech-cyan transition-colors">综合矩阵排行榜</a></li>
           <li><a href="/recommend" class="hover:text-tech-cyan transition-colors">智能选型向导</a></li>
+          <li><a href="/compare/guangsucloud-vs-xingdaomeng" class="hover:text-tech-cyan transition-colors">双雄横向对比</a></li>
           <li><a href="/routes" class="hover:text-tech-cyan transition-colors">IEPL/IPLC 专线对比</a></li>
           <li><a href="/protocols" class="hover:text-tech-cyan transition-colors">VLESS / Hy2 协议百科</a></li>
         </ul>
@@ -61,15 +62,38 @@ import Icon from './Icon.astro';
           <li><a href="/articles" class="hover:text-tech-cyan transition-colors">知识库与故障排查</a></li>
         </ul>
       </div>
+
+      <!-- Column 4: Trust & Compliance (E-E-A-T) -->
+      <div class="space-y-3">
+        <div class="text-xs font-semibold text-slate-200 tracking-wider uppercase">信任与合规</div>
+        <ul class="space-y-2 text-xs text-slate-400">
+          <li><a href="/about" class="hover:text-tech-cyan transition-colors">关于我们与准则</a></li>
+          <li><a href="/methodology" class="hover:text-tech-cyan transition-colors">评测方法与标准</a></li>
+          <li><a href="/disclosure" class="hover:text-tech-cyan transition-colors">商业推广透明披露</a></li>
+          <li><a href="/privacy" class="hover:text-tech-cyan transition-colors">隐私政策 (零日志)</a></li>
+          <li><a href="/terms" class="hover:text-tech-cyan transition-colors">服务条款与免责</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Commercial Disclosure Banner -->
+    <div class="mb-6 p-4 rounded-xl bg-slate-900/60 border border-slate-850 text-xs text-slate-400 leading-relaxed">
+      <div class="flex items-center gap-1.5 text-slate-300 font-bold mb-1">
+        <Icon name="shield-check" class="w-4 h-4 text-tech-emerald" />
+        <span>客观评测与商业披露说明 (Affiliate & Non-Affiliation Disclosure)</span>
+      </div>
+      <p>
+        本站部分出站链接包含商业推荐合作。若您通过本站链接下单，本站可能获得少许佣金用于维持自建 9Gbps 测速服务器与探针集群运营开支，但这<strong>绝不会增加您的实际支付金额</strong>，且部分可享受专属折扣减免。本站与所列服务商保持纯粹第三方监督关系，无任何股权或人事隶属关联，评分严格遵循真实链路数据与履约声誉。
+      </p>
     </div>
 
     <!-- Bottom Bar & Strict Disclaimer -->
-    <div class="pt-8 border-t border-slate-900/90 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
+    <div class="pt-6 border-t border-slate-900/90 flex flex-col md:flex-row items-center justify-between gap-4 text-[11px] text-slate-500">
       <div class="flex items-center gap-1">
         <span>© {siteConfig.since}–2026 {siteConfig.name} ({siteConfig.url}). All rights reserved.</span>
       </div>
       <div class="flex flex-wrap items-center gap-4">
-        <span>免责声明：本站仅供网络通信协议学习、科研与跨国学术检索参考，严禁用于任何违反当地法律法规之用途。</span>
+        <span>学术科研用途：本站仅供网络通信协议学习、科研与跨国学术检索参考，严禁用于任何违反当地法律法规之用途。</span>
       </div>
     </div>
   </div>

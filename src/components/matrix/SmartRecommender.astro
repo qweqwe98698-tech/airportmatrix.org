@@ -157,7 +157,7 @@ import { providersData } from '@/data/providers.data';
         </div>
         <div class="flex items-center gap-2 flex-wrap text-slate-300">
           <span class="text-slate-400 font-bold">关联知识:</span>
-          <a href="/protocol/${matched.protocols[0]}" class="text-tech-cyan hover:underline text-[11px]">【${matched.protocols[0]?.toUpperCase()} 协议原理】</a>
+          <a href="${'/protocol/' + (matched.protocols[0] || 'vless')}" class="text-tech-cyan hover:underline text-[11px]">【${(matched.protocols[0] || 'vless').toUpperCase()} 协议原理】</a>
           <a href="/routes" class="text-tech-cyan hover:underline text-[11px]">【${matched.routes[0]?.toUpperCase()} 专线架构】</a>
           <a href="/client/clash-verge" class="text-tech-cyan hover:underline text-[11px]">【Clash Verge 教程】</a>
         </div>
@@ -168,10 +168,10 @@ import { providersData } from '@/data/providers.data';
           ${matched.couponCode ? `专属优惠码: <strong class="text-tech-emerald font-mono bg-slate-950 px-2 py-0.5 rounded border border-slate-800">${matched.couponCode}</strong>` : ''}
         </div>
         <div class="flex items-center gap-2.5">
-          <a href="/provider/${matched.slug}" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors">
+          <a href="${'/provider/' + matched.slug}" class="px-3.5 py-2 rounded-xl text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 transition-colors">
             查看实体档案与测速
           </a>
-          <a href="/go/${matched.slug}" target="_blank" rel="noopener noreferrer" class="px-5 py-2 rounded-xl text-xs font-bold bg-tech-emerald text-slate-950 hover:bg-emerald-400 transition-all shadow-glow flex items-center gap-1.5">
+          <a href="${'/go/' + matched.slug}" target="_blank" rel="nofollow sponsored noopener noreferrer" class="px-5 py-2 rounded-xl text-xs font-bold bg-tech-emerald text-slate-950 hover:bg-emerald-400 transition-all shadow-glow flex items-center gap-1.5">
             <span>直达官网注册</span>
             <span>→</span>
           </a>

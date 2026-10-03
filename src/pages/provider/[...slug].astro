@@ -44,7 +44,6 @@ const nextPages = [
   productData={{
     name: provider.name,
     ratingValue: provider.score.overall,
-    reviewCount: 168,
     price: provider.pricing.minMonthly,
     priceCurrency: 'CNY',
   }}
@@ -82,7 +81,7 @@ const nextPages = [
           <a
             href={provider.affiliateUrl}
             target="_blank"
-            rel="noopener noreferrer sponsored"
+            rel="nofollow sponsored noopener noreferrer"
             class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs transition-all shadow-glow flex items-center gap-1.5"
           >
             <span>前往官方网站</span>
@@ -113,7 +112,7 @@ const nextPages = [
         <a
           href={provider.affiliateUrl}
           target="_blank"
-          rel="noopener noreferrer"
+          rel="nofollow sponsored noopener noreferrer"
           class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-tech-emerald text-slate-950 hover:bg-emerald-400 transition-colors"
         >
           立即领券
@@ -303,7 +302,7 @@ const nextPages = [
         <a
           href={provider.affiliateUrl}
           target="_blank"
-          rel="noopener noreferrer sponsored"
+          rel="nofollow sponsored noopener noreferrer"
           class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs transition-all shadow-glow flex items-center justify-center gap-1.5"
         >
           <span>直达 {provider.name} 官网</span>

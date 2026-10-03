@@ -1,0 +1,86 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+
+const breadcrumbs = [{ name: '评测方法论', url: '/methodology' }];
+---
+
+<BaseLayout
+  title="评测方法论与数据标准 · AirportMatrix 实验室"
+  description="了解 AirportMatrix 如何执行 9Gbps 宽带单线程测速、晚高峰延迟采样、流媒体与 AI 原生住宅 IP 判定以及综合评分计算体系。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="max-w-4xl mx-auto space-y-10 py-4">
+    <header class="space-y-4">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tech-cyan/10 border border-tech-cyan/30 text-tech-cyan text-xs font-semibold">
+        <Icon name="server" class="w-4 h-4" />
+        <span>科学采样 · 标准化测试模型</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">AirportMatrix 评测方法论与质检标准</h1>
+      <p class="text-base sm:text-lg text-slate-300 leading-relaxed font-medium">
+        每一项测试指标均来自真实网络探测环境与标准化脚本运行结果，确保数据具备横向可比性与复现性。
+      </p>
+    </header>
+
+    <!-- Testing Pillars -->
+    <div class="space-y-6">
+      <section class="p-6 sm:p-8 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-xl bg-tech-emerald/20 text-tech-emerald">
+            <Icon name="zap" class="w-5 h-5" />
+          </div>
+          <h2 class="text-xl font-bold text-white">1. 网络吞吐与测速环境 (Throughput & Speed)</h2>
+        </div>
+        <div class="text-xs sm:text-sm text-slate-300 leading-relaxed space-y-2">
+          <p><strong>测试硬件与宽带：</strong>采用配备双万兆网卡的独立物理服务器，下行峰值带宽高达 9Gbps，排除本地测速机瓶颈。</p>
+          <p><strong>测试工具：</strong>基于开源 MiaoKO 测速引擎全自动运行，执行单线程并发拉流测试与多节点并行压测。</p>
+          <p><strong>时间窗口：</strong>所有重点考核数据均采集自工作日及周末晚间晚高峰时段（20:00 - 23:30），真实反映拥堵状态下的专线保活能力。</p>
+        </div>
+      </section>
+
+      <section class="p-6 sm:p-8 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-xl bg-tech-cyan/20 text-tech-cyan">
+            <Icon name="bot" class="w-5 h-5" />
+          </div>
+          <h2 class="text-xl font-bold text-white">2. AI 工具与流媒体解锁判定 (Unlocking Criteria)</h2>
+        </div>
+        <div class="text-xs sm:text-sm text-slate-300 leading-relaxed space-y-2">
+          <p><strong>AI 服务探测：</strong>针对 OpenAI ChatGPT、Claude 3.5 Sonnet 及 Google Gemini 实施自动化会话请求，检测是否触发 Cloudflare 1020 报错或 Access Denied 拦截。</p>
+          <p><strong>流媒体验证：</strong>覆盖 Netflix（非自制剧原创剧库全开）、YouTube 8K 60FPS 视讯缓冲、Disney+ 及巴哈姆特动画疯双向 IP 解锁能力。</p>
+          <p><strong>IP 纯净度检测：</strong>借助 IPQS 与 Scamalytics 权威风险数据库，核验各节点 IP 的欺诈分值（Fraud Score）与住宅属性。</p>
+        </div>
+      </section>
+
+      <section class="p-6 sm:p-8 rounded-2xl bg-slate-900/80 border border-slate-800 space-y-4">
+        <div class="flex items-center gap-3">
+          <div class="p-2 rounded-xl bg-violet-500/20 text-violet-400">
+            <Icon name="shield-check" class="w-5 h-5" />
+          </div>
+          <h2 class="text-xl font-bold text-white">3. 综合评分计算模型 (Score Algorithm)</h2>
+        </div>
+        <div class="text-xs sm:text-sm text-slate-300 leading-relaxed space-y-2">
+          <p>综合评分（满分 10.0 分）根据以下五大核心维度加权计算：</p>
+          <ul class="list-disc pl-5 space-y-1 font-mono text-xs text-slate-400">
+            <li>链路稳定性与晚高峰丢包率 (Stability Weight: 35%)</li>
+            <li>9Gbps 峰值吞吐与单线程流速 (Speed Weight: 25%)</li>
+            <li>套餐定价、起步门槛与流量单价 (Value Weight: 20%)</li>
+            <li>AI 及主流流媒体生态解锁率 (Unlock Weight: 10%)</li>
+            <li>工单履约时效、退款机制与运营历史 (Support Weight: 10%)</li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <!-- Data Update Frequency -->
+    <div class="p-6 rounded-xl bg-slate-950 border border-slate-850 text-xs text-slate-400 space-y-2">
+      <div class="font-bold text-white text-sm">数据复验与更新机制</div>
+      <p>
+        数据库中所有服务商信息每月至少执行一次全链路自动健康巡检，重点服务商在运营调整期执行实时更新并记录在服务商档案的“历史流水”之中。
+      </p>
+    </div>
+  </div>
+</BaseLayout>

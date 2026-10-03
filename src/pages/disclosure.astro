@@ -1,0 +1,82 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Breadcrumb from '@/components/common/Breadcrumb.astro';
+import Icon from '@/components/common/Icon.astro';
+
+const breadcrumbs = [{ name: '商业推广披露', url: '/disclosure' }];
+---
+
+<BaseLayout
+  title="商业推广披露与佣金透明声明 · AirportMatrix 诚信政策"
+  description="了解 AirportMatrix 的商业化运营模式、赞助链接标注规范、佣金机制与编辑独立性保障。透明公开，确保客观中立。"
+  breadcrumbs={breadcrumbs}
+>
+  <Breadcrumb items={breadcrumbs} />
+
+  <div class="max-w-4xl mx-auto space-y-8 py-4">
+    <header class="space-y-3">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold">
+        <Icon name="shield-check" class="w-4 h-4" />
+        <span>100% 透明化商业披露</span>
+      </div>
+      <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">商业推广与佣金透明声明 (Affiliate Disclosure)</h1>
+      <p class="text-xs text-slate-400 font-mono">严格遵循 FTC 商业披露指导方针与 Google 搜索赞助外链质量规范</p>
+    </header>
+
+    <div class="space-y-6 text-sm text-slate-300 leading-relaxed bg-slate-900/60 p-6 sm:p-8 rounded-2xl border border-slate-800">
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <Icon name="zap" class="w-4 h-4 text-tech-emerald" />
+          <span>1. 我们的运营经费来源</span>
+        </h2>
+        <p>
+          AirportMatrix 致力于为网络技术从业者提供持续免费的高质量专线实测报告、协议技术解析与实时跑路监控。为了支付实验室自建 9Gbps 宽带服务器机房费用、MiaoKO 自动化探针集群运行成本以及日常测试节点的订阅开支，我们在部分页面采用了<strong>联盟推广计划（Affiliate Program）</strong>。
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <Icon name="check" class="w-4 h-4 text-tech-cyan" />
+          <span>2. 佣金绝不影响您的支付价格</span>
+        </h2>
+        <p class="text-slate-100 font-semibold">
+          当您通过本站的专属链接或使用本站公布的优惠码在第三方服务商处完成订阅时，我们可能会从服务商处获得少许推荐佣金。但请务必知悉：
+        </p>
+        <ul class="list-disc pl-5 space-y-1.5 text-xs text-slate-300">
+          <li><strong>您无需支付任何额外费用</strong>：通过本站链接购买的最终金额绝不会高于服务商官方原价。</li>
+          <li><strong>享受专属折扣福利</strong>：相反，本站向各大服务商团队洽谈争取了专属优惠码（如部分品牌可享 8 折至 8.5 折限时减免），为您提供比直连购买更实惠的到手价。</li>
+        </ul>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <Icon name="layers" class="w-4 h-4 text-amber-400" />
+          <span>3. 零偏袒与编辑独立性保障</span>
+        </h2>
+        <p>
+          佣金的高低<strong>绝对不会</strong>决定或改变服务商在我们的“综合评分”、“专线排行榜”或“智能选型算法”中的排序位置。
+        </p>
+        <p>
+          所有评分完全基于实验室自动化采样的链路稳定性、高峰期单线程吞吐、解锁成功率与安全声誉计算。任何即使提供丰厚佣金但稳定性不合格或涉嫌虚假宣传的小作坊，均会被系统拒之门外或标记高风险警示。
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <Icon name="external-link" class="w-4 h-4 text-violet-400" />
+          <span>4. 链接标记规范与爬虫合规</span>
+        </h2>
+        <p>
+          本站全面遵循搜索引擎规范。所有包含商业利益关系的外部出站超链接及中转跳转桥，均统一显式标注了 <code>rel="nofollow sponsored noopener noreferrer"</code> 属性，不传递权重，确保搜索生态的健康透明。
+        </p>
+      </section>
+
+      <section class="space-y-2">
+        <h2 class="text-lg font-bold text-white">5. 无股权与无隶属声明</h2>
+        <p>
+          AirportMatrix 评测团队与本站收录的所有机场品牌方、主机托管商均保持纯粹的中立第三方测试监督关系，双方不存在任何股权投资、人事隶属或排他性控制关联。
+        </p>
+      </section>
+    </div>
+  </div>
+</BaseLayout>

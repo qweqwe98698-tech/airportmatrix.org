@@ -1,5 +1,27 @@
+User-agent: Googlebot
+Allow: /
+Disallow: /go/
+Disallow: /admin
+
+User-agent: Bingbot
+Allow: /
+Disallow: /go/
+Disallow: /admin
+
+User-agent: Baiduspider
+Allow: /
+Disallow: /go/
+Disallow: /admin
+
+User-agent: yisouspider
+Allow: /
+Disallow: /go/
+Disallow: /admin
+
 User-agent: *
 Allow: /
 Disallow: /go/
+Disallow: /admin
 
 Sitemap: https://airportmatrix.org/sitemap-index.xml
+
