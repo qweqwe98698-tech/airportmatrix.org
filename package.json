@@ -8,6 +8,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "publish:articles": "node scripts/auto_publish.js",
+    "matrix:publish": "node scripts/generate-matrix-article.mjs",
     "risk:scan": "node scripts/run_risk_scan.js",
     "content:generate": "node scripts/auto_generate_content.js",
     "seo:check": "node scripts/seo_health_check.js",
@@ -22,6 +23,7 @@
     "@tailwindcss/typography": "^0.5.16",
     "astro": "^5.4.1",
     "clsx": "^2.1.1",
+    "marked": "^18.0.14",
     "tailwind-merge": "^3.0.2",
     "tailwindcss": "^3.4.17"
   },
