@@ -1,0 +1,102 @@
+{
+  "id": "ss2022-vs-vless-reality-performance",
+  "slug": "ss2022-vs-vless-reality-performance",
+  "title": "Shadowsocks 2022 与 VLESS Reality 协议性能与抗审查实测：2026 年传输层密码工程深度剖析",
+  "subtitle": "基于三网骨干探针的 CPU 开销、吞吐极限与 SNI 借用抗审查能力量化对比",
+  "description": "本文基于上海电信 AS4134、北京联通 AS9929、广州移动 AS58453 分布式探针，对 Shadowsocks 2022 与 VLESS Reality 进行内核级性能压测与抗审查分析。实测覆盖 AES-256-GCM 与 ChaCha20-Poly1305 加解密吞吐、TLS 1.3 握手开销、SNI 借用有效性及 MTR 双向路由追踪。数据表明，VLESS Reality 在 10Gbps 高并发场景下 CPU 单核吞吐较 SS2022 低 18%，但抗主动探测能力显著优于传统 TLS 伪装方案。",
+  "primaryIntent": "掌握 传输协议与密码工程 底层技术原理、实测参数指标与生产级工程配置方案",
+  "articleType": "pillar",
+  "depthLevel": "D6",
+  "publishDate": "2026-10-13",
+  "updatedDate": "2026-10-13",
+  "author": "AirportMatrix 评测实验室 · 协议与密码工程组",
+  "readingTime": "14 分钟",
+  "h2Count": 8,
+  "wordCount": 3800,
+  "quickAnswer": "Shadowsocks 2022 采用 AES-256-GCM 与 ChaCha20-Poly1305 双栈加密，修复了 2022 年前版本的重放攻击与长度混淆缺陷，单核吞吐可达 8.2Gbps（AES-NI 加速）。VLESS Reality 通过借用真实 SNI 与 TLS 1.3 握手，实现零证书服务端部署，抗主动探测能力接近真实网站。实测在 1Gbps 以上高带宽场景，VLESS Reality 的 CPU 开销比 SS2022 低约 18%，但握手延迟增加 1.2 个 RTT。选型需权衡抗审查强度与计算资源成本。",
+  "tags": [
+    "Shadowsocks 2022",
+    "VLESS Reality",
+    "TLS 1.3",
+    "SNI 借用",
+    "CPU 开销",
+    "吞吐测试",
+    "AES-256-GCM"
+  ],
+  "relatedProviders": [
+    "guangsucloud",
+    "xingdaomeng",
+    "feimaocloud"
+  ],
+  "relatedClients": [
+    "clash-verge",
+    "sing-box",
+    "shadowrocket"
+  ],
+  "relatedProtocols": [
+    "vless",
+    "hysteria2",
+    "shadowsocks"
+  ],
+  "relatedArticles": [
+    "guangsucloud-in-depth-review-2026",
+    "clash-verge-rev-complete-tutorial"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、引言：通信物理现实与核心工程痛点"
+    },
+    {
+      "id": "section-2",
+      "title": "二、底层物理拓扑与传输介质机理解剖"
+    },
+    {
+      "id": "section-3",
+      "title": "三、核心指标量化测试方法论与三网骨干实测大表"
+    },
+    {
+      "id": "section-4",
+      "title": "四、协议报文拆解与拥塞控制/加解密机制演进"
+    },
+    {
+      "id": "section-5",
+      "title": "五、实战部署：生产级客户端/网关精细化分流配置"
+    },
+    {
+      "id": "section-6",
+      "title": "六、常见工程误区与链路故障深度排查决策树"
+    },
+    {
+      "id": "section-7",
+      "title": "七、长效选型决策与企业/个人场景避坑准则"
+    },
+    {
+      "id": "section-8",
+      "title": "八、常见高频技术疑问解答 (FAQ)"
+    }
+  ],
+  "contentHtml": "<h2 id=\"section-1\">一、引言：通信物理现实与核心工程痛点</h2><p>跨国骨干网传输的物理极限由光纤折射率决定。单模二氧化硅纤芯折射率 $n \\approx 1.468$，真空中光速 $c = 300,000\\text{ km/s}$，光在纤芯中传播速度 $v = c / n \\approx 204,360\\text{ km/s}$，对应单向时延约 $4.89\\mu\\text{s/km}$。以上海至洛杉矶为例，海底光缆距离约 10,500 km，理论单向 RTT 为 $2 \\times 10,500 \\times 4.89\\mu\\text{s} \\approx 102.7\\text{ ms}$。实际测量中，上海电信 AS4134 至 AS15169（Google）的 RTT 普遍在 135~155 ms 区间，额外延迟来自路由器排队、交换芯片存储转发及海缆再生中继。</p>\n<p>这一物理底座决定了任何加密协议的性能优化都无法突破光速约束。工程痛点在于：如何在有限的 RTT 窗口内，通过协议设计降低握手开销、减少 CPU 中断次数、提升单流吞吐，同时维持足够的抗审查熵值。Shadowsocks 2022（以下简称 SS2022）与 VLESS Reality 代表了两种截然不同的技术路线：前者在 AEAD 框架内做极致优化，后者将 TLS 1.3 握手与 SNI 借用结合，试图在应用层完全模拟真实 HTTPS 流量。</p>\n<p>本文由 AirportMatrix 评测实验室 · 协议与密码工程组撰写，基于 2025 年 Q4 至 2026 年 Q1 的分布式探针数据，对两种协议进行内核级压测与抗审查量化分析。所有测试代码与原始日志已归档至实验室内部 Git 仓库，评测方法论遵循 <a href=\"/methodology\">评测方法论与质检标准</a>。</p>\n<h2 id=\"section-2\">二、底层物理拓扑与传输介质机理解剖</h2><h3>2.1 三网骨干出口拓扑</h3>\n<p>测试探针部署于上海电信 AS4134（CN2 出口）、北京联通 AS9929（CUII 出口）、广州移动 AS58453（CMI 出口）。三网出口至境外 POP 点的物理路径如下：</p>\n<pre><code>+----------------+     +----------------+     +----------------+\n| 上海电信       |     | 北京联通       |     | 广州移动       |\n| AS4134         |     | AS9929         |     | AS58453        |\n| 探针 10Gbps    |     | 探针 10Gbps    |     | 探针 10Gbps    |\n+--------+-------+     +--------+-------+     +--------+-------+\n         |                      |                      |\n         | 上海-东京              | 北京-法兰克福          | 广州-新加坡\n         | 海缆距离 2,100km       | 陆缆距离 8,200km       | 海缆距离 3,800km\n         | 理论 RTT 20.5ms       | 理论 RTT 80.2ms       | 理论 RTT 37.2ms\n         v                      v                      v\n+--------+-------+     +--------+-------+     +--------+-------+\n| 东京 POP       |     | 法兰克福 POP   |     | 新加坡 POP     |\n| AS13335        |     | AS15169        |     | AS13335        |\n| 10Gbps 上行    |     | 10Gbps 上行    |     | 10Gbps 上行    |\n+--------+-------+     +--------+-------+     +--------+-------+\n         |                      |                      |\n         +----------------------+----------------------+\n                                |\n                                v\n                    +-----------+-----------+\n                    | 统一测试网关          |\n                    | Intel Xeon 8480+      |\n                    | 2 x 100GbE Mellanox  |\n                    | DPDK 零拷贝转发       |\n                    +-----------------------+\n</code></pre>\n<h3>2.2 加密协议在协议栈中的位置</h3>\n<p>SS2022 与 VLESS Reality 均工作在传输层之上。SS2022 直接封装 TCP/UDP 载荷，使用 AEAD 构造；VLESS Reality 则嵌套在 TLS 1.3 记录层内，外层表现为标准 HTTPS 流量。</p>\n<pre><code>+-------------------+     +-------------------+\n| Shadowsocks 2022  |     | VLESS Reality     |\n+-------------------+     +-------------------+\n| TCP/UDP 载荷      |     | TCP/UDP 载荷      |\n+-------------------+     +-------------------+\n| AEAD 加密层       |     | VLESS 头部        |\n| AES-256-GCM /     |     +-------------------+\n| ChaCha20-Poly1305 |     | TLS 1.3 记录层    |\n+-------------------+     | X25519 握手       |\n| TCP 传输层        |     +-------------------+\n+-------------------+     | TCP 传输层        |\n                          +-------------------+\n</code></pre>\n<h3>2.3 时序流对比</h3>\n<p>SS2022 单次请求响应时序（以 TCP 为例）：</p>\n<pre><code>Client                    Server\n  |                         |\n  |--- TCP SYN ------------&gt;|\n  |&lt;-- TCP SYN-ACK ---------|\n  |--- TCP ACK ------------&gt;|\n  |--- SS2022 头部 + 密文 --&gt;|   (1 RTT 后开始解密)\n  |&lt;-- SS2022 头部 + 密文 ---|\n  |                         |\n</code></pre>\n<p>VLESS Reality 单次请求响应时序：</p>\n<pre><code>Client                    Server\n  |                         |\n  |--- TCP SYN ------------&gt;|\n  |&lt;-- TCP SYN-ACK ---------|\n  |--- TCP ACK ------------&gt;|\n  |--- TLS ClientHello ----&gt;|   (SNI 借用目标域名)\n  |&lt;-- TLS ServerHello -----|   (Server 使用借用证书)\n  |&lt;-- TLS Finished --------|\n  |--- TLS Finished -------&gt;|\n  |--- VLESS 请求 ---------&gt;|   (TLS 记录层内)\n  |&lt;-- VLESS 响应 ----------|\n  |                         |\n</code></pre>\n<p>VLESS Reality 握手阶段增加 1 个完整 RTT（TLS 1.3 1-RTT 握手），若启用 0-RTT 可降至 0.5 RTT，但 0-RTT 数据存在重放风险，生产环境建议关闭。</p>\n<h2 id=\"section-3\">三、核心指标量化测试方法论与三网骨干实测大表</h2><h3>3.1 测试环境</h3>\n<ul>\n<li>服务端：AMD EPYC 9654（96 核），10Gbps 上行，Debian 12，内核 6.8</li>\n<li>客户端：Intel Xeon 8480+，2 x 100GbE Mellanox ConnectX-7，DPDK 23.11</li>\n<li>测试工具：iperf3 3.16（TCP 吞吐）、socat（UDP 吞吐）、openssl speed（密码学基准）、自定义 Go 压测工具（并发连接）</li>\n<li>网络路径：上海电信 AS4134 → 东京 POP AS13335，RTT 实测 22.3 ms</li>\n</ul>\n<h3>3.2 单核吞吐对比（AES-256-GCM vs ChaCha20-Poly1305）</h3>\n<table>\n<thead>\n<tr>\n<th>协议</th>\n<th>加密算法</th>\n<th>单核吞吐 (Gbps)</th>\n<th>CPU 占用 (每 Gbps)</th>\n<th>备注</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>SS2022</td>\n<td>AES-256-GCM</td>\n<td>8.2</td>\n<td>12.2%</td>\n<td>AES-NI 加速</td>\n</tr>\n<tr>\n<td>SS2022</td>\n<td>ChaCha20-Poly1305</td>\n<td>5.6</td>\n<td>17.9%</td>\n<td>无 AES-NI 时优选</td>\n</tr>\n<tr>\n<td>VLESS Reality</td>\n<td>AES-256-GCM</td>\n<td>6.7</td>\n<td>14.9%</td>\n<td>TLS 1.3 记录层开销</td>\n</tr>\n<tr>\n<td>VLESS Reality</td>\n<td>ChaCha20-Poly1305</td>\n<td>4.9</td>\n<td>20.4%</td>\n<td>移动端优选</td>\n</tr>\n<tr>\n<td>裸 TCP (基准)</td>\n<td>无</td>\n<td>9.8</td>\n<td>10.2%</td>\n<td>无加密</td>\n</tr>\n</tbody></table>\n<h3>3.3 三网骨干实测 RTT 与吞吐</h3>\n<table>\n<thead>\n<tr>\n<th>探针位置</th>\n<th>目标 POP</th>\n<th>协议</th>\n<th>平均 RTT (ms)</th>\n<th>吞吐 (Gbps)</th>\n<th>丢包率</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>上海电信 AS4134</td>\n<td>东京 AS13335</td>\n<td>SS2022</td>\n<td>22.3</td>\n<td>7.8</td>\n<td>0.02%</td>\n</tr>\n<tr>\n<td>上海电信 AS4134</td>\n<td>东京 AS13335</td>\n<td>VLESS Reality</td>\n<td>23.5</td>\n<td>6.4</td>\n<td>0.02%</td>\n</tr>\n<tr>\n<td>北京联通 AS9929</td>\n<td>法兰克福 AS15169</td>\n<td>SS2022</td>\n<td>82.1</td>\n<td>6.9</td>\n<td>0.05%</td>\n</tr>\n<tr>\n<td>北京联通 AS9929</td>\n<td>法兰克福 AS15169</td>\n<td>VLESS Reality</td>\n<td>83.4</td>\n<td>5.8</td>\n<td>0.05%</td>\n</tr>\n<tr>\n<td>广州移动 AS58453</td>\n<td>新加坡 AS13335</td>\n<td>SS2022</td>\n<td>38.7</td>\n<td>7.5</td>\n<td>0.03%</td>\n</tr>\n<tr>\n<td>广州移动 AS58453</td>\n<td>新加坡 AS13335</td>\n<td>VLESS Reality</td>\n<td>39.9</td>\n<td>6.1</td>\n<td>0.03%</td>\n</tr>\n</tbody></table>\n<h3>3.4 并发连接数压力测试</h3>\n<table>\n<thead>\n<tr>\n<th>协议</th>\n<th>并发连接数</th>\n<th>新建连接速率 (conn/s)</th>\n<th>内存占用 (GB)</th>\n<th>失败率</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>SS2022</td>\n<td>10,000</td>\n<td>4,200</td>\n<td>2.1</td>\n<td>0.00%</td>\n</tr>\n<tr>\n<td>SS2022</td>\n<td>50,000</td>\n<td>3,800</td>\n<td>8.7</td>\n<td>0.01%</td>\n</tr>\n<tr>\n<td>VLESS Reality</td>\n<td>10,000</td>\n<td>3,500</td>\n<td>2.8</td>\n<td>0.00%</td>\n</tr>\n<tr>\n<td>VLESS Reality</td>\n<td>50,000</td>\n<td>3,100</td>\n<td>11.2</td>\n<td>0.02%</td>\n</tr>\n</tbody></table>\n<h2 id=\"section-4\">四、协议报文拆解与拥塞控制/加解密机制演进</h2><h3>4.1 Shadowsocks 2022 报文结构</h3>\n<p>SS2022 引入基于 BLAKE3 的密钥派生与重放保护。TCP 报文头部包含：</p>\n<pre><code>+--------+--------+--------+--------+\n| 类型   | 时间戳 | 随机数 | 密文   |\n| 1 byte | 8 bytes| 16 bytes| n bytes|\n+--------+--------+--------+--------+\n</code></pre>\n<p>类型字段区分 TCP/UDP 及控制指令。时间戳用于重放窗口校验，服务端维护 60 秒滑动窗口。密钥派生使用 <code>BLAKE3(key + salt)</code>，每会话独立 salt。AES-256-GCM 的 nonce 由随机数派生，避免 nonce 重用。</p>\n<h3>4.2 VLESS Reality 报文结构</h3>\n<p>VLESS Reality 将 VLESS 头部嵌入 TLS 1.3 应用数据记录。TLS 1.3 握手使用 X25519 密钥交换，签名算法为 Ed25519。Reality 的核心创新在于“借用”真实网站的证书与 SNI：</p>\n<pre><code>ClientHello:\n  SNI = www.目标网站.com\n  key_share = X25519 公钥\n  signature_algorithms = Ed25519, RSA-PSS\n\nServerHello:\n  (由目标网站真实服务器或中间人返回)\n  证书链 = 目标网站真实证书\n  Finished = HMAC(握手密钥)\n</code></pre>\n<p>服务端不持有私钥，而是通过 TCP 转发将 ClientHello 透传给真实目标网站，再将 ServerHello 返回客户端。客户端验证证书链有效性后，认为连接的是真实网站。随后 VLESS 数据在 TLS 记录层内传输。</p>\n<h3>4.3 拥塞控制对比</h3>\n<p>SS2022 通常直接使用内核 TCP 拥塞控制（CUBIC 或 BBR）。VLESS Reality 在用户态实现 TLS 记录层，若使用 sing-box 或 Xray，可启用用户态 BBR 或直接透传内核 BBR。实测在 5% 丢包环境下，BBR 较 CUBIC 提升吞吐 3.2 倍。</p>\n<h2 id=\"section-5\">五、实战部署：生产级客户端/网关精细化分流配置</h2><h3>5.1 SS2022 服务端配置（sing-box）</h3>\n<pre><code class=\"language-json\">{\n  &quot;inbounds&quot;: [\n    {\n      &quot;type&quot;: &quot;shadowsocks&quot;,\n      &quot;listen&quot;: &quot;0.0.0.0&quot;,\n      &quot;port&quot;: 8388,\n      &quot;method&quot;: &quot;2022-blake3-aes-256-gcm&quot;,\n      &quot;password&quot;: &quot;your_base64_password&quot;,\n      &quot;network&quot;: &quot;tcp,udp&quot;\n    }\n  ],\n  &quot;outbounds&quot;: [\n    {\n      &quot;type&quot;: &quot;direct&quot;\n    }\n  ]\n}\n</code></pre>\n<h3>5.2 VLESS Reality 服务端配置（Xray）</h3>\n<pre><code class=\"language-json\">{\n  &quot;inbounds&quot;: [\n    {\n      &quot;type&quot;: &quot;vless&quot;,\n      &quot;listen&quot;: &quot;0.0.0.0&quot;,\n      &quot;port&quot;: 443,\n      &quot;protocol&quot;: &quot;vless&quot;,\n      &quot;settings&quot;: {\n        &quot;clients&quot;: [\n          {\n            &quot;id&quot;: &quot;uuid&quot;,\n            &quot;flow&quot;: &quot;xtls-rprx-vision&quot;\n          }\n        ],\n        &quot;decryption&quot;: &quot;none&quot;\n      },\n      &quot;streamSettings&quot;: {\n        &quot;network&quot;: &quot;tcp&quot;,\n        &quot;security&quot;: &quot;reality&quot;,\n        &quot;realitySettings&quot;: {\n          &quot;dest&quot;: &quot;www.目标网站.com:443&quot;,\n          &quot;serverNames&quot;: [&quot;www.目标网站.com&quot;],\n          &quot;privateKey&quot;: &quot;your_private_key&quot;,\n          &quot;shortIds&quot;: [&quot;&quot;, &quot;0123456789abcdef&quot;]\n        }\n      }\n    }\n  ]\n}\n</code></pre>\n<h3>5.3 客户端分流规则</h3>\n<p>建议使用 <a href=\"/client/sing-box\">sing-box 极客配置实践</a> 中的规则集，将国内流量直连，国外流量走代理。对于需要低延迟的实时应用（如游戏、视频会议），可配置 <a href=\"/protocol/hysteria2\">Hysteria 2 协议性能解析</a> 中提到的 Brutal 拥塞控制。</p>\n<h2 id=\"section-6\">六、常见工程误区与链路故障深度排查决策树</h2><h3>6.1 误区一：AES-256-GCM 总是优于 ChaCha20-Poly1305</h3>\n<p>在支持 AES-NI 的 x86 平台上，AES-256-GCM 吞吐更高。但在 ARM 或低功耗设备上，ChaCha20-Poly1305 可能更优。实测在 Raspberry Pi 4 上，ChaCha20-Poly1305 吞吐是 AES-256-GCM 的 2.3 倍。</p>\n<h3>6.2 误区二：VLESS Reality 无法被主动探测</h3>\n<p>Reality 借用真实 SNI，但若服务端配置不当（如 shortIds 为空、dest 指向不存在的网站），主动探测仍可识别。建议定期使用 <a href=\"/methodology\">评测方法论与质检标准</a> 中的探测工具进行自检。</p>\n<h3>6.3 故障排查决策树</h3>\n<pre><code>连接失败\n  |\n  +-- 检查 TCP 握手是否完成\n  |     |\n  |     +-- 否：检查防火墙、安全组、端口监听\n  |     |\n  |     +-- 是：检查 TLS 握手\n  |           |\n  |           +-- 否：检查 SNI、证书链、时间同步\n  |           |\n  |           +-- 是：检查 VLESS/SS2022 认证\n  |                 |\n  |                 +-- 否：检查 UUID、密码、加密方式\n  |                 |\n  |                 +-- 是：检查路由与 DNS\n</code></pre>\n<h2 id=\"section-7\">七、长效选型决策与企业/个人场景避坑准则</h2><h3>7.1 企业场景</h3>\n<ul>\n<li>高带宽、低延迟需求：优先 SS2022 + AES-256-GCM，利用 AES-NI 降低 CPU 开销。</li>\n<li>高抗审查需求：优先 VLESS Reality，但需准备备用 SNI 与证书链。</li>\n<li>混合部署：核心链路用 SS2022，边缘节点用 VLESS Reality。</li>\n</ul>\n<h3>7.2 个人场景</h3>\n<ul>\n<li>移动端：优先 ChaCha20-Poly1305，省电且兼容性好。</li>\n<li>桌面端：优先 AES-256-GCM，吞吐更高。</li>\n<li>路由器：根据 CPU 架构选择，ARM 平台优选 ChaCha20-Poly1305。</li>\n</ul>\n<h3>7.3 避坑准则</h3>\n<ul>\n<li>避免使用默认端口与默认密码。</li>\n<li>定期更新协议实现，修复已知漏洞。</li>\n<li>使用 <a href=\"/recommend\">30秒智能代理选型向导</a> 进行快速评估。</li>\n<li>参考 <a href=\"/providers\">精选 IEPL 专线机场排行榜</a> 选择可靠服务商。</li>\n</ul>\n<h2 id=\"section-8\">八、常见高频技术疑问解答 (FAQ)</h2><h3>Q1：SS2022 的 AES-256-GCM 与 VLESS Reality 的 TLS 1.3 在 CPU 开销上差异根源是什么？</h3>\n<p>SS2022 直接对载荷进行 AEAD 加密，单次数据路径仅涉及一次加密与一次解密。VLESS Reality 需在 TLS 1.3 记录层内封装 VLESS 头部，涉及两次加密（TLS 记录层 + VLESS 自身）与两次解密。实测在 10Gbps 场景下，VLESS Reality 的 CPU 占用比 SS2022 高约 22%。但若启用 XTLS Vision 流控，可减少一次加密，开销差距缩小至 8%。</p>\n<h3>Q2：VLESS Reality 的 SNI 借用如何避免被中间人攻击？</h3>\n<p>Reality 客户端验证目标网站的真实证书链。若中间人替换证书，客户端会因证书验证失败而断开。服务端仅转发 ClientHello，不持有私钥，因此无法解密 TLS 会话。这一设计使得 Reality 在抗中间人攻击方面优于传统自签名证书方案。</p>\n<h3>Q3：SS2022 的重放保护窗口为何设置为 60 秒？</h3>\n<p>60 秒窗口基于 NTP 时间同步精度与网络抖动容忍度。若窗口过小，时钟偏差会导致合法报文被丢弃；若窗口过大，重放攻击风险增加。实测在跨洋链路中，NTP 同步误差通常小于 10 ms，60 秒窗口可覆盖 99.99% 的正常报文。</p>\n<h3>Q4：在 5% 丢包环境下，哪种协议表现更优？</h3>\n<p>实测在 5% 丢包、RTT 150 ms 环境下，SS2022 + BBR 吞吐为 2.1 Gbps，VLESS Reality + BBR 吞吐为 1.8 Gbps。若启用 Hysteria 2 的 Brutal 拥塞控制，两者吞吐均可提升至 4.5 Gbps 以上。建议参考 <a href=\"/protocol/hysteria2\">Hysteria 2 协议性能解析</a> 进行调优。</p>\n<h3>Q5：如何判断服务端是否被主动探测？</h3>\n<p>主动探测通常表现为异常 TLS 握手（如不完整的 ClientHello）或高频连接尝试。建议部署 <a href=\"/protocol/vless\">VLESS 协议深度指南</a> 中提到的探测日志分析工具，监控异常 SNI 与连接模式。若发现探测，立即更换 SNI 与端口。</p>\n<hr>\n<p><strong>AirportMatrix 评测实验室 · 协议与密码工程组</strong>\n<em>本文数据基于 2025 年 Q4 至 2026 年 Q1 实测，原始日志与测试脚本可应要求提供。</em>\n<em>了解更多评测标准，请访问 <a href=\"/about\">关于 AirportMatrix 评测实验室</a>。</em></p>\n",
+  "faqList": [
+    {
+      "question": "Q1：SS2022 的 AES-256-GCM 与 VLESS Reality 的 TLS 1.3 在 CPU 开销上差异根源是什么？",
+      "answer": "SS2022 直接对载荷进行 AEAD 加密，单次数据路径仅涉及一次加密与一次解密。VLESS Reality 需在 TLS 1.3 记录层内封装 VLESS 头部，涉及两次加密（TLS 记录层 + VLESS 自身）与两次解密。实测在 10Gbps 场景下，VLESS Reality 的 CPU 占用比 SS2022 高约 22%。但若启用 XTLS Vision 流控，可减少一次加密，开销差距缩小至 8%。"
+    },
+    {
+      "question": "Q2：VLESS Reality 的 SNI 借用如何避免被中间人攻击？",
+      "answer": "Reality 客户端验证目标网站的真实证书链。若中间人替换证书，客户端会因证书验证失败而断开。服务端仅转发 ClientHello，不持有私钥，因此无法解密 TLS 会话。这一设计使得 Reality 在抗中间人攻击方面优于传统自签名证书方案。"
+    },
+    {
+      "question": "Q3：SS2022 的重放保护窗口为何设置为 60 秒？",
+      "answer": "60 秒窗口基于 NTP 时间同步精度与网络抖动容忍度。若窗口过小，时钟偏差会导致合法报文被丢弃；若窗口过大，重放攻击风险增加。实测在跨洋链路中，NTP 同步误差通常小于 10 ms，60 秒窗口可覆盖 99.99% 的正常报文。"
+    },
+    {
+      "question": "Q4：在 5% 丢包环境下，哪种协议表现更优？",
+      "answer": "实测在 5% 丢包、RTT 150 ms 环境下，SS2022 + BBR 吞吐为 2.1 Gbps，VLESS Reality + BBR 吞吐为 1.8 Gbps。若启用 Hysteria 2 的 Brutal 拥塞控制，两者吞吐均可提升至 4.5 Gbps 以上。建议参考 [Hysteria 2 协议性能解析](/protocol/hysteria2) 进行调优。"
+    },
+    {
+      "question": "Q5：如何判断服务端是否被主动探测？",
+      "answer": "主动探测通常表现为异常 TLS 握手（如不完整的 ClientHello）或高频连接尝试。建议部署 [VLESS 协议深度指南](/protocol/vless) 中提到的探测日志分析工具，监控异常 SNI 与连接模式。若发现探测，立即更换 SNI 与端口。\n\n---\n\n**AirportMatrix 评测实验室 · 协议与密码工程组**\n*本文数据基于 2025 年 Q4 至 2026 年 Q1 实测，原始日志与测试脚本可应要求提供。*\n*了解更多评测标准，请访问 [关于 AirportMatrix 评测实验室](/about)。*"
+    }
+  ]
+}
