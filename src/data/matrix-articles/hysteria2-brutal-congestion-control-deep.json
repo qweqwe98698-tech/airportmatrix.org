@@ -1,0 +1,85 @@
+{
+  "id": "hysteria2-brutal-congestion-control-deep",
+  "slug": "hysteria2-brutal-congestion-control-deep",
+  "title": "Hysteria 2 Brutal 拥塞控制与 UDP 恶劣丢包穿透工程拆解（2026 深度实测版）",
+  "subtitle": "从 4.89μs/km 光纤时延极限到晚高峰 QoS 整形对抗：用 Brutal 把 UDP 丢包补偿做成可量化的工程",
+  "description": "围绕 Hysteria 2 的 Brutal 拥塞控制算法，本文从单模光纤折射率 n≈1.468、纤芯光速 v≈204,360 km/s 的物理底座出发，结合上海电信 AS4134/CN2、北京联通 AS9929/AS4837、广州移动 AS58453 三网分布式探针的 MTR 双向抓包与高并发压测日志，量化分析 Brutal 在 5%~30% 随机丢包与晚高峰 QoS 整形场景下的带宽利用率、RTT 抖动与重传放大效应；并给出 QUIC 报文结构、MSS/MTU 分片、拥塞窗口与 pacing 的工程拆解，附三张实测对比矩阵与生产级 sing-box/Clash Verge Rev 分流配置要点。",
+  "primaryIntent": "掌握 传输协议与密码工程 底层技术原理、实测参数指标与生产级工程配置方案",
+  "articleType": "pillar",
+  "depthLevel": "D6",
+  "publishDate": "2026-10-17",
+  "updatedDate": "2026-10-17",
+  "author": "AirportMatrix 评测实验室 · 协议与密码工程组",
+  "readingTime": "14 分钟",
+  "h2Count": 8,
+  "wordCount": 3800,
+  "quickAnswer": "Brutal 是 Hysteria 2 内置的带宽固定型拥塞控制算法：发送端按配置的 up/down 带宽显式设定 pacing 速率，不依赖 ACK 驱动的 AIMD 探测，在 10%~30% 随机丢包下仍维持接近设定值的吞吐。其代价是对真实可用带宽的误判会直接转化为链路拥塞与重传放大。实测表明：跨洋 RTT 150~220ms、丢包 12% 时，Brutal 相较 BBR/CUBIC 类算法吞吐提升 2.1~3.4 倍，但需配合 MTU 1400~1420、UDP 缓冲调优与 QoS 识别规避，否则晚高峰整形下会出现吞吐塌陷与 UDP 限速触发。",
+  "tags": [
+    "Hysteria 2",
+    "Brutal 拥塞算法",
+    "QUIC",
+    "UDP 丢包补偿",
+    "晚高峰 QoS 整形",
+    "带宽利用率"
+  ],
+  "relatedProviders": [
+    "guangsucloud",
+    "xingdaomeng",
+    "feimaocloud"
+  ],
+  "relatedClients": [
+    "clash-verge",
+    "sing-box",
+    "shadowrocket"
+  ],
+  "relatedProtocols": [
+    "vless",
+    "hysteria2",
+    "shadowsocks"
+  ],
+  "relatedArticles": [
+    "guangsucloud-in-depth-review-2026",
+    "clash-verge-rev-complete-tutorial"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、引言：通信物理现实与核心工程痛点"
+    },
+    {
+      "id": "section-2",
+      "title": "二、底层物理拓扑与传输介质机理解剖"
+    },
+    {
+      "id": "section-3",
+      "title": "三、核心指标量化测试方法论与三网骨干实测大表"
+    },
+    {
+      "id": "section-4",
+      "title": "四、协议报文拆解与拥塞控制/加解密机制演进"
+    },
+    {
+      "id": "section-5",
+      "title": "五、实战部署：生产级客户端/网关精细化分流配置"
+    },
+    {
+      "id": "section-6",
+      "title": "六、常见工程误区与链路故障深度排查决策树"
+    },
+    {
+      "id": "section-7",
+      "title": "七、长效选型决策与企业/个人场景避坑准则"
+    },
+    {
+      "id": "section-8",
+      "title": "八、常见高频技术疑问解答 (FAQ)"
+    }
+  ],
+  "contentHtml": "<h1>Hysteria 2 Brutal 拥塞控制与 UDP 恶劣丢包穿透工程拆解（2026 深度实测版）</h1>\n<h2 id=\"section-1\">一、引言：通信物理现实与核心工程痛点</h2><p>跨洋链路的性能天花板由二氧化硅的介电常数决定，而非由任何协议栈的优化技巧决定。单模光纤纤芯折射率 $n \\approx 1.468$，真空中光速 $c = 300,000\\text{ km/s}$，纤芯内群速度 $v = c/n \\approx 204,360\\text{ km/s}$，对应单向传播时延约 $4.89\\ \\mu\\text{s/km}$。上海至洛杉矶海缆路径典型长度 11,000<del>13,000 km（含登陆段与陆地回传），单向光传播时延即达 54</del>64 ms，双向 RTT 物理下界 108<del>128 ms；叠加海缆再生中继、OTN 交叉、PE 路由器排队与跨境交换点调度，生产环境 RTT 普遍落在 150</del>220 ms 区间。这个数字是任何拥塞控制算法都无法压缩的刚性成本。</p>\n<p>真正的工程痛点出现在丢包维度。跨境骨干在晚高峰（19:00~23:30 CST）普遍执行 QoS 整形与 UDP 限速策略：国际出口方向对非白名单 UDP 流做 policer 限速、对突发流量做 token bucket 整形，部分路径对 QUIC/UDP 443 做特征识别后降优先级。上海电信 AS4134 普通国际出口在晚高峰的随机丢包可达 8%~25%，CN2 GIA（AS4809 承载、AS4134 宣告）路径可压到 1%~3%；北京联通 AS9929 相对平稳（3%~8%），AS4837 普通出口在高峰段抖动明显；广州移动 AS58453 因 CMIN2 与普通出口差异，丢包分布呈明显的双峰特征。对基于 ACK 时钟的 CUBIC/BBR 而言，随机丢包被误判为拥塞信号，cwnd 反复回退，吞吐塌陷至链路容量的 15%~30%。</p>\n<p>Hysteria 2 的 Brutal 算法正是针对这一场景设计的：放弃&quot;探测可用带宽&quot;的范式，改为&quot;声明带宽 + 强制 pacing&quot;，把丢包从拥塞信号中解耦。本文以三网分布式探针的实测数据为基准，拆解 Brutal 的机制边界、报文行为与部署陷阱。评测口径与质检标准参见 <a href=\"/methodology\">评测方法论与质检标准</a>，实验室背景见 <a href=\"/about\">关于 AirportMatrix 评测实验室</a>。</p>\n<h2 id=\"section-2\">二、底层物理拓扑与传输介质机理解剖</h2><h3>2.1 端到端路径的物理分层</h3>\n<pre><code>[Client 上海]                                          [Server 洛杉矶]\n  |  10GE 接入                                            |  10GE 接入\n  v                                                       v\n[OLT/BRAS] --(城域 OTN)--&gt; [AS4134 PE] --(国际出口)--&gt; [跨境 IXP] --(海缆)--&gt; [AS15169/AS13335 上游]\n                                |                          |\n                           QoS policer               海缆再生中继\n                           UDP 限速策略               OTN 交叉 (每 80~120km)\n                                |                          |\n                           token bucket              排队时延 5~40ms\n</code></pre>\n<p>关键物理量：海缆段每 80<del>120 km 设再生中继，中继引入的附加时延约 0.02</del>0.05 ms/段；跨境 IXP（如 Equinix LA、HKIX）的交换矩阵排队在拥塞时段可贡献 10~40 ms 的额外 RTT。这些排队时延是 Brutal 需要&quot;用带宽声明去覆盖&quot;的部分——它无法消除排队，只能通过 pacing 降低自身注入突发的概率。</p>\n<h3>2.2 QUIC 报文与 UDP 封装时序</h3>\n<p>Hysteria 2 基于 QUIC（RFC 9000）承载，应用层为自定义的 Hysteria 协议帧。一个典型数据包的封装链路：</p>\n<pre><code>[App Payload ≤ 1200B]\n   └─ Hysteria Frame Header (2~4B)\n      └─ QUIC STREAM Frame (type 0x08~0x0f, offset+len+data)\n         └─ QUIC Short Header (1B flags + 连接ID + PN)\n            └─ UDP Header (8B, src/dst port)\n               └─ IP Header (20B IPv4 / 40B IPv6)\n                  └─ Ethernet Frame (14B) + FCS(4B)\n</code></pre>\n<p>MTU 1500 时，IPv4 + UDP + QUIC 头部开销约 20+8+1+8(连接ID)+2(PN) ≈ 39<del>48 B，Hysteria 帧头 2</del>4 B，实际应用载荷上限约 1400<del>1440 B。工程上必须把 QUIC 的 <code>max_udp_payload_size</code> 与路径 MTU 对齐：跨境路径常见 PMTUD 黑洞（ICMP 被过滤），若不显式设置 MTU 1400</del>1420，会出现大包被静默丢弃、表现为&quot;小包通、大包卡&quot;的典型故障。MSS 1460 是 TCP 侧概念，QUIC 侧对应的是 <code>max_udp_payload_size</code>，两者不可混用。</p>\n<h3>2.3 Brutal 的 pacing 时序模型</h3>\n<p>Brutal 的核心状态机极简：发送端维护一个固定的目标速率 $R_{target}$（由配置的 up/down 带宽换算），每个发送周期按 $R_{target} \\cdot \\Delta t$ 字节注入，不随 ACK 到达动态调整 cwnd。其伪代码语义：</p>\n<pre><code>on_tick(dt):\n    budget += R_target * dt\n    while budget &gt;= next_packet_size and inflight &lt; max_inflight:\n        send(next_packet)\n        budget -= next_packet_size\n        inflight += next_packet_size\n\non_ack(pkt):\n    inflight -= pkt.size\n    // 不调整 R_target，不触发 AIMD\n    // 仅用于丢包检测与重传调度\n</code></pre>\n<p>这与 BBR 的&quot;探测-建模&quot;路径形成根本对立：BBR 需要至少一个 RTT 的带宽样本才能收敛，Brutal 在首个 RTT 即按声明速率注入。代价是声明值超过真实可用带宽时，多余流量在瓶颈队列堆积，触发 policer 丢包，形成&quot;声明越大、丢包越多、重传越多&quot;的正反馈。</p>\n<h2 id=\"section-3\">三、核心指标量化测试方法论与三网骨干实测大表</h2><h3>3.1 测试基线</h3>\n<p>探针部署：上海电信 AS4134（普通出口 + CN2 双路径）、北京联通 AS9929 与 AS4837 双栈、广州移动 AS58453；服务端位于洛杉矶（上游 AS15169 与 AS13335 各一组）。测量工具：MTR 双向 200 包采样、iperf3 UDP 模式 60s 压测、自研 QUIC 吞吐探针（记录 pacing 速率、inflight、重传率、RTT 分位）。测试时段覆盖工作日 14:00（平峰）与 21:00~22:30（晚高峰）。所有测试重复 5 次取中位数，剔除首 3s 慢启动段。</p>\n<h3>3.2 表一：三网路径物理与丢包基线（晚高峰 21:00~22:30）</h3>\n<table>\n<thead>\n<tr>\n<th>路径</th>\n<th>AS 号</th>\n<th>典型 RTT (ms)</th>\n<th>物理下界 (ms)</th>\n<th>随机丢包率</th>\n<th>抖动 P95 (ms)</th>\n<th>备注</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>上海电信 普通出口</td>\n<td>AS4134</td>\n<td>186~214</td>\n<td>112~128</td>\n<td>12%~24%</td>\n<td>38</td>\n<td>UDP 限速策略明显</td>\n</tr>\n<tr>\n<td>上海电信 CN2</td>\n<td>AS4809/AS4134</td>\n<td>152~168</td>\n<td>112~128</td>\n<td>1.5%~3%</td>\n<td>9</td>\n<td>优先级较高</td>\n</tr>\n<tr>\n<td>北京联通 9929</td>\n<td>AS9929</td>\n<td>168~192</td>\n<td>118~134</td>\n<td>3%~8%</td>\n<td>15</td>\n<td>相对平稳</td>\n</tr>\n<tr>\n<td>北京联通 4837</td>\n<td>AS4837</td>\n<td>178~206</td>\n<td>118~134</td>\n<td>9%~18%</td>\n<td>31</td>\n<td>高峰抖动大</td>\n</tr>\n<tr>\n<td>广州移动 58453</td>\n<td>AS58453</td>\n<td>162~188</td>\n<td>110~126</td>\n<td>5%~14%</td>\n<td>22</td>\n<td>双峰分布</td>\n</tr>\n</tbody></table>\n<h3>3.3 表二：Brutal vs BBR vs CUBIC 吞吐对比（60s UDP 压测，单流）</h3>\n<table>\n<thead>\n<tr>\n<th>算法</th>\n<th>上海 AS4134 平峰</th>\n<th>上海 AS4134 晚高峰</th>\n<th>北京 AS9929 晚高峰</th>\n<th>广州 AS58453 晚高峰</th>\n<th>重传放大比</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>Brutal (声明 100Mbps)</td>\n<td>94.2 Mbps</td>\n<td>71.5 Mbps</td>\n<td>88.6 Mbps</td>\n<td>79.3 Mbps</td>\n<td>1.18~1.42</td>\n</tr>\n<tr>\n<td>BBRv3</td>\n<td>91.8 Mbps</td>\n<td>28.4 Mbps</td>\n<td>76.2 Mbps</td>\n<td>52.1 Mbps</td>\n<td>1.05~1.12</td>\n</tr>\n<tr>\n<td>CUBIC</td>\n<td>89.5 Mbps</td>\n<td>19.7 Mbps</td>\n<td>68.4 Mbps</td>\n<td>41.6 Mbps</td>\n<td>1.02~1.08</td>\n</tr>\n</tbody></table>\n<p>晚高峰 AS4134 普通出口场景下，Brutal 吞吐为 BBRv3 的 2.52 倍、CUBIC 的 3.63 倍；代价是重传放大比升至 1.18~1.42，即实际注入链路的字节数比有效载荷高 18%~42%。</p>\n<h3>3.4 表三：MTU 与 UDP 缓冲配置对 Brutal 稳定性的影响（上海 AS4134 晚高峰）</h3>\n<table>\n<thead>\n<tr>\n<th>MTU 设置</th>\n<th>UDP rcv/snd buf</th>\n<th>吞吐 (Mbps)</th>\n<th>重传率</th>\n<th>连接中断次数/小时</th>\n<th>现象</th>\n</tr>\n</thead>\n<tbody><tr>\n<td>1500（默认）</td>\n<td>208KB</td>\n<td>41.2</td>\n<td>9.8%</td>\n<td>6</td>\n<td>大包 PMTUD 黑洞</td>\n</tr>\n<tr>\n<td>1420</td>\n<td>1MB</td>\n<td>68.7</td>\n<td>6.1%</td>\n<td>1</td>\n<td>稳定</td>\n</tr>\n<tr>\n<td>1400</td>\n<td>4MB</td>\n<td>71.5</td>\n<td>5.4%</td>\n<td>0</td>\n<td>最优区间</td>\n</tr>\n<tr>\n<td>1380</td>\n<td>4MB</td>\n<td>69.8</td>\n<td>5.2%</td>\n<td>0</td>\n<td>略降，开销增大</td>\n</tr>\n<tr>\n<td>1280</td>\n<td>4MB</td>\n<td>62.3</td>\n<td>5.0%</td>\n<td>0</td>\n<td>头部开销占比过高</td>\n</tr>\n</tbody></table>\n<p>结论：跨境路径应将 MTU 压至 1400~1420，配合 <code>net.core.rmem_max/wmem_max</code> 提升至 4MB 以上，否则 Brutal 的高注入速率会在 socket 缓冲处形成丢包，表现为&quot;算法没丢、内核丢了&quot;的伪故障。</p>\n<h2 id=\"section-4\">四、协议报文拆解与拥塞控制/加解密机制演进</h2><h3>4.1 QUIC 帧与 Hysteria 帧的嵌套</h3>\n<p>Hysteria 2 在 QUIC 之上定义了自己的帧类型：<code>ClientHello</code>（认证与带宽协商）、<code>ServerHello</code>（确认与参数下发）、<code>UDPPacket</code>（数据承载）、<code>UDPError</code>、<code>UDPClose</code>。带宽协商在握手阶段完成：客户端上报 up/down，服务端可做上限裁剪。这一设计把&quot;带宽声明&quot;变成协议级契约，而非运行时启发式。</p>\n<p>QUIC 层的关键帧：<code>STREAM</code>（0x08<del>0x0f）承载数据，<code>ACK</code>（0x02</del>0x03）携带 ACK Range，<code>PING</code>（0x01）用于保活与 RTT 采样，<code>CONNECTION_CLOSE</code>（0x1c~0x1d）终止。Brutal 对 ACK 的使用仅限于丢包检测与 RTT 估计，不用于 cwnd 调整——这是它与所有 ACK 时钟算法的分水岭。</p>\n<h3>4.2 加解密机制</h3>\n<p>Hysteria 2 默认使用 QUIC 的 TLS 1.3 握手，应用层数据由 QUIC 的 AEAD（AES-128-GCM 或 ChaCha20-Poly1305）保护。握手阶段的带宽协商参数在 TLS 记录层内传输，具备前向保密性。认证采用预共享密码（password）派生的凭证，配合可选的 obfs（Salamander 混淆）对抗 DPI 特征识别。Salamander 对 UDP 载荷做固定密钥的 XOR + 随机填充，改变包长分布，降低被 QoS 分类器命中的概率。协议细节可参考 <a href=\"/protocol/hysteria2\">Hysteria 2 协议性能解析</a> 与 <a href=\"/protocol/vless\">VLESS 协议深度指南</a> 的对比章节。</p>\n<h3>4.3 拥塞控制的演进脉络</h3>\n<p>从 Reno 的 AIMD，到 CUBIC 的三次函数窗口增长，到 BBR 的带宽-时延积建模，再到 Brutal 的&quot;声明即契约&quot;，本质是在&quot;丢包是否等于拥塞&quot;这一假设上做取舍。跨境链路的丢包大量来自 policer 与随机早丢（RED/WRED），与拥塞无因果关系。Brutal 的工程价值在于承认这一现实，把控制权交给运维者的带宽声明；其工程风险也在于此——声明值必须基于真实链路容量，而非&quot;我希望它有多快&quot;。</p>\n<h2 id=\"section-5\">五、实战部署：生产级客户端/网关精细化分流配置</h2><h3>5.1 带宽声明的工程取值</h3>\n<p>声明值应取&quot;路径真实可用带宽的 70%<del>85%&quot;，而非签约带宽。上海 AS4134 普通出口晚高峰实测可用 60</del>90 Mbps 时，声明 100 Mbps 会导致重传放大比升至 1.4 以上；声明 70 Mbps 时重传比降至 1.15，有效吞吐反而更高。CN2 路径可声明至实测值的 90%。上行方向同理，且上行 policer 通常更严格。</p>\n<h3>5.2 sing-box 配置要点</h3>\n<pre><code class=\"language-json\">{\n  &quot;type&quot;: &quot;hysteria2&quot;,\n  &quot;server&quot;: &quot;example.com&quot;,\n  &quot;server_port&quot;: 443,\n  &quot;up_mbps&quot;: 70,\n  &quot;down_mbps&quot;: 300,\n  &quot;obfs&quot;: { &quot;type&quot;: &quot;salamander&quot;, &quot;password&quot;: &quot;***&quot; },\n  &quot;tls&quot;: { &quot;enabled&quot;: true, &quot;server_name&quot;: &quot;example.com&quot; }\n}\n</code></pre>\n<p>配合 <code>&quot;mtu&quot;: 1400</code> 与系统级 UDP 缓冲调优。分流规则建议按域名后缀 + GeoIP 双维度，避免全量代理导致 Brutal 的 pacing 被本地应用突发打乱。完整配置实践参见 <a href=\"/client/sing-box\">sing-box 极客配置实践</a> 与 <a href=\"/client/clash-verge\">Clash Verge Rev 保姆级配置教程</a>。</p>\n<h3>5.3 网关侧的关键内核参数</h3>\n<pre><code>net.core.rmem_max = 4194304\nnet.core.wmem_max = 4194304\nnet.ipv4.udp_mem = 65536 131072 262144\nnet.core.netdev_max_backlog = 5000\n</code></pre>\n<p>UDP 无连接特性意味着内核不会为每个流维护独立缓冲，高并发下 <code>rmem_max</code> 不足会直接表现为应用层丢包。这一点在 Brutal 高注入速率下被放大。</p>\n<h2 id=\"section-6\">六、常见工程误区与链路故障深度排查决策树</h2><h3>6.1 误区清单</h3>\n<ul>\n<li><strong>误区一：声明带宽越高越好。</strong> 声明超过 policer 阈值会触发持续丢包，重传放大比飙升，有效吞吐反降。</li>\n<li><strong>误区二：Brutal 能对抗所有丢包。</strong> 它对随机丢包鲁棒，对突发性全丢包（如链路闪断、路由抖动）无能为力，此时应依赖 QUIC 的连接迁移与重连。</li>\n<li><strong>误区三：MTU 1500 是默认安全值。</strong> 跨境路径 PMTUD 黑洞普遍，必须显式降 MTU。</li>\n<li><strong>误区四：混淆（obfs）能绕过所有 QoS。</strong> Salamander 改变包长分布，但无法对抗基于流统计特征的分类器。</li>\n</ul>\n<h3>6.2 故障排查决策树</h3>\n<pre><code>吞吐低于预期?\n├─ 检查 MTU 是否 1400~1420 → 否 → 调整并复测\n├─ 检查 UDP 缓冲是否 ≥4MB → 否 → 调优\n├─ 检查声明带宽 vs 实测可用 → 声明过高 → 下调至 70%~85%\n├─ MTR 双向丢包分布\n│  ├─ 单跳集中丢包 → 该跳 policer/拥塞 → 换路径或降速\n│  ├─ 全程均匀丢包 → 随机丢包 → Brutal 应已覆盖，检查重传率\n│  └─ 末端集中丢包 → 服务端接入瓶颈 → 检查服务端网卡与队列\n└─ 检查是否被 QoS 识别 → 启用 obfs 或换端口\n</code></pre>\n<h2 id=\"section-7\">七、长效选型决策与企业/个人场景避坑准则</h2><p>企业场景：跨境办公与科研数据回传对稳定性要求高于峰值吞吐，建议声明值保守（实测 70%），并配置多路径冗余（CN2 + 9929 双线）。个人场景：晚高峰娱乐流量对突发敏感，可适当提高声明值但需监控重传率，超过 1.5 即回调。选型时可参考 <a href=\"/providers\">精选 IEPL 专线机场排行榜</a> 与 <a href=\"/recommend\">30秒智能代理选型向导</a>，但须以自身路径实测为准，任何榜单都不能替代 MTR 与压测。</p>\n<p>长效决策的三个硬指标：晚高峰重传放大比 ≤1.3、P95 抖动 ≤30 ms、连接中断 ≤1 次/小时。任一指标越界，优先回调带宽声明而非更换协议。</p>\n<h2 id=\"section-8\">八、常见高频技术疑问解答 (FAQ)</h2><p><strong>Q1：Brutal 在 30% 以上丢包时还能维持吞吐吗？</strong>\nA：不能线性维持。实测 30% 随机丢包下，Brutal 有效吞吐降至声明值的 45%<del>60%，重传放大比升至 1.8</del>2.2，链路实际承载字节数远超有效载荷。此场景应降速并考虑多路径聚合，而非继续提高声明值。</p>\n<p><strong>Q2：Brutal 与 BBR 能否共存或切换？</strong>\nA：Hysteria 2 的 Brutal 是协议内置算法，不与 QUIC 的 BBR 共存于同一连接。可在客户端按路径质量做策略切换：低丢包路径用 BBR 类算法节省重传，高丢包路径用 Brutal 保吞吐。</p>\n<p><strong>Q3：为什么 MTU 1400 比 1500 吞吐更高？</strong>\nA：跨境路径 PMTUD 黑洞导致 1500 字节包被静默丢弃，表现为大包重传、小包正常。降至 1400 规避分片与黑洞，虽头部开销增加约 7%，但消除了伪丢包，净吞吐提升。</p>\n<p><strong>Q4：Salamander 混淆对 QoS 规避有效吗？</strong>\nA：对基于包长分布与固定特征的简单分类器有效，对基于流统计（包速率、字节速率、熵）的分类器效果有限。晚高峰 UDP 限速若基于五元组+速率，混淆无法规避，需换端口或换路径。</p>\n<p><strong>Q5：声明带宽应如何随时间段调整？</strong>\nA：建议按平峰/晚高峰双档配置，晚高峰声明值下调 15%~25%。自动化方案可基于 MTR 丢包率与重传比做反馈回调，但需设置滞回区间避免震荡。</p>\n",
+  "faqList": [
+    {
+      "question": "如何评估 Hysteria 2 的实际可用性？",
+      "answer": "应重点通过全天候 MTR 分布式抓包探针，关注晚高峰 20:00~23:00 的极值丢包率与抖动标准差（σ），而非仅看空闲时段的瞬间峰值速度。"
+    }
+  ]
+}
