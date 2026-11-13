@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumb from '@/components/common/Breadcrumb.astro';
 import Icon from '@/components/common/Icon.astro';
+import NextBestPage from '@/components/article/NextBestPage.astro';
 
 const breadcrumbs = [
   { name: '极客实用工具箱', url: '/tools' },
@@ -28,8 +29,8 @@ const tools = [
 ---
 
 <BaseLayout
-  title="极客实用工具箱 - 订阅转换器与 IP 纯净度探测 - AirportMatrix"
-  description="免费提供 Web 在线代理订阅转换、Mihomo (Clash.Meta) TUN 模式规则生成、Fake-IP 防污染配置与 WebRTC IP 泄漏在线自测工具。"
+  title="极客实用工具箱 - 机场订阅转换工具与节点 IP 纯净度探测"
+  description="免费提供纯本地在线机场订阅转换、Clash Verge / Mihomo / 小火箭分流规则生成与节点 IP 纯净度/WebRTC 泄漏自测工具。"
   breadcrumbs={breadcrumbs}
 >
   <Breadcrumb items={breadcrumbs} />
@@ -78,4 +79,33 @@ const tools = [
       </a>
     ))}
   </div>
+
+  <NextBestPage
+    nextPages={[
+      {
+        title: '2026 Clash 机场推荐与订阅配置精选',
+        href: '/category/clash-recommend',
+        desc: '匹配 Clash Verge Rev / Mihomo 的高兼容性高速专线机场推荐榜单。',
+        type: '核心专题',
+      },
+      {
+        title: 'Clash 机场推荐与 GitHub 客户端实操指南',
+        href: '/articles/clash-airport-github-client-and-subscription-guide',
+        desc: '手把手教你从安全下载到利用本地订阅转换导入节点。',
+        type: '配置教程',
+      },
+      {
+        title: '2026 高性价比机场推荐排行榜',
+        href: '/category/cost-effective',
+        desc: '严选月付 14.9 元起及年付均摊 7.5 元起的稳定专线机场。',
+        type: '选购榜单',
+      },
+      {
+        title: 'Shadowrocket 小火箭 iOS 配置与机场推荐',
+        href: '/client/shadowrocket',
+        desc: '苹果移动端一键订阅导入教程与常见节点超时排查。',
+        type: '移动端教程',
+      },
+    ]}
+  />
 </BaseLayout>

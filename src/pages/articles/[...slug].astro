@@ -18,24 +18,35 @@ export function getStaticPaths() {
 const { article } = Astro.props;
 
 const breadcrumbs = [
-  { name: '知识库', url: '/articles' },
+  { name: '机场测评与指南', url: '/articles' },
   { name: article.title, url: `/articles/${article.slug}` },
 ];
 
+const relatedArticleObjs = (article.relatedArticles || [])
+  .map((slug) => articlesData.find((a) => a.slug === slug))
+  .filter((a): a is NonNullable<typeof a> => Boolean(a))
+  .slice(0, 2);
+
 const nextPages = [
+  ...relatedArticleObjs.map((ra) => ({
+    title: ra.title,
+    href: `/articles/${ra.slug}`,
+    desc: ra.description,
+    type: '关联指南',
+  })),
   {
-    title: '精选 IEPL 专线机场排行榜',
-    href: '/providers',
-    desc: '获取具备低延迟、原生 IP 与高稳定性的专线节点订阅。',
-    type: '专线推荐',
+    title: '2026 性价比机场推荐排行榜',
+    href: '/category/cost-effective',
+    desc: '按月付价格、IEPL 专线稳定度与 Clash 兼容度查看实测筛选榜单。',
+    type: '核心专题',
   },
   {
-    title: '30秒智能代理选型向导',
-    href: '/recommend',
-    desc: '根据具体用途与预算快速匹配最适用的服务商。',
-    type: '智能选型',
+    title: 'Clash 机场推荐与订阅精选',
+    href: '/category/clash-recommend',
+    desc: '查看完美适配 Clash Verge Rev 与 Mihomo 的一键订阅服务商。',
+    type: 'Clash 专题',
   },
-];
+].slice(0, 4);
 ---
 
 <BaseLayout
@@ -108,16 +119,15 @@ const nextPages = [
     </aside>
 
     <!-- Main Markdown/HTML Article Body -->
-    <article class="lg:col-span-3 order-1 lg:order-2 max-w-none">
-      <div class="prose prose-invert max-w-none text-slate-300 leading-relaxed text-sm sm:text-base" set:html={article.contentHtml} />
+    <article class="lg:col-span-3 order-1 lg:order-2 max-w-none min-w-0">
+      <div class="prose prose-invert max-w-none overflow-x-auto text-slate-300 leading-relaxed text-sm sm:text-base" set:html={article.contentHtml} />
 
       <!-- FAQ Section Component with FAQPage Schema -->
       {article.faqList && article.faqList.length > 0 && (
-        <>
-          <FaqSection faqs={article.faqList} />
-          <EntityRelationBadges entityId={article.relatedEntities?.[0] || 'guangsucloud'} />
-        </>
+        <FaqSection faqs={article.faqList} />
       )}
+
+      <EntityRelationBadges entityId={article.relatedProviders?.[0] || 'guangsucloud'} />
 
       <!-- Topic Bridge to Next Page -->
       <NextBestPage nextPages={nextPages} />

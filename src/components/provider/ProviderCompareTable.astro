@@ -44,7 +44,7 @@ const { providers } = Astro.props;
           </td>
 
           <td class="p-3.5 whitespace-nowrap font-mono font-medium text-slate-200">
-            ¥{p.pricing.minMonthly} / 月
+            {p.pricing.minMonthly > 0 ? `¥${p.pricing.minMonthly} / 月` : '待核实'}
           </td>
 
           <td class="p-3.5 whitespace-nowrap">
@@ -71,11 +71,11 @@ const { providers } = Astro.props;
             <div class="flex items-center gap-2">
               <span class={`inline-flex items-center gap-1 ${p.aiSupport.chatgpt ? 'text-emerald-400' : 'text-slate-500'}`}>
                 <Icon name="bot" class="w-3.5 h-3.5" />
-                <span>AI 全绿</span>
+                <span>{p.aiSupport.chatgpt ? 'AI支持' : 'AI待核实'}</span>
               </span>
               <span class={`inline-flex items-center gap-1 ${p.streamingSupport.netflix ? 'text-cyan-400' : 'text-slate-500'}`}>
                 <Icon name="tv" class="w-3.5 h-3.5" />
-                <span>4K解锁</span>
+                <span>{p.streamingSupport.netflix ? '流媒体解锁' : '流媒体待核实'}</span>
               </span>
             </div>
           </td>
@@ -92,15 +92,21 @@ const { providers } = Astro.props;
               >
                 详情
               </a>
-              <a
-                href={p.affiliateUrl}
-                target="_blank"
-                rel="nofollow sponsored noopener noreferrer"
-                class="px-2.5 py-1 rounded bg-tech-emerald hover:bg-emerald-400 text-slate-950 text-[11px] font-bold transition-colors inline-flex items-center gap-1"
-              >
-                <span>官网</span>
-                <Icon name="external-link" class="w-2.5 h-2.5" />
-              </a>
+              {p.affiliateUrl ? (
+                <a
+                  href={p.affiliateUrl}
+                  target="_blank"
+                  rel="nofollow sponsored noopener noreferrer"
+                  class="px-2.5 py-1 rounded bg-tech-emerald hover:bg-emerald-400 text-slate-950 text-[11px] font-bold transition-colors inline-flex items-center gap-1"
+                >
+                  <span>官网</span>
+                  <Icon name="external-link" class="w-2.5 h-2.5" />
+                </a>
+              ) : (
+                <span class="px-2 py-1 rounded bg-slate-900 text-slate-500 border border-slate-800 text-[10px]">
+                  待核实
+                </span>
+              )}
             </div>
           </td>
         </tr>

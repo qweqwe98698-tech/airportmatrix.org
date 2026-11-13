@@ -3,24 +3,40 @@
     "id": "guangsucloud",
     "slug": "guangsucloud",
     "name": "光速云 (GuangSuCloud)",
-    "tagline": "全专线IEPL网络 · 9Gbps实测 424MB/s · 极速 4K/8K 与 AI 响应",
-    "description": "光速云是专注于极速与稳定性的高端专线机场，全节点部署企业级 IEPL 内网专线，有效避免晚高峰骨干网拥堵与断流。实测 YouTube 8K 秒开，ChatGPT/Claude 解锁率达 99.8%。",
+    "tagline": "2020老牌全IEPL专线机场 · 主打VLESS极速协议 · 年付均摊7.5元/月起",
+    "description": "光速云（GuangSuCloud）是 2020 年成立的老牌综合型专线机场。主打 IEPL 企业级内网专线与新一代 VLESS 协议，经 MiaoKO 9Gbps 宽带真实测速，香港专线平均吞吐达 400MB/s 以上，全节点支持 FullCone UDP。既提供新手友好的自研客户端，又完美兼容 Clash Verge Rev、Shadowrocket、sing-box 等开源客户端，综合性能与性价比位于第一梯队。",
     "officialUrl": "https://sahude.gsyvipaff.com",
-    "affiliateUrl": "https://sahude.gsyvipaff.com/#/register?code=6b0c",
+    "affiliateUrl": "https://sahude.gsyvipaff.com/#/?code=keqgvT5Y",
     "status": "active",
-    "establishedYear": 2022,
-    "nodeCount": 68,
-    "entryLocations": ["深圳电信", "上海联通", "广州移动"],
-    "bandwidthLimit": "100GB ~ 2000GB / 月",
-    "refundPolicy": "24小时内未用流量超 1GB 可申请工单原路退款",
+    "establishedYear": 2020,
+    "nodeCount": 70,
+    "entryLocations": [
+      "深圳电信",
+      "上海联通",
+      "广州移动"
+    ],
+    "bandwidthLimit": "69GB - 900GB / 月 · 含 247GB 永久包",
+    "refundPolicy": "服务异常支持工单技术支持与合规处理",
     "couponCode": "AMM",
-    "discountInfo": "首单输入专属优惠码 AMM 享超值特惠",
-    "routes": ["iepl", "iplc"],
-    "protocols": ["vless", "hysteria2", "trojan"],
-    "clients": ["clash-verge", "shadowrocket", "sing-box", "v2rayn", "surge"],
+    "discountInfo": "新人专属优惠码：AMM（半年9折 / 年付8折 / 两年75折 / 三年7折；147永久与99年付轻量版不参与折扣）",
+    "routes": [
+      "iepl",
+      "bgp"
+    ],
+    "protocols": [
+      "vless",
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn",
+      "surge"
+    ],
     "pricing": {
-      "minMonthly": 7.5,
-      "billingPeriod": "年付折合",
+      "minMonthly": 8.25,
+      "billingPeriod": "轻量版 99元/年 (69GB/月，用码AMM约8元档)",
       "annualDiscount": "年付享 7 折并赠送 20% 流量",
       "hasUnlimitedTraffic": false
     },
@@ -33,12 +49,25 @@
     },
     "aiSupport": {
       "status": "native",
-      "tools": ["ChatGPT", "Claude", "Gemini", "Cursor", "Midjourney"],
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini",
+        "Cursor",
+        "Midjourney"
+      ],
       "notes": "全线配备美西、日本及新加坡原生住宅静态 IP，避开 Cloudflare 1020 报错与风控拦截。"
     },
     "streamingSupport": {
       "status": "native_4k",
-      "platforms": ["Netflix", "Disney+", "YouTube", "TikTok", "Bahamut", "Hulu"],
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube",
+        "TikTok",
+        "Bahamut",
+        "Hulu"
+      ],
       "notes": "多地区节点原生支持 4K/8K HDR 解锁，非自制剧随心看。"
     },
     "riskScore": 5,
@@ -49,96 +78,175 @@
       "topAudience": "AI 开发者、高码率追剧族"
     },
     "relations": [
-      { "targetId": "vless", "targetType": "protocol", "relationType": "supports" },
-      { "targetId": "iepl", "targetType": "route", "relationType": "runs_on" },
-      { "targetId": "clash-verge", "targetType": "client", "relationType": "supports" },
-      { "targetId": "chatgpt_1020", "targetType": "issue", "relationType": "resolves" }
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "chatgpt_1020",
+        "targetType": "issue",
+        "relationType": "resolves"
+      }
     ],
     "history": [
-      { "date": "2026-08-19", "type": "speedtest", "title": "9Gbps 宽带实测 424MB/s 满速通过" },
-      { "date": "2026-06-10", "type": "upgrade", "title": "全线升级 VLESS + Reality 新协议" }
+      {
+        "date": "2026-08-19",
+        "type": "speedtest",
+        "title": "9Gbps 宽带实测 424MB/s 满速通过"
+      },
+      {
+        "date": "2026-06-10",
+        "type": "upgrade",
+        "title": "全线升级 VLESS + Reality 新协议"
+      }
     ]
   },
   {
-    "id": "xingdaomeng",
-    "slug": "xingdaomeng",
-    "name": "星岛梦 (XingDaoMeng)",
-    "tagline": "企业级内网专线 · 不限时流量包 · 长期稳定之选",
-    "description": "星岛梦以超长待机与高可靠性著称，提供极具性价比的不限时按量流量包。适合不经常出海但关键时刻要求 100% 连通率的用户。",
-    "officialUrl": "https://guangs.xingdaomeng.com",
-    "affiliateUrl": "https://guangs.xingdaomeng.com/#/register?code=i17n",
+    "id": "muguang",
+    "slug": "muguang",
+    "name": "暮光加速 (MuGuang)",
+    "tagline": "2023年运营 · BGP智能调度专线 · 年付109元起 & 全平台多设备在线",
+    "description": "暮光加速（MuGuang）面向个人与跨平台团队使用场景，主打 BGP 智能调度与专线级出口，支持多设备同时在线。年付轻量版 109 元（70GB/月，均摊约 9.1 元/月），标准月付 20 元含 120GB 流量，并配备 150GB~800GB 不限时流量包与私人定制节点。",
+    "officialUrl": "https://varnexa.twilightaff.com",
+    "affiliateUrl": "https://varnexa.twilightaff.com/#/?code=D1LHglg3",
     "status": "active",
-    "establishedYear": 2021,
-    "nodeCount": 55,
-    "entryLocations": ["江苏联通", "广东电信"],
-    "bandwidthLimit": "不限时 100GB ~ 1000GB",
-    "refundPolicy": "支持 3 天内未消耗套餐退款",
-    "couponCode": "AMM",
-    "discountInfo": "输入专属优惠码 AMM 享折上折优惠",
-    "routes": ["iepl", "bgp"],
-    "protocols": ["shadowsocks", "vless"],
-    "clients": ["clash-verge", "shadowrocket", "sing-box", "v2rayn", "surge"],
+    "establishedYear": 2023,
+    "nodeCount": 50,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "70GB - 1500GB / 月 · 含不限时包",
+    "refundPolicy": "客服工单协调（建议先月付实测）",
+    "couponCode": "muguang5555",
+    "discountInfo": "基础数据记录优惠码：muguang5555（具体折扣以官网当期活动为准）",
+    "routes": [
+      "bgp",
+      "iepl"
+    ],
+    "protocols": [
+      "vless",
+      "trojan"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
     "pricing": {
-      "minMonthly": 12.0,
-      "billingPeriod": "按量/月付",
-      "annualDiscount": "年付享专属备用流量池",
+      "minMonthly": 9.1,
+      "billingPeriod": "年付轻量版 109元/年 (约9.1元/月) · 月付20元(120GB)",
+      "annualDiscount": "基础数据记录优惠码：muguang5555（具体折扣以官网当期活动为准）",
       "hasUnlimitedTraffic": true
     },
     "score": {
-      "overall": 9.5,
-      "stability": 9.7,
-      "speed": 9.4,
-      "support": 9.3,
-      "costPerformance": 9.6
+      "overall": 9.4,
+      "stability": 9.4,
+      "speed": 9.3,
+      "support": 9.4,
+      "costPerformance": 9.4
     },
     "aiSupport": {
       "status": "native",
-      "tools": ["ChatGPT", "Claude", "Gemini"],
-      "notes": "精选节点支持 OpenAI 与 Claude 网页版流畅对话。"
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "资料显示支持 ChatGPT、Claude；Gemini 视落地节点而定。"
     },
     "streamingSupport": {
       "status": "native_4k",
-      "platforms": ["Netflix", "Disney+", "YouTube"],
-      "notes": "港台日美主流流媒体全解锁。"
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "支持 Netflix、Disney+、YouTube、HBO Max、TikTok 与 Spotify。"
     },
     "riskScore": 8,
     "riskLevel": "normal",
     "conversionData": {
-      "clickCount": 1180,
-      "estimatedConversionRate": 16.2,
-      "topAudience": "轻度办公、不限时备用用户"
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "多设备家庭与远程办公团队"
     },
     "relations": [
-      { "targetId": "iepl", "targetType": "route", "relationType": "runs_on" },
-      { "targetId": "clash-verge", "targetType": "client", "relationType": "supports" },
-      { "targetId": "node_timeout", "targetType": "issue", "relationType": "resolves" }
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "trojan",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "bgp",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
     ],
     "history": [
-      { "date": "2026-07-15", "type": "maintenance", "title": "企业专线入口负载均衡扩容" }
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "2023年运营 · BGP智能调度专线 · 年付109元起 & 全平台多设备在线"
+      }
     ]
   },
   {
     "id": "feimaocloud",
     "slug": "feimaocloud",
     "name": "飞猫云 (FeiMaoCloud)",
-    "tagline": "亲民性价比之选 · 14.9元超大流量 · 学生与追剧党首选",
-    "description": "飞猫云主打极致性价比，14.9元即可畅享上百吉流量。采用智能 BGP 动态优化选路，晚高峰看 4K 视频丝滑流畅。",
+    "tagline": "IEPL专线小流量低价年付 · 均摊约7元/月 · 轻度日常办公首选",
+    "description": "飞猫云专注于 IEPL 专线配合低价小流量套餐，通过年付机制大幅摊薄使用成本，是日常轻度出海的高性价比代表。",
     "officialUrl": "https://guangs.flycataff.com",
-    "affiliateUrl": "https://guangs.flycataff.com/#/register?code=lO0v",
+    "affiliateUrl": "https://guangs.flycataff.com/#/?code=6uq0Xe9y",
     "status": "active",
     "establishedYear": 2023,
     "nodeCount": 48,
-    "entryLocations": ["广州移动", "杭州电信"],
-    "bandwidthLimit": "150GB ~ 1200GB / 月",
-    "refundPolicy": "开通后 12 小时内故障可退款",
+    "entryLocations": [
+      "广州移动",
+      "杭州电信"
+    ],
+    "bandwidthLimit": "50GB - 800GB / 月",
+    "refundPolicy": "支持工单咨询",
     "couponCode": "flycat888",
-    "discountInfo": "输入新人码 flycat888 享专属立减",
-    "routes": ["bgp", "iepl"],
-    "protocols": ["vless", "trojan"],
-    "clients": ["clash-verge", "shadowrocket", "v2rayn"],
+    "discountInfo": "季付及以上套餐享 8 折优惠码：flycat888",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless",
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
     "pricing": {
-      "minMonthly": 14.9,
-      "billingPeriod": "月付",
+      "minMonthly": 7,
+      "billingPeriod": "飞猫·学生版 84元/年 (约7元/月 50GB) · 月付25元起",
       "annualDiscount": "年付享额外大额折扣",
       "hasUnlimitedTraffic": false
     },
@@ -151,12 +259,19 @@
     },
     "aiSupport": {
       "status": "native",
-      "tools": ["ChatGPT", "Cursor"],
+      "tools": [
+        "ChatGPT",
+        "Cursor"
+      ],
       "notes": "支持 AI 对话与代码补全。"
     },
     "streamingSupport": {
       "status": "native_4k",
-      "platforms": ["YouTube", "Netflix", "TikTok"],
+      "platforms": [
+        "YouTube",
+        "Netflix",
+        "TikTok"
+      ],
       "notes": "解锁港日美韩 Netflix。"
     },
     "riskScore": 10,
@@ -167,90 +282,618 @@
       "topAudience": "学生党、月付高性价比用户"
     },
     "relations": [
-      { "targetId": "bgp", "targetType": "route", "relationType": "runs_on" },
-      { "targetId": "shadowrocket", "targetType": "client", "relationType": "supports" }
+      {
+        "targetId": "bgp",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "shadowrocket",
+        "targetType": "client",
+        "relationType": "supports"
+      }
     ],
     "history": []
   },
   {
-    "id": "u1s1",
-    "slug": "u1s1",
-    "name": "U1S1 机场",
-    "tagline": "实话实说好线路 · 低延迟游戏专线 · 高速率稳定输出",
-    "description": "U1S1 机场以透明、直爽、无虚标著称，专线接入严格控制用户密度，晚高峰时段延迟波动小于 5ms，深受游戏与高频网络用户喜爱。",
-    "officialUrl": "https://guangs.vipaff.cc",
-    "affiliateUrl": "https://guangs.vipaff.cc/#/register?code=6B0c",
+    "id": "weifeng",
+    "slug": "weifeng",
+    "name": "微风网络 (WeiFeng)",
+    "tagline": "2023年运营 · IEPL专线 + VLESS · 年付137元(100GB/月)入门高性价比",
+    "description": "微风网络（WeiFeng）成立于 2023 年，定位入门高性价比 IEPL + VLESS 专线机场。拥有实测 50 节点 VLESS 大图存档，入门年付清风档 137 元/年即可获每月 100GB 专线配额，同时提供 270GB 与 570GB 一次性不限时流量包及全天候客服支持。",
+    "officialUrl": "https://edp01.breezenetaff.com",
+    "affiliateUrl": "https://edp01.breezenetaff.com/#/?code=t3huofyI",
     "status": "active",
-    "establishedYear": 2022,
-    "nodeCount": 62,
-    "entryLocations": ["深圳电信", "上海移动"],
-    "bandwidthLimit": "100GB ~ 800GB / 月",
-    "refundPolicy": "工单退款保障",
-    "couponCode": "u1s1vip",
-    "discountInfo": "优惠码 u1s1vip 限时 8.5 折",
-    "routes": ["iepl"],
-    "protocols": ["vless", "shadowsocks"],
-    "clients": ["clash-verge", "shadowrocket", "sing-box", "surge"],
+    "establishedYear": 2023,
+    "nodeCount": 50,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "100GB - 1200GB / 月 · 含 270GB/570GB 不限时",
+    "refundPolicy": "支持在线工单与客服咨询",
+    "couponCode": "flat888",
+    "discountInfo": "专属优惠码：flat888（资料标注 7元~9折优惠口径，下单以官网页面为准）",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
     "pricing": {
-      "minMonthly": 20.0,
-      "billingPeriod": "月付",
-      "annualDiscount": "年付 8 折",
+      "minMonthly": 11.4,
+      "billingPeriod": "清风年付 137元/年 (约11.4元/月 100GB) · 优惠码 flat888",
+      "annualDiscount": "专属优惠码：flat888（资料标注 7元~9折优惠口径，下单以官网页面为准）",
+      "hasUnlimitedTraffic": true
+    },
+    "score": {
+      "overall": 9.4,
+      "stability": 9.3,
+      "speed": 9.4,
+      "support": 9.3,
+      "costPerformance": 9.5
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "支持 ChatGPT、Claude；Gemini 视具体落地节点而定。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "支持 Netflix、Disney+、YouTube、HBO Max、TikTok、Spotify。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "学生党与新手机场试错用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "2023年运营 · IEPL专线 + VLESS · 年付137元(100GB/月)入门高性价比"
+      }
+    ]
+  },
+  {
+    "id": "dalaoyun",
+    "slug": "dalaoyun",
+    "name": "大佬云 (DaLaoYun)",
+    "tagline": "2024年运营 · 年付5.6元/月极限平价 · IEPL专线 + VLESS",
+    "description": "大佬云成立于 2024 年，属于 5.6 元/月起“极限平价”梯队的标准 IEPL + VLESS 机场方案（60GB/月起），支持季付及以上 7 折（dly888），兼顾自研客户端与第三方订阅。公开资料暂缺逐地区测速与解锁大图，推荐先短周期测试实际地区表现。",
+    "officialUrl": "https://qwerty.dalaoyunaff.com",
+    "affiliateUrl": "https://qwerty.dalaoyunaff.com/#/?code=jCPLmoWN",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 40,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "60GB/月起（完整高配档待核实）",
+    "refundPolicy": "建议先以季付折后测试本地宽带后再长期续费",
+    "couponCode": "dly888",
+    "discountInfo": "季付及以上享 7 折优惠码：dly888",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 5.6,
+      "billingPeriod": "年付折算约 5.6 元/月 (60GB/月)",
+      "annualDiscount": "季付及以上享 7 折优惠码：dly888",
       "hasUnlimitedTraffic": false
     },
     "score": {
-      "overall": 9.6,
-      "stability": 9.8,
-      "speed": 9.7,
-      "support": 9.4,
+      "overall": 9,
+      "stability": 8.9,
+      "speed": 9,
+      "support": 8.8,
+      "costPerformance": 9.5
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：品牌资料未给出统一 AI 解锁测试记录，以下单自测为准。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：品牌资料未附带独立流媒体实测图表。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "预算极度敏感的轻度查询用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "2024年运营 · 年付5.6元/月极限平价 · IEPL专线 + VLESS"
+      }
+    ]
+  },
+  {
+    "id": "xingdaomeng",
+    "slug": "xingdaomeng",
+    "name": "星岛梦 (XingDaoMeng)",
+    "tagline": "2020老牌运营 · 企业级内网专线 · 丰富套餐与不限时流量包",
+    "description": "星岛梦运营时间较长，套餐类型极为丰富。除常规月付、季付与年付外，还提供高灵活度的不限时流量包，是低预算长期用户的热门之选。",
+    "officialUrl": "https://guangs.xingdaomeng.com",
+    "affiliateUrl": "https://guangs.xingdaomeng.com/#/?code=1TynBYnR",
+    "status": "active",
+    "establishedYear": 2020,
+    "nodeCount": 55,
+    "entryLocations": [
+      "江苏联通",
+      "广东电信"
+    ],
+    "bandwidthLimit": "60GB - 1200GB / 月 (或不限时)",
+    "refundPolicy": "支持工单咨询与售后支持",
+    "couponCode": "nmw888",
+    "discountInfo": "新人注册专属 9 折优惠码：nmw888",
+    "routes": [
+      "iepl",
+      "bgp"
+    ],
+    "protocols": [
+      "trojan",
+      "vless",
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 8,
+      "billingPeriod": "年付折算约 8.0 元/月 (60GB起)",
+      "annualDiscount": "年付享专属备用流量池",
+      "hasUnlimitedTraffic": true
+    },
+    "score": {
+      "overall": 9.5,
+      "stability": 9.7,
+      "speed": 9.4,
+      "support": 9.3,
+      "costPerformance": 9.6
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "精选节点支持 OpenAI 与 Claude 网页版流畅对话。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "港台日美主流流媒体全解锁。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 1180,
+      "estimatedConversionRate": 16.2,
+      "topAudience": "轻度办公、不限时备用用户"
+    },
+    "relations": [
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "node_timeout",
+        "targetType": "issue",
+        "relationType": "resolves"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-07-15",
+        "type": "maintenance",
+        "title": "企业专线入口负载均衡扩容"
+      }
+    ]
+  },
+  {
+    "id": "yinxingren",
+    "slug": "yinxingren",
+    "name": "隐形人 (Invisible)",
+    "tagline": "2024年运营 · 企业级IPLC纯专线 · 自带全平台客户端 (不提供订阅链接)",
+    "description": "隐形人成立于 2024 年，定位企业级 IPLC 专线直连服务，特点是全面使用自带全平台一键客户端（**不提供第三方订阅链接**）。年付小包 ¥109/年（80GB/月），常规月付白银版 ¥24 起含 144GB 流量，支持 Netflix/Disney+/ChatGPT 等官方标注场景，优惠码 moon80 / yxr888。",
+    "officialUrl": "https://yinxingren1.invisibleaff.com",
+    "affiliateUrl": "https://yinxingren1.invisibleaff.com/#/?code=kcyEeoJT",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 60,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "80GB - 1.6TB / 月 · 含 160GB/420GB/1TB 一次性包",
+    "refundPolicy": "无免费试用（建议下单前留意闭源客户端兼容条件）",
+    "couponCode": "moon80",
+    "discountInfo": "专属优惠码：moon80（8折） / 历史码 yxr888（以结算页生效为准）",
+    "routes": [
+      "iplc"
+    ],
+    "protocols": [
+      "trojan",
+      "vless"
+    ],
+    "clients": [
+      "custom-app"
+    ],
+    "pricing": {
+      "minMonthly": 9.08,
+      "billingPeriod": "星耀风暴年付 109元 (约9.08元/月 80GB) · 月付24元(144GB)",
+      "annualDiscount": "专属优惠码：moon80（8折） / 历史码 yxr888（以结算页生效为准）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.2,
+      "stability": 9.3,
+      "speed": 9.2,
+      "support": 9.2,
+      "costPerformance": 9
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "品牌资料标注支持 ChatGPT；Claude、Gemini 视节点而定，建议核实。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "品牌资料标注解锁 Netflix、Disney+、YouTube、HBO Max、Spotify；TikTok 视节点而定。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "习惯直接安装官方客户端、不折腾 Clash 配置的纯应用使用者"
+    },
+    "relations": [
+      {
+        "targetId": "trojan",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iplc",
+        "targetType": "route",
+        "relationType": "runs_on"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "2024年运营 · 企业级IPLC纯专线 · 自带全平台客户端 (不提供订阅链接)"
+      }
+    ]
+  },
+  {
+    "id": "ermaoyun",
+    "slug": "ermaoyun",
+    "name": "二猫云 (ErMaoYun)",
+    "tagline": "20元月付130GB · VLESS + IEPL专线 · 中等流量稳健型选择",
+    "description": "二猫云提供 20 元 130GB 的月付组合，采用 VLESS 和 IEPL 专线，流量与价格拿捏适中，运行稳健。",
+    "officialUrl": "https://guangs.2maoyunaff.cc",
+    "affiliateUrl": "https://guangs.2maoyunaff.cc/#/?code=7mjvgGbW",
+    "status": "active",
+    "establishedYear": 2023,
+    "nodeCount": 45,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "130GB - 900GB / 月",
+    "refundPolicy": "支持工单咨询",
+    "couponCode": "ermao5555",
+    "discountInfo": "优惠码：ermao5555",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 20,
+      "billingPeriod": "月付 20 元 (130GB)",
+      "annualDiscount": "优惠码：ermao5555",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.3,
+      "stability": 9.4,
+      "speed": 9.3,
+      "support": 9.1,
       "costPerformance": 9.4
     },
     "aiSupport": {
       "status": "native",
-      "tools": ["ChatGPT", "Claude", "Gemini", "Cursor"],
-      "notes": "全线干净家宽住宅落地 IP。"
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "覆盖常见 AI 网页访问与调用。"
     },
     "streamingSupport": {
       "status": "native_4k",
-      "platforms": ["Netflix", "Disney+", "YouTube", "Bahamut"],
-      "notes": "支持全区流媒体最高画质。"
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "覆盖主流流媒体高清追剧。"
     },
-    "riskScore": 12,
+    "riskScore": 8,
     "riskLevel": "normal",
     "conversionData": {
-      "clickCount": 1050,
-      "estimatedConversionRate": 15.8,
-      "topAudience": "游戏玩家、极客开发者"
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "每月 100-130GB 流量需求者"
     },
     "relations": [
-      { "targetId": "iepl", "targetType": "route", "relationType": "runs_on" },
-      { "targetId": "vless", "targetType": "protocol", "relationType": "supports" }
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
     ],
     "history": [
-      { "date": "2026-08-01", "type": "node_update", "title": "新增美西低延迟专线节点" }
+      {
+        "date": "2026-08-21",
+        "type": "update",
+        "title": "20元月付130GB · VLESS + IEPL专线 · 中等流量稳健型选择"
+      }
+    ]
+  },
+  {
+    "id": "wuyou",
+    "slug": "wuyou",
+    "name": "无忧链接 (WorryFree)",
+    "tagline": "2025年运营 · 订阅免转换 & 年付79元起 · 含50节点测速与三家流媒体实测图",
+    "description": "无忧链接（WorryFree）运营于 2025 年，兼具约 6.58 元/月的极低入门年付门槛（MINI 79元/年）与 50 节点 MiaoKO 晚间实测及流媒体解锁双图证。全线 1 倍流量不限设备，2026 年 10 月起同时推官方专属客户端模式并保留免转换订阅体验。",
+    "officialUrl": "https://wep01.worryfreeaff.com",
+    "affiliateUrl": "https://wep01.worryfreeaff.com/#/?code=4ZoSbLdL",
+    "status": "active",
+    "establishedYear": 2025,
+    "nodeCount": 50,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "40GB - 1000GB / 月 · 含 100GB/300GB 永久包",
+    "refundPolicy": "7×24 在线客服支持（2026年10月起推荐搭配官方专属客户端）",
+    "couponCode": "wuyou666",
+    "discountInfo": "专属优惠码：wuyou666（以官网结算为准）",
+    "routes": [
+      "iepl",
+      "bgp"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 6.58,
+      "billingPeriod": "MINI链接年付 79元/年 (约6.58元/月 40GB) · 舒心月付 19元(100GB)",
+      "annualDiscount": "专属优惠码：wuyou666（以官网结算为准）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.3,
+      "stability": 9.2,
+      "speed": 9.4,
+      "support": 9.2,
+      "costPerformance": 9.4
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "品牌资料显示支持 ChatGPT 与 Claude，Gemini 视具体落地节点而定。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "拥有 2026-07-18 50 节点实测图证：Netflix/Disney+ 全地区解锁，YouTube 49/50 解锁。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "轻度备用及跨境电商/TikTok 辅助运营"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "2025年运营 · 订阅免转换 & 年付79元起 · 含50节点测速与三家流媒体实测图"
+      }
     ]
   },
   {
     "id": "weitucloud",
     "slug": "weitucloud",
     "name": "唯兔云 (WeiTuCloud)",
-    "tagline": "三网智能调度优化 · 60+ 落地节点 · 4K秒开",
-    "description": "唯兔云具备完善的自动化容灾与负载均衡体系，多线 BGP + IEPL 混合架构，智能感知运营商路由状态并自动选择最优出口。",
+    "tagline": "14.9元月付100GB · 60+多地区节点覆盖 · 三网优化与智能负载均衡",
+    "description": "唯兔云公开卖点聚焦于扎实的基础网络配置：VLESS 协议、60+ 节点池、三网优化与智能负载均衡，14.9 元月付性价比亮眼。",
     "officialUrl": "https://guangs.v2yunvipaff.com",
-    "affiliateUrl": "https://guangs.v2yunvipaff.com/#/register?code=Gsy6",
+    "affiliateUrl": "https://guangs.v2yunvipaff.com/#/?code=xIutqOBA",
     "status": "active",
     "establishedYear": 2023,
-    "nodeCount": 60,
-    "entryLocations": ["广东移动", "江苏电信", "北京联通"],
-    "bandwidthLimit": "120GB ~ 1500GB / 月",
-    "refundPolicy": "支持 24 小时体验保障",
-    "couponCode": "AMM",
-    "discountInfo": "优惠码 AMM 享受专属直降",
-    "routes": ["iepl", "bgp"],
-    "protocols": ["vless", "trojan", "hysteria2"],
-    "clients": ["clash-verge", "shadowrocket", "sing-box", "v2rayn"],
+    "nodeCount": 65,
+    "entryLocations": [
+      "广东移动",
+      "江苏电信",
+      "北京联通"
+    ],
+    "bandwidthLimit": "100GB - 800GB / 月",
+    "refundPolicy": "支持工单处理",
+    "couponCode": "weitu666",
+    "discountInfo": "最新专属优惠码：weitu666（历史老码 rabbit 仍可对照尝试）",
+    "routes": [
+      "iplc",
+      "bgp",
+      "iepl"
+    ],
+    "protocols": [
+      "trojan",
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
     "pricing": {
-      "minMonthly": 18.0,
-      "billingPeriod": "月付",
+      "minMonthly": 14.9,
+      "billingPeriod": "月付 14.9 元 (100GB)",
       "annualDiscount": "年付折合每月 12 元",
       "hasUnlimitedTraffic": false
     },
@@ -263,12 +906,21 @@
     },
     "aiSupport": {
       "status": "native",
-      "tools": ["ChatGPT", "Claude", "Gemini"],
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
       "notes": "解锁率高，防风控策略完善。"
     },
     "streamingSupport": {
       "status": "native_4k",
-      "platforms": ["Netflix", "Disney+", "YouTube", "TikTok"],
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube",
+        "TikTok"
+      ],
       "notes": "主流海外媒体一网打尽。"
     },
     "riskScore": 15,
@@ -279,9 +931,3015 @@
       "topAudience": "三网异网优化用户"
     },
     "relations": [
-      { "targetId": "hysteria2", "targetType": "protocol", "relationType": "supports" },
-      { "targetId": "iepl", "targetType": "route", "relationType": "runs_on" }
+      {
+        "targetId": "hysteria2",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      }
     ],
     "history": []
+  },
+  {
+    "id": "firefly",
+    "slug": "firefly",
+    "name": "Firefly (萤火虫)",
+    "tagline": "IPLC 纯专线 + VLESS · 年付 96元(60GB/月) · 不限设备原生 IP & 免翻墙官网",
+    "description": "Firefly（中文名萤火虫，已与文末同名条目去重合并）主打 IPLC 纯专线与 VLESS 协议，不限速、不限设备且具备原生 IP。年付版仅 96 元/年（折 8 元/月），并有 Lite/Plus/Blaze/Nova 月付至三年付及 100GB 不限时包，优惠码 firefly 享新用户 8 折（年付版除外）。",
+    "officialUrl": "https://vip02.fireflyaff.com",
+    "affiliateUrl": "https://vip02.fireflyaff.com/#/?code=2n7VURre",
+    "status": "active",
+    "establishedYear": 2023,
+    "nodeCount": 50,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "60GB - 1000GB / 月 · 含 100GB 不限时包",
+    "refundPolicy": "无免费试用；支持 支付宝 / USDT 购买",
+    "couponCode": "firefly",
+    "discountInfo": "新用户 8 折优惠码：firefly（年付版与部分特惠包不适用）",
+    "routes": [
+      "iplc"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "custom-app"
+    ],
+    "pricing": {
+      "minMonthly": 8,
+      "billingPeriod": "Firefly 年付版 96元/年 (8元/月 60GB) · 月付25元(150GB)",
+      "annualDiscount": "新用户 8 折优惠码：firefly（年付版与部分特惠包不适用）",
+      "hasUnlimitedTraffic": true
+    },
+    "score": {
+      "overall": 9.3,
+      "stability": 9.3,
+      "speed": 9.3,
+      "support": 9.1,
+      "costPerformance": 9.3
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "品牌资料注明支持 ChatGPT、Claude 与 Meta AI；Gemini 视节点情况而定。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "原生 IP 面向 Netflix、Disney+、YouTube、HBO Max、TikTok 与 Spotify 解锁。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "认可专属客户端简便操作且需 IPLC 原生 IP 的长期用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iplc",
+        "targetType": "route",
+        "relationType": "runs_on"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "IPLC 纯专线 + VLESS · 年付 96元(60GB/月) · 不限设备原生 IP & 免翻墙官网"
+      }
+    ]
+  },
+  {
+    "id": "yuzhoucloud",
+    "slug": "yuzhoucloud",
+    "name": "宇宙云 (YuZhouCloud)",
+    "tagline": "14.9元月付低门槛 · VLESS + IEPL专线 · 性价比专线标杆",
+    "description": "宇宙云主打 14.9 元月付 + 100GB + VLESS + IEPL 专线，属于价格门槛极低、诚意十足的月付专线型品牌。",
+    "officialUrl": "https://wzjc.yuzoucloud.cc",
+    "affiliateUrl": "https://wzjc.yuzoucloud.cc/#/?code=yrThwMP1",
+    "status": "active",
+    "establishedYear": 2023,
+    "nodeCount": 46,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "100GB - 800GB / 月",
+    "refundPolicy": "支持工单咨询",
+    "couponCode": "YUZHOU553",
+    "discountInfo": "优惠码：YUZHOU553（历史资料记录新用户 8 折，下单前以官网最新显示为准）",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 14.9,
+      "billingPeriod": "月付 14.9 元 (100GB)",
+      "annualDiscount": "优惠码：YUZHOU553（历史资料记录新用户 8 折，下单前以官网最新显示为准）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.3,
+      "stability": 9.4,
+      "speed": 9.3,
+      "support": 9,
+      "costPerformance": 9.6
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "支持常见 AI 网页访问。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "覆盖主流海外流媒体高清播放。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "15元档预算用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "update",
+        "title": "14.9元月付低门槛 · VLESS + IEPL专线 · 性价比专线标杆"
+      }
+    ]
+  },
+  {
+    "id": "u1s1",
+    "slug": "u1s1",
+    "name": "U1S1 机场",
+    "tagline": "20元月付标杆 · 120GB充足流量 · VLESS + IEPL专线均衡型",
+    "description": "U1S1 以 20 元月付、120GB 流量、VLESS 和 IEPL 专线为核心卖点，在灵活性、流量和线路品质之间达成了极佳平衡。",
+    "officialUrl": "https://guangs.vipaff.cc",
+    "affiliateUrl": "https://guangs.vipaff.cc/#/?code=xhX5X22f",
+    "status": "active",
+    "establishedYear": 2023,
+    "nodeCount": 52,
+    "entryLocations": [
+      "深圳电信",
+      "上海移动"
+    ],
+    "bandwidthLimit": "120GB - 1000GB / 月",
+    "refundPolicy": "支持工单咨询",
+    "couponCode": "akaka",
+    "discountInfo": "优惠码：akaka",
+    "routes": [
+      "iplc",
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 20,
+      "billingPeriod": "月付 20 元 (120GB)",
+      "annualDiscount": "年付 8 折",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.6,
+      "stability": 9.8,
+      "speed": 9.7,
+      "support": 9.4,
+      "costPerformance": 9.4
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini",
+        "Cursor"
+      ],
+      "notes": "全线干净家宽住宅落地 IP。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube",
+        "Bahamut"
+      ],
+      "notes": "支持全区流媒体最高画质。"
+    },
+    "riskScore": 12,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 1050,
+      "estimatedConversionRate": 15.8,
+      "topAudience": "游戏玩家、极客开发者"
+    },
+    "relations": [
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-01",
+        "type": "node_update",
+        "title": "新增美西低延迟专线节点"
+      }
+    ]
+  },
+  {
+    "id": "lingmaonet",
+    "slug": "lingmaonet",
+    "name": "灵猫网络 (LingMaoNet)",
+    "tagline": "19元月付150GB大流量 · 企业级内网专线 · 提供不限时套餐",
+    "description": "灵猫网络在中低价月付档中以 19 元 150GB 大流量脱颖而出，结合企业专线与丰富套餐体系，满足中重度流量用户。",
+    "officialUrl": "https://vip01.civetnet.com",
+    "affiliateUrl": "https://vip01.civetnet.com/#/?code=8MIAyxak",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 50,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "150GB - 1500GB / 月 (或不限时)",
+    "refundPolicy": "支持工单售后",
+    "couponCode": "lmao888",
+    "discountInfo": "新人优惠码 lmao888 / lingmao（年付小包通常不参与，以官网结算为准）",
+    "routes": [
+      "iepl",
+      "bgp"
+    ],
+    "protocols": [
+      "vless",
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 19,
+      "billingPeriod": "月付 19 元 (150GB)",
+      "annualDiscount": "新人优惠码 lmao888 / lingmao（年付小包通常不参与，以官网结算为准）",
+      "hasUnlimitedTraffic": true
+    },
+    "score": {
+      "overall": 9.4,
+      "stability": 9.4,
+      "speed": 9.4,
+      "support": 9.1,
+      "costPerformance": 9.7
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "覆盖常见 AI 对话与开发交互。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "满足高码率视频与日常追剧大流量需求。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "每月需要 150GB 以上大流量用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "shadowsocks",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "update",
+        "title": "19元月付150GB大流量 · 企业级内网专线 · 提供不限时套餐"
+      }
+    ]
+  },
+  {
+    "id": "jilianyun",
+    "slug": "jilianyun",
+    "name": "极连云 (JiLianYun)",
+    "tagline": "18元月付100GB · IEPL物理专线 · AI与流媒体综合型出海方案",
+    "description": "极连云主打 18 元月付 + 100GB + IEPL 专线，适合希望将月度支出控制在 20 元以内同时享受高品质专线的用户。",
+    "officialUrl": "https://guangs.jlyvipaff.com",
+    "affiliateUrl": "https://guangs.jlyvipaff.com/#/?code=VM1rKGUu",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 45,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "100GB - 800GB / 月",
+    "refundPolicy": "支持工单咨询",
+    "couponCode": "ji8888",
+    "discountInfo": "优惠码：ji8888",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless",
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 18,
+      "billingPeriod": "月付 18 元 (100GB)",
+      "annualDiscount": "优惠码：ji8888",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.3,
+      "stability": 9.4,
+      "speed": 9.3,
+      "support": 9,
+      "costPerformance": 9.4
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "覆盖主流海外 AI 访问需求。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "支持常见流媒体多区视频播放。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "月预算 20 元以内用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "shadowsocks",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "update",
+        "title": "18元月付100GB · IEPL物理专线 · AI与流媒体综合型出海方案"
+      }
+    ]
+  },
+  {
+    "id": "guangnianti",
+    "slug": "guangnianti",
+    "name": "光年梯 (GuangNianTi)",
+    "tagline": "18元月付110GB · 新锐VLESS+IEPL专线 · AI与视频双场景优化",
+    "description": "光年梯提供 18 元/月 110GB 套餐，结合 VLESS 与 IEPL 专线，定位介于低价小流量与重度专线之间，表现均衡。",
+    "officialUrl": "https://guangs.gntaff.com",
+    "affiliateUrl": "https://guangs.gntaff.com/#/?code=X1FoxjGE",
+    "status": "active",
+    "establishedYear": 2025,
+    "nodeCount": 42,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "110GB - 700GB / 月",
+    "refundPolicy": "支持工单咨询",
+    "couponCode": "gnt6666",
+    "discountInfo": "优惠码：gnt6666",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 18,
+      "billingPeriod": "月付 18 元 (110GB)",
+      "annualDiscount": "优惠码：gnt6666",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.2,
+      "stability": 9.3,
+      "speed": 9.3,
+      "support": 9,
+      "costPerformance": 9.5
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "优化常见 AI 工具访问与 API 连接。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "支持主流流媒体 4K 播放。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "中低预算专线需求者"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "update",
+        "title": "18元月付110GB · 新锐VLESS+IEPL专线 · AI与视频双场景优化"
+      }
+    ]
+  },
+  {
+    "id": "yifanyun",
+    "slug": "yifanyun",
+    "name": "一翻云 (YiFanYun)",
+    "tagline": "20元月付150GB大流量 · VLESS + IEPL专线 · 性价比大流量标杆",
+    "description": "一翻云最大的亮点是 20 元月付即可获得 150GB 专线流量，在 20 元主流价格区间内流量规格极其突出。",
+    "officialUrl": "https://guangs.1flyunaff.cc",
+    "affiliateUrl": "https://guangs.1flyunaff.cc/#/register?code=Yr7FhB7r",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 48,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "150GB - 1200GB / 月",
+    "refundPolicy": "支持工单售后",
+    "couponCode": "yfy6666",
+    "discountInfo": "优惠码：yfy6666 / 1FLYYUN（以官网当前结算规则为准）",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "hysteria2",
+      "vless",
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 20,
+      "billingPeriod": "月付 20 元 (150GB)",
+      "annualDiscount": "优惠码：yfy6666 / 1FLYYUN（以官网当前结算规则为准）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.4,
+      "stability": 9.5,
+      "speed": 9.4,
+      "support": 9.1,
+      "costPerformance": 9.7
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "覆盖常见 AI 场景使用。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "支持主流流媒体多区视频播放。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "20元档大流量追求者"
+    },
+    "relations": [
+      {
+        "targetId": "hysteria2",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "update",
+        "title": "20元月付150GB大流量 · VLESS + IEPL专线 · 性价比大流量标杆"
+      }
+    ]
+  },
+  {
+    "id": "sogoyun",
+    "slug": "sogoyun",
+    "name": "SOGO 云 (SOGOYun)",
+    "tagline": "25元月付150GB · 2026新锐全IEPL专线 · VLESS高速综合型",
+    "description": "SOGO 云以 25 元、150GB、VLESS 和 IEPL 专线为主打组合，整体定位偏向综合型高速服务商。",
+    "officialUrl": "https://guangs.sogoyunaff.cc",
+    "affiliateUrl": "https://guangs.sogoyunaff.cc/#/?code=327Vs0w7",
+    "status": "active",
+    "establishedYear": 2026,
+    "nodeCount": 46,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "150GB - 1000GB / 月",
+    "refundPolicy": "支持工单咨询",
+    "couponCode": "sss777",
+    "discountInfo": "优惠码：SOGO10000（9 折） / sss777，注意采用自研客户端不支持 Clash 订阅导入",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 25,
+      "billingPeriod": "月付 25 元 (150GB)",
+      "annualDiscount": "优惠码：SOGO10000（9 折） / sss777，注意采用自研客户端不支持 Clash 订阅导入",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.4,
+      "stability": 9.4,
+      "speed": 9.5,
+      "support": 9.2,
+      "costPerformance": 9.3
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "覆盖常见海外 AI 工具使用场景。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "主流海外流媒体高清秒开。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "追求新专线大带宽用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "update",
+        "title": "25元月付150GB · 2026新锐全IEPL专线 · VLESS高速综合型"
+      }
+    ]
+  },
+  {
+    "id": "kexinyun",
+    "slug": "kexinyun",
+    "name": "可信云 (KeXinYun)",
+    "tagline": "25元月付150GB · IEPL物理专线 · 多设备与家庭日常出海专线",
+    "description": "可信云提供 25 元/月 150GB 套餐，以 VLESS 和 IEPL 专线为核心，更偏向常规网页、视频和多设备日常使用。",
+    "officialUrl": "https://guangs.kosingaff.com",
+    "affiliateUrl": "https://guangs.kosingaff.com/#/register?code=UYDtNlCY",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 48,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "150GB - 1000GB / 月",
+    "refundPolicy": "支持工单咨询",
+    "couponCode": "kkk333",
+    "discountInfo": "优惠码：kkk333",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 25,
+      "billingPeriod": "月付 25 元 (150GB)",
+      "annualDiscount": "优惠码：kkk333",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.3,
+      "stability": 9.4,
+      "speed": 9.3,
+      "support": 9.1,
+      "costPerformance": 9.3
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "覆盖常见 AI 网页访问场景。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "支持主流流媒体多区视频播放。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "多设备办公用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "update",
+        "title": "25元月付150GB · IEPL物理专线 · 多设备与家庭日常出海专线"
+      }
+    ]
+  },
+  {
+    "id": "sujie",
+    "slug": "sujie",
+    "name": "速界 (SuJie)",
+    "tagline": "25元月付150GB · 重点优化 ChatGPT / Claude / Gemini AI 场景",
+    "description": "速界在 25 元 150GB 档位中更突出 AI 工具访问场景，配合 VLESS、IEPL 专线与自研客户端，是 AI 用户的品质之选。",
+    "officialUrl": "https://guangs.speedworldaff.cc",
+    "affiliateUrl": "https://guangs.speedworldaff.cc/#/register?code=xgXzEfZB",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 50,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "150GB - 1200GB / 月",
+    "refundPolicy": "支持工单咨询",
+    "couponCode": "sss1111",
+    "discountInfo": "优惠码：sss1111",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 25,
+      "billingPeriod": "月付 25 元 (150GB)",
+      "annualDiscount": "优惠码：sss1111",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.5,
+      "stability": 9.5,
+      "speed": 9.4,
+      "support": 9.2,
+      "costPerformance": 9.4
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "品牌资料重点强调 ChatGPT、Claude、Gemini 等 AI 场景，交互低延迟。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "支持常见流媒体正常播放。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "AI 深度使用者与开发者"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "update",
+        "title": "25元月付150GB · 重点优化 ChatGPT / Claude / Gemini AI 场景"
+      }
+    ]
+  },
+  {
+    "id": "shanyue",
+    "slug": "shanyue",
+    "name": "闪跃 (FlashLeap)",
+    "tagline": "纯 IPLC 顶级专线 · 年付 96元(60GB/月) · 专属客户端低延迟设计",
+    "description": "闪跃定位高端纯 IPLC 专线通道，采用专属客户端登录模式（不提供第三方订阅链接）。提供年付版 96 元/年（60GB/月）与闪动/飞跃/瞬移/跃迁 4 档月付方案，配合 shanyue 优惠码可对月付及以上周期打 8 折。",
+    "officialUrl": "https://vip02.flashleapaff.com",
+    "affiliateUrl": "https://vip02.flashleapaff.com/#/?code=3lgzm9mm",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 45,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "60GB - 1000GB / 月",
+    "refundPolicy": "无免费试用，建议先体验月付闪动档",
+    "couponCode": "shanyue",
+    "discountInfo": "专属 8 折优惠码：shanyue（仅限闪动 / 飞跃 / 瞬移 / 跃迁，年付版不适用）",
+    "routes": [
+      "iplc"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "custom-app"
+    ],
+    "pricing": {
+      "minMonthly": 8,
+      "billingPeriod": "闪跃年付版 96元/年 (8元/月 60GB) · 闪动月付 24元(150GB)",
+      "annualDiscount": "专属 8 折优惠码：shanyue（仅限闪动 / 飞跃 / 瞬移 / 跃迁，年付版不适用）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.2,
+      "stability": 9.3,
+      "speed": 9.3,
+      "support": 9,
+      "costPerformance": 9
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "资料显示支持 ChatGPT、Claude；Gemini 视节点而定。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "资料显示原生 IP 支持 Netflix、Disney+、YouTube、HBO Max 与 Spotify。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "长期高频追求纯 IPLC 且不想配置第三方客户端的用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iplc",
+        "targetType": "route",
+        "relationType": "runs_on"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "纯 IPLC 顶级专线 · 年付 96元(60GB/月) · 专属客户端低延迟设计"
+      }
+    ]
+  },
+  {
+    "id": "quanqiuyun",
+    "slug": "quanqiuyun",
+    "name": "全球云 (QuanQiuYun)",
+    "tagline": "2026新锐 · 20元月付120GB · VLESS + IEPL专线综合档位",
+    "description": "全球云提供 20 元月付、120GB、VLESS 与 IEPL 专线，整体规格均衡，属于典型的 20 元综合主力档位。",
+    "officialUrl": "https://guangs.gcvipaff.com",
+    "affiliateUrl": "https://guangs.gcvipaff.com/#/?code=Ov2nvU9C",
+    "status": "active",
+    "establishedYear": 2026,
+    "nodeCount": 45,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "120GB - 900GB / 月",
+    "refundPolicy": "支持工单咨询",
+    "couponCode": "qq88",
+    "discountInfo": "优惠码：qq88 / qqy7777（以官网当前结算页面为准）",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "trojan",
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 20,
+      "billingPeriod": "月付 20 元 (120GB)",
+      "annualDiscount": "优惠码：qq88 / qqy7777（以官网当前结算页面为准）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.3,
+      "stability": 9.3,
+      "speed": 9.4,
+      "support": 9,
+      "costPerformance": 9.4
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "覆盖常见 AI 工具访问场景。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "支持网页与常见海外流媒体播放。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "20元档综合型需求者"
+    },
+    "relations": [
+      {
+        "targetId": "trojan",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "shadowsocks",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "update",
+        "title": "2026新锐 · 20元月付120GB · VLESS + IEPL专线综合档位"
+      }
+    ]
+  },
+  {
+    "id": "kuaili",
+    "slug": "kuaili",
+    "name": "快狸 (KuaiLi)",
+    "tagline": "25元月付150GB · VLESS + IEPL专线 · 影音与日常综合使用型",
+    "description": "快狸采用 VLESS + IEPL 专线，25 元档提供 150GB 月流量，同时覆盖 AI、影音与常规代理需求，整体属于稳健综合型。",
+    "officialUrl": "https://guangs.kuailicloud.cc",
+    "affiliateUrl": "https://guangs.kuailicloud.cc/#/register?code=AiqyM8oG",
+    "status": "active",
+    "establishedYear": 2023,
+    "nodeCount": 48,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "150GB - 1000GB / 月",
+    "refundPolicy": "支持工单咨询",
+    "couponCode": "kkk2222",
+    "discountInfo": "优惠码：kkk2222",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 25,
+      "billingPeriod": "月付 25 元 (150GB)",
+      "annualDiscount": "优惠码：kkk2222",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.3,
+      "stability": 9.4,
+      "speed": 9.4,
+      "support": 9.1,
+      "costPerformance": 9.3
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "覆盖常见 AI 服务使用场景。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "覆盖常见流媒体高清追剧需求。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "影音与日常综合使用用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-21",
+        "type": "update",
+        "title": "25元月付150GB · VLESS + IEPL专线 · 影音与日常综合使用型"
+      }
+    ]
+  },
+  {
+    "id": "shandianshu",
+    "slug": "shandianshu",
+    "name": "闪电鼠 (ShanDianShu)",
+    "tagline": "2024年运营 · 5.6元/月极限平价 · IEPL + VLESS + 60GB/月",
+    "description": "闪电鼠于 2024 年起运营，面向极低预算用户提供 IEPL 专线与 VLESS 协议方案，年付均摊约 5.6 元/月（60GB/月），季付以上支持优惠码 sd88 打 7 折。因缺乏第三方实测图表，推荐按最小可折期先测后续。",
+    "officialUrl": "https://qwerty.shandianshuaff.com",
+    "affiliateUrl": "https://qwerty.shandianshuaff.com/#/?code=rUE75iYh",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 40,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "60GB/月起（高流量档位待核实）",
+    "refundPolicy": "建议先以季付折后测试稳定性",
+    "couponCode": "sd88",
+    "discountInfo": "季付及以上享 7 折优惠码：sd88",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 5.6,
+      "billingPeriod": "年付折算约 5.6 元/月 (60GB/月)",
+      "annualDiscount": "季付及以上享 7 折优惠码：sd88",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.9,
+      "stability": 8.9,
+      "speed": 9,
+      "support": 8.8,
+      "costPerformance": 9.6
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：暂无独立 AI 解锁测速图支持。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：暂无流媒体独立测试图表。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "预算卡在 5~6 元/月的轻量查阅及临时备用群体"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "2024年运营 · 5.6元/月极限平价 · IEPL + VLESS + 60GB/月"
+      }
+    ]
+  },
+  {
+    "id": "yunjiexian",
+    "slug": "yunjiexian",
+    "name": "云界线 (YunJieXian)",
+    "tagline": "2024年运营 · 5.6元/月 IEPL+VLESS · 注册链接格式特殊提示",
+    "description": "云界线（2024 年起运营）属于 5.6 元/月、60GB/月规格的平价 IEPL + VLESS 机场，支持季付及以上 7 折（yjx888）。特别提示其推广链接结构与常规同类略异（缺少 #），注册前请核实跳转及最新套餐信息。",
+    "officialUrl": "https://qwerty.yunjiexianaff.com",
+    "affiliateUrl": "https://qwerty.yunjiexianaff.com/?code=aycnwNUi",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 40,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "60GB/月起",
+    "refundPolicy": "打开注册页时先确认浏览器地址跳转正常",
+    "couponCode": "yjx888",
+    "discountInfo": "季付及以上享 7 折优惠码：yjx888",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 5.6,
+      "billingPeriod": "年付折算约 5.6 元/月 (60GB/月)",
+      "annualDiscount": "季付及以上享 7 折优惠码：yjx888",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.8,
+      "stability": 8.8,
+      "speed": 8.9,
+      "support": 8.7,
+      "costPerformance": 9.4
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：缺独立 AI 测试证据。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：缺独立流媒体实测图表。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "超低预算备用或希望尝试不同路由链接格式的平价档用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "2024年运营 · 5.6元/月 IEPL+VLESS · 注册链接格式特殊提示"
+      }
+    ]
+  },
+  {
+    "id": "liulianyun",
+    "slug": "liulianyun",
+    "name": "榴莲云 (LiuLianYun)",
+    "tagline": "2024年运营 · 5.6元/月 IEPL 专线平价方案（协议类型待明确）",
+    "description": "榴莲云是 5.6 元/月均摊（60GB）平价队列里的一员，主打 IEPL 专线及季付 7 折（ll88）。需要注意原资料尚未明确统一声明底层协议类型，看重指定 VLESS 协议的用户可横向对比大佬云或闪电鼠。",
+    "officialUrl": "https://qwerty.liulianyunaff.com",
+    "affiliateUrl": "https://qwerty.liulianyunaff.com#/?code=hS5pvbfE",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 40,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "60GB/月起",
+    "refundPolicy": "购买前建议确认后台订阅实际下发协议是否兼容老客户端",
+    "couponCode": "ll88",
+    "discountInfo": "季付及以上享 7 折优惠码：ll88",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 5.6,
+      "billingPeriod": "年付折算约 5.6 元/月 (60GB/月)",
+      "annualDiscount": "季付及以上享 7 折优惠码：ll88",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.7,
+      "stability": 8.7,
+      "speed": 8.8,
+      "support": 8.6,
+      "costPerformance": 9.3
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：暂无 AI 解锁测试记录。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：暂无流媒体测试记录。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "仅以最低入门成本做轻量应急的用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "2024年运营 · 5.6元/月 IEPL 专线平价方案（协议类型待明确）"
+      }
+    ]
+  },
+  {
+    "id": "shenxing",
+    "slug": "shenxing",
+    "name": "神行加速 (ShenXing)",
+    "tagline": "2024年运营 · 年付约14元/月享120GB · IEPL+VLESS 中档扩容选择",
+    "description": "神行加速精准填补了 5.6 元（60GB）与 20 元常规月付之间的空白：采用 IEPL 专线与 VLESS 协议，年付均摊约 14 元/月即可获得 120GB/月流量，并支持新人 7 折优惠码 xs0077，适合追求稳妥流量余量的长期用户。",
+    "officialUrl": "https://qwerty.shenxingaff.com",
+    "affiliateUrl": "https://qwerty.shenxingaff.com/#/?code=gawDQqVE",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 45,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "120GB/月起",
+    "refundPolicy": "建议先关注月付选项测试本地电信/联通/移动适配",
+    "couponCode": "xs0077",
+    "discountInfo": "新用户 7 折优惠码：xs0077（以官网结账规则为准）",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 14,
+      "billingPeriod": "年付折算约 14 元/月 (120GB/月)",
+      "annualDiscount": "新用户 7 折优惠码：xs0077（以官网结账规则为准）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9,
+      "stability": 9,
+      "speed": 9.1,
+      "support": 8.9,
+      "costPerformance": 9.2
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：尚未补充统一 AI/流媒体实测图表。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：建议结合官网最新说明测试。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "每月需要 100GB~120GB 中度流量、觉得 60GB 套餐不够用的年付用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "2024年运营 · 年付约14元/月享120GB · IEPL+VLESS 中档扩容选择"
+      }
+    ]
+  },
+  {
+    "id": "huanqiuti",
+    "slug": "huanqiuti",
+    "name": "环球梯 (HuanQiuTi)",
+    "tagline": "2024年运营 · 5.6元/月 IEPL+VLESS 平价方案（无#格式链接提示）",
+    "description": "环球梯定位与闪电鼠、大佬云相近，同为 2024 年上线的 5.6 元/月级 IEPL + VLESS 平价服务，配额 60GB/月起，支持季付 7 折（HQ66）。同样提醒注册链接格式略异，建议下单前先确认站点可达性及当前售价。",
+    "officialUrl": "https://qwerty.huanqiutiaff.com",
+    "affiliateUrl": "https://qwerty.huanqiutiaff.com/?code=9I4KRNPH",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 40,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "60GB/月起",
+    "refundPolicy": "注册前核实链接可达性，建议季付起步试水",
+    "couponCode": "HQ66",
+    "discountInfo": "季付及以上 7 折优惠码：HQ66",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 5.6,
+      "billingPeriod": "年付折算约 5.6 元/月 (60GB/月)",
+      "annualDiscount": "季付及以上 7 折优惠码：HQ66",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.8,
+      "stability": 8.8,
+      "speed": 8.9,
+      "support": 8.7,
+      "costPerformance": 9.4
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：暂无 AI 解锁实测记录。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：暂无独立流媒体测试数据。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "需要超低成本备用节点且使用 VLESS 协议的用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "2024年运营 · 5.6元/月 IEPL+VLESS 平价方案（无#格式链接提示）"
+      }
+    ]
+  },
+  {
+    "id": "tiziyun",
+    "slug": "tiziyun",
+    "name": "梯子云 (TiZiYun)",
+    "tagline": "2025年运营 · 自研一键客户端 + 通用订阅双支持 · 年付约7.4元/月(60GB)",
+    "description": "梯子云成立于 2025 年，主打“自研全平台客户端一键登录 + 通用订阅导入双持”，相比仅限封闭软件的品牌对极客和新手都更友善。硬件架构标称 IEPL 专线 + VLESS，60+ 节点、年付均摊约 7.4 元/月起，属厂商资料高配置代表，实际体验需先短付自测。",
+    "officialUrl": "https://tiziyun3.ladderaff.com",
+    "affiliateUrl": "https://tiziyun3.ladderaff.com/#/?code=7EmnpHs0",
+    "status": "active",
+    "establishedYear": 2025,
+    "nodeCount": 60,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "60GB/月起（详档待完善）",
+    "refundPolicy": "提供在线客服与工单通道",
+    "couponCode": "tiziyun",
+    "discountInfo": "优惠码：tiziyun（具体立减规则以官网为准）",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 7.4,
+      "billingPeriod": "年付折算约 7.4 元/月 (60GB/月)",
+      "annualDiscount": "优惠码：tiziyun（具体立减规则以官网为准）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 9.2,
+      "stability": 9.1,
+      "speed": 9.2,
+      "support": 9.3,
+      "costPerformance": 9.4
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "品牌资料注明兼容 ChatGPT / Claude 等 AI 生产力工具（属于厂商资料口径）。"
+    },
+    "streamingSupport": {
+      "status": "native_4k",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "品牌资料标注覆盖 Netflix / Disney+ / TikTok 解锁场景。"
+    },
+    "riskScore": 8,
+    "riskLevel": "normal",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "既想先一键登录上手、后续又可能切回 Clash Verge 自定义分流的新老用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-10-19",
+        "type": "update",
+        "title": "2025年运营 · 自研一键客户端 + 通用订阅双支持 · 年付约7.4元/月(60GB)"
+      }
+    ]
+  },
+  {
+    "id": "wgetcloud",
+    "slug": "wgetcloud",
+    "name": "WgetCloud",
+    "tagline": "历史档案 · Trojan 协议 · 2026-05-02 59节点全通实测均速50MB/s+",
+    "description": "WgetCloud（全球云同音老牌服务商，历史记录版）整理自 2026-08 历史档案。保留有 2026-05-02 对 59 个 Trojan 节点的地区测速统计（五大主流地区均速超 50MB/s），套餐最低为季付 ¥297/230GB/月，当前实时运营细节、最新价格与优惠码均标记待核实，故排名靠后展示。",
+    "officialUrl": "https://invite.wgetcloud.ltd",
+    "affiliateUrl": "https://invite.wgetcloud.ltd/auth/register?code=VLG2xb",
+    "status": "active",
+    "establishedYear": 2022,
+    "nodeCount": 59,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "230GB - 270GB / 月（历史季付口径）",
+    "refundPolicy": "旧档整理暂无可核实实时退款规则，季付起买门槛较高需谨慎核对官网",
+    "couponCode": "",
+    "discountInfo": "历史资料未记录月付入口，当前优惠码与实时报价待核实",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "trojan"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "surge"
+    ],
+    "pricing": {
+      "minMonthly": 99,
+      "billingPeriod": "季付基础专线 297元 (230GB/月 · 暂无月付)",
+      "annualDiscount": "历史资料未记录月付入口，当前优惠码与实时报价待核实",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.6,
+      "stability": 8.7,
+      "speed": 8.8,
+      "support": 8.4,
+      "costPerformance": 8.2
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "2026-05-02 历史测试记录部分节点可用 ChatGPT/Gemini，不保证现时持续可用，状态待核实。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "2026-05-02 历史测试部分节点可用 Disney+/Netflix/YouTube，待最新核验。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "熟悉老牌 Trojan 体系、看重欧美日本高均速且预算较充裕的历史关注用户"
+    },
+    "relations": [
+      {
+        "targetId": "trojan",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-24",
+        "type": "update",
+        "title": "历史档案 · Trojan 协议 · 2026-05-02 59节点全通实测均速50MB/s+"
+      }
+    ]
+  },
+  {
+    "id": "baiyueguang",
+    "slug": "baiyueguang",
+    "name": "白月光 (BaiYueGuang)",
+    "tagline": "历史档案 · Shadowsocks 108节点 · 季付66元起(100GB/月 · 台湾节点极弱注意)",
+    "description": "白月光整理自 2026-08 历史数据库记录，采用 Shadowsocks 协议，季度小包 ¥66 起。2026-07-17 实测 108 节点中香港均速约 114.94Mbps（TLS RTT 160.7ms），东南亚表现较好但台湾节点仅 0.03Mbps 且 Spotify 失败，整体置于后排档案供参考。",
+    "officialUrl": "https://sibker.com",
+    "affiliateUrl": "https://sibker.com/register?invite_code=gg6puAId",
+    "status": "active",
+    "establishedYear": 2023,
+    "nodeCount": 108,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "100GB - 2500GB / 月",
+    "refundPolicy": "旧档记录暂缺退款细则，需以官网当期条款为准",
+    "couponCode": "",
+    "discountInfo": "历史资料未记录月付或有效优惠码，实时售价待核实",
+    "routes": [
+      "transit"
+    ],
+    "protocols": [
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 22,
+      "billingPeriod": "小包季付 66元 (100GB/月 · 无常规月付)",
+      "annualDiscount": "历史资料未记录月付或有效优惠码，实时售价待核实",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.3,
+      "stability": 8.2,
+      "speed": 8.1,
+      "support": 8.2,
+      "costPerformance": 8.6
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "2026-07-17 历史测试仅部分节点可用 ChatGPT，且延迟偏高，不作 AI 推荐主力。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "2026-07-17 历史测试 Spotify 失败，Netflix/Disney+/TikTok 仅部分节点可用。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "仅对众多小众国家 IP 名称有收集需求的低并发备选"
+    },
+    "relations": [
+      {
+        "targetId": "shadowsocks",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "transit",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-24",
+        "type": "update",
+        "title": "历史档案 · Shadowsocks 108节点 · 季付66元起(100GB/月 · 台湾节点极弱注意)"
+      }
+    ]
+  },
+  {
+    "id": "flyingbird",
+    "slug": "flyingbird",
+    "name": "FlyingBird (飞鸟机场)",
+    "tagline": "历史档案 · SS 全专线 IPLC 无倍率 · 青铜月付15元起（无独立入口待核实）",
+    "description": "FlyingBird（飞鸟机场）为老牌 IPLC 全专线 Shadowsocks 机场档案（一云梯同源站群系列），历史记录月付 15 元（100GB）起。因最新品牌库未保留可用独立入口及近 30 日实测数据，全部入口与解锁均保持“待核实”状态，排序置后。",
+    "officialUrl": "",
+    "affiliateUrl": "",
+    "status": "warning",
+    "establishedYear": 2022,
+    "nodeCount": 40,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "100GB - 1000GB / 月（历史口径）",
+    "refundPolicy": "暂无可用独立入口链接（需用户自行核实当期官网）",
+    "couponCode": "theo",
+    "discountInfo": "历史优惠码：theo (9折) / year85 (年付85折) · 当前有效性待核实",
+    "routes": [
+      "iplc"
+    ],
+    "protocols": [
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "surge"
+    ],
+    "pricing": {
+      "minMonthly": 15,
+      "billingPeriod": "青铜套餐 月付 15元 (100GB · 历史记录)",
+      "annualDiscount": "历史优惠码：theo (9折) / year85 (年付85折) · 当前有效性待核实",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.5,
+      "stability": 8.6,
+      "speed": 8.5,
+      "support": 8.4,
+      "costPerformance": 8.7
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：未提供独立 AI 解锁逐项实测结果，不可推断支持。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：未提供独立流媒体实测结果。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "仅作为历史老牌 IPLC 品牌数据库检索与档案对比"
+    },
+    "relations": [
+      {
+        "targetId": "shadowsocks",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iplc",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-09",
+        "type": "update",
+        "title": "历史档案 · SS 全专线 IPLC 无倍率 · 青铜月付15元起（无独立入口待核实）"
+      }
+    ]
+  },
+  {
+    "id": "cyberguard",
+    "slug": "cyberguard",
+    "name": "CyberGuard",
+    "tagline": "历史档案 · Trojan/VLESS · 月付32元(350GB) & 220G/840G不限时包",
+    "description": "CyberGuard 收录自历史项目数据库，主打 Trojan/VLESS 协议与 350GB 起步大流量方案，并提供 220GB（¥79）和 840GB（¥188）不限时包。其保留的测速数据源自 2025 年 6 月（延迟普遍高于一线专线），当前有效性与实时体验有待核实。",
+    "officialUrl": "https://cyberguard.best",
+    "affiliateUrl": "https://cyberguard.best/#/register?code=AxXNNYng",
+    "status": "active",
+    "establishedYear": 2023,
+    "nodeCount": 29,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "150GB - 2050GB / 月 · 含 220G/840G 不限时",
+    "refundPolicy": "旧资料未附带明确退款条款，不限时包具体有效期待官网核实",
+    "couponCode": "",
+    "discountInfo": "历史资料未记录现行优惠码，以官网当期报价为准",
+    "routes": [
+      "transit"
+    ],
+    "protocols": [
+      "trojan",
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 15.83,
+      "billingPeriod": "半年轻量 95元 (约15.83元/月 150GB) · 标准月付 32元(350GB)",
+      "annualDiscount": "历史资料未记录现行优惠码，以官网当期报价为准",
+      "hasUnlimitedTraffic": true
+    },
+    "score": {
+      "overall": 8.4,
+      "stability": 8.4,
+      "speed": 8.5,
+      "support": 8.3,
+      "costPerformance": 8.2
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "仅 2025-06-21 历史记录测得可用 ChatGPT/Claude/Gemini，不代表 2026 现时可用。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "仅 2025-06-21 历史记录解锁主流流媒体，近况待核实。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "偏好冷门欧美/阿联酋等 12 国区域节点且愿先短周期自测者"
+    },
+    "relations": [
+      {
+        "targetId": "trojan",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "transit",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-23",
+        "type": "update",
+        "title": "历史档案 · Trojan/VLESS · 月付32元(350GB) & 220G/840G不限时包"
+      }
+    ]
+  },
+  {
+    "id": "longmaoyun",
+    "slug": "longmaoyun",
+    "name": "龙猫云 (LongMaoYun)",
+    "tagline": "历史档案 · SS+IPLC全专线 · VIP1 月付15元起(100GB · 无独立入口待核实)",
+    "description": "龙猫云在 2026-08 品牌库记录中定位为 Shadowsocks + IPLC 全专线机场，并提供较为丰富的使用教程（一云梯/飞鸟同源成员）。当前无可用独立入口与实测图记录，需等待有效官网与近 30 日实测补全。",
+    "officialUrl": "",
+    "affiliateUrl": "",
+    "status": "warning",
+    "establishedYear": 2023,
+    "nodeCount": 40,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "100GB - 1000GB / 月（历史口径）",
+    "refundPolicy": "无独立品牌入口保存记录，无法核实当期政策",
+    "couponCode": "",
+    "discountInfo": "暂无优惠码（历史标注长期多周期阶梯 9~6 折）",
+    "routes": [
+      "iplc"
+    ],
+    "protocols": [
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 15,
+      "billingPeriod": "VIP1 月付 15元 (100GB · 历史记录)",
+      "annualDiscount": "暂无优惠码（历史标注长期多周期阶梯 9~6 折）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.5,
+      "stability": 8.5,
+      "speed": 8.5,
+      "support": 8.4,
+      "costPerformance": 8.6
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：未提供独立 AI 解锁测试。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：未提供独立流媒体实测数据。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "同源体系品牌历史参数查验"
+    },
+    "relations": [
+      {
+        "targetId": "shadowsocks",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iplc",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-09",
+        "type": "update",
+        "title": "历史档案 · SS+IPLC全专线 · VIP1 月付15元起(100GB · 无独立入口待核实)"
+      }
+    ]
+  },
+  {
+    "id": "fatcat",
+    "slug": "fatcat",
+    "name": "FATCAT (肥猫云)",
+    "tagline": "历史档案 · 企业级 IEPL/IPLC 专线 · 年付96元/月付20元（无独立入口待核实）",
+    "description": "FATCAT（肥猫云，注意与前排“飞猫云”区分）出自 2026-08 历史资料，主打企业级 IEPL/IPLC 抗干扰内网专线，套餐覆盖 60GB 年付加强版（¥96）与 ¥20~¥180 月付。目前缺乏可用入口与独立测速数据，排名置后。",
+    "officialUrl": "",
+    "affiliateUrl": "",
+    "status": "warning",
+    "establishedYear": 2023,
+    "nodeCount": 40,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "60GB - 1500GB / 月（历史口径）",
+    "refundPolicy": "无独立入口保存，无法核验当期条款",
+    "couponCode": "",
+    "discountInfo": "历史资料未列固定优惠码，有周期自然折扣",
+    "routes": [
+      "iepl",
+      "iplc"
+    ],
+    "protocols": [
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 8,
+      "billingPeriod": "年付加强版 ¥96 (60GB/月 · 基础月付 ¥20/120GB)",
+      "annualDiscount": "历史资料未列固定优惠码，有周期自然折扣",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.5,
+      "stability": 8.5,
+      "speed": 8.5,
+      "support": 8.4,
+      "costPerformance": 8.5
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：未见逐项 AI 实测记录。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：未见逐项流媒体实测结果。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "区分“肥猫云 FATCAT”与主推“飞猫云 FeiMaoCloud”时的档案检索"
+    },
+    "relations": [
+      {
+        "targetId": "shadowsocks",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-09",
+        "type": "update",
+        "title": "历史档案 · 企业级 IEPL/IPLC 专线 · 年付96元/月付20元（无独立入口待核实）"
+      }
+    ]
+  },
+  {
+    "id": "tntcloud",
+    "slug": "tntcloud",
+    "name": "TNTCloud (TNT Cloud)",
+    "tagline": "历史档案 · IPLC 专线 (原3A加速器) · 季付30元轻量包（无独立入口待核实）",
+    "description": "TNTCloud（曾用名 3A 加速器）记录于 2026-08 历史库，主打 IPLC 内网专线及季付 30 元轻量包、VIP1 20 元/110GB 等方案。由于现资料缺失可用独立官网入口与可比测速，当前全项待核实并置后展示。",
+    "officialUrl": "",
+    "affiliateUrl": "",
+    "status": "warning",
+    "establishedYear": 2023,
+    "nodeCount": 40,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "60GB - 1100GB / 月（历史口径）",
+    "refundPolicy": "缺独立入口记录，下单与售后规则待核实",
+    "couponCode": "TNT85",
+    "discountInfo": "历史优惠码：TNT85（85 折，限量包除外，当前有效期待核实）",
+    "routes": [
+      "iplc"
+    ],
+    "protocols": [
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 8.17,
+      "billingPeriod": "轻量包 季付30元 / 年付98元 (60GB/月) · VIP1 月付20元",
+      "annualDiscount": "历史优惠码：TNT85（85 折，限量包除外，当前有效期待核实）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.5,
+      "stability": 8.5,
+      "speed": 8.5,
+      "support": 8.4,
+      "costPerformance": 8.7
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：暂无逐项 AI 测试数据。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：暂无逐项流媒体实测数据。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "寻找曾用名“3A加速器 / TNT Cloud”历史档位参考的用户"
+    },
+    "relations": [
+      {
+        "targetId": "shadowsocks",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iplc",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-09",
+        "type": "update",
+        "title": "历史档案 · IPLC 专线 (原3A加速器) · 季付30元轻量包（无独立入口待核实）"
+      }
+    ]
+  },
+  {
+    "id": "qingyunti",
+    "slug": "qingyunti",
+    "name": "青云梯 (QingYunTi)",
+    "tagline": "历史档案 · 运营6年+老牌(原V4Speed) · SS+IPLC 三网优化（无独立入口待核实）",
+    "description": "青云梯（原 V4Speed）在历史库中记录有超 6 年运营背景、Shadowsocks + 企业级 IPLC 三网优化与 80+ 节点规格。由于当前资料库暂无可用的独立官网入口与近期独立测速验证，全部现况待核实并统一靠后展示。",
+    "officialUrl": "",
+    "affiliateUrl": "",
+    "status": "warning",
+    "establishedYear": 2020,
+    "nodeCount": 80,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "60GB - 1000GB / 月（历史口径）",
+    "refundPolicy": "未提供独立官网链接，最新退款条款待核实",
+    "couponCode": "qyt85",
+    "discountInfo": "历史优惠码：qyt85 (85折) / qyt80 (8折，年付小包除外)",
+    "routes": [
+      "iplc",
+      "bgp"
+    ],
+    "protocols": [
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "surge",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 8,
+      "billingPeriod": "年付小包 ¥96 (60GB/月) · VIP1 月付 ¥25(150GB)",
+      "annualDiscount": "历史优惠码：qyt85 (85折) / qyt80 (8折，年付小包除外)",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.6,
+      "stability": 8.7,
+      "speed": 8.6,
+      "support": 8.5,
+      "costPerformance": 8.4
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：原资料未单独列出逐平台 AI 测试表。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：原资料未附独立流媒体实测图表。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "查询老牌青云梯（V4Speed）历史资费与节点架构的读者"
+    },
+    "relations": [
+      {
+        "targetId": "shadowsocks",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iplc",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-09",
+        "type": "update",
+        "title": "历史档案 · 运营6年+老牌(原V4Speed) · SS+IPLC 三网优化（无独立入口待核实）"
+      }
+    ]
+  },
+  {
+    "id": "shanshuiyun",
+    "slug": "shanshuiyun",
+    "name": "山水云 (ShanShuiYun)",
+    "tagline": "历史档案 · 月付15元(100GB) / 年付88元(64GB) · 2026-06 历史测速留档",
+    "description": "山水云记录整理自 2026-08 历史档案，包含年付 ¥88（64GB/月）及月付 ¥15（100GB）等 6 档。2026-06-29 历史测速 27 节点中有 22 节点连通，美区均速 180.29Mbps 但整体 RTT 超过 150ms、协议尚未核实，因此排名靠后。",
+    "officialUrl": "https://sldm1.ssyylf.com",
+    "affiliateUrl": "https://sldm1.ssyylf.com/#/register?code=YD5iQ888",
+    "status": "active",
+    "establishedYear": 2024,
+    "nodeCount": 27,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "64GB - 500GB / 月（历史口径）",
+    "refundPolicy": "旧档案暂未记录协议名称与售后细则",
+    "couponCode": "",
+    "discountInfo": "历史资料未列优惠码，当前活动以官网核对为准",
+    "routes": [
+      "transit"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 7.33,
+      "billingPeriod": "年付 88元 (64GB/月) · 琴月付 15元(100GB)",
+      "annualDiscount": "历史资料未列优惠码，当前活动以官网核对为准",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.4,
+      "stability": 8.3,
+      "speed": 8.3,
+      "support": 8.2,
+      "costPerformance": 8.7
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "2026-06-29 当次测试可用 ChatGPT/Claude/Gemini，不担保现时持续状态。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "2026-06-29 当次测试解锁 Netflix/Disney+/Max/TikTok，现况待核实。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "预算 15 元左右且偏重美区历史下载测试的数据对照参考"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "transit",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-24",
+        "type": "update",
+        "title": "历史档案 · 月付15元(100GB) / 年付88元(64GB) · 2026-06 历史测速留档"
+      }
+    ]
+  },
+  {
+    "id": "lingdongyun",
+    "slug": "lingdongyun",
+    "name": "灵动云 (LingDongYun)",
+    "tagline": "历史档案 · 2025年IEPL+VLESS · 7月实测OpenAI全解锁(部分区域送中注意)",
+    "description": "灵动云是 2025 年开业的 VLESS + IEPL 专线机场。2026-07-20/21 曾做过 60 节点实测：OpenAI 全地区基本解锁、下载速度 20~80MB/s，但也暴露出 HTTPS 延迟偏高、TikTok 多失败及台/新 YouTube 送中等客观瑕疵，因此诚实披露并置于后排。",
+    "officialUrl": "https://varnexa.lingdongaff.com",
+    "affiliateUrl": "https://varnexa.lingdongaff.com/#/?code=wZvEhEoI",
+    "status": "active",
+    "establishedYear": 2025,
+    "nodeCount": 60,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "70GB - 1.5TB / 月 · 含 150G~800G 流量包",
+    "refundPolicy": "资料标注 2026-07 实测样本，下单前需确认最新路由修复状态",
+    "couponCode": "",
+    "discountInfo": "优惠码尚未核实（提供季/半年/年/2年/3年阶梯折扣）",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless",
+      "trojan"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "sing-box",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 8.25,
+      "billingPeriod": "灵动·穿云年付 99元 (70GB/月) · 拂风月付 20元(100GB)",
+      "annualDiscount": "优惠码尚未核实（提供季/半年/年/2年/3年阶梯折扣）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.6,
+      "stability": 8.5,
+      "speed": 8.4,
+      "support": 8.4,
+      "costPerformance": 8.5
+    },
+    "aiSupport": {
+      "status": "native",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "2026-07-20/21 实测亮点：OpenAI 各地区节点基本全解锁。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "实测记录：TikTok 多失败、新加坡/台湾 YouTube 送中、台湾落地 Netflix/Disney+ 被识别为西班牙(ES)。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "仅对 OpenAI 多地区解锁有测试需求、对 TikTok 与精确台湾原生流媒体要求不高者"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "trojan",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-09",
+        "type": "update",
+        "title": "历史档案 · 2025年IEPL+VLESS · 7月实测OpenAI全解锁(部分区域送中注意)"
+      }
+    ]
+  },
+  {
+    "id": "langwang",
+    "slug": "langwang",
+    "name": "浪网 (WaveNet)",
+    "tagline": "历史档案 · IEPL 专线 · 含入门至商业及 180G~900G 流量包（未实测待核实）",
+    "description": "浪网整理自 2026-08 历史库，官网标注采用 IEPL 专线并囊括 ¥119 年付标准版、¥30~¥200 月付及高额一次性流量包。原资料中无实测速度、解锁测试且协议/客户端细节暂缺，一切关键指标以待核实标记并靠后排列。",
+    "officialUrl": "https://varnexa.wavenetaff.com",
+    "affiliateUrl": "https://varnexa.wavenetaff.com/#/?code=xwAM4tTd",
+    "status": "active",
+    "establishedYear": 2025,
+    "nodeCount": 30,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "80GB - 2000GB / 月（部分套餐原截图遮挡）",
+    "refundPolicy": "尚缺协议、客户端与退款细则资料，需先核查官网",
+    "couponCode": "",
+    "discountInfo": "优惠码尚未核实",
+    "routes": [
+      "iepl"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 9.9,
+      "billingPeriod": "年付标准 119元 (80GB/月) · 入门月付 30元 (150GB口径)",
+      "annualDiscount": "优惠码尚未核实",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.2,
+      "stability": 8.2,
+      "speed": 8.2,
+      "support": 8.1,
+      "costPerformance": 8.2
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：原资料未实测且缺设备、节点地区及解锁测试记录。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：无流媒体实测数据。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "仅作大流量档位定价结构对照，暂不建议未核实直接长期预付"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-09",
+        "type": "update",
+        "title": "历史档案 · IEPL 专线 · 含入门至商业及 180G~900G 流量包（未实测待核实）"
+      }
+    ]
+  },
+  {
+    "id": "edgenova",
+    "slug": "edgenova",
+    "name": "EdgeNova (边缘节点)",
+    "tagline": "历史档案 · 高速直连 / IPLC 多线自动分配 · 限时月付15元(72GB)",
+    "description": "边缘节点 EdgeNova 定位为“高速直连 / IPLC 多线路自动分配”，在历史资料中有限时月付 ¥15（72GB）与限时年付 ¥108（45GB/月）两档特惠款，及极界系列高配包。因缺独立实测图表与近 30 日状态核验，目前处于后排待核实名单。",
+    "officialUrl": "https://work.edgenovaaff.cc",
+    "affiliateUrl": "https://work.edgenovaaff.cc/#/register?code=cl3iB5YG",
+    "status": "active",
+    "establishedYear": 2025,
+    "nodeCount": 35,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "45GB - 1000GB / 月（历史口径）",
+    "refundPolicy": "历史档案待核实实时政策",
+    "couponCode": "TH888",
+    "discountInfo": "历史 8 折优惠码：TH888（当前有效期待核实）",
+    "routes": [
+      "iplc",
+      "direct"
+    ],
+    "protocols": [
+      "vless"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 9,
+      "billingPeriod": "限时年付 108元 (45GB/月) · 限时月付 15元 (72GB)",
+      "annualDiscount": "历史 8 折优惠码：TH888（当前有效期待核实）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.4,
+      "stability": 8.4,
+      "speed": 8.4,
+      "support": 8.3,
+      "costPerformance": 8.6
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：未提供独立逐项 AI 测试结果。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：未提供独立流媒体逐项实测。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "尝试多线路自动调度、先以限时 ¥15 套餐自主测试兼容性的用户"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iplc",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-09",
+        "type": "update",
+        "title": "历史档案 · 高速直连 / IPLC 多线自动分配 · 限时月付15元(72GB)"
+      }
+    ]
+  },
+  {
+    "id": "sslar",
+    "slug": "sslar",
+    "name": "SSLAR",
+    "tagline": "历史档案 · 企业级 IEPL+BGP · 月付17元起(100GB) 含自研客户端（无入口待核实）",
+    "description": "SSLAR 在历史品牌库中定位为企业级 IEPL + 多线 BGP 服务，支持 Shadowsocks/VLESS 自适应及跨平台自研客户端，Basic 月付 ¥17 含 100GB 流量并历史标注可提供远程桌面协助。当前缺失独立官网入口与近期实测图，已置后标示待核实。",
+    "officialUrl": "",
+    "affiliateUrl": "",
+    "status": "warning",
+    "establishedYear": 2024,
+    "nodeCount": 35,
+    "entryLocations": [
+      "BGP/专线多入口"
+    ],
+    "bandwidthLimit": "100GB - 300GB / 月（历史口径）",
+    "refundPolicy": "无独立入口链接保存，需待核实官网状态",
+    "couponCode": "ko3eTt0w",
+    "discountInfo": "历史 8 折优惠码：ko3eTt0w（当前有效性待核实）",
+    "routes": [
+      "iepl",
+      "bgp"
+    ],
+    "protocols": [
+      "vless",
+      "shadowsocks"
+    ],
+    "clients": [
+      "clash-verge",
+      "shadowrocket",
+      "v2rayn"
+    ],
+    "pricing": {
+      "minMonthly": 13.58,
+      "billingPeriod": "Basic 年付 ¥163 (100GB/月) · 月付 ¥17 (100GB)",
+      "annualDiscount": "历史 8 折优惠码：ko3eTt0w（当前有效性待核实）",
+      "hasUnlimitedTraffic": false
+    },
+    "score": {
+      "overall": 8.5,
+      "stability": 8.5,
+      "speed": 8.5,
+      "support": 8.5,
+      "costPerformance": 8.6
+    },
+    "aiSupport": {
+      "status": "pending",
+      "tools": [
+        "ChatGPT",
+        "Claude",
+        "Gemini"
+      ],
+      "notes": "待核实：未提供独立逐项 AI 测试结果。"
+    },
+    "streamingSupport": {
+      "status": "pending",
+      "platforms": [
+        "Netflix",
+        "Disney+",
+        "YouTube"
+      ],
+      "notes": "待核实：未提供独立流媒体实测数据。"
+    },
+    "riskScore": 28,
+    "riskLevel": "moderate",
+    "conversionData": {
+      "clickCount": 0,
+      "estimatedConversionRate": 0,
+      "topAudience": "查询企业级自研客户端与历史 Basic/Standard/Premium 资费参照"
+    },
+    "relations": [
+      {
+        "targetId": "vless",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "shadowsocks",
+        "targetType": "protocol",
+        "relationType": "supports"
+      },
+      {
+        "targetId": "iepl",
+        "targetType": "route",
+        "relationType": "runs_on"
+      },
+      {
+        "targetId": "clash-verge",
+        "targetType": "client",
+        "relationType": "supports"
+      }
+    ],
+    "history": [
+      {
+        "date": "2026-08-09",
+        "type": "update",
+        "title": "历史档案 · 企业级 IEPL+BGP · 月付17元起(100GB) 含自研客户端（无入口待核实）"
+      }
+    ]
   }
 ]

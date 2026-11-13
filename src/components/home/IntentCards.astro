@@ -3,58 +3,58 @@ import Icon from '../common/Icon.astro';
 
 const intents = [
   {
-    title: 'AI 访问专区',
-    badge: 'HOT TOPIC',
+    title: '2026 性价比机场排行',
+    badge: 'TOP RANK',
+    icon: 'zap',
+    desc: '月均 7.5~15 元高性价比专线实测 · 14.9 元 100GB 月付 · 拒绝虚标与跑路作坊',
+    href: '/category/cost-effective',
+    color: 'emerald',
+    tags: ['性价比机场', '14.9元月付', '年付7.5元起'],
+  },
+  {
+    title: 'Clash 机场推荐精选',
+    badge: 'CLASH READY',
+    icon: 'cpu',
+    desc: '完美适配 Clash Verge Rev / Mihomo / 小火箭 · 一键导入机场订阅与自动分流',
+    href: '/category/clash-recommend',
+    color: 'cyan',
+    tags: ['Clash推荐', '一键订阅', 'Mihomo规则'],
+  },
+  {
+    title: '高速机场节点测评榜',
+    badge: 'NODES',
+    icon: 'server',
+    desc: '香港 · 日本 · 新加坡 · 台湾 · 美国 IEPL 专线机场节点晚高峰实测与延迟对比',
+    href: '/category/airport-nodes',
+    color: 'violet',
+    tags: ['机场节点', 'IEPL专线', '晚高峰不卡'],
+  },
+  {
+    title: 'AI 访问专线机场',
+    badge: 'AI ACCESS',
     icon: 'bot',
-    desc: 'ChatGPT · Claude 3.5 · Gemini · 原生住宅 IP 避开 1020 报错与风控',
+    desc: 'ChatGPT · Claude · Gemini · 原生住宅 IP 避开 1020 报错与高频验证码风控',
     href: '/category/ai-access',
     color: 'emerald',
-    tags: ['OpenAI原生', 'WebRTC防护', 'Cursor代码补全'],
+    tags: ['ChatGPT解锁', '原生IP', 'Cursor开发'],
   },
   {
-    title: '4K/8K 流媒体',
-    badge: 'POPULAR',
+    title: '4K/8K 流媒体机场',
+    badge: 'STREAMING',
     icon: 'tv',
-    desc: 'Netflix 非自制剧 · YouTube 8K · Disney+ · 巴哈姆特动画疯秒开',
+    desc: 'Netflix 非自制剧 · YouTube 8K · Disney+ · 巴哈姆特动画疯秒开不转圈',
     href: '/category/streaming-4k',
-    color: 'cyan',
-    tags: ['4K HDR', '多区双向解锁', 'TikTok直播'],
-  },
-  {
-    title: '客户端图文教程',
-    badge: 'GUIDE',
-    icon: 'cpu',
-    desc: 'Clash Verge Rev · 小火箭 · sing-box · 4步导入与 TUN 虚拟网卡配置',
-    href: '/clients',
-    color: 'violet',
-    tags: ['Mihomo内核', '四步图文', 'Fake-IP防污染'],
-  },
-  {
-    title: '稳定专线网络',
-    badge: 'IEPL/IPLC',
-    icon: 'server',
-    desc: '全线 IEPL 企业物理专线 · 晚高峰 0 丢包 · 400MB/s+ 满速实测',
-    href: '/routes',
-    color: 'emerald',
-    tags: ['点对点专线', '年付低至7.5元', '免跑路'],
-  },
-  {
-    title: '便宜高性价比',
-    badge: 'BUDGET',
-    icon: 'zap',
-    desc: '14.9 元月付 100GB · 7 元年付专线 · 不限时流量包长效备用',
-    href: '/category/budget-under-15',
     color: 'amber',
-    tags: ['14.9元月付', '不限时流量', '学生党首选'],
+    tags: ['Netflix 4K', '多区解锁', 'TikTok直播'],
   },
   {
-    title: '网络故障诊断',
+    title: '机场节点超时排查',
     badge: 'ISSUES',
     icon: 'alert-triangle',
-    desc: '节点全部超时 · 测速全红 · 端口冲突 · 1020 报错系统化诊断树',
+    desc: '节点全部超时 · Timeout 测速全红 · 端口冲突 · Clash 订阅拉取失败自救指南',
     href: '/articles/node-timeout-troubleshooting-guide',
     color: 'rose',
-    tags: ['Timeout排查', '时间同步', 'TLS握手'],
+    tags: ['Timeout排查', '节点全红', '订阅修复'],
   },
 ];
 ---
@@ -64,15 +64,15 @@ const intents = [
     <div>
       <div class="flex items-center gap-2 mb-1">
         <span class="w-2 h-2 rounded-full bg-tech-cyan"></span>
-        <span class="text-xs font-bold text-tech-cyan tracking-wider uppercase">Scenario Hubs</span>
+        <span class="text-xs font-bold text-tech-cyan tracking-wider uppercase">Best Picks 2026</span>
       </div>
-      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">热门需求与场景入口</h2>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-white">2026 好用的机场与核心选型榜单</h2>
       <p class="text-xs sm:text-sm text-slate-400 mt-1">
-        按您的核心网络任务直达专属数据库、实测报告与排错方案。
+        按性价比、Clash 兼容性、高速机场节点与 AI/流媒体场景直达实测排行榜。
       </p>
     </div>
     <a href="/providers" class="hidden sm:flex text-xs font-semibold text-tech-cyan hover:underline items-center gap-1">
-      <span>查阅全景矩阵</span>
+      <span>查看全部机场测评排行</span>
       <span>→</span>
     </a>
   </div>

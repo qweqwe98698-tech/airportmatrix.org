@@ -1,0 +1,81 @@
+{
+  "id": "shanshuiyun-in-depth-review-2026",
+  "slug": "shanshuiyun-in-depth-review-2026",
+  "title": "山水云 (ShanShuiYun) 2026 深度测评报告：7.33元起套餐、线路架构与待核实细节全解析",
+  "subtitle": "历史档案 · 月付15元(100GB) / 年付88元(64GB) · 2026-06 历史测速留档",
+  "description": "山水云 (ShanShuiYun) 2026 客观档案与测评分析：涵盖完整周期套餐表、TRANSIT 架构与 Clash/小火箭订阅兼容及同价位替代建议。",
+  "primaryIntent": "帮助搜索 山水云 (ShanShuiYun) 的用户全面核对套餐价格、客户端方式、实测图证或历史资料缺口及优惠码。",
+  "articleType": "review",
+  "depthLevel": "D4",
+  "publishDate": "2026-11-13",
+  "updatedDate": "2026-11-13",
+  "author": "AirportMatrix 评测实验室",
+  "readingTime": "8 分钟",
+  "h2Count": 6,
+  "wordCount": 2200,
+  "quickAnswer": "山水云 (ShanShuiYun)（数据状态：历史档案记录（不代表实时速度））当前参考起步价为 年付 88元 (64GB/月) · 琴月付 15元(100GB)，采用 TRANSIT 线路。连接方式：支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。部分实时测速与长周期细节仍标记待核实，建议先以最小可测周期体验，或对比主推光速云与性价比榜单。",
+  "tags": [
+    "山水云 (ShanShuiYun)",
+    "机场测评",
+    "TRANSIT专线",
+    "Clash订阅"
+  ],
+  "relatedProviders": [
+    "shanshuiyun",
+    "guangsucloud"
+  ],
+  "relatedClients": [
+    "clash-verge",
+    "shadowrocket",
+    "sing-box"
+  ],
+  "relatedProtocols": [
+    "vless"
+  ],
+  "relatedArticles": [
+    "cost-effective-airport-buying-guide-2026",
+    "airport-review-methodology-and-2026-evaluation",
+    "guangsucloud-in-depth-review-2026"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、 品牌定位、数据状态与客户端限制"
+    },
+    {
+      "id": "section-2",
+      "title": "二、 完整套餐价格明细与优惠码分析"
+    },
+    {
+      "id": "section-3",
+      "title": "三、 节点测速证据、区域性能与客观对比"
+    },
+    {
+      "id": "section-4",
+      "title": "四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录"
+    },
+    {
+      "id": "section-5",
+      "title": "五、 客户端兼容模式与分流使用指南"
+    },
+    {
+      "id": "section-6",
+      "title": "六、 优点、局限、待核实信息与同类对照"
+    }
+  ],
+  "contentHtml": "<h2 id=\"section-1\">一、 品牌定位、数据状态与客户端限制</h2><p>山水云记录整理自 2026-08 历史档案，包含年付 ¥88（64GB/月）及月付 ¥15（100GB）等 6 档。2026-06-29 历史测速 27 节点中有 22 节点连通，美区均速 180.29Mbps 但整体 RTT 超过 150ms、协议尚未核实，因此排名靠后。</p><p><strong>信息可信度状态：</strong><code>历史档案记录（不代表实时速度）</code> · 核验时间：<code>2026-08-24</code>。在本次 42 家全量数据库整理中，<strong>山水云 (ShanShuiYun)</strong> 属于后置历史/待核实参考档案（<code>历史档案记录（不代表实时速度）</code>），更适合老用户查阅历史参数并与前列已完整实测品牌做冷静对比，选购主力节点可优先参考 <a href=\"/providers\">全网机场测评排行榜</a>。</p><h2 id=\"section-2\">二、 完整套餐价格明细与优惠码分析</h2><p>起步资费特征：<strong>年付 88元 (64GB/月) · 琴月付 15元(100GB)</strong>。历史资料未列优惠码，当前活动以官网核对为准</p><table><thead><tr><th>套餐名称</th><th>计费周期</th><th>参考价格</th><th>流量配额</th><th>备注</th></tr></thead><tbody><tr><td><strong>64G/轻量套餐</strong></td><td>年付</td><td>¥88</td><td>64GB/月</td><td>折约 ¥7.33/月</td></tr><tr><td><strong>128G/轻量套餐</strong></td><td>半年付</td><td>¥88</td><td>128GB/月</td><td>旧资料口径</td></tr><tr><td><strong>256G/轻量套餐</strong></td><td>季付</td><td>¥75</td><td>256GB/月</td><td>旧资料口径</td></tr><tr><td><strong>100G/月-琴</strong></td><td>月付</td><td>¥15</td><td>100GB/月</td><td>旧资料口径</td></tr><tr><td><strong>200G/月-棋</strong></td><td>月付</td><td>¥25</td><td>200GB/月</td><td>旧资料口径</td></tr><tr><td><strong>500G/月-书</strong></td><td>月付</td><td>¥50</td><td>500GB/月</td><td>旧资料口径</td></tr></tbody></table><h2 id=\"section-3\">三、 节点测速证据、区域性能与客观对比</h2><p>专线与路由特征：<code>TRANSIT</code> · 主力协议：<code>VLESS</code> · 收录节点规模：约 27 个。</p><p><strong>图片与测速证物透明声明：</strong>本品牌截至 <code>2026-08-24</code> 暂未归档独立高清 MiaoKO / 晚高峰节点测速大图。为严格遵守真实测评规范，本文绝不借用同名或近似品牌的测速截图充数。</p><p><em>注：以下分区数据采集自 2026-06-29（历史统计数据，仅反映 2026-06-29 测试环境）：</em></p><table><thead><tr><th>节点区域</th><th>测试延迟</th><th>实测/统计下载</th></tr></thead><tbody><tr><td><strong>美国</strong></td><td>349.3ms</td><td>180.29Mbps</td></tr><tr><td><strong>日本</strong></td><td>229.8ms</td><td>160.51Mbps</td></tr><tr><td><strong>香港</strong></td><td>151.4ms</td><td>152.86Mbps</td></tr><tr><td><strong>新加坡</strong></td><td>179.8ms</td><td>142.98Mbps</td></tr><tr><td><strong>越南</strong></td><td>232ms</td><td>87.68Mbps</td></tr><tr><td><strong>泰国</strong></td><td>217ms</td><td>82Mbps</td></tr><tr><td><strong>英国</strong></td><td>328ms</td><td>65.2Mbps</td></tr></tbody></table><h2 id=\"section-4\">四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录</h2><p><strong>AI 与流媒体状态：</strong>2026-06-29 当次测试可用 ChatGPT/Claude/Gemini，不担保现时持续状态。 2026-06-29 当次测试解锁 Netflix/Disney+/Max/TikTok，现况待核实。</p><h2 id=\"section-5\">五、 客户端兼容模式与分流使用指南</h2><p><strong>连接方式判断：</strong>支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。</p><p>对于兼容通用订阅的用户，推荐使用开源 <a href=\"/client/clash-verge\">Clash Verge Rev</a> 或移动端 <a href=\"/client/shadowrocket\">小火箭</a>，需要格式转换时可直接使用纯前端 <a href=\"/tools/sub-converter\">在线订阅转换工具</a>。</p><h2 id=\"section-6\">六、 优点、局限、待核实信息与同类对照</h2><p><strong>核心优势：</strong>15 元 100GB 月付门槛与 88 元/年低价结构实用，美国历史平均下载达 180.29Mbps。</p><p><strong>局限与注意事项：</strong>27 节点仅 22 个跑出速度且 2026-06-29 统计延迟偏高（港 151ms / 日 229ms）；加密协议未在旧档核实。</p><p><strong>明确待核实字段：</strong></p><ul><li>底层协议未核实、现行实时价格与近 30 日速度待重新验证</li></ul><div class=\"p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/30 text-xs text-slate-200 my-6\"><p class=\"mb-2\"><strong>透明提示：</strong>以下官方注册链接含推广链接，通过链接注册可能为本站带来佣金，不影响用户支付价格。</p><div class=\"flex flex-wrap items-center justify-between gap-3\"><span>官方通道已启用防屏蔽直达验证</span><a href=\"https://sldm1.ssyylf.com/#/register?code=YD5iQ888\" target=\"_blank\" rel=\"nofollow sponsored noopener\" class=\"px-4 py-2 rounded-lg bg-tech-emerald text-slate-950 font-bold\">前往 山水云 (ShanShuiYun) 官网注册 →</a></div></div>",
+  "faqList": [
+    {
+      "question": "山水云 (ShanShuiYun) 目前多少钱？有没有优惠码？",
+      "answer": "资料记载入门起步为 年付 88元 (64GB/月) · 琴月付 15元(100GB)。暂未确认可用公开优惠码，下单前请核实官网页面。"
+    },
+    {
+      "question": "山水云 (ShanShuiYun) 能不能导入 Clash Verge 或 Shadowrocket 小火箭？",
+      "answer": "支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。如需统一用第三方 Clash 客户端管理多条机场订阅，建议同时查看站内【Clash 机场推荐排行榜】。"
+    },
+    {
+      "question": "山水云 (ShanShuiYun) 目前的测试数据和跑路风险情况怎样？",
+      "answer": "当前数据标签为【历史档案记录（不代表实时速度）】（最近核验：2026-08-24）。暂无近期独立截图证物，下单一律建议先选短周期实测本地晚高峰表现。"
+    }
+  ]
+}

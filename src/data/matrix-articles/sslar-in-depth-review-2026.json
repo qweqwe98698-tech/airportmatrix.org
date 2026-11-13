@@ -1,0 +1,83 @@
+{
+  "id": "sslar-in-depth-review-2026",
+  "slug": "sslar-in-depth-review-2026",
+  "title": "SSLAR 2026 深度测评报告：13.58元起套餐、线路架构与待核实细节全解析",
+  "subtitle": "历史档案 · 企业级 IEPL+BGP · 月付17元起(100GB) 含自研客户端（无入口待核实）",
+  "description": "SSLAR 2026 客观档案与测评分析：涵盖完整周期套餐表、IEPL/BGP 架构与 Clash/小火箭订阅兼容及同价位替代建议。",
+  "primaryIntent": "帮助搜索 SSLAR 的用户全面核对套餐价格、客户端方式、实测图证或历史资料缺口及优惠码。",
+  "articleType": "review",
+  "depthLevel": "D4",
+  "publishDate": "2026-11-13",
+  "updatedDate": "2026-11-13",
+  "author": "AirportMatrix 评测实验室",
+  "readingTime": "8 分钟",
+  "h2Count": 6,
+  "wordCount": 2200,
+  "quickAnswer": "SSLAR（数据状态：待核实档案）当前参考起步价为 Basic 年付 ¥163 (100GB/月) · 月付 ¥17 (100GB)，采用 IEPL + BGP 线路。连接方式：同时支持官方自研客户端（新手零门槛）与 Clash 等第三方通用订阅。部分实时测速与长周期细节仍标记待核实，建议先以最小可测周期体验，或对比主推光速云与性价比榜单。",
+  "tags": [
+    "SSLAR",
+    "机场测评",
+    "IEPL专线",
+    "BGP专线",
+    "Clash订阅"
+  ],
+  "relatedProviders": [
+    "sslar",
+    "guangsucloud"
+  ],
+  "relatedClients": [
+    "clash-verge",
+    "shadowrocket",
+    "sing-box"
+  ],
+  "relatedProtocols": [
+    "vless",
+    "shadowsocks"
+  ],
+  "relatedArticles": [
+    "cost-effective-airport-buying-guide-2026",
+    "airport-review-methodology-and-2026-evaluation",
+    "guangsucloud-in-depth-review-2026"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、 品牌定位、数据状态与客户端限制"
+    },
+    {
+      "id": "section-2",
+      "title": "二、 完整套餐价格明细与优惠码分析"
+    },
+    {
+      "id": "section-3",
+      "title": "三、 节点测速证据、区域性能与客观对比"
+    },
+    {
+      "id": "section-4",
+      "title": "四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录"
+    },
+    {
+      "id": "section-5",
+      "title": "五、 客户端兼容模式与分流使用指南"
+    },
+    {
+      "id": "section-6",
+      "title": "六、 优点、局限、待核实信息与同类对照"
+    }
+  ],
+  "contentHtml": "<h2 id=\"section-1\">一、 品牌定位、数据状态与客户端限制</h2><p>SSLAR 在历史品牌库中定位为企业级 IEPL + 多线 BGP 服务，支持 Shadowsocks/VLESS 自适应及跨平台自研客户端，Basic 月付 ¥17 含 100GB 流量并历史标注可提供远程桌面协助。当前缺失独立官网入口与近期实测图，已置后标示待核实。</p><p><strong>信息可信度状态：</strong><code>待核实档案</code> · 核验时间：<code>2026-08-09</code>。在本次 42 家全量数据库整理中，<strong>SSLAR</strong> 属于后置历史/待核实参考档案（<code>待核实档案</code>），更适合老用户查阅历史参数并与前列已完整实测品牌做冷静对比，选购主力节点可优先参考 <a href=\"/providers\">全网机场测评排行榜</a>。</p><h2 id=\"section-2\">二、 完整套餐价格明细与优惠码分析</h2><p>起步资费特征：<strong>Basic 年付 ¥163 (100GB/月) · 月付 ¥17 (100GB)</strong>（优惠码：<code>ko3eTt0w</code>）。历史 8 折优惠码：ko3eTt0w（当前有效性待核实）</p><table><thead><tr><th>套餐名称</th><th>计费周期</th><th>参考价格</th><th>流量配额</th><th>备注</th></tr></thead><tbody><tr><td><strong>Basic</strong></td><td>月付</td><td>¥17</td><td>100GB/月</td><td>年付 ¥163（历史价）</td></tr><tr><td><strong>Standard</strong></td><td>月付</td><td>¥28</td><td>200GB/月</td><td>年付 ¥268（历史价）</td></tr><tr><td><strong>Premium</strong></td><td>月付</td><td>¥36</td><td>300GB/月</td><td>年付 ¥345（历史价）</td></tr></tbody></table><h2 id=\"section-3\">三、 节点测速证据、区域性能与客观对比</h2><p>专线与路由特征：<code>IEPL + BGP</code> · 主力协议：<code>VLESS / SHADOWSOCKS</code> · 收录节点规模：约 35 个。</p><p><strong>图片与测速证物透明声明：</strong>本品牌截至 <code>2026-08-09</code> 暂未归档独立高清 MiaoKO / 晚高峰节点测速大图。为严格遵守真实测评规范，本文绝不借用同名或近似品牌的测速截图充数。</p><h2 id=\"section-4\">四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录</h2><p><strong>AI 与流媒体状态：</strong>待核实：未提供独立逐项 AI 测试结果。 待核实：未提供独立流媒体实测数据。</p><h2 id=\"section-5\">五、 客户端兼容模式与分流使用指南</h2><p><strong>连接方式判断：</strong>同时支持官方自研客户端（新手零门槛）与 Clash 等第三方通用订阅。</p><p>对于兼容通用订阅的用户，推荐使用开源 <a href=\"/client/clash-verge\">Clash Verge Rev</a> 或移动端 <a href=\"/client/shadowrocket\">小火箭</a>，需要格式转换时可直接使用纯前端 <a href=\"/tools/sub-converter\">在线订阅转换工具</a>。</p><h2 id=\"section-6\">六、 优点、局限、待核实信息与同类对照</h2><p><strong>核心优势：</strong>17 元 100GB 起步结构规整，标配远程协助定位适合商务办公新手。</p><p><strong>局限与注意事项：</strong>当前未保存独立官网入口，缺少近 30 日实测速度与 AI/流媒体验证结果。</p><p><strong>明确待核实字段：</strong></p><ul><li>当前独立入口、优惠码有效性、USDT 支付情况及实测速度解锁待核实</li></ul><div class=\"p-4 rounded-xl bg-amber-950/30 border border-amber-500/30 text-xs text-slate-200 my-6\"><strong>入口待核实说明：</strong>当前资料暂未保留 SSLAR 的独立官网推广入口，建议改选已完成实测与入口校验的 <a href=\"/category/cost-effective\">2026 高性价比机场推荐榜</a> 品牌。</div>",
+  "faqList": [
+    {
+      "question": "SSLAR 目前多少钱？有没有优惠码？",
+      "answer": "资料记载入门起步为 Basic 年付 ¥163 (100GB/月) · 月付 ¥17 (100GB)。参考优惠码为【ko3eTt0w】（历史 8 折优惠码：ko3eTt0w（当前有效性待核实））。"
+    },
+    {
+      "question": "SSLAR 能不能导入 Clash Verge 或 Shadowrocket 小火箭？",
+      "answer": "同时支持官方自研客户端（新手零门槛）与 Clash 等第三方通用订阅。如需统一用第三方 Clash 客户端管理多条机场订阅，建议同时查看站内【Clash 机场推荐排行榜】。"
+    },
+    {
+      "question": "SSLAR 目前的测试数据和跑路风险情况怎样？",
+      "answer": "当前数据标签为【待核实档案】（最近核验：2026-08-09）。暂无近期独立截图证物，下单一律建议先选短周期实测本地晚高峰表现。"
+    }
+  ]
+}

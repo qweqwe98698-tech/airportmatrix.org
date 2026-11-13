@@ -15,16 +15,28 @@ const totalRisk = risksDatabase.filter((r) => r.level === 'critical' || r.level 
 
 const nextPages = [
   {
-    title: '经认证高可用合规专线机场推荐',
-    href: '/providers',
-    desc: '避开跑路小作坊，选择运营 3 年以上、多地专线冗余的大厂。',
-    type: '安全选型',
+    title: '2026 高性价比认证专线机场推荐',
+    href: '/category/cost-effective',
+    desc: '避开跑路小作坊与免费劣质节点，优先对比运营超过 2 年且状态正常的稳定服务商。',
+    type: '安全榜单',
+  },
+  {
+    title: '15 元以内低门槛月付替代方案',
+    href: '/category/budget-under-15',
+    desc: '先用 14.9 元月付试错，降低大额年付预充值风险。',
+    type: '低风险试错',
   },
   {
     title: '节点全红与超时排查指南',
     href: '/articles/node-timeout-troubleshooting-guide',
     desc: '区分是本地网络设置问题还是机场服务器发生事故。',
     type: '故障排查',
+  },
+  {
+    title: '2026 机场测评标准与防跑路预警拆解',
+    href: '/articles/airport-review-methodology-and-2026-evaluation',
+    desc: '看懂跑路前 4 个常见征兆与 6 维核验方法。',
+    type: '防坑指南',
   },
 ];
 ---

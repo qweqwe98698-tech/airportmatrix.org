@@ -1,0 +1,83 @@
+{
+  "id": "muguang-in-depth-review-2026",
+  "slug": "muguang-in-depth-review-2026",
+  "title": "暮光加速 (MuGuang) 2026 深度测评报告：9.1元起套餐、线路架构与待核实细节全解析",
+  "subtitle": "2023年运营 · BGP智能调度专线 · 年付109元起 & 全平台多设备在线",
+  "description": "暮光加速 (MuGuang) 2026 客观档案与测评分析：涵盖完整周期套餐表、BGP/IEPL 架构与 Clash/小火箭订阅兼容及同价位替代建议。",
+  "primaryIntent": "帮助搜索 暮光加速 (MuGuang) 的用户全面核对套餐价格、客户端方式、实测图证或历史资料缺口及优惠码。",
+  "articleType": "review",
+  "depthLevel": "D4",
+  "publishDate": "2026-11-13",
+  "updatedDate": "2026-11-13",
+  "author": "AirportMatrix 评测实验室",
+  "readingTime": "8 分钟",
+  "h2Count": 6,
+  "wordCount": 2200,
+  "quickAnswer": "暮光加速 (MuGuang)（数据状态：品牌资料整理（待补充独立晚高峰复测））当前参考起步价为 年付轻量版 109元/年 (约9.1元/月) · 月付20元(120GB)，采用 BGP + IEPL 线路。连接方式：同时支持官方自研客户端（新手零门槛）与 Clash 等第三方通用订阅。部分实时测速与长周期细节仍标记待核实，建议先以最小可测周期体验，或对比主推光速云与性价比榜单。",
+  "tags": [
+    "暮光加速 (MuGuang)",
+    "机场测评",
+    "BGP专线",
+    "IEPL专线",
+    "Clash订阅"
+  ],
+  "relatedProviders": [
+    "muguang",
+    "guangsucloud"
+  ],
+  "relatedClients": [
+    "clash-verge",
+    "shadowrocket",
+    "sing-box"
+  ],
+  "relatedProtocols": [
+    "vless",
+    "trojan"
+  ],
+  "relatedArticles": [
+    "cost-effective-airport-buying-guide-2026",
+    "airport-review-methodology-and-2026-evaluation",
+    "guangsucloud-in-depth-review-2026"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、 品牌定位、数据状态与客户端限制"
+    },
+    {
+      "id": "section-2",
+      "title": "二、 完整套餐价格明细与优惠码分析"
+    },
+    {
+      "id": "section-3",
+      "title": "三、 节点测速证据、区域性能与客观对比"
+    },
+    {
+      "id": "section-4",
+      "title": "四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录"
+    },
+    {
+      "id": "section-5",
+      "title": "五、 客户端兼容模式与分流使用指南"
+    },
+    {
+      "id": "section-6",
+      "title": "六、 优点、局限、待核实信息与同类对照"
+    }
+  ],
+  "contentHtml": "<h2 id=\"section-1\">一、 品牌定位、数据状态与客户端限制</h2><p>暮光加速（MuGuang）面向个人与跨平台团队使用场景，主打 BGP 智能调度与专线级出口，支持多设备同时在线。年付轻量版 109 元（70GB/月，均摊约 9.1 元/月），标准月付 20 元含 120GB 流量，并配备 150GB~800GB 不限时流量包与私人定制节点。</p><p><strong>信息可信度状态：</strong><code>品牌资料整理（待补充独立晚高峰复测）</code> · 核验时间：<code>2026-10-19</code>。在 AirportMatrix 42 家综合实力矩阵中，<strong>暮光加速 (MuGuang)</strong> 位于前排核心关注名单，可配合 <a href=\"/category/cost-effective\">2026 高性价比机场推荐榜</a> 及 <a href=\"/provider/guangsucloud\">主推光速云</a> 共同对比选购。</p><h2 id=\"section-2\">二、 完整套餐价格明细与优惠码分析</h2><p>起步资费特征：<strong>年付轻量版 109元/年 (约9.1元/月) · 月付20元(120GB)</strong>（优惠码：<code>muguang5555</code>）。基础数据记录优惠码：muguang5555（具体折扣以官网当期活动为准）</p><table><thead><tr><th>套餐名称</th><th>计费周期</th><th>参考价格</th><th>流量配额</th><th>备注</th></tr></thead><tbody><tr><td><strong>【暮光·年付轻量版】</strong></td><td>年付</td><td>¥109</td><td>70GB/月</td><td>均摊约 ¥9.1/月</td></tr><tr><td><strong>【暮光·基础版】</strong></td><td>月付</td><td>¥20</td><td>120GB/月</td><td>每月重置</td></tr><tr><td><strong>【暮光·标准版】</strong></td><td>月付</td><td>¥40</td><td>240GB/月</td><td>每月重置</td></tr><tr><td><strong>【暮光·旗舰版】</strong></td><td>月付</td><td>¥100</td><td>700GB/月</td><td>每月重置</td></tr><tr><td><strong>【暮光·至尊版】</strong></td><td>月付</td><td>¥180</td><td>1500GB/月</td><td>每月重置</td></tr><tr><td><strong>【暮光·不限时轻量包】</strong></td><td>一次性付费</td><td>¥219</td><td>150GB</td><td>一次性有效</td></tr><tr><td><strong>【暮光·不限时标准包】</strong></td><td>一次性付费</td><td>¥529</td><td>400GB</td><td>一次性有效</td></tr><tr><td><strong>【暮光·不限时大容量包】</strong></td><td>一次性付费</td><td>¥959</td><td>800GB</td><td>一次性有效</td></tr><tr><td><strong>独享私人定制节点</strong></td><td>月付</td><td>¥600</td><td>500GB/月</td><td>独享定制</td></tr></tbody></table><h2 id=\"section-3\">三、 节点测速证据、区域性能与客观对比</h2><p>专线与路由特征：<code>BGP + IEPL</code> · 主力协议：<code>VLESS / TROJAN</code> · 收录节点规模：约 50 个。</p><p><strong>图片与测速证物透明声明：</strong>本品牌截至 <code>2026-10-19</code> 暂未归档独立高清 MiaoKO / 晚高峰节点测速大图。为严格遵守真实测评规范，本文绝不借用同名或近似品牌的测速截图充数。</p><p><em>注：以下分区数据采集自 2026-10-19（资料记录（非晚高峰单次参考，不代表长期实时带宽））：</em></p><table><thead><tr><th>节点区域</th><th>测试延迟</th><th>实测/统计下载</th></tr></thead><tbody><tr><td><strong>香港</strong></td><td>26ms</td><td>509Mbps</td></tr><tr><td><strong>台湾</strong></td><td>40ms</td><td>107Mbps</td></tr><tr><td><strong>新加坡</strong></td><td>43ms</td><td>419Mbps</td></tr><tr><td><strong>日本</strong></td><td>53ms</td><td>150Mbps</td></tr><tr><td><strong>美国</strong></td><td>160ms</td><td>19Mbps</td></tr></tbody></table><h2 id=\"section-4\">四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录</h2><table><thead><tr><th>测试类别</th><th>平台 / 服务</th><th>状态记录与说明</th></tr></thead><tbody><tr><td>AI 工具</td><td><strong>ChatGPT</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>AI 工具</td><td><strong>Claude</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>AI 工具</td><td><strong>Gemini</strong></td><td>⚠️ 视落地节点而定（需手选地区）</td></tr><tr><td>海外流媒体</td><td><strong>Netflix</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>海外流媒体</td><td><strong>Disney+</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>海外流媒体</td><td><strong>YouTube</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>海外流媒体</td><td><strong>HBO Max</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>海外流媒体</td><td><strong>TikTok</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>海外流媒体</td><td><strong>Spotify</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr></tbody></table><p>全平台支持且多设备在线，Gemini 需按节点切换。</p><h2 id=\"section-5\">五、 客户端兼容模式与分流使用指南</h2><p><strong>连接方式判断：</strong>同时支持官方自研客户端（新手零门槛）与 Clash 等第三方通用订阅。</p><p>对于兼容通用订阅的用户，推荐使用开源 <a href=\"/client/clash-verge\">Clash Verge Rev</a> 或移动端 <a href=\"/client/shadowrocket\">小火箭</a>，需要格式转换时可直接使用纯前端 <a href=\"/tools/sub-converter\">在线订阅转换工具</a>。</p><h2 id=\"section-6\">六、 优点、局限、待核实信息与同类对照</h2><p><strong>核心优势：</strong>2023 年运营至今，覆盖 Win/macOS/iOS/Android/Linux 全平台；支持多设备同时在线，套餐涵盖月付、年付轻量及 800GB 不限时包；资料记录提供 7×24 小时客服响应，适合跨团队协作。</p><p><strong>局限与注意事项：</strong>暂无单独实测大图存档（资料内同名压缩包图片核验为快狸截图，已保持未混用）；优惠码适用范围以官网结账页最新说明为准。</p><p><strong>明确待核实字段：</strong></p><ul><li>未混用误标压缩包图片，待补充独立暮光节点测速原图</li></ul><div class=\"p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/30 text-xs text-slate-200 my-6\"><p class=\"mb-2\"><strong>透明提示：</strong>以下官方注册链接含推广链接，通过链接注册可能为本站带来佣金，不影响用户支付价格。</p><div class=\"flex flex-wrap items-center justify-between gap-3\"><span>参考优惠码：<code>muguang5555</code> · 基础数据记录优惠码：muguang5555（具体折扣以官网当期活动为准）</span><a href=\"https://varnexa.twilightaff.com/#/?code=D1LHglg3\" target=\"_blank\" rel=\"nofollow sponsored noopener\" class=\"px-4 py-2 rounded-lg bg-tech-emerald text-slate-950 font-bold\">前往 暮光加速 (MuGuang) 官网注册 →</a></div></div>",
+  "faqList": [
+    {
+      "question": "暮光加速 (MuGuang) 目前多少钱？有没有优惠码？",
+      "answer": "资料记载入门起步为 年付轻量版 109元/年 (约9.1元/月) · 月付20元(120GB)。参考优惠码为【muguang5555】（基础数据记录优惠码：muguang5555（具体折扣以官网当期活动为准））。"
+    },
+    {
+      "question": "暮光加速 (MuGuang) 能不能导入 Clash Verge 或 Shadowrocket 小火箭？",
+      "answer": "同时支持官方自研客户端（新手零门槛）与 Clash 等第三方通用订阅。如需统一用第三方 Clash 客户端管理多条机场订阅，建议同时查看站内【Clash 机场推荐排行榜】。"
+    },
+    {
+      "question": "暮光加速 (MuGuang) 目前的测试数据和跑路风险情况怎样？",
+      "answer": "当前数据标签为【品牌资料整理（待补充独立晚高峰复测）】（最近核验：2026-10-19）。暂无近期独立截图证物，下单一律建议先选短周期实测本地晚高峰表现。"
+    }
+  ]
+}

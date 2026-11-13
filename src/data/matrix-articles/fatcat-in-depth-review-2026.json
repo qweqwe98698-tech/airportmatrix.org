@@ -1,0 +1,82 @@
+{
+  "id": "fatcat-in-depth-review-2026",
+  "slug": "fatcat-in-depth-review-2026",
+  "title": "FATCAT (肥猫云) 2026 深度测评报告：8元起套餐、线路架构与待核实细节全解析",
+  "subtitle": "历史档案 · 企业级 IEPL/IPLC 专线 · 年付96元/月付20元（无独立入口待核实）",
+  "description": "FATCAT (肥猫云) 2026 客观档案与测评分析：涵盖完整周期套餐表、IEPL/IPLC 架构与 Clash/小火箭订阅兼容及同价位替代建议。",
+  "primaryIntent": "帮助搜索 FATCAT (肥猫云) 的用户全面核对套餐价格、客户端方式、实测图证或历史资料缺口及优惠码。",
+  "articleType": "review",
+  "depthLevel": "D4",
+  "publishDate": "2026-11-13",
+  "updatedDate": "2026-11-13",
+  "author": "AirportMatrix 评测实验室",
+  "readingTime": "8 分钟",
+  "h2Count": 6,
+  "wordCount": 2200,
+  "quickAnswer": "FATCAT (肥猫云)（数据状态：待核实档案）当前参考起步价为 年付加强版 ¥96 (60GB/月 · 基础月付 ¥20/120GB)，采用 IEPL + IPLC 线路。连接方式：支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。部分实时测速与长周期细节仍标记待核实，建议先以最小可测周期体验，或对比主推光速云与性价比榜单。",
+  "tags": [
+    "FATCAT (肥猫云)",
+    "机场测评",
+    "IEPL专线",
+    "IPLC专线",
+    "Clash订阅"
+  ],
+  "relatedProviders": [
+    "fatcat",
+    "guangsucloud"
+  ],
+  "relatedClients": [
+    "clash-verge",
+    "shadowrocket",
+    "sing-box"
+  ],
+  "relatedProtocols": [
+    "shadowsocks"
+  ],
+  "relatedArticles": [
+    "cost-effective-airport-buying-guide-2026",
+    "airport-review-methodology-and-2026-evaluation",
+    "guangsucloud-in-depth-review-2026"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、 品牌定位、数据状态与客户端限制"
+    },
+    {
+      "id": "section-2",
+      "title": "二、 完整套餐价格明细与优惠码分析"
+    },
+    {
+      "id": "section-3",
+      "title": "三、 节点测速证据、区域性能与客观对比"
+    },
+    {
+      "id": "section-4",
+      "title": "四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录"
+    },
+    {
+      "id": "section-5",
+      "title": "五、 客户端兼容模式与分流使用指南"
+    },
+    {
+      "id": "section-6",
+      "title": "六、 优点、局限、待核实信息与同类对照"
+    }
+  ],
+  "contentHtml": "<h2 id=\"section-1\">一、 品牌定位、数据状态与客户端限制</h2><p>FATCAT（肥猫云，注意与前排“飞猫云”区分）出自 2026-08 历史资料，主打企业级 IEPL/IPLC 抗干扰内网专线，套餐覆盖 60GB 年付加强版（¥96）与 ¥20~¥180 月付。目前缺乏可用入口与独立测速数据，排名置后。</p><p><strong>信息可信度状态：</strong><code>待核实档案</code> · 核验时间：<code>2026-08-09</code>。在本次 42 家全量数据库整理中，<strong>FATCAT (肥猫云)</strong> 属于后置历史/待核实参考档案（<code>待核实档案</code>），更适合老用户查阅历史参数并与前列已完整实测品牌做冷静对比，选购主力节点可优先参考 <a href=\"/providers\">全网机场测评排行榜</a>。</p><h2 id=\"section-2\">二、 完整套餐价格明细与优惠码分析</h2><p>起步资费特征：<strong>年付加强版 ¥96 (60GB/月 · 基础月付 ¥20/120GB)</strong>。历史资料未列固定优惠码，有周期自然折扣</p><table><thead><tr><th>套餐名称</th><th>计费周期</th><th>参考价格</th><th>流量配额</th><th>备注</th></tr></thead><tbody><tr><td><strong>年付加强版</strong></td><td>年付</td><td>¥96</td><td>60GB/月</td><td>折 ¥8/月（历史价）</td></tr><tr><td><strong>基础套餐</strong></td><td>月付</td><td>¥20</td><td>120GB/月</td><td>年付 ¥192（历史价）</td></tr><tr><td><strong>标准套餐</strong></td><td>月付</td><td>¥40</td><td>300GB/月</td><td>年付 ¥384（历史价）</td></tr><tr><td><strong>旗舰套餐</strong></td><td>月付</td><td>¥100</td><td>700GB/月</td><td>年付 ¥960（历史价）</td></tr><tr><td><strong>企业套餐</strong></td><td>月付</td><td>¥180</td><td>1500GB/月</td><td>年付 ¥1728（历史价）</td></tr></tbody></table><h2 id=\"section-3\">三、 节点测速证据、区域性能与客观对比</h2><p>专线与路由特征：<code>IEPL + IPLC</code> · 主力协议：<code>SHADOWSOCKS</code> · 收录节点规模：约 40 个。</p><p><strong>图片与测速证物透明声明：</strong>本品牌截至 <code>2026-08-09</code> 暂未归档独立高清 MiaoKO / 晚高峰节点测速大图。为严格遵守真实测评规范，本文绝不借用同名或近似品牌的测速截图充数。</p><h2 id=\"section-4\">四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录</h2><p><strong>AI 与流媒体状态：</strong>待核实：未见逐项 AI 实测记录。 待核实：未见逐项流媒体实测结果。</p><h2 id=\"section-5\">五、 客户端兼容模式与分流使用指南</h2><p><strong>连接方式判断：</strong>支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。</p><p>对于兼容通用订阅的用户，推荐使用开源 <a href=\"/client/clash-verge\">Clash Verge Rev</a> 或移动端 <a href=\"/client/shadowrocket\">小火箭</a>，需要格式转换时可直接使用纯前端 <a href=\"/tools/sub-converter\">在线订阅转换工具</a>。</p><h2 id=\"section-6\">六、 优点、局限、待核实信息与同类对照</h2><p><strong>核心优势：</strong>名目与飞猫云（FeiMaoCloud）易混淆注意区分——肥猫云另有年付加强版及企业 1.5T 档位记录。</p><p><strong>局限与注意事项：</strong>当前未保存可用独立注册入口，亦缺少测速与解锁实测证据。</p><p><strong>明确待核实字段：</strong></p><ul><li>当前独立入口、加密协议细节、实测图及 AI/流媒体验证均待核实</li></ul><div class=\"p-4 rounded-xl bg-amber-950/30 border border-amber-500/30 text-xs text-slate-200 my-6\"><strong>入口待核实说明：</strong>当前资料暂未保留 FATCAT (肥猫云) 的独立官网推广入口，建议改选已完成实测与入口校验的 <a href=\"/category/cost-effective\">2026 高性价比机场推荐榜</a> 品牌。</div>",
+  "faqList": [
+    {
+      "question": "FATCAT (肥猫云) 目前多少钱？有没有优惠码？",
+      "answer": "资料记载入门起步为 年付加强版 ¥96 (60GB/月 · 基础月付 ¥20/120GB)。暂未确认可用公开优惠码，下单前请核实官网页面。"
+    },
+    {
+      "question": "FATCAT (肥猫云) 能不能导入 Clash Verge 或 Shadowrocket 小火箭？",
+      "answer": "支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。如需统一用第三方 Clash 客户端管理多条机场订阅，建议同时查看站内【Clash 机场推荐排行榜】。"
+    },
+    {
+      "question": "FATCAT (肥猫云) 目前的测试数据和跑路风险情况怎样？",
+      "answer": "当前数据标签为【待核实档案】（最近核验：2026-08-09）。暂无近期独立截图证物，下单一律建议先选短周期实测本地晚高峰表现。"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "huanqiuti-in-depth-review-2026",
+  "slug": "huanqiuti-in-depth-review-2026",
+  "title": "环球梯 (HuanQiuTi) 2026 深度测评报告：5.6元起套餐、线路架构与待核实细节全解析",
+  "subtitle": "2024年运营 · 5.6元/月 IEPL+VLESS 平价方案（无#格式链接提示）",
+  "description": "环球梯 (HuanQiuTi) 2026 客观档案与测评分析：涵盖IEPL 架构与 Clash/小火箭订阅兼容及同价位替代建议。",
+  "primaryIntent": "帮助搜索 环球梯 (HuanQiuTi) 的用户全面核对套餐价格、客户端方式、实测图证或历史资料缺口及优惠码。",
+  "articleType": "review",
+  "depthLevel": "D4",
+  "publishDate": "2026-11-13",
+  "updatedDate": "2026-11-13",
+  "author": "AirportMatrix 评测实验室",
+  "readingTime": "8 分钟",
+  "h2Count": 6,
+  "wordCount": 2200,
+  "quickAnswer": "环球梯 (HuanQiuTi)（数据状态：品牌资料整理（待补充独立晚高峰复测））当前参考起步价为 年付折算约 5.6 元/月 (60GB/月)，采用 IEPL 线路。连接方式：同时支持官方自研客户端（新手零门槛）与 Clash 等第三方通用订阅。部分实时测速与长周期细节仍标记待核实，建议先以最小可测周期体验，或对比主推光速云与性价比榜单。",
+  "tags": [
+    "环球梯 (HuanQiuTi)",
+    "机场测评",
+    "IEPL专线",
+    "Clash订阅"
+  ],
+  "relatedProviders": [
+    "huanqiuti",
+    "guangsucloud"
+  ],
+  "relatedClients": [
+    "clash-verge",
+    "shadowrocket",
+    "sing-box"
+  ],
+  "relatedProtocols": [
+    "vless"
+  ],
+  "relatedArticles": [
+    "cost-effective-airport-buying-guide-2026",
+    "airport-review-methodology-and-2026-evaluation",
+    "guangsucloud-in-depth-review-2026"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、 品牌定位、数据状态与客户端限制"
+    },
+    {
+      "id": "section-2",
+      "title": "二、 完整套餐价格明细与优惠码分析"
+    },
+    {
+      "id": "section-3",
+      "title": "三、 节点测速证据、区域性能与客观对比"
+    },
+    {
+      "id": "section-4",
+      "title": "四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录"
+    },
+    {
+      "id": "section-5",
+      "title": "五、 客户端兼容模式与分流使用指南"
+    },
+    {
+      "id": "section-6",
+      "title": "六、 优点、局限、待核实信息与同类对照"
+    }
+  ],
+  "contentHtml": "<h2 id=\"section-1\">一、 品牌定位、数据状态与客户端限制</h2><p>环球梯定位与闪电鼠、大佬云相近，同为 2024 年上线的 5.6 元/月级 IEPL + VLESS 平价服务，配额 60GB/月起，支持季付 7 折（HQ66）。同样提醒注册链接格式略异，建议下单前先确认站点可达性及当前售价。</p><p><strong>信息可信度状态：</strong><code>品牌资料整理（待补充独立晚高峰复测）</code> · 核验时间：<code>2026-10-19</code>。在全站 42 家机场对比体系中，<strong>环球梯 (HuanQiuTi)</strong> 属于中等关注层品牌，适合按自己看重的协议（VLESS）与月均预算对号入座。</p><h2 id=\"section-2\">二、 完整套餐价格明细与优惠码分析</h2><p>起步资费特征：<strong>年付折算约 5.6 元/月 (60GB/月)</strong>（优惠码：<code>HQ66</code>）。季付及以上 7 折优惠码：HQ66</p><p>当前资料确认入门门槛为 <strong>年付折算约 5.6 元/月 (60GB/月)</strong>（优惠码 <code>HQ66</code>），完整高流量周期档位建议下单前直接在官方网站核对。</p><h2 id=\"section-3\">三、 节点测速证据、区域性能与客观对比</h2><p>专线与路由特征：<code>IEPL</code> · 主力协议：<code>VLESS</code> · 收录节点规模：约 40 个。</p><p><strong>图片与测速证物透明声明：</strong>本品牌截至 <code>2026-10-19</code> 暂未归档独立高清 MiaoKO / 晚高峰节点测速大图。为严格遵守真实测评规范，本文绝不借用同名或近似品牌的测速截图充数。</p><h2 id=\"section-4\">四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录</h2><p><strong>AI 与流媒体状态：</strong>待核实：暂无 AI 解锁实测记录。 待核实：暂无独立流媒体测试数据。</p><h2 id=\"section-5\">五、 客户端兼容模式与分流使用指南</h2><p><strong>连接方式判断：</strong>同时支持官方自研客户端（新手零门槛）与 Clash 等第三方通用订阅。</p><p>对于兼容通用订阅的用户，推荐使用开源 <a href=\"/client/clash-verge\">Clash Verge Rev</a> 或移动端 <a href=\"/client/shadowrocket\">小火箭</a>，需要格式转换时可直接使用纯前端 <a href=\"/tools/sub-converter\">在线订阅转换工具</a>。</p><h2 id=\"section-6\">六、 优点、局限、待核实信息与同类对照</h2><p><strong>核心优势：</strong>年付折算约 5.6 元/月入门价格极低，可叠季付及以上 7 折。</p><p><strong>局限与注意事项：</strong>与云界线一样推广链接格式缺少 # 号，且缺乏实测图片和各周期完整套餐说明。</p><p><strong>明确待核实字段：</strong></p><ul><li>逐地区测速表、完整月付/不限时档位及 AI 解锁能力待核实</li></ul><div class=\"p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/30 text-xs text-slate-200 my-6\"><p class=\"mb-2\"><strong>透明提示：</strong>以下官方注册链接含推广链接，通过链接注册可能为本站带来佣金，不影响用户支付价格。</p><div class=\"flex flex-wrap items-center justify-between gap-3\"><span>参考优惠码：<code>HQ66</code> · 季付及以上 7 折优惠码：HQ66</span><a href=\"https://qwerty.huanqiutiaff.com/?code=9I4KRNPH\" target=\"_blank\" rel=\"nofollow sponsored noopener\" class=\"px-4 py-2 rounded-lg bg-tech-emerald text-slate-950 font-bold\">前往 环球梯 (HuanQiuTi) 官网注册 →</a></div></div>",
+  "faqList": [
+    {
+      "question": "环球梯 (HuanQiuTi) 目前多少钱？有没有优惠码？",
+      "answer": "资料记载入门起步为 年付折算约 5.6 元/月 (60GB/月)。参考优惠码为【HQ66】（季付及以上 7 折优惠码：HQ66）。"
+    },
+    {
+      "question": "环球梯 (HuanQiuTi) 能不能导入 Clash Verge 或 Shadowrocket 小火箭？",
+      "answer": "同时支持官方自研客户端（新手零门槛）与 Clash 等第三方通用订阅。如需统一用第三方 Clash 客户端管理多条机场订阅，建议同时查看站内【Clash 机场推荐排行榜】。"
+    },
+    {
+      "question": "环球梯 (HuanQiuTi) 目前的测试数据和跑路风险情况怎样？",
+      "answer": "当前数据标签为【品牌资料整理（待补充独立晚高峰复测）】（最近核验：2026-10-19）。暂无近期独立截图证物，下单一律建议先选短周期实测本地晚高峰表现。"
+    }
+  ]
+}

@@ -4,7 +4,10 @@ import Breadcrumb from '@/components/common/Breadcrumb.astro';
 import RiskBadge from '@/components/provider/RiskBadge.astro';
 import Icon from '@/components/common/Icon.astro';
 import NextBestPage from '@/components/article/NextBestPage.astro';
+import FaqSection from '@/components/article/FaqSection.astro';
 import { providersData } from '@/data/providers.data';
+import { articlesData } from '@/data/articles.data';
+import { comparisonsData } from '@/data/comparisons.data';
 
 export function getStaticPaths() {
   return providersData.map((provider) => ({
@@ -15,30 +18,111 @@ export function getStaticPaths() {
 
 const { provider } = Astro.props;
 
+const isProtectedTopRank = provider.slug === 'u1s1';
+const reviewArticle = articlesData.find(
+  (a) => a.slug === `${provider.slug}-in-depth-review-2026`
+);
+const relatedComparison = comparisonsData.find(
+  (c) => c.itemA === provider.slug || c.itemB === provider.slug
+);
+
+const hasPrice = provider.pricing.minMonthly > 0;
+const priceTagText = hasPrice ? `¥${provider.pricing.minMonthly}/月起` : '价格待核实';
+const nodeTagText = provider.nodeCount > 0 ? `${provider.nodeCount}+ 节点` : '节点规模待核实';
+
+const unlockBadge = (status: 'supported' | 'node-dependent' | 'failed' | 'untested') => {
+  switch (status) {
+    case 'supported':
+      return { text: '支持 / 全绿', cls: 'bg-emerald-950/70 text-emerald-300 border-emerald-500/30' };
+    case 'node-dependent':
+      return { text: '视节点而定', cls: 'bg-amber-950/70 text-amber-300 border-amber-500/30' };
+    case 'failed':
+      return { text: '不支持', cls: 'bg-rose-950/70 text-rose-300 border-rose-500/30' };
+    default:
+      return { text: '待核实', cls: 'bg-slate-900 text-slate-400 border-slate-700' };
+  }
+};
+
+const subscriptionModeMap: Record<string, string> = {
+  both: '支持通用订阅导入 + 自研/专属客户端',
+  subscription: '支持 Clash / Shadowrocket 等通用订阅导入',
+  'client-only': '仅支持官方专属客户端登录使用（不提供 Clash/通用订阅链接）',
+  unknown: '客户端与订阅模式待进一步核实',
+};
+const subscriptionModeText = subscriptionModeMap[provider.subscriptionMode || 'unknown'];
+
+const pageTitle = isProtectedTopRank
+  ? `${provider.name} 2026 深度评测、节点测速与套餐分析`
+  : `${provider.name} 2026 机场测评：${priceTagText}${provider.couponCode ? `（优惠码 ${provider.couponCode}）` : ''} · 节点与套餐解析`;
+
+const pageDescription = isProtectedTopRank
+  ? `${provider.name} 真实评测：始于 ${provider.establishedYear} 年，综合评分 ${provider.score.overall}/10。涵盖专线类型、协议支持、AI/流媒体解锁与退款政策全方位解析。`
+  : `${provider.name} 2026 最新测评与档案：始于 ${provider.establishedYear} 年，${provider.routes.map((r) => r.toUpperCase()).join('+')} 专线，${nodeTagText}，${provider.pricing.billingPeriod}${provider.couponCode ? `，专属优惠码 ${provider.couponCode}` : ''}。查看 Clash 兼容度、AI/4K 解锁、测速与待核验信息说明。`;
+
+const providerFaqs = [
+  {
+    question: `${provider.name} 套餐多少钱？性价比如何？`,
+    answer: hasPrice
+      ? `${provider.name} 当前起步计费参考为 ${provider.pricing.billingPeriod}（单月折算低至 ¥${provider.pricing.minMonthly}/月），流量档位覆盖 ${provider.bandwidthLimit}。${provider.couponCode ? `下单使用优惠码【${provider.couponCode}】可享受对应折扣（${provider.discountInfo || '以官网结算为准'}）。` : '具体套餐详情与限时活动以官网实时页面为准。'}`
+      : `${provider.name} 当前为历史/后置档案，公开价格与当前在售套餐尚待核实。建议结合页面标注的核验缺口确认最新可用性。`,
+  },
+  {
+    question: `${provider.name} 支持 Clash Verge 和小火箭等通用订阅吗？`,
+    answer:
+      provider.subscriptionMode === 'client-only'
+        ? `不支持第三方通用订阅链接。根据资料记录，${provider.name} 仅提供官方专属客户端登录使用（${provider.clients.join('、')}），购买前请确认您的设备系统匹配官方客户端支持范围。`
+        : `根据当前核验资料，${provider.name} 支持 ${provider.clients.join('、')} 等客户端连接，支持 ${provider.protocols.map((p) => p.toUpperCase()).join(' / ')} 协议${provider.subscriptionMode === 'both' ? '并兼有自研客户端与通用订阅' : ''}。`,
+  },
+  {
+    question: `${provider.name} 适合用来访问 ChatGPT 或看 4K 流媒体吗？`,
+    answer: `AI 支持：${provider.aiSupport.notes} 流媒体解锁：${provider.streamingSupport.notes}`,
+  },
+];
+
 const breadcrumbs = [
-  { name: '机场矩阵库', url: '/providers' },
+  { name: '机场测评排行榜', url: '/providers' },
   { name: `${provider.name} 深度评测与档案`, url: `/provider/${provider.slug}` },
 ];
 
 const nextPages = [
+  ...(reviewArticle
+    ? [
+        {
+          title: reviewArticle.title,
+          href: `/articles/${reviewArticle.slug}`,
+          desc: reviewArticle.description,
+          type: '深度实测全文',
+        },
+      ]
+    : []),
+  ...(relatedComparison
+    ? [
+        {
+          title: relatedComparison.name,
+          href: `/compare/${relatedComparison.slug}`,
+          desc: relatedComparison.tagline,
+          type: '横向对比',
+        },
+      ]
+    : []),
   {
-    title: 'Clash Verge Rev 完整配置指南',
+    title: '2026 高性价比机场推荐排行榜',
+    href: '/category/cost-effective',
+    desc: '对比同价位高性价比机场的月付成本、节点质量与稳定性。',
+    type: '性价比专题',
+  },
+  {
+    title: 'Clash Verge Rev 完整配置教程',
     href: '/client/clash-verge',
-    desc: '了解如何将该机场的一键订阅导入新一代 Clash Verge Rev 客户端并开启 TUN 模式。',
+    desc: '了解如何将该机场的一键订阅导入 Clash Verge Rev 并开启 TUN 模式。',
     type: '客户端指南',
   },
-  {
-    title: 'IEPL 与 IPLC 专线核心技术解析',
-    href: '/routes',
-    desc: '深入理解该机场采用的物理专线如何避开 GFW 高峰期拥堵与丢包。',
-    type: '专线百科',
-  },
-];
+].slice(0, 4);
 ---
 
 <BaseLayout
-  title={`${provider.name} 2026 深度评测、节点测速与套餐分析`}
-  description={`${provider.name} 真实评测：始于 ${provider.establishedYear} 年，综合评分 ${provider.score.overall}/10。涵盖专线类型、协议支持、AI/流媒体解锁与退款政策全方位解析。`}
+  title={pageTitle}
+  description={pageDescription}
   breadcrumbs={breadcrumbs}
   schemaType="Product"
   productData={{
@@ -47,6 +131,7 @@ const nextPages = [
     price: provider.pricing.minMonthly,
     priceCurrency: 'CNY',
   }}
+  faqData={providerFaqs}
 >
   <Breadcrumb items={breadcrumbs} />
 
@@ -62,7 +147,9 @@ const nextPages = [
         <div class="flex items-center gap-4 mt-4 text-xs text-slate-400 font-mono flex-wrap">
           <span>运营年限: {provider.establishedYear} 年至今</span>
           <span>·</span>
-          <span>节点数量: {provider.nodeCount}+ 落地</span>
+          <span>节点规模: {nodeTagText}</span>
+          <span>·</span>
+          <span>连接方式: {provider.subscriptionMode === 'client-only' ? '仅专属客户端' : provider.subscriptionMode === 'both' ? '通用订阅 + 自研客户端' : provider.subscriptionMode === 'subscription' ? '通用订阅' : '待核实'}</span>
           <span>·</span>
           <span>核验时间: {provider.lastVerified}</span>
         </div>
@@ -77,17 +164,24 @@ const nextPages = [
             <div class="text-slate-500">满分 10.0</div>
           </div>
         </div>
-        <div class="flex items-center gap-2">
-          <a
-            href={provider.affiliateUrl}
-            target="_blank"
-            rel="nofollow sponsored noopener noreferrer"
-            class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs transition-all shadow-glow flex items-center gap-1.5"
-          >
-            <span>前往官方网站</span>
-            <Icon name="external-link" class="w-3.5 h-3.5" />
-          </a>
-        </div>
+        {provider.affiliateUrl ? (
+          <div class="flex flex-col items-start md:items-end gap-1">
+            <a
+              href={provider.affiliateUrl}
+              target="_blank"
+              rel="nofollow sponsored noopener noreferrer"
+              class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs transition-all shadow-glow flex items-center gap-1.5"
+            >
+              <span>前往官方网站</span>
+              <Icon name="external-link" class="w-3.5 h-3.5" />
+            </a>
+            <span class="text-[10px] text-slate-500">含推广链接，注册不影响用户价格</span>
+          </div>
+        ) : (
+          <div class="px-4 py-2 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-400 font-mono">
+            官网入口待核实（档案参考）
+          </div>
+        )}
       </div>
     </div>
   </div>
@@ -100,7 +194,7 @@ const nextPages = [
           <Icon name="sparkles" class="w-5 h-5" />
         </div>
         <div>
-          <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider">限时专属新人优惠福利</div>
+          <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider">优惠信息与规则说明</div>
           <div class="text-sm font-semibold text-slate-200 mt-0.5">{provider.discountInfo}</div>
         </div>
       </div>
@@ -109,14 +203,16 @@ const nextPages = [
           <span class="text-slate-500 font-normal">优惠码:</span>
           <span>{provider.couponCode}</span>
         </div>
-        <a
-          href={provider.affiliateUrl}
-          target="_blank"
-          rel="nofollow sponsored noopener noreferrer"
-          class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-tech-emerald text-slate-950 hover:bg-emerald-400 transition-colors"
-        >
-          立即领券
-        </a>
+        {provider.affiliateUrl && (
+          <a
+            href={provider.affiliateUrl}
+            target="_blank"
+            rel="nofollow sponsored noopener noreferrer"
+            class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-tech-emerald text-slate-950 hover:bg-emerald-400 transition-colors"
+          >
+            前往领券
+          </a>
+        )}
       </div>
     </div>
   )}
@@ -159,7 +255,7 @@ const nextPages = [
   <!-- Detailed Specifications & Analysis -->
   <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
     <!-- Left 2 Cols: Main Content -->
-    <div class="lg:col-span-2 space-y-8">
+    <div class="lg:col-span-2 space-y-8 min-w-0">
       <!-- Section: Brand Background -->
       <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800 space-y-3">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
@@ -208,8 +304,14 @@ const nextPages = [
       <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800 space-y-4">
         <h2 class="text-lg font-bold text-white flex items-center gap-2">
           <Icon name="bot" class="w-4 h-4 text-tech-cyan" />
-          <span>AI 访问与流媒体解锁实测</span>
+          <span>AI 访问、流媒体解锁与客户端模式</span>
         </h2>
+
+        <div class={`p-3.5 rounded-lg border text-xs ${provider.subscriptionMode === 'client-only' ? 'bg-amber-950/30 border-amber-500/40 text-amber-200' : 'bg-slate-950 border-slate-900 text-slate-300'}`}>
+          <div class="font-semibold mb-1">🔌 客户端与订阅方式：</div>
+          <p>{subscriptionModeText}（适配列表：{provider.clients.join('、')}）</p>
+        </div>
+
         <div class="space-y-3 text-xs">
           <div class="p-3 rounded-lg bg-slate-950 border border-slate-900">
             <div class="font-semibold text-slate-200 mb-1">🤖 AI 支持情况：</div>
@@ -220,7 +322,134 @@ const nextPages = [
             <p class="text-slate-400">{provider.streamingSupport.notes}</p>
           </div>
         </div>
+
+        {provider.unlockMatrix && (
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <div class="p-3.5 rounded-lg bg-slate-950/90 border border-slate-800/80 space-y-2">
+              <div class="text-xs font-bold text-slate-200">AI 工具支持细目</div>
+              <div class="space-y-1.5">
+                {provider.unlockMatrix.ai.map((item) => {
+                  const badge = unlockBadge(item.status);
+                  return (
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="text-slate-300">{item.name}</span>
+                      <span class={`px-2 py-0.5 rounded border text-[10px] font-medium ${badge.cls}`}>{badge.text}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div class="p-3.5 rounded-lg bg-slate-950/90 border border-slate-800/80 space-y-2">
+              <div class="text-xs font-bold text-slate-200">流媒体平台细目</div>
+              <div class="space-y-1.5">
+                {provider.unlockMatrix.streaming.map((item) => {
+                  const badge = unlockBadge(item.status);
+                  return (
+                    <div class="flex items-center justify-between text-xs">
+                      <span class="text-slate-300">{item.name}</span>
+                      <span class={`px-2 py-0.5 rounded border text-[10px] font-medium ${badge.cls}`}>{badge.text}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            {provider.unlockMatrix.note && (
+              <p class="sm:col-span-2 text-[11px] text-slate-400 bg-slate-950/60 p-2.5 rounded border border-slate-800/70">
+                备注：{provider.unlockMatrix.note}
+              </p>
+            )}
+          </div>
+        )}
       </div>
+
+      <!-- Section: Full Plans Matrix -->
+      {provider.plans && provider.plans.length > 0 && (
+        <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <h2 class="text-lg font-bold text-white flex items-center gap-2">
+              <Icon name="layers" class="w-4 h-4 text-tech-emerald" />
+              <span>官方套餐与价格明细</span>
+            </h2>
+            <span class="text-[11px] text-slate-400">以官方实时结算页面为准</span>
+          </div>
+          <div class="overflow-x-auto rounded-lg border border-slate-800">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-950 border-b border-slate-800 text-slate-300">
+                  <th class="p-3 font-semibold">套餐名称</th>
+                  <th class="p-3 font-semibold">周期</th>
+                  <th class="p-3 font-semibold">价格</th>
+                  <th class="p-3 font-semibold">流量配额</th>
+                  <th class="p-3 font-semibold">规则说明</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800/80 text-slate-300">
+                {provider.plans.map((plan) => (
+                  <tr class="hover:bg-slate-900/40">
+                    <td class="p-3 font-medium text-white">{plan.name}</td>
+                    <td class="p-3 text-slate-300">{plan.cycle}</td>
+                    <td class="p-3 font-mono font-bold text-tech-emerald">{plan.price}</td>
+                    <td class="p-3 font-mono">{plan.traffic}</td>
+                    <td class="p-3 text-slate-400">{plan.periodNote || '-'}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      <!-- Section: Regional Speed Metrics -->
+      {provider.speedMetrics && provider.speedMetrics.rows.length > 0 && (
+        <div class="p-6 rounded-xl bg-slate-900/50 border border-slate-800 space-y-4">
+          <div class="flex items-center justify-between gap-2 flex-wrap">
+            <h2 class="text-lg font-bold text-white flex items-center gap-2">
+              <Icon name="zap" class="w-4 h-4 text-tech-cyan" />
+              <span>分地区节点延迟与吞吐参考</span>
+            </h2>
+            <span class="text-[11px] font-mono text-slate-400">采集日期：{provider.speedMetrics.testDate}</span>
+          </div>
+          <p class="text-xs text-slate-400 bg-slate-950/70 p-2.5 rounded-lg border border-slate-800/80">
+            测试口径：{provider.speedMetrics.testNote}
+          </p>
+          <div class="overflow-x-auto rounded-lg border border-slate-800">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-slate-950 border-b border-slate-800 text-slate-300">
+                  <th class="p-3 font-semibold">目标地区</th>
+                  <th class="p-3 font-semibold">延迟参考</th>
+                  <th class="p-3 font-semibold">下载速率参考</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800/80">
+                {provider.speedMetrics.rows.map((row) => (
+                  <tr class="hover:bg-slate-900/40">
+                    <td class="p-3 font-medium text-white">{row.region}</td>
+                    <td class="p-3 font-mono text-cyan-300">{row.latency}</td>
+                    <td class="p-3 font-mono text-tech-emerald">{row.download}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
+      <!-- Section: Verification Gaps Notice -->
+      {provider.verificationGaps && provider.verificationGaps.length > 0 && (
+        <div class="p-5 rounded-xl bg-amber-950/20 border border-amber-500/30 space-y-2.5">
+          <h2 class="text-sm font-bold text-amber-300 flex items-center gap-2">
+            <Icon name="alert-triangle" class="w-4 h-4 text-amber-400" />
+            <span>诚实标注：待核实与资料缺口说明</span>
+          </h2>
+          <p class="text-xs text-slate-300">本站严格区分已验证数据与待核实字段，不伪造测速结果。当前该品牌尚有以下待核实项：</p>
+          <ul class="space-y-1.5 text-xs text-amber-200/90 list-disc pl-5">
+            {provider.verificationGaps.map((gap) => (
+              <li>{gap}</li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <!-- Section: Real Test Charts Gallery (if available) -->
       {provider.testImages && provider.testImages.length > 0 && (
@@ -230,13 +459,13 @@ const nextPages = [
               <Icon name="zap" class="w-5 h-5 text-tech-emerald" />
               <h2 class="text-lg font-bold text-white">真实测速与流媒体 / AI 解锁大图验证</h2>
             </div>
-            <span class="text-xs font-mono text-slate-400">MiaoKO 实测报告</span>
+            <span class="text-xs font-mono text-slate-400">共 {provider.testImages.length} 组归档实测图</span>
           </div>
 
           <div class="space-y-6">
             {provider.testImages.map((img, idx) => (
-              <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-850 space-y-3">
-                <div class="flex items-center justify-between gap-2">
+              <div class="p-4 rounded-xl bg-slate-950/80 border border-slate-800 space-y-3">
+                <div class="flex items-center justify-between gap-2 flex-wrap">
                   <h3 class="text-sm font-bold text-slate-200 flex items-center gap-2">
                     <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-tech-emerald/20 text-tech-emerald">图 {idx + 1}</span>
                     <span>{img.title}</span>
@@ -251,9 +480,10 @@ const nextPages = [
                   <a href={img.url} target="_blank" rel="noopener noreferrer">
                     <img
                       src={img.url}
-                      alt={img.title}
-                      class="w-full h-auto max-h-[500px] object-contain mx-auto transition-transform duration-300 group-hover:scale-[1.01]"
+                      alt={`${provider.name} - ${img.title}`}
+                      class="w-full h-auto max-h-[520px] object-contain mx-auto transition-transform duration-300 group-hover:scale-[1.01]"
                       loading="lazy"
+                      decoding="async"
                     />
                   </a>
                 </div>
@@ -269,94 +499,116 @@ const nextPages = [
     </div>
 
     <!-- Right 1 Col: Specs Sidebar -->
-    <div class="space-y-6">
+    <div class="space-y-6 min-w-0">
       <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800 space-y-4">
         <h3 class="text-sm font-bold text-white uppercase tracking-wider">规格参数速览</h3>
         <dl class="divide-y divide-slate-800 text-xs">
           <div class="py-2.5 flex justify-between">
             <dt class="text-slate-400">起步价格</dt>
-            <dd class="font-bold text-tech-emerald font-mono">¥{provider.pricing.minMonthly} / 月</dd>
+            <dd class="font-bold text-tech-emerald font-mono">{hasPrice ? `¥${provider.pricing.minMonthly} / 月` : '待核实'}</dd>
           </div>
           <div class="py-2.5 flex justify-between">
             <dt class="text-slate-400">计费周期</dt>
-            <dd class="text-slate-200">{provider.pricing.billingPeriod}</dd>
+            <dd class="text-slate-200 text-right max-w-[160px]">{provider.pricing.billingPeriod}</dd>
           </div>
           <div class="py-2.5 flex justify-between">
             <dt class="text-slate-400">支持协议</dt>
-            <dd class="text-slate-200 font-mono uppercase">{provider.protocols.join(', ')}</dd>
+            <dd class="text-slate-200 font-mono uppercase text-right max-w-[160px]">{provider.protocols.join(', ')}</dd>
           </div>
           <div class="py-2.5 flex justify-between">
             <dt class="text-slate-400">专线类型</dt>
-            <dd class="text-slate-200 uppercase">{provider.routes.join(' + ')}</dd>
+            <dd class="text-slate-200 uppercase text-right max-w-[160px]">{provider.routes.join(' + ')}</dd>
           </div>
           <div class="py-2.5 flex justify-between">
             <dt class="text-slate-400">月流量包</dt>
-            <dd class="text-slate-200">{provider.bandwidthLimit}</dd>
+            <dd class="text-slate-200 text-right max-w-[160px]">{provider.bandwidthLimit}</dd>
           </div>
           <div class="py-2.5 flex justify-between">
             <dt class="text-slate-400">退款机制</dt>
-            <dd class="text-slate-200 text-right max-w-[140px]">{provider.refundPolicy}</dd>
+            <dd class="text-slate-200 text-right max-w-[160px]">{provider.refundPolicy}</dd>
           </div>
         </dl>
 
-        <a
-          href={provider.affiliateUrl}
-          target="_blank"
-          rel="nofollow sponsored noopener noreferrer"
-          class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs transition-all shadow-glow flex items-center justify-center gap-1.5"
-        >
-          <span>直达 {provider.name} 官网</span>
-          <Icon name="external-link" class="w-3.5 h-3.5" />
-        </a>
+        {provider.affiliateUrl ? (
+          <div class="space-y-1.5">
+            <a
+              href={provider.affiliateUrl}
+              target="_blank"
+              rel="nofollow sponsored noopener noreferrer"
+              class="w-full py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-400 hover:to-teal-400 text-slate-950 font-bold text-xs transition-all shadow-glow flex items-center justify-center gap-1.5"
+            >
+              <span>直达 {provider.name} 官网</span>
+              <Icon name="external-link" class="w-3.5 h-3.5" />
+            </a>
+            <p class="text-[10px] text-slate-500 text-center">
+              推广关系说明：含推广链接，通过链接注册可能为本站带来佣金，不影响您的实际支付价格。
+            </p>
+          </div>
+        ) : (
+          <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-center text-xs text-slate-400">
+            该品牌暂无已核实的独立注册入口，资料仅供历史对比参考。
+          </div>
+        )}
       </div>
 
-      <!-- Risk Monitor 2.0 Real-time Status Card -->
+      <!-- Verification & Compliance Status Card (Only Verified Fields) -->
       <div class="p-6 rounded-xl bg-slate-900/80 border border-slate-800 space-y-3.5">
         <div class="flex items-center justify-between">
           <h3 class="text-sm font-bold text-white uppercase tracking-wider flex items-center gap-1.5">
-            <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
-            <span>风险探针实时状态</span>
+            <span class={`w-2 h-2 rounded-full ${provider.status === 'active' ? 'bg-emerald-400' : 'bg-amber-400'}`}></span>
+            <span>档案核验与状态记录</span>
           </h3>
           <span class="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-500/30">
-            🟢 当前正常
+            {provider.status === 'active' ? '正常运营中' : '状态关注中'}
           </span>
         </div>
 
         <div class="space-y-2 text-xs text-slate-300">
           <div class="flex justify-between text-slate-400">
-            <span>探针延迟:</span>
-            <span class="font-mono text-slate-200">142 ms (HTTP 200)</span>
+            <span>最近核验日期:</span>
+            <span class="font-mono text-slate-200">{provider.lastVerified}</span>
           </div>
           <div class="flex justify-between text-slate-400">
-            <span>SSL 证书:</span>
-            <span class="text-slate-200">有效 (剩余 180+ 天)</span>
+            <span>运营起始年份:</span>
+            <span class="text-slate-200">{provider.establishedYear} 年</span>
           </div>
           <div class="flex justify-between text-slate-400">
-            <span>域名状态:</span>
-            <span class="text-slate-200">未发生异常漂移</span>
+            <span>实测依据:</span>
+            <span class="text-slate-200">{provider.testImages && provider.testImages.length > 0 ? `含 ${provider.testImages.length} 组测速/解锁图` : '套餐与线路公开参数核验'}</span>
+          </div>
+          <div class="flex justify-between text-slate-400">
+            <span>试用政策:</span>
+            <span class="text-slate-200">{provider.pricing.hasTrial ? '支持试用' : '无免费试用（建议先月付）'}</span>
           </div>
         </div>
 
-        <!-- Historical Events Timeline -->
+        <!-- Related Internal Navigation -->
         <div class="pt-3 border-t border-slate-800 space-y-2 text-xs">
-          <div class="text-[11px] font-bold text-slate-400">历史事件流水：</div>
-          <ul class="space-y-1.5 text-[11px] text-slate-400 font-mono">
-            <li class="flex items-center gap-1.5">
-              <span class="text-emerald-400">●</span>
-              <span>2026-08-21 自动化全链路巡检通过</span>
-            </li>
-            <li class="flex items-center gap-1.5">
-              <span class="text-cyan-400">●</span>
-              <span>2026-08-19 9Gbps 实测满速报告存档</span>
-            </li>
-            <li class="flex items-center gap-1.5">
-              <span class="text-slate-500">●</span>
-              <span>2026-06-10 专线入口升级与协议拓扑优化</span>
-            </li>
-          </ul>
+          <div class="text-[11px] font-bold text-slate-400">站内关联专题与对比：</div>
+          <div class="flex flex-wrap gap-1.5">
+            <a href="/category/cost-effective" class="px-2 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 hover:text-tech-emerald transition-colors text-[11px]">
+              性价比机场排行
+            </a>
+            <a href="/category/clash-recommend" class="px-2 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 hover:text-tech-cyan transition-colors text-[11px]">
+              Clash 机场推荐
+            </a>
+            <a href="/category/airport-nodes" class="px-2 py-1 rounded bg-slate-950 border border-slate-800 text-slate-300 hover:text-tech-emerald transition-colors text-[11px]">
+              高速机场节点
+            </a>
+            {reviewArticle && (
+              <a href={`/articles/${reviewArticle.slug}`} class="px-2 py-1 rounded bg-slate-950 border border-slate-800 text-tech-cyan hover:underline text-[11px]">
+                查看长篇实测报告 →
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- Provider FAQ -->
+  <div class="mb-10">
+    <FaqSection faqs={providerFaqs} />
   </div>
 
   <!-- Topic Bridge -->

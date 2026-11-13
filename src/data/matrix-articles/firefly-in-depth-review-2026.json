@@ -1,0 +1,79 @@
+{
+  "id": "firefly-in-depth-review-2026",
+  "slug": "firefly-in-depth-review-2026",
+  "title": "Firefly (萤火虫) 2026 深度测评报告：8元起套餐、线路架构与待核实细节全解析",
+  "subtitle": "IPLC 纯专线 + VLESS · 年付 96元(60GB/月) · 不限设备原生 IP & 免翻墙官网",
+  "description": "Firefly (萤火虫) 2026 客观档案与测评分析：涵盖完整周期套餐表、IPLC 架构与 专属客户端限制说明及同价位替代建议。",
+  "primaryIntent": "帮助搜索 Firefly (萤火虫) 的用户全面核对套餐价格、客户端方式、实测图证或历史资料缺口及优惠码。",
+  "articleType": "review",
+  "depthLevel": "D4",
+  "publishDate": "2026-11-13",
+  "updatedDate": "2026-11-13",
+  "author": "AirportMatrix 评测实验室",
+  "readingTime": "8 分钟",
+  "h2Count": 6,
+  "wordCount": 2200,
+  "quickAnswer": "Firefly (萤火虫)（数据状态：品牌资料整理（待补充独立晚高峰复测））当前参考起步价为 Firefly 年付版 96元/年 (8元/月 60GB) · 月付25元(150GB)，采用 IPLC 线路。连接方式：仅限官方自研专属客户端登录连接（不提供第三方订阅链接）。部分实时测速与长周期细节仍标记待核实，建议先以最小可测周期体验，或对比主推光速云与性价比榜单。",
+  "tags": [
+    "Firefly (萤火虫)",
+    "机场测评",
+    "IPLC专线",
+    "专属客户端"
+  ],
+  "relatedProviders": [
+    "firefly",
+    "guangsucloud"
+  ],
+  "relatedClients": [
+    "clash-verge"
+  ],
+  "relatedProtocols": [
+    "vless"
+  ],
+  "relatedArticles": [
+    "cost-effective-airport-buying-guide-2026",
+    "airport-review-methodology-and-2026-evaluation",
+    "guangsucloud-in-depth-review-2026"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、 品牌定位、数据状态与客户端限制"
+    },
+    {
+      "id": "section-2",
+      "title": "二、 完整套餐价格明细与优惠码分析"
+    },
+    {
+      "id": "section-3",
+      "title": "三、 节点测速证据、区域性能与客观对比"
+    },
+    {
+      "id": "section-4",
+      "title": "四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录"
+    },
+    {
+      "id": "section-5",
+      "title": "五、 客户端兼容模式与分流使用指南"
+    },
+    {
+      "id": "section-6",
+      "title": "六、 优点、局限、待核实信息与同类对照"
+    }
+  ],
+  "contentHtml": "<h2 id=\"section-1\">一、 品牌定位、数据状态与客户端限制</h2><p>Firefly（中文名萤火虫，已与文末同名条目去重合并）主打 IPLC 纯专线与 VLESS 协议，不限速、不限设备且具备原生 IP。年付版仅 96 元/年（折 8 元/月），并有 Lite/Plus/Blaze/Nova 月付至三年付及 100GB 不限时包，优惠码 firefly 享新用户 8 折（年付版除外）。</p><p><strong>信息可信度状态：</strong><code>品牌资料整理（待补充独立晚高峰复测）</code> · 核验时间：<code>2026-10-19</code>。在 AirportMatrix 42 家综合实力矩阵中，<strong>Firefly (萤火虫)</strong> 位于前排核心关注名单，可配合 <a href=\"/category/cost-effective\">2026 高性价比机场推荐榜</a> 及 <a href=\"/provider/guangsucloud\">主推光速云</a> 共同对比选购。</p><h2 id=\"section-2\">二、 完整套餐价格明细与优惠码分析</h2><p>起步资费特征：<strong>Firefly 年付版 96元/年 (8元/月 60GB) · 月付25元(150GB)</strong>（优惠码：<code>firefly</code>）。新用户 8 折优惠码：firefly（年付版与部分特惠包不适用）</p><table><thead><tr><th>套餐名称</th><th>计费周期</th><th>参考价格</th><th>流量配额</th><th>备注</th></tr></thead><tbody><tr><td><strong>Firefly 年付版</strong></td><td>年付</td><td>¥96</td><td>60GB/月</td><td>均摊 ¥8/月（不适用优惠码）</td></tr><tr><td><strong>Firefly Lite</strong></td><td>月付</td><td>¥25</td><td>150GB/月</td><td>支持季9/半年85/年8折</td></tr><tr><td><strong>Firefly Plus</strong></td><td>月付</td><td>¥45</td><td>300GB/月</td><td>每月重置</td></tr><tr><td><strong>Firefly Blaze</strong></td><td>月付</td><td>¥85</td><td>600GB/月</td><td>每月重置</td></tr><tr><td><strong>Firefly Nova</strong></td><td>月付</td><td>¥150</td><td>1000GB/月</td><td>每月重置</td></tr><tr><td><strong>Firefly 不限时</strong></td><td>一次性付费</td><td>¥100</td><td>100GB</td><td>一次性有效</td></tr></tbody></table><h2 id=\"section-3\">三、 节点测速证据、区域性能与客观对比</h2><p>专线与路由特征：<code>IPLC</code> · 主力协议：<code>VLESS</code> · 收录节点规模：约 50 个。</p><p><strong>图片与测速证物透明声明：</strong>本品牌截至 <code>2026-10-19</code> 暂未归档独立高清 MiaoKO / 晚高峰节点测速大图。为严格遵守真实测评规范，本文绝不借用同名或近似品牌的测速截图充数。</p><p><em>注：以下分区数据采集自 2026-10-19（资料记录（非晚高峰单次参考，不代表长期实时带宽））：</em></p><table><thead><tr><th>节点区域</th><th>测试延迟</th><th>实测/统计下载</th></tr></thead><tbody><tr><td><strong>香港</strong></td><td>27ms</td><td>547Mbps</td></tr><tr><td><strong>台湾</strong></td><td>39ms</td><td>135Mbps</td></tr><tr><td><strong>新加坡</strong></td><td>42ms</td><td>445Mbps</td></tr><tr><td><strong>日本</strong></td><td>57ms</td><td>147Mbps</td></tr><tr><td><strong>美国</strong></td><td>143ms</td><td>30Mbps</td></tr></tbody></table><h2 id=\"section-4\">四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录</h2><table><thead><tr><th>测试类别</th><th>平台 / 服务</th><th>状态记录与说明</th></tr></thead><tbody><tr><td>AI 工具</td><td><strong>ChatGPT</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>AI 工具</td><td><strong>Claude</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>AI 工具</td><td><strong>Gemini</strong></td><td>⚠️ 视落地节点而定（需手选地区）</td></tr><tr><td>海外流媒体</td><td><strong>Netflix</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>海外流媒体</td><td><strong>Disney+</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>海外流媒体</td><td><strong>YouTube</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>海外流媒体</td><td><strong>HBO Max</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>海外流媒体</td><td><strong>TikTok</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr><tr><td>海外流媒体</td><td><strong>Spotify</strong></td><td>✅ 支持 / 可用（对应测试或官方标注）</td></tr></tbody></table><p>合并 Firefly 与萤火虫两条资料记录；当前专属客户端直接登录使用，无独立测速截图归档。</p><h2 id=\"section-5\">五、 客户端兼容模式与分流使用指南</h2><p><strong>连接方式判断：</strong>仅限官方自研专属客户端登录连接（不提供第三方订阅链接）。</p><p>需要特别留意：采用专属客户端的品牌<strong>不支持导入 Clash Verge Rev、Shadowrocket（小火箭）或本地订阅转换</strong>。若你习惯统一管理多条机场订阅或跑软路由规则，请转至 <a href=\"/category/clash-recommend\">Clash 机场推荐专题</a> 筛选支持通用订阅的服务。</p><h2 id=\"section-6\">六、 优点、局限、待核实信息与同类对照</h2><p><strong>核心优势：</strong>年付 96 元起享受 IPLC + VLESS 架构，老牌技术背景叠加 8 折码性价比稳健；套餐齐全（60G 年付、150G~1TB 多周期折扣、100G 永久包）且免翻墙访问官网。</p><p><strong>局限与注意事项：</strong>清单明确 2026 年 10 月后仅提供专属客户端（不提供通用订阅链接）；文中“萤火虫”属同品牌双入口汇总，已合并整理避免重复误导。</p><p><strong>明确待核实字段：</strong></p><p>核心价格、线路类型与协议已收录至站点，仍建议首次购买优先选用月付或小周期验证本地电信/联通/移动晚高峰路由。</p><div class=\"p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/30 text-xs text-slate-200 my-6\"><p class=\"mb-2\"><strong>透明提示：</strong>以下官方注册链接含推广链接，通过链接注册可能为本站带来佣金，不影响用户支付价格。</p><div class=\"flex flex-wrap items-center justify-between gap-3\"><span>参考优惠码：<code>firefly</code> · 新用户 8 折优惠码：firefly（年付版与部分特惠包不适用）</span><a href=\"https://vip02.fireflyaff.com/#/?code=2n7VURre\" target=\"_blank\" rel=\"nofollow sponsored noopener\" class=\"px-4 py-2 rounded-lg bg-tech-emerald text-slate-950 font-bold\">前往 Firefly (萤火虫) 官网注册 →</a></div></div>",
+  "faqList": [
+    {
+      "question": "Firefly (萤火虫) 目前多少钱？有没有优惠码？",
+      "answer": "资料记载入门起步为 Firefly 年付版 96元/年 (8元/月 60GB) · 月付25元(150GB)。参考优惠码为【firefly】（新用户 8 折优惠码：firefly（年付版与部分特惠包不适用））。"
+    },
+    {
+      "question": "Firefly (萤火虫) 能不能导入 Clash Verge 或 Shadowrocket 小火箭？",
+      "answer": "仅限官方自研专属客户端登录连接（不提供第三方订阅链接）。如需统一用第三方 Clash 客户端管理多条机场订阅，建议同时查看站内【Clash 机场推荐排行榜】。"
+    },
+    {
+      "question": "Firefly (萤火虫) 目前的测试数据和跑路风险情况怎样？",
+      "answer": "当前数据标签为【品牌资料整理（待补充独立晚高峰复测）】（最近核验：2026-10-19）。暂无近期独立截图证物，下单一律建议先选短周期实测本地晚高峰表现。"
+    }
+  ]
+}

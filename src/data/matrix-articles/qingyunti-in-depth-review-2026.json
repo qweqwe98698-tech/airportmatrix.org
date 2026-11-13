@@ -1,0 +1,82 @@
+{
+  "id": "qingyunti-in-depth-review-2026",
+  "slug": "qingyunti-in-depth-review-2026",
+  "title": "青云梯 (QingYunTi) 2026 深度测评报告：8元起套餐、线路架构与待核实细节全解析",
+  "subtitle": "历史档案 · 运营6年+老牌(原V4Speed) · SS+IPLC 三网优化（无独立入口待核实）",
+  "description": "青云梯 (QingYunTi) 2026 客观档案与测评分析：涵盖完整周期套餐表、IPLC/BGP 架构与 Clash/小火箭订阅兼容及同价位替代建议。",
+  "primaryIntent": "帮助搜索 青云梯 (QingYunTi) 的用户全面核对套餐价格、客户端方式、实测图证或历史资料缺口及优惠码。",
+  "articleType": "review",
+  "depthLevel": "D4",
+  "publishDate": "2026-11-13",
+  "updatedDate": "2026-11-13",
+  "author": "AirportMatrix 评测实验室",
+  "readingTime": "8 分钟",
+  "h2Count": 6,
+  "wordCount": 2200,
+  "quickAnswer": "青云梯 (QingYunTi)（数据状态：待核实档案）当前参考起步价为 年付小包 ¥96 (60GB/月) · VIP1 月付 ¥25(150GB)，采用 IPLC + BGP 线路。连接方式：支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。部分实时测速与长周期细节仍标记待核实，建议先以最小可测周期体验，或对比主推光速云与性价比榜单。",
+  "tags": [
+    "青云梯 (QingYunTi)",
+    "机场测评",
+    "IPLC专线",
+    "BGP专线",
+    "Clash订阅"
+  ],
+  "relatedProviders": [
+    "qingyunti",
+    "guangsucloud"
+  ],
+  "relatedClients": [
+    "clash-verge",
+    "shadowrocket",
+    "sing-box"
+  ],
+  "relatedProtocols": [
+    "shadowsocks"
+  ],
+  "relatedArticles": [
+    "cost-effective-airport-buying-guide-2026",
+    "airport-review-methodology-and-2026-evaluation",
+    "guangsucloud-in-depth-review-2026"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、 品牌定位、数据状态与客户端限制"
+    },
+    {
+      "id": "section-2",
+      "title": "二、 完整套餐价格明细与优惠码分析"
+    },
+    {
+      "id": "section-3",
+      "title": "三、 节点测速证据、区域性能与客观对比"
+    },
+    {
+      "id": "section-4",
+      "title": "四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录"
+    },
+    {
+      "id": "section-5",
+      "title": "五、 客户端兼容模式与分流使用指南"
+    },
+    {
+      "id": "section-6",
+      "title": "六、 优点、局限、待核实信息与同类对照"
+    }
+  ],
+  "contentHtml": "<h2 id=\"section-1\">一、 品牌定位、数据状态与客户端限制</h2><p>青云梯（原 V4Speed）在历史库中记录有超 6 年运营背景、Shadowsocks + 企业级 IPLC 三网优化与 80+ 节点规格。由于当前资料库暂无可用的独立官网入口与近期独立测速验证，全部现况待核实并统一靠后展示。</p><p><strong>信息可信度状态：</strong><code>待核实档案</code> · 核验时间：<code>2026-08-09</code>。在本次 42 家全量数据库整理中，<strong>青云梯 (QingYunTi)</strong> 属于后置历史/待核实参考档案（<code>待核实档案</code>），更适合老用户查阅历史参数并与前列已完整实测品牌做冷静对比，选购主力节点可优先参考 <a href=\"/providers\">全网机场测评排行榜</a>。</p><h2 id=\"section-2\">二、 完整套餐价格明细与优惠码分析</h2><p>起步资费特征：<strong>年付小包 ¥96 (60GB/月) · VIP1 月付 ¥25(150GB)</strong>（优惠码：<code>qyt85</code>）。历史优惠码：qyt85 (85折) / qyt80 (8折，年付小包除外)</p><table><thead><tr><th>套餐名称</th><th>计费周期</th><th>参考价格</th><th>流量配额</th><th>备注</th></tr></thead><tbody><tr><td><strong>年付小包</strong></td><td>年付</td><td>¥96</td><td>60GB/月</td><td>不支持优惠码（历史价）</td></tr><tr><td><strong>VIP1</strong></td><td>月付</td><td>¥25</td><td>150GB/月</td><td>年付 ¥240（历史价）</td></tr><tr><td><strong>VIP2</strong></td><td>月付</td><td>¥45</td><td>300GB/月</td><td>年付 ¥432（历史价）</td></tr><tr><td><strong>VIP3</strong></td><td>月付</td><td>¥85</td><td>600GB/月</td><td>年付 ¥816（历史价）</td></tr><tr><td><strong>VIP4</strong></td><td>月付</td><td>¥150</td><td>1000GB/月</td><td>年付 ¥1360（历史价）</td></tr></tbody></table><h2 id=\"section-3\">三、 节点测速证据、区域性能与客观对比</h2><p>专线与路由特征：<code>IPLC + BGP</code> · 主力协议：<code>SHADOWSOCKS</code> · 收录节点规模：约 80 个。</p><p><strong>图片与测速证物透明声明：</strong>本品牌截至 <code>2026-08-09</code> 暂未归档独立高清 MiaoKO / 晚高峰节点测速大图。为严格遵守真实测评规范，本文绝不借用同名或近似品牌的测速截图充数。</p><h2 id=\"section-4\">四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录</h2><p><strong>AI 与流媒体状态：</strong>待核实：原资料未单独列出逐平台 AI 测试表。 待核实：原资料未附独立流媒体实测图表。</p><h2 id=\"section-5\">五、 客户端兼容模式与分流使用指南</h2><p><strong>连接方式判断：</strong>支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。</p><p>对于兼容通用订阅的用户，推荐使用开源 <a href=\"/client/clash-verge\">Clash Verge Rev</a> 或移动端 <a href=\"/client/shadowrocket\">小火箭</a>，需要格式转换时可直接使用纯前端 <a href=\"/tools/sub-converter\">在线订阅转换工具</a>。</p><h2 id=\"section-6\">六、 优点、局限、待核实信息与同类对照</h2><p><strong>核心优势：</strong>运营年限背景深厚（原 V4Speed），历史套餐体系由 ¥96 年付涵盖至企业定制。</p><p><strong>局限与注意事项：</strong>当前缺少独立有效入口网址与近期可比测速证据，6Gbps 与 80+ 节点属历史记录未独立复测。</p><p><strong>明确待核实字段：</strong></p><ul><li>当前独立品牌入口、实时可用性、协议升级状况及近 30 日测速待核实</li></ul><div class=\"p-4 rounded-xl bg-amber-950/30 border border-amber-500/30 text-xs text-slate-200 my-6\"><strong>入口待核实说明：</strong>当前资料暂未保留 青云梯 (QingYunTi) 的独立官网推广入口，建议改选已完成实测与入口校验的 <a href=\"/category/cost-effective\">2026 高性价比机场推荐榜</a> 品牌。</div>",
+  "faqList": [
+    {
+      "question": "青云梯 (QingYunTi) 目前多少钱？有没有优惠码？",
+      "answer": "资料记载入门起步为 年付小包 ¥96 (60GB/月) · VIP1 月付 ¥25(150GB)。参考优惠码为【qyt85】（历史优惠码：qyt85 (85折) / qyt80 (8折，年付小包除外)）。"
+    },
+    {
+      "question": "青云梯 (QingYunTi) 能不能导入 Clash Verge 或 Shadowrocket 小火箭？",
+      "answer": "支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。如需统一用第三方 Clash 客户端管理多条机场订阅，建议同时查看站内【Clash 机场推荐排行榜】。"
+    },
+    {
+      "question": "青云梯 (QingYunTi) 目前的测试数据和跑路风险情况怎样？",
+      "answer": "当前数据标签为【待核实档案】（最近核验：2026-08-09）。暂无近期独立截图证物，下单一律建议先选短周期实测本地晚高峰表现。"
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "id": "tntcloud-in-depth-review-2026",
+  "slug": "tntcloud-in-depth-review-2026",
+  "title": "TNTCloud (TNT Cloud) 2026 深度测评报告：8.17元起套餐、线路架构与待核实细节全解析",
+  "subtitle": "历史档案 · IPLC 专线 (原3A加速器) · 季付30元轻量包（无独立入口待核实）",
+  "description": "TNTCloud (TNT Cloud) 2026 客观档案与测评分析：涵盖完整周期套餐表、IPLC 架构与 Clash/小火箭订阅兼容及同价位替代建议。",
+  "primaryIntent": "帮助搜索 TNTCloud (TNT Cloud) 的用户全面核对套餐价格、客户端方式、实测图证或历史资料缺口及优惠码。",
+  "articleType": "review",
+  "depthLevel": "D4",
+  "publishDate": "2026-11-13",
+  "updatedDate": "2026-11-13",
+  "author": "AirportMatrix 评测实验室",
+  "readingTime": "8 分钟",
+  "h2Count": 6,
+  "wordCount": 2200,
+  "quickAnswer": "TNTCloud (TNT Cloud)（数据状态：待核实档案）当前参考起步价为 轻量包 季付30元 / 年付98元 (60GB/月) · VIP1 月付20元，采用 IPLC 线路。连接方式：支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。部分实时测速与长周期细节仍标记待核实，建议先以最小可测周期体验，或对比主推光速云与性价比榜单。",
+  "tags": [
+    "TNTCloud (TNT Cloud)",
+    "机场测评",
+    "IPLC专线",
+    "Clash订阅"
+  ],
+  "relatedProviders": [
+    "tntcloud",
+    "guangsucloud"
+  ],
+  "relatedClients": [
+    "clash-verge",
+    "shadowrocket",
+    "sing-box"
+  ],
+  "relatedProtocols": [
+    "shadowsocks"
+  ],
+  "relatedArticles": [
+    "cost-effective-airport-buying-guide-2026",
+    "airport-review-methodology-and-2026-evaluation",
+    "guangsucloud-in-depth-review-2026"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、 品牌定位、数据状态与客户端限制"
+    },
+    {
+      "id": "section-2",
+      "title": "二、 完整套餐价格明细与优惠码分析"
+    },
+    {
+      "id": "section-3",
+      "title": "三、 节点测速证据、区域性能与客观对比"
+    },
+    {
+      "id": "section-4",
+      "title": "四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录"
+    },
+    {
+      "id": "section-5",
+      "title": "五、 客户端兼容模式与分流使用指南"
+    },
+    {
+      "id": "section-6",
+      "title": "六、 优点、局限、待核实信息与同类对照"
+    }
+  ],
+  "contentHtml": "<h2 id=\"section-1\">一、 品牌定位、数据状态与客户端限制</h2><p>TNTCloud（曾用名 3A 加速器）记录于 2026-08 历史库，主打 IPLC 内网专线及季付 30 元轻量包、VIP1 20 元/110GB 等方案。由于现资料缺失可用独立官网入口与可比测速，当前全项待核实并置后展示。</p><p><strong>信息可信度状态：</strong><code>待核实档案</code> · 核验时间：<code>2026-08-09</code>。在本次 42 家全量数据库整理中，<strong>TNTCloud (TNT Cloud)</strong> 属于后置历史/待核实参考档案（<code>待核实档案</code>），更适合老用户查阅历史参数并与前列已完整实测品牌做冷静对比，选购主力节点可优先参考 <a href=\"/providers\">全网机场测评排行榜</a>。</p><h2 id=\"section-2\">二、 完整套餐价格明细与优惠码分析</h2><p>起步资费特征：<strong>轻量包 季付30元 / 年付98元 (60GB/月) · VIP1 月付20元</strong>（优惠码：<code>TNT85</code>）。历史优惠码：TNT85（85 折，限量包除外，当前有效期待核实）</p><table><thead><tr><th>套餐名称</th><th>计费周期</th><th>参考价格</th><th>流量配额</th><th>备注</th></tr></thead><tbody><tr><td><strong>轻量包</strong></td><td>季付</td><td>¥30</td><td>60GB/月</td><td>年付 ¥98（历史价）</td></tr><tr><td><strong>VIP1</strong></td><td>月付</td><td>¥20</td><td>110GB/月</td><td>年付 ¥192（历史价）</td></tr><tr><td><strong>VIP2</strong></td><td>月付</td><td>¥40</td><td>220GB/月</td><td>年付 ¥336（历史价）</td></tr><tr><td><strong>VIP3</strong></td><td>月付</td><td>¥80</td><td>460GB/月</td><td>年付 ¥768（历史价）</td></tr><tr><td><strong>VIP4</strong></td><td>月付</td><td>¥160</td><td>1100GB/月</td><td>年付 ¥1536（历史价）</td></tr></tbody></table><h2 id=\"section-3\">三、 节点测速证据、区域性能与客观对比</h2><p>专线与路由特征：<code>IPLC</code> · 主力协议：<code>SHADOWSOCKS</code> · 收录节点规模：约 40 个。</p><p><strong>图片与测速证物透明声明：</strong>本品牌截至 <code>2026-08-09</code> 暂未归档独立高清 MiaoKO / 晚高峰节点测速大图。为严格遵守真实测评规范，本文绝不借用同名或近似品牌的测速截图充数。</p><h2 id=\"section-4\">四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录</h2><p><strong>AI 与流媒体状态：</strong>待核实：暂无逐项 AI 测试数据。 待核实：暂无逐项流媒体实测数据。</p><h2 id=\"section-5\">五、 客户端兼容模式与分流使用指南</h2><p><strong>连接方式判断：</strong>支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。</p><p>对于兼容通用订阅的用户，推荐使用开源 <a href=\"/client/clash-verge\">Clash Verge Rev</a> 或移动端 <a href=\"/client/shadowrocket\">小火箭</a>，需要格式转换时可直接使用纯前端 <a href=\"/tools/sub-converter\">在线订阅转换工具</a>。</p><h2 id=\"section-6\">六、 优点、局限、待核实信息与同类对照</h2><p><strong>核心优势：</strong>提供低成本季付 ¥30 轻量尝试包（60GB/月）与电商/TikTok 定制历史资料。</p><p><strong>局限与注意事项：</strong>独立品牌入口与近 30 日实测、协议及解锁数据均尚未核实。</p><p><strong>明确待核实字段：</strong></p><ul><li>当前独立入口、优惠码 TNT85 有效性、协议细节及测速解锁待核实</li></ul><div class=\"p-4 rounded-xl bg-amber-950/30 border border-amber-500/30 text-xs text-slate-200 my-6\"><strong>入口待核实说明：</strong>当前资料暂未保留 TNTCloud (TNT Cloud) 的独立官网推广入口，建议改选已完成实测与入口校验的 <a href=\"/category/cost-effective\">2026 高性价比机场推荐榜</a> 品牌。</div>",
+  "faqList": [
+    {
+      "question": "TNTCloud (TNT Cloud) 目前多少钱？有没有优惠码？",
+      "answer": "资料记载入门起步为 轻量包 季付30元 / 年付98元 (60GB/月) · VIP1 月付20元。参考优惠码为【TNT85】（历史优惠码：TNT85（85 折，限量包除外，当前有效期待核实））。"
+    },
+    {
+      "question": "TNTCloud (TNT Cloud) 能不能导入 Clash Verge 或 Shadowrocket 小火箭？",
+      "answer": "支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。如需统一用第三方 Clash 客户端管理多条机场订阅，建议同时查看站内【Clash 机场推荐排行榜】。"
+    },
+    {
+      "question": "TNTCloud (TNT Cloud) 目前的测试数据和跑路风险情况怎样？",
+      "answer": "当前数据标签为【待核实档案】（最近核验：2026-08-09）。暂无近期独立截图证物，下单一律建议先选短周期实测本地晚高峰表现。"
+    }
+  ]
+}

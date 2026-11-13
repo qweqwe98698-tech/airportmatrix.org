@@ -7,11 +7,14 @@ import Icon from '@/components/common/Icon.astro';
 import { providersData } from '@/data/providers.data';
 
 const breadcrumbs = [{ name: '机场矩阵库', url: '/providers' }];
+const measuredCount = providersData.filter((p) => (p.testImages?.length ?? 0) > 0).length;
+const topCount = providersData.filter((p) => p.rankTier === 'top10').length;
+const archivalCount = providersData.filter((p) => p.rankTier === 'archival').length;
 ---
 
 <BaseLayout
-  title="机场综合矩阵库与参数对比中心 (2026 实时更新)"
-  description="全方位多维筛选：IEPL/IPLC 专线、VLESS/Hysteria2 协议、ChatGPT 原生解锁、Netflix 4K 解锁、价格与节点覆盖实测排行榜。"
+  title="2026 机场测评排行榜与性价比机场对比中心"
+  description={`2026 好用的机场推荐与机场测评实测榜：横向对比 ${providersData.length} 家机场价格、高速机场节点延迟、IEPL 专线稳定性、Clash 兼容度与 ChatGPT/Netflix 解锁能力。`}
   breadcrumbs={breadcrumbs}
   schemaType="ItemList"
   itemList={providersData.map(p => ({ name: p.name, url: `/provider/${p.slug}` }))}
@@ -22,23 +25,82 @@ const breadcrumbs = [{ name: '机场矩阵库', url: '/providers' }];
   <div class="mb-8">
     <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold mb-3">
       <Icon name="server" class="w-3.5 h-3.5" />
-      <span>实时数据库 · {providersData.length} 家精选大厂</span>
+      <span>实时机场测评库 · {providersData.length} 家机场与历史档案</span>
     </div>
-    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">机场综合矩阵库</h1>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">2026 机场测评与性价比机场排行榜</h1>
     <p class="text-sm text-slate-400 mt-2 max-w-3xl">
-      所有入库机场均经过团队独立全天候网络链路探测、敏感时期稳定性追踪与退款履约核验。支持按线路、协议、应用场景进行多维过滤。
+      本站已完整收录 {providersData.length} 家机场品牌档案：Top 11 优先级靠前展示，其中 {measuredCount} 家配有真实测速/解锁图证，末尾 {archivalCount} 家为后置历史或待核实档案并明确标注资料缺口。
     </p>
+    <p class="text-xs text-slate-500 mt-2">
+      推广合规披露：列表中的官网直达按钮含推广链接，通过链接注册可能为本站带来佣金，不影响您的实际支付价格。
+    </p>
+  </div>
+
+  <!-- Summary Metrics -->
+  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6 text-xs">
+    <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+      <div class="text-slate-400">收录机场总数</div>
+      <div class="text-xl font-extrabold font-mono text-white mt-0.5">{providersData.length} <span class="text-xs font-normal text-slate-400">家</span></div>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+      <div class="text-slate-400">重点主推梯队</div>
+      <div class="text-xl font-extrabold font-mono text-tech-emerald mt-0.5">{topCount} <span class="text-xs font-normal text-slate-400">家</span></div>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+      <div class="text-slate-400">配备实测大图</div>
+      <div class="text-xl font-extrabold font-mono text-tech-cyan mt-0.5">{measuredCount} <span class="text-xs font-normal text-slate-400">家</span></div>
+    </div>
+    <div class="p-3.5 rounded-xl bg-slate-900/70 border border-slate-800">
+      <div class="text-slate-400">后置历史/待核实</div>
+      <div class="text-xl font-extrabold font-mono text-amber-400 mt-0.5">{archivalCount} <span class="text-xs font-normal text-slate-400">家</span></div>
+    </div>
   </div>
 
   <!-- Interactive Matrix Toolbar / Filter -->
   <div class="p-4 sm:p-6 rounded-xl bg-slate-900/80 border border-slate-800 mb-8 space-y-4">
     <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-800">
-      <div class="text-xs font-bold text-slate-200 uppercase tracking-wider">多维矩阵筛选器</div>
-      <div class="text-xs text-slate-400">已收录 <span class="text-tech-emerald font-mono font-bold">{providersData.length}</span> 个验证实体</div>
+      <div class="text-xs font-bold text-slate-200 uppercase tracking-wider">多维矩阵检索与筛选器</div>
+      <div class="text-xs text-slate-400">
+        当前匹配 <span id="visible-provider-count" class="text-tech-emerald font-mono font-bold">{providersData.length}</span> / {providersData.length} 个品牌
+      </div>
+    </div>
+
+    <!-- Search + Sort + Quick Chips -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+      <div class="md:col-span-2 relative">
+        <input
+          id="provider-search"
+          type="search"
+          placeholder="搜索机场名称、优惠码、专线架构或特点（如：光速云、暮光、微风、无忧、IEPL）..."
+          class="w-full px-3.5 py-2.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-100 placeholder:text-slate-500 focus:outline-none focus:border-tech-emerald"
+        />
+      </div>
+      <div>
+        <select
+          id="provider-sort"
+          aria-label="排序方式"
+          class="w-full px-3 py-2.5 rounded-lg bg-slate-950 border border-slate-700 text-slate-200 focus:outline-none focus:border-tech-cyan"
+        >
+          <option value="default">排序：默认推荐顺序（主推置顶）</option>
+          <option value="score">排序：综合评分从高到低</option>
+          <option value="price">排序：起步月价从低到高</option>
+          <option value="nodes">排序：节点数量从多到少</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Quick Presets -->
+    <div class="flex flex-wrap items-center gap-2 text-xs pt-1" id="preset-filters">
+      <span class="text-slate-400 font-medium">快捷筛选：</span>
+      <button type="button" class="preset-btn active px-2.5 py-1 rounded bg-tech-emerald text-slate-950 font-bold" data-preset="all">全部 ({providersData.length})</button>
+      <button type="button" class="preset-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-preset="top10">核心主推 Top {topCount}</button>
+      <button type="button" class="preset-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-preset="has-images">有实测图 ({measuredCount})</button>
+      <button type="button" class="preset-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-preset="under-15">月付 ≤ ¥15</button>
+      <button type="button" class="preset-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-preset="sub-ok">支持 Clash/通用订阅</button>
     </div>
 
     <!-- Filter Buttons -->
-    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs pt-2 border-t border-slate-800/80">
       <div>
         <span class="text-slate-400 block mb-1.5 font-medium">线路类型：</span>
         <div class="flex flex-wrap gap-1.5" id="route-filters">
@@ -53,8 +115,8 @@ const breadcrumbs = [{ name: '机场矩阵库', url: '/providers' }];
         <span class="text-slate-400 block mb-1.5 font-medium">场景解锁：</span>
         <div class="flex flex-wrap gap-1.5" id="scenario-filters">
           <button type="button" class="scenario-btn active px-2.5 py-1 rounded bg-tech-emerald text-slate-950 font-bold" data-scenario="all">全部场景</button>
-          <button type="button" class="scenario-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-scenario="ai">ChatGPT 原生</button>
-          <button type="button" class="scenario-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-scenario="streaming">Netflix 4K</button>
+          <button type="button" class="scenario-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-scenario="ai">AI / ChatGPT 支持</button>
+          <button type="button" class="scenario-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-scenario="streaming">流媒体 4K 解锁</button>
         </div>
       </div>
 
@@ -64,6 +126,7 @@ const breadcrumbs = [{ name: '机场矩阵库', url: '/providers' }];
           <button type="button" class="proto-btn active px-2.5 py-1 rounded bg-tech-emerald text-slate-950 font-bold" data-proto="all">全部协议</button>
           <button type="button" class="proto-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-proto="vless">VLESS</button>
           <button type="button" class="proto-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-proto="hysteria2">Hysteria 2</button>
+          <button type="button" class="proto-btn px-2.5 py-1 rounded bg-slate-800 text-slate-300 hover:text-white" data-proto="trojan">Trojan</button>
         </div>
       </div>
     </div>
@@ -71,18 +134,36 @@ const breadcrumbs = [{ name: '机场矩阵库', url: '/providers' }];
 
   <!-- Cards Grid View -->
   <div class="mb-12">
-    <div class="flex items-center justify-between mb-4">
+    <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
       <h2 class="text-lg font-bold text-white flex items-center gap-2">
         <Icon name="layers" class="w-4 h-4 text-tech-emerald" />
-        <span>实体详细卡片视图</span>
+        <span>42 家机场卡片档案与实测视图</span>
       </h2>
+      <span class="text-xs text-slate-400">前 {topCount} 位为核心主推梯队；末 {archivalCount} 家已后置并标注待核实状态</span>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="provider-cards-container">
-      {providersData.map((provider) => (
-        <div class="provider-item" data-routes={provider.routes.join(',')} data-protocols={provider.protocols.join(',')} data-ai={provider.aiSupport.chatgpt ? 'true' : 'false'} data-streaming={provider.streamingSupport.netflix ? 'true' : 'false'}>
-          <ProviderCard provider={provider} />
+      {providersData.map((provider, idx) => (
+        <div
+          class="provider-item"
+          data-index={idx}
+          data-name={`${provider.name} ${provider.slug} ${provider.tagline} ${provider.couponCode || ''} ${provider.features.join(' ')}`.toLowerCase()}
+          data-tier={provider.rankTier || 'core'}
+          data-has-images={(provider.testImages?.length ?? 0) > 0 ? 'true' : 'false'}
+          data-price={provider.pricing.minMonthly > 0 ? provider.pricing.minMonthly : 9999}
+          data-score={provider.score.overall}
+          data-nodes={provider.nodeCount}
+          data-submode={provider.subscriptionMode || 'unknown'}
+          data-routes={provider.routes.join(',')}
+          data-protocols={provider.protocols.join(',')}
+          data-ai={provider.aiSupport.chatgpt ? 'true' : 'false'}
+          data-streaming={provider.streamingSupport.netflix ? 'true' : 'false'}
+        >
+          <ProviderCard provider={provider} rank={idx + 1} />
         </div>
       ))}
+    </div>
+    <div id="no-provider-match" class="hidden text-center py-12 text-sm text-slate-400 bg-slate-900/50 rounded-xl border border-slate-800 mt-4">
+      没有找到符合当前筛选条件的机场，请尝试清空搜索词或切换回「全部」。
     </div>
   </div>
 
@@ -152,57 +233,114 @@ const breadcrumbs = [{ name: '机场矩阵库', url: '/providers' }];
   let activeRoute = 'all';
   let activeScenario = 'all';
   let activeProto = 'all';
+  let activePreset = 'all';
+  let searchQuery = '';
+  let sortMode = 'default';
 
-  function applyFilters() {
-    const items = document.querySelectorAll('.provider-item');
-    items.forEach((item: any) => {
+  const container = document.getElementById('provider-cards-container');
+  const countEl = document.getElementById('visible-provider-count');
+  const emptyEl = document.getElementById('no-provider-match');
+  const searchInput = document.getElementById('provider-search') as HTMLInputElement | null;
+  const sortSelect = document.getElementById('provider-sort') as HTMLSelectElement | null;
+
+  function applySortAndFilters() {
+    if (!container) return;
+    const items = Array.from(container.querySelectorAll('.provider-item')) as HTMLElement[];
+
+    items.sort((a, b) => {
+      if (sortMode === 'score') {
+        return parseFloat(b.dataset.score || '0') - parseFloat(a.dataset.score || '0');
+      }
+      if (sortMode === 'price') {
+        return parseFloat(a.dataset.price || '9999') - parseFloat(b.dataset.price || '9999');
+      }
+      if (sortMode === 'nodes') {
+        return parseInt(b.dataset.nodes || '0', 10) - parseInt(a.dataset.nodes || '0', 10);
+      }
+      return parseInt(a.dataset.index || '0', 10) - parseInt(b.dataset.index || '0', 10);
+    });
+
+    let visibleCount = 0;
+    const q = searchQuery.trim().toLowerCase();
+
+    items.forEach((item) => {
+      container.appendChild(item);
+
       const routes = item.dataset.routes || '';
       const protocols = item.dataset.protocols || '';
       const ai = item.dataset.ai === 'true';
       const streaming = item.dataset.streaming === 'true';
+      const tier = item.dataset.tier || 'core';
+      const hasImages = item.dataset.hasImages === 'true';
+      const price = parseFloat(item.dataset.price || '9999');
+      const submode = item.dataset.submode || 'unknown';
+      const haystack = item.dataset.name || '';
 
-      let matchRoute = (activeRoute === 'all' || routes.includes(activeRoute));
-      let matchScenario = (activeScenario === 'all' || (activeScenario === 'ai' && ai) || (activeScenario === 'streaming' && streaming));
-      let matchProto = (activeProto === 'all' || protocols.includes(activeProto));
+      const matchSearch = !q || haystack.includes(q);
+      const matchRoute = activeRoute === 'all' || routes.includes(activeRoute);
+      const matchScenario =
+        activeScenario === 'all' ||
+        (activeScenario === 'ai' && ai) ||
+        (activeScenario === 'streaming' && streaming);
+      const matchProto = activeProto === 'all' || protocols.includes(activeProto);
 
-      if (matchRoute && matchScenario && matchProto) {
+      let matchPreset = true;
+      if (activePreset === 'top10') matchPreset = tier === 'top10';
+      else if (activePreset === 'has-images') matchPreset = hasImages;
+      else if (activePreset === 'under-15') matchPreset = price > 0 && price <= 15;
+      else if (activePreset === 'sub-ok') matchPreset = submode === 'both' || submode === 'subscription';
+
+      if (matchSearch && matchRoute && matchScenario && matchProto && matchPreset) {
         item.style.display = 'block';
+        visibleCount += 1;
       } else {
         item.style.display = 'none';
       }
     });
+
+    if (countEl) countEl.textContent = String(visibleCount);
+    if (emptyEl) emptyEl.classList.toggle('hidden', visibleCount > 0);
   }
 
-  // Bind Route Filters
-  document.querySelectorAll('.filter-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold'));
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.add('bg-slate-800', 'text-slate-300'));
-      btn.classList.add('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold');
-      activeRoute = btn.getAttribute('data-filter') || 'all';
-      applyFilters();
+  function bindBtnGroup(selector: string, dataAttr: string, setter: (val: string) => void) {
+    document.querySelectorAll(selector).forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll(selector).forEach((b) => {
+          b.classList.remove('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold');
+          b.classList.add('bg-slate-800', 'text-slate-300');
+        });
+        btn.classList.remove('bg-slate-800', 'text-slate-300');
+        btn.classList.add('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold');
+        setter(btn.getAttribute(dataAttr) || 'all');
+        applySortAndFilters();
+      });
     });
+  }
+
+  bindBtnGroup('.preset-btn', 'data-preset', (val) => {
+    activePreset = val;
+  });
+  bindBtnGroup('.filter-btn', 'data-filter', (val) => {
+    activeRoute = val;
+  });
+  bindBtnGroup('.scenario-btn', 'data-scenario', (val) => {
+    activeScenario = val;
+  });
+  bindBtnGroup('.proto-btn', 'data-proto', (val) => {
+    activeProto = val;
   });
 
-  // Bind Scenario Filters
-  document.querySelectorAll('.scenario-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold'));
-      document.querySelectorAll('.scenario-btn').forEach(b => b.classList.add('bg-slate-800', 'text-slate-300'));
-      btn.classList.add('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold');
-      activeScenario = btn.getAttribute('data-scenario') || 'all';
-      applyFilters();
+  if (searchInput) {
+    searchInput.addEventListener('input', () => {
+      searchQuery = searchInput.value;
+      applySortAndFilters();
     });
-  });
+  }
 
-  // Bind Proto Filters
-  document.querySelectorAll('.proto-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.proto-btn').forEach(b => b.classList.remove('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold'));
-      document.querySelectorAll('.proto-btn').forEach(b => b.classList.add('bg-slate-800', 'text-slate-300'));
-      btn.classList.add('active', 'bg-tech-emerald', 'text-slate-950', 'font-bold');
-      activeProto = btn.getAttribute('data-proto') || 'all';
-      applyFilters();
+  if (sortSelect) {
+    sortSelect.addEventListener('change', () => {
+      sortMode = sortSelect.value;
+      applySortAndFilters();
     });
-  });
+  }
 </script>

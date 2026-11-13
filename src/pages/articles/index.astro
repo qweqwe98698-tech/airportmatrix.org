@@ -8,8 +8,8 @@ const breadcrumbs = [{ name: '知识库与深度指南', url: '/articles' }];
 ---
 
 <BaseLayout
-  title="网络访问知识图谱与排错手册 (D4~D6 深度指南)"
-  description="汇聚代理客户端实战、TUN 虚拟网卡、DNS 防污染、海外 AI 解锁与全网节点全红 Timeout 故障排查深度长文。"
+  title="2026 机场测评报告、性价比机场选购与 Clash 节点配置指南"
+  description="汇聚 2026 最新机场测评报告、高性价比机场横向对比、好用的机场推荐清单、Clash Verge 节点订阅配置与节点超时排查教程。"
   breadcrumbs={breadcrumbs}
 >
   <Breadcrumb items={breadcrumbs} />
@@ -17,12 +17,45 @@ const breadcrumbs = [{ name: '知识库与深度指南', url: '/articles' }];
   <div class="mb-8">
     <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-tech-emerald/10 border border-tech-emerald/30 text-tech-emerald text-xs font-semibold mb-3">
       <Icon name="sparkles" class="w-3.5 h-3.5" />
-      <span>严格内容深度门禁 · 零废话零软文</span>
+      <span>真实测速数据 · 机场测评与配置指南</span>
     </div>
-    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">知识库与深度排错手册</h1>
+    <h1 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">2026 机场测评报告与选型配置指南</h1>
     <p class="text-sm text-slate-400 mt-2 max-w-3xl">
-      所有内容均符合 D4~D6 深度标准：提供明确的 Quick Answer、步骤诊断表、底层原理与 FAQ，真正解决用户的核心搜索任务。
+      涵盖各品牌机场深度实测、高性价比机场排行对比、Clash 节点订阅导入与节点超时排查，帮助您快速挑到好用的机场。
     </p>
+  </div>
+
+  <!-- Pillar Hubs Quick Entry -->
+  <div class="mb-8 p-5 rounded-2xl bg-slate-900/60 border border-slate-800">
+    <div class="flex items-center justify-between mb-3">
+      <span class="text-xs font-bold text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
+        <Icon name="layers" class="w-3.5 h-3.5 text-tech-emerald" />
+        <span>核心专题快捷入口 (Pillar Hubs)</span>
+      </span>
+      <a href="/providers" class="text-xs text-tech-cyan hover:underline">全部服务商 →</a>
+    </div>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-2.5 text-xs">
+      <a href="/category/cost-effective" class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-tech-emerald/40 transition-colors">
+        <div class="font-bold text-white">性价比机场排行榜</div>
+        <div class="text-slate-400 mt-0.5 line-clamp-1">月付 14.9 / 年付 7.5 元档</div>
+      </a>
+      <a href="/category/clash-recommend" class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-tech-cyan/40 transition-colors">
+        <div class="font-bold text-white">Clash 机场推荐榜</div>
+        <div class="text-slate-400 mt-0.5 line-clamp-1">Clash Verge / Mihomo 适配</div>
+      </a>
+      <a href="/category/airport-nodes" class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-tech-cyan/40 transition-colors">
+        <div class="font-bold text-white">高速机场节点专题</div>
+        <div class="text-slate-400 mt-0.5 line-clamp-1">港日新台美专线节点</div>
+      </a>
+      <a href="/tools/sub-converter" class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-violet-400/40 transition-colors">
+        <div class="font-bold text-white">在线订阅转换工具</div>
+        <div class="text-slate-400 mt-0.5 line-clamp-1">本地免上传转 Clash/小火箭</div>
+      </a>
+      <a href="/recommend/wizard" class="p-3 rounded-xl bg-slate-950/70 border border-slate-800 hover:border-tech-emerald/40 transition-colors">
+        <div class="font-bold text-white">30 秒智能选型向导</div>
+        <div class="text-slate-400 mt-0.5 line-clamp-1">按预算与场景匹配机场</div>
+      </a>
+    </div>
   </div>
 
   <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">

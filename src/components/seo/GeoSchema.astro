@@ -56,8 +56,21 @@ const organizationSchema = {
   name: 'AirportMatrix X',
   url: siteUrl,
   logo: `${siteUrl}/favicon.svg`,
-  description: '中文互联网首个机场代理趋势数据库与生态数据中心',
+  description: '2026 好用的性价比机场推荐、机场测评排行与高速机场节点配置指南平台',
 };
+
+const websiteSchema = type === 'WebSite' ? {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: 'AirportMatrix X',
+  alternateName: '机场矩阵测评榜',
+  url: siteUrl,
+  potentialAction: {
+    '@type': 'SearchAction',
+    target: `${siteUrl}/search?q={search_term_string}`,
+    'query-input': 'required name=search_term_string',
+  },
+} : null;
 
 // 2. BreadcrumbList Schema
 const breadcrumbSchema = breadcrumbs.length > 0 ? {
@@ -144,6 +157,8 @@ if (type === 'SoftwareApplication' && softwareData) {
       text: s.text,
     })),
   };
+} else if (type === 'WebSite') {
+  mainSchema = null;
 } else {
   mainSchema = {
     '@context': 'https://schema.org',
@@ -186,6 +201,7 @@ const faqSchema = faqs && faqs.length > 0 ? {
 
 <!-- JSON-LD Structured Data Injection for SEO & GEO LLMs -->
 <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
+{websiteSchema && <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />}
 {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
 {mainSchema && <script type="application/ld+json" set:html={JSON.stringify(mainSchema)} />}
 {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}

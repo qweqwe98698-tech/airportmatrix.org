@@ -325,7 +325,7 @@ const totalClicks = providersData.reduce((acc, p) => acc + (p.conversionData?.cl
                   {p.routes.join(' + ')}
                 </td>
                 <td class="p-3.5 whitespace-nowrap font-mono text-tech-emerald font-bold">
-                  ¥{p.pricing.minMonthly} / 月
+                  {p.pricing.minMonthly > 0 ? `¥${p.pricing.minMonthly} / 月` : '待核实'}
                 </td>
                 <td class="p-3.5 whitespace-nowrap font-mono text-amber-400">
                   ★ {p.score.overall.toFixed(1)}
@@ -337,14 +337,18 @@ const totalClicks = providersData.reduce((acc, p) => acc + (p.conversionData?.cl
                   {p.conversionData?.estimatedConversionRate || 16.5}%
                 </td>
                 <td class="p-3.5 whitespace-nowrap text-right">
-                  <a
-                    href={`/go/${p.slug}`}
-                    target="_blank"
-                    rel="nofollow sponsored noopener noreferrer"
-                    class="text-tech-cyan hover:underline font-bold font-mono"
-                  >
-                    /go/{p.slug} →
-                  </a>
+                  {p.affiliateUrl ? (
+                    <a
+                      href={`/go/${p.slug}`}
+                      target="_blank"
+                      rel="nofollow sponsored noopener noreferrer"
+                      class="text-tech-cyan hover:underline font-bold font-mono"
+                    >
+                      /go/{p.slug} →
+                    </a>
+                  ) : (
+                    <span class="text-slate-500 font-mono text-[11px]">待核实</span>
+                  )}
                 </td>
               </tr>
             ))}

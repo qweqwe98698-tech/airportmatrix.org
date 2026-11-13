@@ -15,10 +15,17 @@ export function getStaticPaths() {
 
 const { client } = Astro.props;
 
-// Filter top 4 providers compatible with this client
-const compatibleProviders = providersData.filter((p) =>
-  p.clients.includes(client.slug) || p.clients.includes(client.name.toLowerCase()) || p.clients.includes('clash-verge')
-).slice(0, 4);
+// Filter top 4 subscription-compatible active providers with verified URLs
+const compatibleProviders = providersData
+  .filter(
+    (p) =>
+      Boolean(p.affiliateUrl) &&
+      p.subscriptionMode !== 'client-only' &&
+      (p.clients.includes(client.slug) ||
+        p.clients.includes(client.name.toLowerCase()) ||
+        p.clients.includes('clash-verge'))
+  )
+  .slice(0, 4);
 
 const breadcrumbs = [
   { name: '客户端教程中心', url: '/clients' },
@@ -27,23 +34,45 @@ const breadcrumbs = [
 
 const nextPages = [
   {
-    title: '精选 16 大专线机场矩阵排行榜',
-    href: '/providers',
-    desc: `获取针对 ${client.name} 完美适配的 1Gbps 高速 IEPL 专线订阅。`,
-    type: '节点推荐',
+    title: '2026 Clash 与小火箭兼容机场推荐榜',
+    href: '/category/clash-recommend',
+    desc: `筛选支持 ${client.name} 一键订阅导入与自动分流规则的好用机场。`,
+    type: '机场推荐',
   },
   {
-    title: '节点全红与 Timeout 故障排查手册',
+    title: '在线机场订阅链接转换器',
+    href: '/tools/sub-converter',
+    desc: '将通用机场订阅一键转换为 Clash Verge / sing-box / 小火箭标准配置。',
+    type: '实用工具',
+  },
+  {
+    title: '节点全红与 Timeout 超时排查手册',
     href: '/articles/node-timeout-troubleshooting-guide',
-    desc: '遇到客户端无法拉取节点或测速全部超时时的系统化诊断流程。',
+    desc: '遇到客户端无法拉取订阅或测速全部超时时的逐步排查方案。',
     type: '故障排查',
   },
+  {
+    title: '2026 高性价比机场推荐排行榜',
+    href: '/category/cost-effective',
+    desc: '按月付/年付成本、机场节点稳定性与解锁能力查看实测排名。',
+    type: '性价比榜',
+  },
 ];
+
+const clientFaqs = client.troubleshooting.map((item) => ({
+  question: item.issue,
+  answer: `常见原因：${item.cause} 解决方法：${item.solution}`,
+}));
+
+const clientPageTitle =
+  client.slug === 'shadowrocket'
+    ? 'Shadowrocket (小火箭) 2026 App 官方正版下载、安装与机场订阅配置教程'
+    : `${client.name} 2026 官方安全下载、图文安装与机场订阅配置教程`;
 ---
 
 <BaseLayout
-  title={`${client.name} 2026 官方安全下载、图文安装与订阅配置教程 - AirportMatrix`}
-  description={`手把手教您在 ${client.platforms.join('/')} 上安装 ${client.name}，并完成机场一键订阅导入、分流规则切换与 TUN 虚拟网卡配置。`}
+  title={clientPageTitle}
+  description={`2026 最新 ${client.name}（${client.platforms.join('/')}）官方安全下载来源、4 步图文安装、机场一键订阅导入及常见问题排查指南。`}
   breadcrumbs={breadcrumbs}
   schemaType="SoftwareApplication"
   softwareData={{
@@ -53,6 +82,7 @@ const nextPages = [
     downloadUrl: client.downloadUrl,
     softwareVersion: '2026 Stable',
   }}
+  faqData={clientFaqs}
 >
   <Breadcrumb items={breadcrumbs} />
 
@@ -230,12 +260,12 @@ const nextPages = [
         <div>
           <h2 class="text-lg font-bold text-white flex items-center gap-2">
             <Icon name="server" class="w-5 h-5 text-tech-cyan" />
-            <span>适配 {client.name} 的 1Gbps 高速专线订阅源推荐</span>
+            <span>适配 {client.name} 的一键订阅好用的机场推荐</span>
           </h2>
-          <p class="text-xs text-slate-400 mt-1">均通过 9Gbps 宽带真实测速，支持一键导入与全节点 FullCone UDP：</p>
+          <p class="text-xs text-slate-400 mt-1">支持主流协议与一键导入订阅链接的实测机场列表：</p>
         </div>
         <a href="/providers" class="text-xs font-semibold text-tech-cyan hover:underline flex items-center gap-1">
-          <span>查看全部 16 家品牌</span>
+          <span>查看全部 {providersData.length} 家品牌</span>
           <span>→</span>
         </a>
       </div>

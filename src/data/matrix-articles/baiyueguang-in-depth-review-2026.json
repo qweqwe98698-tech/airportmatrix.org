@@ -1,0 +1,81 @@
+{
+  "id": "baiyueguang-in-depth-review-2026",
+  "slug": "baiyueguang-in-depth-review-2026",
+  "title": "白月光 (BaiYueGuang) 2026 深度测评报告：22元起套餐、线路架构与待核实细节全解析",
+  "subtitle": "历史档案 · Shadowsocks 108节点 · 季付66元起(100GB/月 · 台湾节点极弱注意)",
+  "description": "白月光 (BaiYueGuang) 2026 客观档案与测评分析：涵盖完整周期套餐表、TRANSIT 架构与 Clash/小火箭订阅兼容及同价位替代建议。",
+  "primaryIntent": "帮助搜索 白月光 (BaiYueGuang) 的用户全面核对套餐价格、客户端方式、实测图证或历史资料缺口及优惠码。",
+  "articleType": "review",
+  "depthLevel": "D4",
+  "publishDate": "2026-11-13",
+  "updatedDate": "2026-11-13",
+  "author": "AirportMatrix 评测实验室",
+  "readingTime": "8 分钟",
+  "h2Count": 6,
+  "wordCount": 2200,
+  "quickAnswer": "白月光 (BaiYueGuang)（数据状态：历史档案记录（不代表实时速度））当前参考起步价为 小包季付 66元 (100GB/月 · 无常规月付)，采用 TRANSIT 线路。连接方式：支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。部分实时测速与长周期细节仍标记待核实，建议先以最小可测周期体验，或对比主推光速云与性价比榜单。",
+  "tags": [
+    "白月光 (BaiYueGuang)",
+    "机场测评",
+    "TRANSIT专线",
+    "Clash订阅"
+  ],
+  "relatedProviders": [
+    "baiyueguang",
+    "guangsucloud"
+  ],
+  "relatedClients": [
+    "clash-verge",
+    "shadowrocket",
+    "sing-box"
+  ],
+  "relatedProtocols": [
+    "shadowsocks"
+  ],
+  "relatedArticles": [
+    "cost-effective-airport-buying-guide-2026",
+    "airport-review-methodology-and-2026-evaluation",
+    "guangsucloud-in-depth-review-2026"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、 品牌定位、数据状态与客户端限制"
+    },
+    {
+      "id": "section-2",
+      "title": "二、 完整套餐价格明细与优惠码分析"
+    },
+    {
+      "id": "section-3",
+      "title": "三、 节点测速证据、区域性能与客观对比"
+    },
+    {
+      "id": "section-4",
+      "title": "四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录"
+    },
+    {
+      "id": "section-5",
+      "title": "五、 客户端兼容模式与分流使用指南"
+    },
+    {
+      "id": "section-6",
+      "title": "六、 优点、局限、待核实信息与同类对照"
+    }
+  ],
+  "contentHtml": "<h2 id=\"section-1\">一、 品牌定位、数据状态与客户端限制</h2><p>白月光整理自 2026-08 历史数据库记录，采用 Shadowsocks 协议，季度小包 ¥66 起。2026-07-17 实测 108 节点中香港均速约 114.94Mbps（TLS RTT 160.7ms），东南亚表现较好但台湾节点仅 0.03Mbps 且 Spotify 失败，整体置于后排档案供参考。</p><p><strong>信息可信度状态：</strong><code>历史档案记录（不代表实时速度）</code> · 核验时间：<code>2026-08-24</code>。在本次 42 家全量数据库整理中，<strong>白月光 (BaiYueGuang)</strong> 属于后置历史/待核实参考档案（<code>历史档案记录（不代表实时速度）</code>），更适合老用户查阅历史参数并与前列已完整实测品牌做冷静对比，选购主力节点可优先参考 <a href=\"/providers\">全网机场测评排行榜</a>。</p><h2 id=\"section-2\">二、 完整套餐价格明细与优惠码分析</h2><p>起步资费特征：<strong>小包季付 66元 (100GB/月 · 无常规月付)</strong>。历史资料未记录月付或有效优惠码，实时售价待核实</p><table><thead><tr><th>套餐名称</th><th>计费周期</th><th>参考价格</th><th>流量配额</th><th>备注</th></tr></thead><tbody><tr><td><strong>小包</strong></td><td>季付</td><td>¥66</td><td>100GB/月</td><td>旧资料口径</td></tr><tr><td><strong>中包</strong></td><td>季付</td><td>¥126</td><td>250GB/月</td><td>旧资料口径</td></tr><tr><td><strong>大包</strong></td><td>季付</td><td>¥156</td><td>400GB/月</td><td>旧资料口径</td></tr><tr><td><strong>超大包</strong></td><td>季付</td><td>¥216</td><td>750GB/月</td><td>旧资料口径</td></tr><tr><td><strong>不差钱</strong></td><td>季付</td><td>¥231</td><td>900GB/月</td><td>旧资料口径</td></tr><tr><td><strong>旗舰包</strong></td><td>年付</td><td>¥2500</td><td>2500GB/月</td><td>旧资料口径</td></tr></tbody></table><h2 id=\"section-3\">三、 节点测速证据、区域性能与客观对比</h2><p>专线与路由特征：<code>TRANSIT</code> · 主力协议：<code>SHADOWSOCKS</code> · 收录节点规模：约 108 个。</p><p><strong>图片与测速证物透明声明：</strong>本品牌截至 <code>2026-08-24</code> 暂未归档独立高清 MiaoKO / 晚高峰节点测速大图。为严格遵守真实测评规范，本文绝不借用同名或近似品牌的测速截图充数。</p><p><em>注：以下分区数据采集自 2026-07-17（历史地区统计记录（延迟偏高、台湾几乎不可用，不代表现时速度））：</em></p><table><thead><tr><th>节点区域</th><th>测试延迟</th><th>实测/统计下载</th></tr></thead><tbody><tr><td><strong>香港</strong></td><td>160.7ms</td><td>114.94Mbps</td></tr><tr><td><strong>新加坡</strong></td><td>186.8ms</td><td>85.22Mbps</td></tr><tr><td><strong>日本</strong></td><td>202.4ms</td><td>77.65Mbps</td></tr><tr><td><strong>美国</strong></td><td>302.6ms</td><td>70.53Mbps</td></tr><tr><td><strong>加拿大</strong></td><td>344ms</td><td>62Mbps</td></tr><tr><td><strong>韩国</strong></td><td>358ms</td><td>31.28Mbps</td></tr><tr><td><strong>台湾</strong></td><td>—</td><td>0.03Mbps</td></tr></tbody></table><h2 id=\"section-4\">四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录</h2><p><strong>AI 与流媒体状态：</strong>2026-07-17 历史测试仅部分节点可用 ChatGPT，且延迟偏高，不作 AI 推荐主力。 2026-07-17 历史测试 Spotify 失败，Netflix/Disney+/TikTok 仅部分节点可用。</p><h2 id=\"section-5\">五、 客户端兼容模式与分流使用指南</h2><p><strong>连接方式判断：</strong>支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。</p><p>对于兼容通用订阅的用户，推荐使用开源 <a href=\"/client/clash-verge\">Clash Verge Rev</a> 或移动端 <a href=\"/client/shadowrocket\">小火箭</a>，需要格式转换时可直接使用纯前端 <a href=\"/tools/sub-converter\">在线订阅转换工具</a>。</p><h2 id=\"section-6\">六、 优点、局限、待核实信息与同类对照</h2><p><strong>核心优势：</strong>108 个节点涵盖大量冷门国家/地区名称，季度 66 元起步总价门槛不高。</p><p><strong>局限与注意事项：</strong>2026-07-17 实测香港平均 TLS RTT 达 160.7ms、台湾仅 0.03Mbps、Spotify 测试失败；属历史留档资料且无月付选项，延迟明显弱于榜单前列专线品牌。</p><p><strong>明确待核实字段：</strong></p><ul><li>当前实时运营状态、价格与是否补充台湾/解锁修复待核实</li></ul><div class=\"p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/30 text-xs text-slate-200 my-6\"><p class=\"mb-2\"><strong>透明提示：</strong>以下官方注册链接含推广链接，通过链接注册可能为本站带来佣金，不影响用户支付价格。</p><div class=\"flex flex-wrap items-center justify-between gap-3\"><span>官方通道已启用防屏蔽直达验证</span><a href=\"https://sibker.com/register?invite_code=gg6puAId\" target=\"_blank\" rel=\"nofollow sponsored noopener\" class=\"px-4 py-2 rounded-lg bg-tech-emerald text-slate-950 font-bold\">前往 白月光 (BaiYueGuang) 官网注册 →</a></div></div>",
+  "faqList": [
+    {
+      "question": "白月光 (BaiYueGuang) 目前多少钱？有没有优惠码？",
+      "answer": "资料记载入门起步为 小包季付 66元 (100GB/月 · 无常规月付)。暂未确认可用公开优惠码，下单前请核实官网页面。"
+    },
+    {
+      "question": "白月光 (BaiYueGuang) 能不能导入 Clash Verge 或 Shadowrocket 小火箭？",
+      "answer": "支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。如需统一用第三方 Clash 客户端管理多条机场订阅，建议同时查看站内【Clash 机场推荐排行榜】。"
+    },
+    {
+      "question": "白月光 (BaiYueGuang) 目前的测试数据和跑路风险情况怎样？",
+      "answer": "当前数据标签为【历史档案记录（不代表实时速度）】（最近核验：2026-08-24）。暂无近期独立截图证物，下单一律建议先选短周期实测本地晚高峰表现。"
+    }
+  ]
+}

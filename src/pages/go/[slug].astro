@@ -2,10 +2,12 @@
 import { providersData } from '@/data/providers.data';
 
 export function getStaticPaths() {
-  return providersData.map((provider) => ({
-    params: { slug: provider.slug },
-    props: { provider },
-  }));
+  return providersData
+    .filter((provider) => Boolean(provider.affiliateUrl))
+    .map((provider) => ({
+      params: { slug: provider.slug },
+      props: { provider },
+    }));
 }
 
 const { provider } = Astro.props;

@@ -1,0 +1,82 @@
+{
+  "id": "cyberguard-in-depth-review-2026",
+  "slug": "cyberguard-in-depth-review-2026",
+  "title": "CyberGuard 2026 深度测评报告：15.83元起套餐、线路架构与待核实细节全解析",
+  "subtitle": "历史档案 · Trojan/VLESS · 月付32元(350GB) & 220G/840G不限时包",
+  "description": "CyberGuard 2026 客观档案与测评分析：涵盖完整周期套餐表、TRANSIT 架构与 Clash/小火箭订阅兼容及同价位替代建议。",
+  "primaryIntent": "帮助搜索 CyberGuard 的用户全面核对套餐价格、客户端方式、实测图证或历史资料缺口及优惠码。",
+  "articleType": "review",
+  "depthLevel": "D4",
+  "publishDate": "2026-11-13",
+  "updatedDate": "2026-11-13",
+  "author": "AirportMatrix 评测实验室",
+  "readingTime": "8 分钟",
+  "h2Count": 6,
+  "wordCount": 2200,
+  "quickAnswer": "CyberGuard（数据状态：历史档案记录（不代表实时速度））当前参考起步价为 半年轻量 95元 (约15.83元/月 150GB) · 标准月付 32元(350GB)，采用 TRANSIT 线路。连接方式：支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。部分实时测速与长周期细节仍标记待核实，建议先以最小可测周期体验，或对比主推光速云与性价比榜单。",
+  "tags": [
+    "CyberGuard",
+    "机场测评",
+    "TRANSIT专线",
+    "Clash订阅"
+  ],
+  "relatedProviders": [
+    "cyberguard",
+    "guangsucloud"
+  ],
+  "relatedClients": [
+    "clash-verge",
+    "shadowrocket",
+    "sing-box"
+  ],
+  "relatedProtocols": [
+    "trojan",
+    "vless"
+  ],
+  "relatedArticles": [
+    "cost-effective-airport-buying-guide-2026",
+    "airport-review-methodology-and-2026-evaluation",
+    "guangsucloud-in-depth-review-2026"
+  ],
+  "tableOfContents": [
+    {
+      "id": "section-1",
+      "title": "一、 品牌定位、数据状态与客户端限制"
+    },
+    {
+      "id": "section-2",
+      "title": "二、 完整套餐价格明细与优惠码分析"
+    },
+    {
+      "id": "section-3",
+      "title": "三、 节点测速证据、区域性能与客观对比"
+    },
+    {
+      "id": "section-4",
+      "title": "四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录"
+    },
+    {
+      "id": "section-5",
+      "title": "五、 客户端兼容模式与分流使用指南"
+    },
+    {
+      "id": "section-6",
+      "title": "六、 优点、局限、待核实信息与同类对照"
+    }
+  ],
+  "contentHtml": "<h2 id=\"section-1\">一、 品牌定位、数据状态与客户端限制</h2><p>CyberGuard 收录自历史项目数据库，主打 Trojan/VLESS 协议与 350GB 起步大流量方案，并提供 220GB（¥79）和 840GB（¥188）不限时包。其保留的测速数据源自 2025 年 6 月（延迟普遍高于一线专线），当前有效性与实时体验有待核实。</p><p><strong>信息可信度状态：</strong><code>历史档案记录（不代表实时速度）</code> · 核验时间：<code>2026-08-23</code>。在本次 42 家全量数据库整理中，<strong>CyberGuard</strong> 属于后置历史/待核实参考档案（<code>历史档案记录（不代表实时速度）</code>），更适合老用户查阅历史参数并与前列已完整实测品牌做冷静对比，选购主力节点可优先参考 <a href=\"/providers\">全网机场测评排行榜</a>。</p><h2 id=\"section-2\">二、 完整套餐价格明细与优惠码分析</h2><p>起步资费特征：<strong>半年轻量 95元 (约15.83元/月 150GB) · 标准月付 32元(350GB)</strong>。历史资料未记录现行优惠码，以官网当期报价为准</p><table><thead><tr><th>套餐名称</th><th>计费周期</th><th>参考价格</th><th>流量配额</th><th>备注</th></tr></thead><tbody><tr><td><strong>150G｜轻量套餐</strong></td><td>半年付</td><td>¥95</td><td>150GB/月</td><td>折约 ¥15.83/月</td></tr><tr><td><strong>350G｜标准套餐</strong></td><td>月付</td><td>¥32</td><td>350GB/月</td><td>旧资料口径</td></tr><tr><td><strong>650G｜高速套餐</strong></td><td>月付</td><td>¥55</td><td>650GB/月</td><td>旧资料口径</td></tr><tr><td><strong>220G流量包｜不限时</strong></td><td>一次性付费</td><td>¥79</td><td>220GB</td><td>具体有效期待核实</td></tr><tr><td><strong>840G流量包｜不限时</strong></td><td>一次性付费</td><td>¥188</td><td>840GB</td><td>具体有效期待核实</td></tr><tr><td><strong>2050G｜企业套餐</strong></td><td>月付</td><td>¥200</td><td>2050GB/月</td><td>旧资料口径</td></tr></tbody></table><h2 id=\"section-3\">三、 节点测速证据、区域性能与客观对比</h2><p>专线与路由特征：<code>TRANSIT</code> · 主力协议：<code>TROJAN / VLESS</code> · 收录节点规模：约 29 个。</p><p><strong>图片与测速证物透明声明：</strong>本品牌截至 <code>2026-08-23</code> 暂未归档独立高清 MiaoKO / 晚高峰节点测速大图。为严格遵守真实测评规范，本文绝不借用同名或近似品牌的测速截图充数。</p><p><em>注：以下分区数据采集自 2025-06-21（2025-06-21 旧历史测速统计（时隔较久，延迟波动显著，不代表现时水平））：</em></p><table><thead><tr><th>节点区域</th><th>测试延迟</th><th>实测/统计下载</th></tr></thead><tbody><tr><td><strong>日本</strong></td><td>123.8ms</td><td>488.83Mbps</td></tr><tr><td><strong>韩国</strong></td><td>6000ms</td><td>552.8Mbps</td></tr><tr><td><strong>阿联酋</strong></td><td>345ms</td><td>342.76Mbps</td></tr><tr><td><strong>澳大利亚</strong></td><td>277ms</td><td>279.64Mbps</td></tr><tr><td><strong>美国</strong></td><td>614ms</td><td>245.6Mbps</td></tr><tr><td><strong>法国</strong></td><td>384ms</td><td>204.08Mbps</td></tr><tr><td><strong>德国</strong></td><td>390.5ms</td><td>159.96Mbps</td></tr></tbody></table><h2 id=\"section-4\">四、 AI 工具（ChatGPT/Claude）与海外流媒体解锁记录</h2><p><strong>AI 与流媒体状态：</strong>仅 2025-06-21 历史记录测得可用 ChatGPT/Claude/Gemini，不代表 2026 现时可用。 仅 2025-06-21 历史记录解锁主流流媒体，近况待核实。</p><h2 id=\"section-5\">五、 客户端兼容模式与分流使用指南</h2><p><strong>连接方式判断：</strong>支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。</p><p>对于兼容通用订阅的用户，推荐使用开源 <a href=\"/client/clash-verge\">Clash Verge Rev</a> 或移动端 <a href=\"/client/shadowrocket\">小火箭</a>，需要格式转换时可直接使用纯前端 <a href=\"/tools/sub-converter\">在线订阅转换工具</a>。</p><h2 id=\"section-6\">六、 优点、局限、待核实信息与同类对照</h2><p><strong>核心优势：</strong>提供较实惠的大流量月付（32 元 350GB）与较低总价的不限时流量包。</p><p><strong>局限与注意事项：</strong>历史测速停留在 2025-06-21 且日/美/澳/德统计延迟偏高（韩国 6000ms 异常值），缺乏 2026 新测。</p><p><strong>明确待核实字段：</strong></p><ul><li>近一年未更新测速，不限时包有效期及当前价格待核实</li></ul><div class=\"p-4 rounded-xl bg-emerald-950/30 border border-emerald-500/30 text-xs text-slate-200 my-6\"><p class=\"mb-2\"><strong>透明提示：</strong>以下官方注册链接含推广链接，通过链接注册可能为本站带来佣金，不影响用户支付价格。</p><div class=\"flex flex-wrap items-center justify-between gap-3\"><span>官方通道已启用防屏蔽直达验证</span><a href=\"https://cyberguard.best/#/register?code=AxXNNYng\" target=\"_blank\" rel=\"nofollow sponsored noopener\" class=\"px-4 py-2 rounded-lg bg-tech-emerald text-slate-950 font-bold\">前往 CyberGuard 官网注册 →</a></div></div>",
+  "faqList": [
+    {
+      "question": "CyberGuard 目前多少钱？有没有优惠码？",
+      "answer": "资料记载入门起步为 半年轻量 95元 (约15.83元/月 150GB) · 标准月付 32元(350GB)。暂未确认可用公开优惠码，下单前请核实官网页面。"
+    },
+    {
+      "question": "CyberGuard 能不能导入 Clash Verge 或 Shadowrocket 小火箭？",
+      "answer": "支持 Clash / Shadowrocket / sing-box 通用订阅一键导入。如需统一用第三方 Clash 客户端管理多条机场订阅，建议同时查看站内【Clash 机场推荐排行榜】。"
+    },
+    {
+      "question": "CyberGuard 目前的测试数据和跑路风险情况怎样？",
+      "answer": "当前数据标签为【历史档案记录（不代表实时速度）】（最近核验：2026-08-23）。暂无近期独立截图证物，下单一律建议先选短周期实测本地晚高峰表现。"
+    }
+  ]
+}

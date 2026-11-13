@@ -2,17 +2,62 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import Breadcrumb from '@/components/common/Breadcrumb.astro';
 import Icon from '@/components/common/Icon.astro';
+import FaqSection from '@/components/article/FaqSection.astro';
+import NextBestPage from '@/components/article/NextBestPage.astro';
 
 const breadcrumbs = [
   { name: '实用工具箱', url: '/tools' },
-  { name: '在线订阅转换与 Mihomo 规则生成器', url: '/tools/sub-converter' },
+  { name: '机场订阅转换与 Clash 规则生成器', url: '/tools/sub-converter' },
+];
+
+const faqs = [
+  {
+    question: '机场订阅链接转换安全吗？会不会泄露我的订阅 Token？',
+    answer: '本页面所有配置生成均在你的本地浏览器前端（JavaScript）完成，不会将你的机场订阅 URL 或 Token 上传到任何后端服务器，使用后也可随时在机场后台重置订阅链接。',
+  },
+  {
+    question: '生成的 Mihomo YAML 配置适合哪些客户端？',
+    answer: '适用于 Clash Verge Rev、Clash Nyanpasu、Mihomo Party 以及支持 Mihomo 内核的现代跨平台客户端，默认开启 Fake-IP 防污染、TUN 虚拟网卡以及 ChatGPT / Netflix 分流策略组。',
+  },
+  {
+    question: '如果转换后导入 Clash 提示超时或节点拉取失败怎么办？',
+    answer: '请检查订阅链接是否复制完整、本地系统时间是否同步，或参考我们的《节点全部超时排查指南》逐项检查。',
+  },
+];
+
+const nextPages = [
+  {
+    title: 'Clash 机场推荐与一键订阅精选',
+    href: '/category/clash-recommend',
+    desc: '挑选原生下发标准 Clash/Mihomo 规则、无需复杂转换的好用机场。',
+    type: 'Clash 推荐',
+  },
+  {
+    title: 'Clash Verge Rev 图文下载与配置教程',
+    href: '/client/clash-verge',
+    desc: '获取客户端官方 GitHub 下载地址与 4 步订阅导入实操。',
+    type: '客户端教程',
+  },
+  {
+    title: '节点全部超时 (Timeout) 排查指南',
+    href: '/articles/node-timeout-troubleshooting-guide',
+    desc: '解决导入订阅失败、测速全红与本地端口冲突问题。',
+    type: '故障排查',
+  },
+  {
+    title: '2026 高性价比机场推荐排行榜',
+    href: '/category/cost-effective',
+    desc: '对比月付 14.9 元与年付 7.5 元档高性价比机场节点。',
+    type: '性价比榜',
+  },
 ];
 ---
 
 <BaseLayout
-  title="在线订阅转换与 Mihomo (Clash.Meta) TUN 规则生成器 - AirportMatrix"
-  description="安全纯前端执行：一键将机场订阅转换为带有 Fake-IP、TUN 模式网卡接管、OpenAI / Netflix 专属分流的 Clash Verge Rev 配置文件。"
+  title="机场订阅转换工具 · 在线 Clash / Mihomo / 小火箭规则配置生成"
+  description="纯前端零上传的机场订阅链接转换器：输入机场订阅地址，一键生成适配 Clash Verge Rev、sing-box 与小火箭的 TUN + Fake-IP + ChatGPT 分流配置文件。"
   breadcrumbs={breadcrumbs}
+  faqData={faqs}
 >
   <Breadcrumb items={breadcrumbs} />
 
@@ -105,6 +150,19 @@ const breadcrumbs = [
         ></textarea>
       </div>
     </div>
+    <!-- Usage Guide, FAQ & Next Best Pages -->
+    <div class="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-3 text-xs sm:text-sm text-slate-300">
+      <h2 class="text-base sm:text-lg font-bold text-white">三步完成机场订阅转换与导入</h2>
+      <ol class="list-decimal list-inside space-y-1.5 text-slate-400">
+        <li>登录你购买的机场后台（参见 <a href="/category/clash-recommend" class="text-tech-cyan hover:underline">Clash 机场推荐榜</a>），复制通用或 Clash 订阅链接；</li>
+        <li>将链接粘贴至上方输入框，选择目标客户端与 Fake-IP 模式后点击“一键生成优化配置”；</li>
+        <li>复制生成的 YAML 片段保存为本地配置文件，或配合 <a href="/client/clash-verge" class="text-tech-emerald hover:underline">Clash Verge Rev 教程</a> 导入启用。</li>
+      </ol>
+    </div>
+
+    <FaqSection faqs={faqs} />
+
+    <NextBestPage nextPages={nextPages} />
   </div>
 </BaseLayout>
 
